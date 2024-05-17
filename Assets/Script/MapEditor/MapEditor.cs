@@ -27,5 +27,10 @@ public class MapEditor : Editor
         {
             mapLoading.RemoveMap();
         }
+
+        //if(GUILayout.Button("Reset Map"))
+        //{
+        //    mapLoading.ResetMap();
+        //}
     }
 }

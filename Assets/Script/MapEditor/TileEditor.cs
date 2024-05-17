@@ -10,6 +10,17 @@ public class TileEditor : Editor
         DrawDefaultInspector();
         GameTiles tile = (GameTiles)target;
 
+        if (GUILayout.Button("Spawn"))
+        {
+            ApplyToAllTargets((GameTiles tile) => tile.TurnSpawn());
+        }
+
+        if (GUILayout.Button("End"))
+        {
+            ApplyToAllTargets((GameTiles tile) => tile.TurnEnd());
+        }
+
+        EditorGUILayout.Space();
 
         if (GUILayout.Button("Wall"))
         {
@@ -25,6 +36,8 @@ public class TileEditor : Editor
         {
             ApplyToAllTargets((GameTiles tile) => tile.TurnSlow());
         }
+
+
 
     }
 

@@ -6,17 +6,20 @@ public class GameTiles : MonoBehaviour
 {
     private Color originalColor;
     public SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteSpawn;
+    public SpriteRenderer spriteEnd;
     public SpriteRenderer SlowingRenderer;
     public SpriteRenderer WallRenderer;
     public SpriteRenderer DamagingRenderer;
 
 
-    public bool IsBloced = false;
-    Color ColorBloced = Color.black;
-    public bool IsSlowing = false;
-    Color ColorSlowing = Color.blue;
-    public bool IsDamaging = false;
-    Color ColorDamaging = Color.red;
+    internal bool IsSpawn = false;
+    internal bool IsEnd = false;
+
+    internal bool IsBloced = false;
+    internal bool IsSlowing = false;
+    internal bool IsDamaging = false;
+
 
     internal void SetComponent()
     {
@@ -29,6 +32,18 @@ public class GameTiles : MonoBehaviour
         originalColor = spriteRenderer.color;
     }
 
+    internal void TurnSpawn()
+    {
+        IsSpawn = !IsSpawn;
+        spriteSpawn.enabled = IsSpawn;
+    }
+
+    internal void TurnEnd()
+    {
+        IsEnd = !IsEnd;
+        spriteEnd.enabled = IsEnd;
+    }
+
     internal void TurnGrey(float alphaValue)
     {
         Color currentColor = originalColor;
@@ -38,19 +53,19 @@ public class GameTiles : MonoBehaviour
 
     internal void TurnBloced()
     {
-        IsBloced =! IsBloced;
+        IsBloced = !IsBloced;
         WallRenderer.enabled = IsBloced;
     }
 
     internal void TurnSlow()
     {
-        IsSlowing =! IsSlowing;
+        IsSlowing = !IsSlowing;
         SlowingRenderer.enabled = IsSlowing;
     }
 
     internal void TurnDamaging()
     {
-        IsDamaging =! IsDamaging;
+        IsDamaging = !IsDamaging;
         DamagingRenderer.enabled = IsDamaging;
     }
 }
