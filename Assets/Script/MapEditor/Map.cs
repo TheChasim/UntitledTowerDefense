@@ -52,6 +52,16 @@ public class Map : MonoBehaviour
                     map[y, x] = 'S';
                     Debug.Log("Water");
                 }
+                else if (tile.IsSpawn)
+                {
+                    map[y, x] = 'E';
+                    Debug.Log("Spawing");
+                }
+                else if (tile.IsEnd)
+                {
+                    map[y, x] = 'F';
+                    Debug.Log("End");
+                }
                 else
                 {
                     map[y, x] = ' ';
@@ -69,7 +79,7 @@ public class Map : MonoBehaviour
     {
         map = new char[row, col];
 
-        this.row = newRow; 
+        this.row = newRow;
         this.col = newCol;
         map = null;
     }

@@ -11,6 +11,8 @@ public class MapEditor : Editor
 
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("Map Name : ", mapLoading.mapName);
+        EditorGUILayout.LabelField("Spawn point : ", mapLoading.spawnPoint.ToString());
+        EditorGUILayout.LabelField("End point : ", mapLoading.endPoint.ToString());
         EditorGUILayout.Space();
 
         if (GUILayout.Button("Spawn Map"))

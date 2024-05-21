@@ -11,6 +11,8 @@ public class MapLoading : MonoBehaviour
 
     [SerializeField] GameObject gameTilePrefab;
     static GameTiles[,] currentGameTiles;
+    internal Vector2 spawnPoint;
+    internal Vector2 endPoint;
 
     [SerializeField] List<GameObject> mapList = new List<GameObject>();
     Map currentMap;
@@ -95,6 +97,18 @@ public class MapLoading : MonoBehaviour
                 {
                     currentGameTiles[y, x].TurnDamaging();
                 }
+                else if (currentMap.map[y, x] == 'E')
+                {
+                    spawnPoint.x = spawnPosition.x;
+                    spawnPoint.y = spawnPosition.z;
+                    currentGameTiles[y, x].TurnSpawn();
+                }
+                else if (currentMap.map[y, x] == 'F')
+                {
+                    endPoint.x = spawnPosition.x;
+                    endPoint.y = spawnPosition.z;
+                    currentGameTiles[y, x].TurnEnd();
+                }
 
                 Debug.Log(currentMap.map[y, x]);
             }
@@ -104,6 +118,8 @@ public class MapLoading : MonoBehaviour
     internal void RemoveMap()
     {
         mapName = "n/a";
+        spawnPoint = Vector2.zero;
+        endPoint = Vector2.zero;
         GameObject[] tiles = GameObject.FindGameObjectsWithTag("Tile");
 
         //remove tiles
