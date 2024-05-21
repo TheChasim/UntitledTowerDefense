@@ -13,6 +13,8 @@ public class MapLoading : MonoBehaviour
     static GameTiles[,] currentGameTiles;
     internal Vector2 spawnPoint;
     internal Vector2 endPoint;
+    GameTiles spawnTile;
+    GameTiles endTile;
 
     [SerializeField] List<GameObject> mapList = new List<GameObject>();
     Map currentMap;
@@ -20,7 +22,7 @@ public class MapLoading : MonoBehaviour
     [Header("Map loading")]
     [SerializeField] internal int mapIndex = 0;
     internal string mapName = "n/a";
-    string tagBackground = "Background";
+    //string tagBackground = "Background";
     string tagMap = "Map";
 
     private void Update()
@@ -84,29 +86,38 @@ public class MapLoading : MonoBehaviour
                 tile.transform.parent = mapInstance.transform;
                 currentGameTiles[y, x] = tile.GetComponent<GameTiles>();
                 currentGameTiles[y, x].SetComponent();
+                currentGameTiles[y, x].X = x;
+                currentGameTiles[y, x].Y = y;
 
+                //wall
                 if (currentMap.map[y, x] == 'W')
                 {
                     currentGameTiles[y, x].TurnBloced();
                 }
+                //Slowing Block
                 else if (currentMap.map[y, x] == 'S')
                 {
                     currentGameTiles[y, x].TurnSlow();
                 }
+                //Damaging Block
                 else if (currentMap.map[y, x] == 'D')
                 {
                     currentGameTiles[y, x].TurnDamaging();
                 }
+                //Spawn Tile
                 else if (currentMap.map[y, x] == 'E')
                 {
                     spawnPoint.x = spawnPosition.x;
                     spawnPoint.y = spawnPosition.z;
+                    spawnTile = currentGameTiles[y, x];
                     currentGameTiles[y, x].TurnSpawn();
                 }
+                //end Tile
                 else if (currentMap.map[y, x] == 'F')
                 {
                     endPoint.x = spawnPosition.x;
                     endPoint.y = spawnPosition.z;
+                    endTile = currentGameTiles[y, x]; 
                     currentGameTiles[y, x].TurnEnd();
                 }
 
@@ -155,4 +166,12 @@ public class MapLoading : MonoBehaviour
             map.GetComponent<Map>().ResetMap(RowCount, ColCount);
         }
     }
+
+    internal void SetPath()
+    {
+        PathFinder pathFinder = new PathFinder(currentGameTiles, spawnTile, endTile, ColCount, RowCount);
+        pathFinder.SetPath();
+    }
+
 }
+

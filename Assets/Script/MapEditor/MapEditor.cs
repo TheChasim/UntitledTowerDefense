@@ -30,6 +30,12 @@ public class MapEditor : Editor
             mapLoading.RemoveMap();
         }
 
+        EditorGUILayout.Space();
+        if(GUILayout.Button("Set path"))
+        {
+            mapLoading.SetPath();
+        }
+
         //if(GUILayout.Button("Reset Map"))
         //{
         //    mapLoading.ResetMap();

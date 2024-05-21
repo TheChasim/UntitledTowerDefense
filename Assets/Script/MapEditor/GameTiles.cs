@@ -20,6 +20,8 @@ public class GameTiles : MonoBehaviour
     internal bool IsSlowing = false;
     internal bool IsDamaging = false;
 
+    public int X { get; internal set; }
+    public int Y { get; internal set; }
 
     internal void SetComponent()
     {
@@ -67,5 +69,12 @@ public class GameTiles : MonoBehaviour
     {
         IsDamaging = !IsDamaging;
         DamagingRenderer.enabled = IsDamaging;
+    }
+
+    internal void SetPathColor(bool isPath)
+    {
+        Color transparentOrange = new Color(1, 0.375f, 0, 0.5f);
+
+        spriteRenderer.color = isPath ? transparentOrange : originalColor;
     }
 }
