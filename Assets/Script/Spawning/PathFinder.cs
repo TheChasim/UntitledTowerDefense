@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
 
 public class PathFinder
 {
@@ -12,25 +15,25 @@ public class PathFinder
     int RowCount = 0;
 
     //constructeur
-    public PathFinder(GameTiles[,] NewGametiles,GameTiles NewSpawnTile , GameTiles NewEndTil , int NewCol, int NewRow)
+    public PathFinder(GameTiles[,] NewGametiles, GameTiles NewSpawnTile, GameTiles NewEndTil, int NewCol, int NewRow)
     {
         gameTiles = NewGametiles;
         spawnTile = NewSpawnTile;
         endTile = NewEndTil;
         ColCount = NewCol;
         RowCount = NewRow;
+
     }
 
 
     internal void SetPath()
     {
-
         foreach (var t in gameTiles)
         {
             t.SetPathColor(false);
         }
 
-        var path = PathFinfing(spawnTile, endTile);
+        var path = PathFinding(spawnTile, endTile);
         var tile = endTile;
 
         while (tile != null)
@@ -39,21 +42,40 @@ public class PathFinder
             tile.SetPathColor(true);
             tile = path[tile];
         }
+
+        Debug.Log("Path Created");
+
         //play = true;
         //spwaning.Spawning(spawnTile, pathToGoal);
     }
+    private Dictionary<GameTiles, GameTiles> PathFinding(GameTiles sourceTile, GameTiles targetTile)
+    {
+        Dictionary<GameTiles, GameTiles> path = PathFindingAlgo(sourceTile, targetTile, avoidDamage: true, avoidSlow: true);
 
-    private Dictionary<GameTiles, GameTiles> PathFinfing(GameTiles sourceTile, GameTiles targetTile)
+        // Si impossible de trouver un chemin évitant les tuiles dangereuses, essayer d'éviter les tuiles lentes
+        if (path == null)
+        {
+            path = PathFindingAlgo(sourceTile, targetTile, avoidDamage: true, avoidSlow: false);
+        }
+
+        // Si toujours impossible, trouver le chemin le plus court en ignorant les conditions
+        if (path == null)
+        {
+            path = PathFindingAlgo(sourceTile, targetTile, avoidDamage: false, avoidSlow: false);
+        }
+
+        return path;
+    }
+    private Dictionary<GameTiles, GameTiles> PathFindingAlgo(GameTiles sourceTile, GameTiles targetTile, bool avoidDamage, bool avoidSlow)
     {
         var dist = new Dictionary<GameTiles, int>();
         var prev = new Dictionary<GameTiles, GameTiles>();
-
         var Q = new List<GameTiles>();
 
         foreach (var v in gameTiles)
         {
-            dist.Add(v, 999);
-            prev.Add(v, null);
+            dist[v] = int.MaxValue;
+            prev[v] = null;
             Q.Add(v);
         }
 
@@ -71,28 +93,35 @@ public class PathFinder
                     minDistance = dist[v];
                     u = v;
                 }
+            }
 
+            if (u == null || u == targetTile)
+            {
+                break;
             }
 
             Q.Remove(u);
 
             foreach (var v in FindNeighbor(u))
             {
-                if (!Q.Contains(v) || v.IsBloced)
+                if (!Q.Contains(v) || v.IsBloced || (avoidDamage && v.IsDamaging) || (avoidSlow && v.IsSlowing))
                 {
                     continue;
                 }
 
-                int alt = dist[u] + 1;
+                int alt = dist[u] + 1; // Vous pouvez ajuster cette valeur pour les tuiles lentes ou dangereuses
 
                 if (alt < dist[v])
                 {
                     dist[v] = alt;
-
                     prev[v] = u;
                 }
             }
+        }
 
+        if (prev[targetTile] == null)
+        {
+            return null; // Aucun chemin trouvé
         }
 
         return prev;
@@ -122,4 +151,5 @@ public class PathFinder
 
         return result;
     }
+
 }
