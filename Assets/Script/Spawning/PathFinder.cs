@@ -7,7 +7,7 @@ using UnityEngine;
 public class PathFinder
 {
     GameTiles[,] gameTiles;
-    internal GameTiles spawnTile;
+    internal List<GameTiles> spawnTile;
     internal GameTiles endTile;
     List<GameTiles> pathToGoal = new List<GameTiles>();
 
@@ -15,7 +15,7 @@ public class PathFinder
     int RowCount = 0;
 
     //constructeur
-    public PathFinder(GameTiles[,] NewGametiles, GameTiles NewSpawnTile, GameTiles NewEndTil, int NewCol, int NewRow)
+    public PathFinder(GameTiles[,] NewGametiles, List<GameTiles> NewSpawnTile, GameTiles NewEndTil, int NewCol, int NewRow)
     {
         gameTiles = NewGametiles;
         spawnTile = NewSpawnTile;
@@ -33,17 +33,20 @@ public class PathFinder
             t.SetPathColor(false);
         }
 
-        var path = PathFinding(spawnTile, endTile);
-        var tile = endTile;
-
-        while (tile != null)
+        foreach (var spawn in spawnTile)
         {
-            pathToGoal.Add(tile);
-            tile.SetPathColor(true);
-            tile = path[tile];
-        }
+            var path = PathFinding(spawn, endTile);
+            var tile = endTile;
 
-        Debug.Log("Path Created");
+            while (tile != null)
+            {
+                pathToGoal.Add(tile);
+                tile.SetPathColor(true);
+                tile = path[tile];
+            }
+
+            Debug.Log("Path Created");
+        }
 
         //play = true;
         //spwaning.Spawning(spawnTile, pathToGoal);

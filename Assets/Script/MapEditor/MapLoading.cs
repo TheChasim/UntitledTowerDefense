@@ -13,7 +13,7 @@ public class MapLoading : MonoBehaviour
     static GameTiles[,] currentGameTiles;
     internal Vector2 spawnPoint;
     internal Vector2 endPoint;
-    GameTiles spawnTile;
+    List<GameTiles> spawnTile = new List<GameTiles>();
     GameTiles endTile;
 
     [SerializeField] List<GameObject> mapList = new List<GameObject>();
@@ -109,7 +109,7 @@ public class MapLoading : MonoBehaviour
                 {
                     spawnPoint.x = spawnPosition.x;
                     spawnPoint.y = spawnPosition.z;
-                    spawnTile = currentGameTiles[y, x];
+                    spawnTile.Add( currentGameTiles[y, x]);
                     currentGameTiles[y, x].TurnSpawn();
                 }
                 //end Tile
