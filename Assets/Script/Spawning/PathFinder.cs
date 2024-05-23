@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PathFinder
+ public class PathFinder
 {
     GameTiles[,] gameTiles;
     internal List<GameTiles> spawnTile;
     internal GameTiles endTile;
-    List<GameTiles> pathToGoal = new List<GameTiles>();
+    static internal List<GameTiles> pathToGoal = new List<GameTiles>();
 
     int ColCount = 0;
     int RowCount = 0;
@@ -24,6 +24,8 @@ public class PathFinder
         RowCount = NewRow;
 
     }
+    public PathFinder() 
+    { }
 
 
     internal void SetPath()
@@ -34,12 +36,18 @@ public class PathFinder
         }
 
         foreach (var spawn in spawnTile)
+        { Debug.Log(spawn.ToString() + "Spawn"); }
+
+        foreach (var spawn in spawnTile)
         {
             var path = PathFinding(spawn, endTile);
             var tile = endTile;
 
             while (tile != null)
             {
+                Debug.Log(path);
+                Debug.Log(tile);
+
                 pathToGoal.Add(tile);
                 tile.SetPathColor(true);
                 tile = path[tile];
@@ -155,4 +163,8 @@ public class PathFinder
         return result;
     }
 
+    internal void Reset()
+    {
+        spawnTile.Clear();
+    }
 }

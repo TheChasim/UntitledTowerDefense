@@ -128,6 +128,7 @@ public class MapLoading : MonoBehaviour
 
     internal void RemoveMap()
     {
+
         mapName = "n/a";
         spawnPoint = Vector2.zero;
         endPoint = Vector2.zero;
@@ -145,6 +146,10 @@ public class MapLoading : MonoBehaviour
             DestroyImmediate(map);
             Debug.Log($"map destroy");
         }
+
+        PathFinder.pathToGoal.Clear();
+        spawnTile.Clear();
+
     }
 
     internal void SaveMap()
