@@ -13,7 +13,7 @@ GameObject:
   m_Layer: 0
   m_Name: Map1
   m_TagString: Map
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -44,4 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 299fdafa60254b549ad89bd46e1af104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapName: Map 1
+  prefab: {fileID: 4508796451058780988}
+  mapName: MonTabarnak
+  col: 35
+  row: 20

@@ -17,6 +17,7 @@ public class MapLoading : MonoBehaviour
     GameTiles endTile;
 
     [SerializeField] List<GameObject> mapList = new List<GameObject>();
+    static public GameObject MapObject;
     Map currentMap;
 
     [Header("Map loading")]
@@ -37,6 +38,8 @@ public class MapLoading : MonoBehaviour
     {
         RemoveMap();
 
+        MapObject = mapList[mapIndex];
+        Debug.LogWarning(MapObject.name);
         //int currentRow = 0;
         //int currentCol = 0;
 
@@ -46,10 +49,11 @@ public class MapLoading : MonoBehaviour
         //load l'image en background
         // Instancier le prefab dans la scène
         GameObject mapInstance = Instantiate(mapList[mapIndex]);
-
+        
         //load le niveau
         currentMap = mapList[mapIndex].GetComponent<Map>();
-        mapName = currentMap.name;
+        mapName = currentMap.mapName;
+        //currentMap.prefab = MapObject;
 
         //changement de taille
         //if (currentMap.row == 0 && currentMap.col == 0)
@@ -121,7 +125,7 @@ public class MapLoading : MonoBehaviour
                     currentGameTiles[y, x].TurnEnd();
                 }
 
-                Debug.Log(currentMap.map[y, x]);
+                //Debug.Log(currentMap.map[y, x]);
             }
         }
     }

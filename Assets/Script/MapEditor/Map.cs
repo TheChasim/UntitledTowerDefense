@@ -1,8 +1,12 @@
 using System;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif 
 
 public class Map : MonoBehaviour
 {
+    [SerializeField] internal GameObject prefab;
     [SerializeField] internal string mapName;
     //internal GameTiles[,] mapTile;
     internal char[,] map;
@@ -23,12 +27,17 @@ public class Map : MonoBehaviour
     //    //  1    2    3    4    5    6    7   8     9    10   11  12    13   14   15   16
     //};
 
+    public Map(GameObject prefab)
+    {
+        this.prefab = prefab;
+    }
     public void SaveMap(GameTiles[,] CurrentMapTile)
     {
-        //col = map.GetLength(1);
-        //row = map.GetLength(0);
+        col = map.GetLength(1);
+        row = map.GetLength(0);
 
 
+        map = new char[row,col];
 
         for (int x = 0; x < map.GetLength(1); x++)
         {
@@ -36,7 +45,7 @@ public class Map : MonoBehaviour
             {
                 var tile = CurrentMapTile[y, x].GetComponent<GameTiles>();
 
-                Debug.Log($"Processing tile at ({y}, {x})");
+                //Debug.Log($"Processing tile at ({y}, {x})");
                 if (tile.IsBloced)
                 {
                     map[y, x] = 'W';
@@ -69,11 +78,23 @@ public class Map : MonoBehaviour
             }
         }
 
-        foreach (char c in map)
-        {
-            Debug.Log(c);
-        }
+        SaveInPrefab();
     }
+
+
+    private void SaveInPrefab()
+    {
+        var changedMap = MapLoading.MapObject.GetComponent<Map>();
+
+        changedMap.map = this.map;
+        changedMap.col = this.col;
+        changedMap.row = this.row;
+
+        EditorUtility.SetDirty(MapLoading.MapObject);
+        PrefabUtility.SavePrefabAsset(MapLoading.MapObject);
+        AssetDatabase.SaveAssets();
+    }
+
 
     internal void ResetMap(int newRow, int newCol)
     {
@@ -83,6 +104,4 @@ public class Map : MonoBehaviour
         this.col = newCol;
         map = null;
     }
-
-
 }
