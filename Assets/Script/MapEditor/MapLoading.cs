@@ -37,8 +37,8 @@ public class MapLoading : MonoBehaviour
     {
         RemoveMap();
 
-        int currentRow = 0;
-        int currentCol = 0;
+        //int currentRow = 0;
+        //int currentCol = 0;
 
         //ColCount = mapList[mapIndex].GetComponent<Map>().GetCol();
         //RowCount = mapList[mapIndex].GetComponent<Map>().GetRow();
