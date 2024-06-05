@@ -40,6 +40,9 @@ public class MapLoading : MonoBehaviour
 
         MapObject = mapList[mapIndex];
         Debug.LogWarning(MapObject.name);
+
+        //mapList[mapIndex].GetComponent<Map>().LoadJson();
+        
         //int currentRow = 0;
         //int currentCol = 0;
 
@@ -49,9 +52,10 @@ public class MapLoading : MonoBehaviour
         //load l'image en background
         // Instancier le prefab dans la scène
         GameObject mapInstance = Instantiate(mapList[mapIndex]);
-        
+
         //load le niveau
         currentMap = mapList[mapIndex].GetComponent<Map>();
+        currentMap.LoadJson();
         mapName = currentMap.mapName;
         //currentMap.prefab = MapObject;
 
@@ -113,7 +117,7 @@ public class MapLoading : MonoBehaviour
                 {
                     spawnPoint.x = spawnPosition.x;
                     spawnPoint.y = spawnPosition.z;
-                    spawnTile.Add( currentGameTiles[y, x]);
+                    spawnTile.Add(currentGameTiles[y, x]);
                     currentGameTiles[y, x].TurnSpawn();
                 }
                 //end Tile
@@ -121,7 +125,7 @@ public class MapLoading : MonoBehaviour
                 {
                     endPoint.x = spawnPosition.x;
                     endPoint.y = spawnPosition.z;
-                    endTile = currentGameTiles[y, x]; 
+                    endTile = currentGameTiles[y, x];
                     currentGameTiles[y, x].TurnEnd();
                 }
 
@@ -182,5 +186,9 @@ public class MapLoading : MonoBehaviour
         pathFinder.SetPath();
     }
 
-}
+    internal void LoadMap()
+    {
+        mapList[mapIndex].GetComponent<Map>().LoadJson();
+    }
 
+}

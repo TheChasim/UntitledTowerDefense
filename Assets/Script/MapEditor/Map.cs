@@ -1,15 +1,8 @@
 using System;
 using UnityEngine;
-//using System.Runtime.Serialization.Json;
-//using Unity.Plastic.Newtonsoft.Json;
-
 using System.IO;
-using Unity.VisualScripting;
 using System.Collections.Generic;
-using UnityEngine.Playables;
-
-
-
+using Newtonsoft.Json.Linq;
 
 
 
@@ -18,6 +11,30 @@ using UnityEditor;
 #endif 
 
 [System.Serializable]
+public class MapData
+{
+    public string mapName;
+    //public List<List<char>> mapToJson;
+    public CharArray2DContainer mapComtainer;
+    public int col;
+    public int row;
+    public char[,] map;
+    public List<char> mapTo = new List<char>();
+}
+
+
+[Serializable]
+public class CharArray2D
+{
+    public char[] row;
+}
+
+[Serializable]
+public class CharArray2DContainer
+{
+    public CharArray2D[] map2D;
+}
+
 public class Map : MonoBehaviour
 {
     //variable
@@ -44,13 +61,16 @@ public class Map : MonoBehaviour
 
     //Json Variable
     private string path;
-    internal List<List<char>> mapToJson;
+    //[SerializeField] internal List<List<char>> mapToJson;
 
-    public Map(GameObject prefab)
+    private void Awake()
     {
-        this.prefab = prefab;
         path = Application.persistentDataPath + $"/{gameObject.name}.json";
-        LoadJson();
+    }
+
+    private void Reset()
+    {
+        path = Application.persistentDataPath + $"/{gameObject.name}.json";
     }
     public void SaveMap(GameTiles[,] CurrentMapTile)
     {
@@ -109,8 +129,47 @@ public class Map : MonoBehaviour
 
     private void SaveInJson<t>(t objectTosave, string destination)
     {
-        mapToJson = ConvertToSerializable(map);
-        string json = JsonUtility.ToJson(this);
+        List<char> list = new List<char>();
+        list.Add('A');
+        list.Add('a');
+        list.Add('A');
+
+        List<List<char>> deuxDimensions = new List<List<char>>();
+
+        // Ajouter la première liste à deux dimensions
+        deuxDimensions.Add(new List<char> { 'a', 'b', 'c' });
+
+        // Ajouter la deuxième liste à deux dimensions
+        deuxDimensions.Add(new List<char> { 'd', 'e', 'f' });
+
+        //transforme la map pour le json
+        CharArray2DContainer container = new CharArray2DContainer();
+        container.map2D = new CharArray2D[map.GetLength(0)];
+
+        for (int i = 0; i < map.GetLength(0); i++)
+        {
+            container.map2D[i] = new CharArray2D();
+            container.map2D[i].row = new char[map.GetLength(1)];
+
+            for (int j = 0; j < map.GetLength(1); j++)
+            {
+                container.map2D[i].row[j] = map[i, j];
+            }
+        }
+
+        MapData mapData = new MapData
+        {
+            mapName = this.mapName,
+            //map = this.map,
+            //mapToJson = /*ConvertToSerializable(map),*/ deuxDimensions,
+            col = this.col,
+            row = this.row,
+            mapTo = list,
+            mapComtainer = container,
+          
+        };
+
+        string json = JsonUtility.ToJson(mapData, true);
 
         // Sauvegarder le JSON dans un fichier
 
@@ -126,19 +185,46 @@ public class Map : MonoBehaviour
     }
 
 
-    private void LoadJson()
+    internal void LoadJson()
     {
+        if(!File.Exists(path))
+        {
+            path = Application.persistentDataPath + $"/{gameObject.name}.json";
+        }
+
+
         if (File.Exists(path))
         {
             string json = File.ReadAllText(path);
 
-            // Charger le JSON depuis le fichier
-            Map map = JsonUtility.FromJson<Map>(json);
 
-            this.map = ConvertFromSerializable(mapToJson);
-            this.name = map.name;
-            this.row = map.row;
-            this.col = map.col;
+            MapData mapData = JsonUtility.FromJson<MapData>(json);
+
+            this.mapName = mapData.mapName;
+            //this.map = mapData.map;
+            this.row = mapData.row;
+            this.col = mapData.col;
+            //this.map = ConvertFromSerializable(mapData.mapToJson);
+
+            map = new char[row, col];
+
+            for(int i =0; i < row; i++)
+            {
+                for(int j = 0; j < col; j++)
+                {
+                    map[i,j] = mapData.mapComtainer.map2D[i].row[j];
+                }
+
+            }
+
+            //if (map == null)
+            //{
+            //    map = new char[row, col];
+            //}    
+
+
+
+            Debug.Log("Data load from " + path);
         }
         else
         {
@@ -146,18 +232,18 @@ public class Map : MonoBehaviour
         }
     }
 
-    private void SaveInPrefab()
-    {
-        var changedMap = MapLoading.MapObject.GetComponent<Map>();
+    //private void SaveInPrefab()
+    //{
+    //    var changedMap = MapLoading.MapObject.GetComponent<Map>();
 
-        changedMap.map = this.map;
-        changedMap.col = this.col;
-        changedMap.row = this.row;
+    //    changedMap.map = this.map;
+    //    changedMap.col = this.col;
+    //    changedMap.row = this.row;
 
-        EditorUtility.SetDirty(MapLoading.MapObject);
-        PrefabUtility.SavePrefabAsset(MapLoading.MapObject);
-        AssetDatabase.SaveAssets();
-    }
+    //    EditorUtility.SetDirty(MapLoading.MapObject);
+    //    PrefabUtility.SavePrefabAsset(MapLoading.MapObject);
+    //    AssetDatabase.SaveAssets();
+    //}
 
 
     internal void ResetMap(int newRow, int newCol)
@@ -186,6 +272,7 @@ public class Map : MonoBehaviour
 
     char[,] ConvertFromSerializable(List<List<char>> list)
     {
+        Debug.Log(list.Count);  
         int rows = list.Count;
         int cols = list[0].Count;
         char[,] array = new char[rows, cols];

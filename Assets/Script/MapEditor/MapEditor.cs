@@ -25,6 +25,11 @@ public class MapEditor : Editor
             mapLoading.SaveMap();
         }
 
+        if (GUILayout.Button("Load Map"))
+        {
+            mapLoading.LoadMap();
+        }
+
         if (GUILayout.Button("Remove Map"))
         {
             mapLoading.RemoveMap();
