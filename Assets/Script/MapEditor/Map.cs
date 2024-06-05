@@ -1,11 +1,26 @@
 using System;
 using UnityEngine;
+//using System.Runtime.Serialization.Json;
+//using Unity.Plastic.Newtonsoft.Json;
+
+using System.IO;
+using Unity.VisualScripting;
+using System.Collections.Generic;
+using UnityEngine.Playables;
+
+
+
+
+
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif 
 
+[System.Serializable]
 public class Map : MonoBehaviour
 {
+    //variable
     [SerializeField] internal GameObject prefab;
     [SerializeField] internal string mapName;
     //internal GameTiles[,] mapTile;
@@ -27,9 +42,15 @@ public class Map : MonoBehaviour
     //    //  1    2    3    4    5    6    7   8     9    10   11  12    13   14   15   16
     //};
 
+    //Json Variable
+    private string path;
+    internal List<List<char>> mapToJson;
+
     public Map(GameObject prefab)
     {
         this.prefab = prefab;
+        path = Application.persistentDataPath + $"/{gameObject.name}.json";
+        LoadJson();
     }
     public void SaveMap(GameTiles[,] CurrentMapTile)
     {
@@ -37,7 +58,7 @@ public class Map : MonoBehaviour
         row = map.GetLength(0);
 
 
-        map = new char[row,col];
+        map = new char[row, col];
 
         for (int x = 0; x < map.GetLength(1); x++)
         {
@@ -78,9 +99,52 @@ public class Map : MonoBehaviour
             }
         }
 
-        SaveInPrefab();
+
+
+        SaveInJson(this, path);
+        //SaveInPrefab();
     }
 
+
+
+    private void SaveInJson<t>(t objectTosave, string destination)
+    {
+        mapToJson = ConvertToSerializable(map);
+        string json = JsonUtility.ToJson(this);
+
+        // Sauvegarder le JSON dans un fichier
+
+        if (path == "")
+        {
+            path = Application.persistentDataPath + $"/{gameObject.name}.json";
+            Debug.Log("construc not working");
+        }
+
+        File.WriteAllText(path, json);
+
+        Debug.Log("Data saved to " + path);
+    }
+
+
+    private void LoadJson()
+    {
+        if (File.Exists(path))
+        {
+            string json = File.ReadAllText(path);
+
+            // Charger le JSON depuis le fichier
+            Map map = JsonUtility.FromJson<Map>(json);
+
+            this.map = ConvertFromSerializable(mapToJson);
+            this.name = map.name;
+            this.row = map.row;
+            this.col = map.col;
+        }
+        else
+        {
+            Debug.LogError("Save file not found at " + path);
+        }
+    }
 
     private void SaveInPrefab()
     {
@@ -103,5 +167,36 @@ public class Map : MonoBehaviour
         this.row = newRow;
         this.col = newCol;
         map = null;
+    }
+
+    List<List<char>> ConvertToSerializable(char[,] array)
+    {
+        List<List<char>> list = new List<List<char>>();
+        for (int i = 0; i < array.GetLength(0); i++)
+        {
+            List<char> row = new List<char>();
+            for (int j = 0; j < array.GetLength(1); j++)
+            {
+                row.Add(array[i, j]);
+            }
+            list.Add(row);
+        }
+        return list;
+    }
+
+    char[,] ConvertFromSerializable(List<List<char>> list)
+    {
+        int rows = list.Count;
+        int cols = list[0].Count;
+        char[,] array = new char[rows, cols];
+
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                array[i, j] = list[i][j];
+            }
+        }
+        return array;
     }
 }
