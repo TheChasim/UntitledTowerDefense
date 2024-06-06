@@ -60,18 +60,8 @@ public class Map : MonoBehaviour
     //};
 
     //Json Variable
-    private string path;
+    //private string path;
     //[SerializeField] internal List<List<char>> mapToJson;
-
-    private void Awake()
-    {
-        path = Application.persistentDataPath + $"/{gameObject.name}.json";
-    }
-
-    private void Reset()
-    {
-        path = Application.persistentDataPath + $"/{gameObject.name}.json";
-    }
     public void SaveMap(GameTiles[,] CurrentMapTile)
     {
         col = map.GetLength(1);
@@ -121,13 +111,13 @@ public class Map : MonoBehaviour
 
 
 
-        SaveInJson(this, path);
+        SaveInJson();
         //SaveInPrefab();
     }
 
 
 
-    private void SaveInJson<t>(t objectTosave, string destination)
+    private void SaveInJson()
     {
         List<char> list = new List<char>();
         list.Add('A');
@@ -173,12 +163,14 @@ public class Map : MonoBehaviour
 
         // Sauvegarder le JSON dans un fichier
 
-        if (path == "")
-        {
-            path = Application.persistentDataPath + $"/{gameObject.name}.json";
-            Debug.Log("construc not working");
-        }
+        //if (path == "")
+        //{
+        //    path = Application.persistentDataPath + $"/{gameObject.name}.json";
+        //    Debug.Log("construc not working");
+        //}
 
+
+        string path = Path.Combine(Application.dataPath, "Saves", mapName);
         File.WriteAllText(path, json);
 
         Debug.Log("Data saved to " + path);
@@ -187,11 +179,12 @@ public class Map : MonoBehaviour
 
     internal void LoadJson()
     {
-        if(!File.Exists(path))
-        {
-            path = Application.persistentDataPath + $"/{gameObject.name}.json";
-        }
+        //if(!File.Exists(path))
+        //{
+        //    path = Application.persistentDataPath + $"/{gameObject.name}.json";
+        //}
 
+        string path = Path.Combine(Application.dataPath, "Saves", mapName);
 
         if (File.Exists(path))
         {
@@ -216,13 +209,6 @@ public class Map : MonoBehaviour
                 }
 
             }
-
-            //if (map == null)
-            //{
-            //    map = new char[row, col];
-            //}    
-
-
 
             Debug.Log("Data load from " + path);
         }
