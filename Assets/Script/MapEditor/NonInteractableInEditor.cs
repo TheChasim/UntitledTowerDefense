@@ -5,15 +5,35 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class NonInteractableInEditor : MonoBehaviour
 {
+    public bool notEditable;
+    public bool hideInHierarchy;
+
+
     void Awake()
     {
-        // Set the HideFlags to NotEditable to make the object non-interactable in the editor
-        gameObject.hideFlags = HideFlags.NotEditable | HideFlags.HideInHierarchy;
+        if (notEditable)
+        {
+            gameObject.hideFlags = HideFlags.NotEditable;
+        }
+
+        if (hideInHierarchy)
+        {
+            gameObject.hideFlags = HideFlags.HideInHierarchy;
+        }
     }
 
     void Reset()
     {
-        // Set the HideFlags to NotEditable to make the object non-interactable in the editor
-        gameObject.hideFlags = HideFlags.NotEditable | HideFlags.HideInHierarchy;
+        if (notEditable)
+        {
+            gameObject.hideFlags = HideFlags.NotEditable;
+        }
+
+        if (hideInHierarchy)
+        {
+            gameObject.hideFlags = HideFlags.HideInHierarchy;
+        }
     }
+
+
 }

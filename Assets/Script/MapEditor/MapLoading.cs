@@ -186,9 +186,9 @@ public class MapLoading : MonoBehaviour
         pathFinder.SetPath();
     }
 
-    internal void LoadMap()
+    internal void EditMap()
     {
-        mapList[mapIndex].GetComponent<Map>().LoadJson();
+        
     }
 
 }
