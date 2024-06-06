@@ -1,25 +1,15 @@
 using System;
 using UnityEngine;
 using System.IO;
-using System.Collections.Generic;
-using Newtonsoft.Json.Linq;
-
-
-
-#if UNITY_EDITOR
-using UnityEditor;
-#endif 
 
 [System.Serializable]
 public class MapData
 {
     public string mapName;
-    //public List<List<char>> mapToJson;
     public CharArray2DContainer mapComtainer;
     public int col;
     public int row;
     public char[,] map;
-    public List<char> mapTo = new List<char>();
 }
 
 
@@ -58,10 +48,6 @@ public class Map : MonoBehaviour
     //    {' ', ' ', ' ', ' ', ' ', 'X', 'X', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'X'}  //10
     //    //  1    2    3    4    5    6    7   8     9    10   11  12    13   14   15   16
     //};
-
-    //Json Variable
-    //private string path;
-    //[SerializeField] internal List<List<char>> mapToJson;
     public void SaveMap(GameTiles[,] CurrentMapTile)
     {
         col = map.GetLength(1);
@@ -109,33 +95,18 @@ public class Map : MonoBehaviour
             }
         }
 
-
-
         SaveInJson();
-        //SaveInPrefab();
     }
 
 
 
     private void SaveInJson()
     {
-        List<char> list = new List<char>();
-        list.Add('A');
-        list.Add('a');
-        list.Add('A');
-
-        List<List<char>> deuxDimensions = new List<List<char>>();
-
-        // Ajouter la première liste à deux dimensions
-        deuxDimensions.Add(new List<char> { 'a', 'b', 'c' });
-
-        // Ajouter la deuxième liste à deux dimensions
-        deuxDimensions.Add(new List<char> { 'd', 'e', 'f' });
-
         //transforme la map pour le json
         CharArray2DContainer container = new CharArray2DContainer();
         container.map2D = new CharArray2D[map.GetLength(0)];
 
+        //passe dans le tableu a deux dimension et le met dans une list de list
         for (int i = 0; i < map.GetLength(0); i++)
         {
             container.map2D[i] = new CharArray2D();
@@ -147,60 +118,51 @@ public class Map : MonoBehaviour
             }
         }
 
+        //assigne les valeur a la classe pour le Json
         MapData mapData = new MapData
         {
             mapName = this.mapName,
-            //map = this.map,
-            //mapToJson = /*ConvertToSerializable(map),*/ deuxDimensions,
             col = this.col,
             row = this.row,
-            mapTo = list,
             mapComtainer = container,
           
         };
 
+        //transforme les info en string pour le Json et le true permet de mettre pour faciliter la lecture des donnees
         string json = JsonUtility.ToJson(mapData, true);
 
+
         // Sauvegarder le JSON dans un fichier
-
-        //if (path == "")
-        //{
-        //    path = Application.persistentDataPath + $"/{gameObject.name}.json";
-        //    Debug.Log("construc not working");
-        //}
-
-
+        //chemein creer avec le nom de la map comme nom du  fichier JSON
         string path = Path.Combine(Application.dataPath, "Saves", mapName);
+        //transforme la string d'info en document JSON
         File.WriteAllText(path, json);
 
+        //afiche le chemin de la save dans la console
         Debug.Log("Data saved to " + path);
     }
 
 
     internal void LoadJson()
     {
-        //if(!File.Exists(path))
-        //{
-        //    path = Application.persistentDataPath + $"/{gameObject.name}.json";
-        //}
-
+        //vas chercher le chemin
         string path = Path.Combine(Application.dataPath, "Saves", mapName);
 
         if (File.Exists(path))
         {
+            //lie les infos dans le fichier JSON
             string json = File.ReadAllText(path);
 
-
+            //cree une class temp pour lire les info du JSON
             MapData mapData = JsonUtility.FromJson<MapData>(json);
-
+            
+            //set les valeur du JSON dans les variable
             this.mapName = mapData.mapName;
-            //this.map = mapData.map;
             this.row = mapData.row;
             this.col = mapData.col;
-            //this.map = ConvertFromSerializable(mapData.mapToJson);
-
             map = new char[row, col];
 
+            //assosi les info de la list de list dans le tableau a deux dimension
             for(int i =0; i < row; i++)
             {
                 for(int j = 0; j < col; j++)
@@ -210,6 +172,7 @@ public class Map : MonoBehaviour
 
             }
 
+            //affiche la reussite du load et le chemin de la load
             Debug.Log("Data load from " + path);
         }
         else
@@ -217,6 +180,24 @@ public class Map : MonoBehaviour
             Debug.LogError("Save file not found at " + path);
         }
     }
+
+    internal void ResetMap(int newRow, int newCol)
+    {
+        map = new char[row, col];
+
+        this.row = newRow;
+        this.col = newCol;
+        map = null;
+    }
+
+
+
+    //ne fonctionne pas mais garder au cas ou. can be useful later
+
+    //a utiliser avec SaveInPrefab()
+    //#if UNITY_EDITOR
+    //using UnityEditor;
+    //#endif 
 
     //private void SaveInPrefab()
     //{
@@ -231,45 +212,35 @@ public class Map : MonoBehaviour
     //    AssetDatabase.SaveAssets();
     //}
 
+    //List<List<char>> ConvertToSerializable(char[,] array)
+    //{
+    //    List<List<char>> list = new List<List<char>>();
+    //    for (int i = 0; i < array.GetLength(0); i++)
+    //    {
+    //        List<char> row = new List<char>();
+    //        for (int j = 0; j < array.GetLength(1); j++)
+    //        {
+    //            row.Add(array[i, j]);
+    //        }
+    //        list.Add(row);
+    //    }
+    //    return list;
+    //}
 
-    internal void ResetMap(int newRow, int newCol)
-    {
-        map = new char[row, col];
+    //char[,] ConvertFromSerializable(List<List<char>> list)
+    //{
+    //    Debug.Log(list.Count);  
+    //    int rows = list.Count;
+    //    int cols = list[0].Count;
+    //    char[,] array = new char[rows, cols];
 
-        this.row = newRow;
-        this.col = newCol;
-        map = null;
-    }
-
-    List<List<char>> ConvertToSerializable(char[,] array)
-    {
-        List<List<char>> list = new List<List<char>>();
-        for (int i = 0; i < array.GetLength(0); i++)
-        {
-            List<char> row = new List<char>();
-            for (int j = 0; j < array.GetLength(1); j++)
-            {
-                row.Add(array[i, j]);
-            }
-            list.Add(row);
-        }
-        return list;
-    }
-
-    char[,] ConvertFromSerializable(List<List<char>> list)
-    {
-        Debug.Log(list.Count);  
-        int rows = list.Count;
-        int cols = list[0].Count;
-        char[,] array = new char[rows, cols];
-
-        for (int i = 0; i < rows; i++)
-        {
-            for (int j = 0; j < cols; j++)
-            {
-                array[i, j] = list[i][j];
-            }
-        }
-        return array;
-    }
+    //    for (int i = 0; i < rows; i++)
+    //    {
+    //        for (int j = 0; j < cols; j++)
+    //        {
+    //            array[i, j] = list[i][j];
+    //        }
+    //    }
+    //    return array;
+    //}
 }
