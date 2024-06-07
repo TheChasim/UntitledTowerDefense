@@ -25,10 +25,10 @@ public class MapEditor : Editor
             mapLoading.SaveMap();
         }
 
-        if (GUILayout.Button("Edit Map"))
-        {
-            mapLoading.EditMap();
-        }
+        //if (GUILayout.Button("Edit Map"))
+        //{
+        //    mapLoading.EditMap();
+        //}
 
         if (GUILayout.Button("Remove Map"))
         {

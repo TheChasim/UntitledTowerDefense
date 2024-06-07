@@ -6,15 +6,15 @@ using UnityEngine;
 public class MapLoading : MonoBehaviour
 {
     [Header("Map Creator")]
-    [SerializeField] const int ColCount = 35;
-    [SerializeField] const int RowCount = 20;
+    [SerializeField] internal const int ColCount = 35;
+    [SerializeField] internal const int RowCount = 20;
 
     [SerializeField] GameObject gameTilePrefab;
-    static GameTiles[,] currentGameTiles;
+    static internal GameTiles[,] currentGameTiles;
     internal Vector2 spawnPoint;
     internal Vector2 endPoint;
-    List<GameTiles> spawnTile = new List<GameTiles>();
-    GameTiles endTile;
+    static internal List<GameTiles> spawnTile = new List<GameTiles>();
+    static internal GameTiles endTile;
 
     [SerializeField] List<GameObject> mapList = new List<GameObject>();
     static public GameObject MapObject;
@@ -26,12 +26,9 @@ public class MapLoading : MonoBehaviour
     //string tagBackground = "Background";
     string tagMap = "Map";
 
-    private void Update()
+    private void Awake()
     {
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            CreateMap();
-        }
+        CreateMap();
     }
 
     public void CreateMap()
@@ -182,7 +179,8 @@ public class MapLoading : MonoBehaviour
 
     internal void SetPath()
     {
-        PathFinder pathFinder = new PathFinder(currentGameTiles, spawnTile, endTile, ColCount, RowCount);
+        PathFinder pathFinder = FindAnyObjectByType<PathFinder>().GetComponent<PathFinder>();   
+        pathFinder.SetValue(currentGameTiles, spawnTile, endTile, ColCount, RowCount);
         pathFinder.SetPath();
     }
 

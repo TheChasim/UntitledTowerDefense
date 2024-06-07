@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
- public class PathFinder
+ public class PathFinder : MonoBehaviour 
 {
     GameTiles[,] gameTiles;
     internal List<GameTiles> spawnTile;
@@ -23,6 +23,14 @@ using UnityEngine;
         ColCount = NewCol;
         RowCount = NewRow;
 
+    }
+    internal void SetValue(GameTiles[,] NewGametiles, List<GameTiles> NewSpawnTile, GameTiles NewEndTil, int NewCol, int NewRow)
+    {
+        gameTiles = NewGametiles;
+        spawnTile = NewSpawnTile;
+        endTile = NewEndTil;
+        ColCount = NewCol;
+        RowCount = NewRow;
     }
     public PathFinder() 
     { }
@@ -45,8 +53,8 @@ using UnityEngine;
 
             while (tile != null)
             {
-                Debug.Log(path);
-                Debug.Log(tile);
+                //Debug.Log(path);
+                //Debug.Log(tile);
 
                 pathToGoal.Add(tile);
                 tile.SetPathColor(true);
