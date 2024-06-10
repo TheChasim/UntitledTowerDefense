@@ -29,11 +29,12 @@ public class SpawningEnemy : MonoBehaviour
 
     IEnumerator SpawnEnemyCoroutine()
     {
+        var spawnTile = GameManager.spawnTiles[Random.Range(0, GameManager.spawnTiles.Count)];
         var enemy = Instantiate(enemyAIPrefab[Random.Range(0, enemyAIPrefab.Count)],
-                                GameManager.spawnTiles[Random.Range(0, GameManager.spawnTiles.Count)].transform.position,
+                                spawnTile.transform.position,
                                 Quaternion.identity);
 
-        //enemy.GetComponent<EnemyAI>().SetPath(PathFinder.pathToGoal);
+        enemy.GetComponent<EnemyAI>().SetPath(spawnTile);
 
         yield return new WaitForSeconds(timeBetweenEnemy);
         StartCoroutine(SpawnEnemyCoroutine());

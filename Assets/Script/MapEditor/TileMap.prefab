@@ -407,6 +407,7 @@ GameObject:
   - component: {fileID: 4079424084369470711}
   - component: {fileID: 5926223268366759856}
   - component: {fileID: 5971386960418722349}
+  - component: {fileID: 7973159724972081667}
   m_Layer: 0
   m_Name: TileMap
   m_TagString: Untagged
@@ -505,6 +506,25 @@ MonoBehaviour:
   SlowingRenderer: {fileID: 5735011882219729140}
   WallRenderer: {fileID: 6426265771777549529}
   DamagingRenderer: {fileID: 5282176176518606200}
+--- !u!114 &7973159724972081667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5420789198104391685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a492ca6e76d3684ba4c0fa84c780a9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiles:
+  - {fileID: 999320165102416521}
+  - {fileID: 711729299237676580}
+  - {fileID: 3042955937296760154}
+  - {fileID: 3039748745459904410}
+  - {fileID: 1588930607596070253}
+  - {fileID: 7856126871402020962}
 --- !u!1 &6839614013558010428
 GameObject:
   m_ObjectHideFlags: 0

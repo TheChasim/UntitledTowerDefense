@@ -1,15 +1,26 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 
- public class PathFinder : MonoBehaviour 
+public class PathToGoal
+{
+    internal GameTiles spawnTile;
+    internal List<GameTiles> pathToGoal = new List<GameTiles>();
+}
+
+
+
+public class PathFinder : MonoBehaviour
 {
     GameTiles[,] gameTiles;
     internal List<GameTiles> spawnTile;
     internal GameTiles endTile;
-    static internal List<GameTiles> pathToGoal = new List<GameTiles>();
+    static internal List<PathToGoal> pathToGoal = new List<PathToGoal>();
+    PathToGoal currentPath = new PathToGoal();
 
     int ColCount = 0;
     int RowCount = 0;
@@ -27,12 +38,18 @@ using UnityEngine;
     internal void SetValue(GameTiles[,] NewGametiles, List<GameTiles> NewSpawnTile, GameTiles NewEndTil, int NewCol, int NewRow)
     {
         gameTiles = NewGametiles;
-        spawnTile = NewSpawnTile;
         endTile = NewEndTil;
         ColCount = NewCol;
         RowCount = NewRow;
+
+        foreach(var spawn in NewSpawnTile)
+        {
+            PathToGoal tempPath = new PathToGoal();
+            tempPath.spawnTile = spawn;
+            pathToGoal.Add(tempPath);
+        }
     }
-    public PathFinder() 
+    public PathFinder()
     { }
 
 
@@ -42,24 +59,29 @@ using UnityEngine;
         {
             t.SetPathColor(false);
         }
+       
 
-        foreach (var spawn in spawnTile)
-        { Debug.Log(spawn.ToString() + "Spawn"); }
-
-        foreach (var spawn in spawnTile)
+        foreach (var spawn in pathToGoal)
         {
-            var path = PathFinding(spawn, endTile);
+
+            var path = PathFinding(spawn.spawnTile, endTile);
             var tile = endTile;
 
-            while (tile != null)
+            while (tile != null )
             {
                 //Debug.Log(path);
                 //Debug.Log(tile);
 
-                pathToGoal.Add(tile);
+                spawn.pathToGoal.Add(tile);
                 tile.SetPathColor(true);
                 tile = path[tile];
+
+                //Debug.Log(tile.ToString());
+
             }
+
+            //currentPath.spawnTile = spawn;
+            //pathToGoal.Add(currentPath);
 
             Debug.Log("Path Created");
         }
