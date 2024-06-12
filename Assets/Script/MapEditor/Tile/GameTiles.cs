@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GameTiles : MonoBehaviour
 {
@@ -36,12 +37,10 @@ public class GameTiles : MonoBehaviour
         originalColor = spriteRenderer.color;
     }
 
-
-
-    internal void TurnSelected()
+    private void Update()
     {
-        IsSelected = true;
         SelectedRenderer.enabled = IsSelected;
+        IsSelected = false;
     }
 
     internal void TurnSpawn()
