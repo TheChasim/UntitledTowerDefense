@@ -492,7 +492,7 @@ GameObject:
   - component: {fileID: 5926223268366759856}
   - component: {fileID: 5971386960418722349}
   - component: {fileID: 7973159724972081667}
-  - component: {fileID: 4896618968479873567}
+  - component: {fileID: 4975964378007089683}
   m_Layer: 0
   m_Name: TileMap
   m_TagString: Untagged
@@ -612,7 +612,7 @@ MonoBehaviour:
   - {fileID: 3039748745459904410}
   - {fileID: 1588930607596070253}
   - {fileID: 7856126871402020962}
---- !u!65 &4896618968479873567
+--- !u!65 &4975964378007089683
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

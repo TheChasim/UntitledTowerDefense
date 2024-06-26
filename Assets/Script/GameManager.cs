@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         // pour le focus sur la tuile 
-        TileFocus();
+        //TileFocus();
 
 
     }

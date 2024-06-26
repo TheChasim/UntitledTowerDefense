@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class GameTiles : MonoBehaviour
+public class GameTiles : MonoBehaviour, IPointerEnterHandler,
+    IPointerExitHandler
 {
     private Color originalColor;
     public SpriteRenderer spriteRenderer;
@@ -37,10 +38,15 @@ public class GameTiles : MonoBehaviour
         originalColor = spriteRenderer.color;
     }
 
-    private void Update()
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        SelectedRenderer.enabled = IsSelected;
-        IsSelected = false;
+        SelectedRenderer.enabled = true;
+        //GM.TargetTile = this;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        SelectedRenderer.enabled = false;
     }
 
     internal void TurnSpawn()
