@@ -10,6 +10,8 @@ public class PathToGoal
 {
     internal GameTiles spawnTile;
     internal List<GameTiles> pathToGoal = new List<GameTiles>();
+    internal List<GameTiles> tempPathToGoal = new List<GameTiles>();
+    internal int leght;
 }
 
 
@@ -42,15 +44,13 @@ public class PathFinder : MonoBehaviour
         ColCount = NewCol;
         RowCount = NewRow;
 
-        foreach(var spawn in NewSpawnTile)
+        foreach (var spawn in NewSpawnTile)
         {
             PathToGoal tempPath = new PathToGoal();
             tempPath.spawnTile = spawn;
             pathToGoal.Add(tempPath);
         }
     }
-    public PathFinder()
-    { }
 
 
     internal void SetPath()
@@ -59,7 +59,7 @@ public class PathFinder : MonoBehaviour
         {
             t.SetPathColor(false);
         }
-       
+
 
         foreach (var spawn in pathToGoal)
         {
@@ -67,7 +67,7 @@ public class PathFinder : MonoBehaviour
             var path = PathFinding(spawn.spawnTile, endTile);
             var tile = endTile;
 
-            while (tile != null )
+            while (tile != null)
             {
                 //Debug.Log(path);
                 //Debug.Log(tile);
@@ -86,6 +86,45 @@ public class PathFinder : MonoBehaviour
             Debug.Log("Path Created");
         }
 
+        //play = true;
+        //spwaning.Spawning(spawnTile, pathToGoal);
+    }
+
+    internal List<int> SetTempPath()
+    {
+        //foreach (var t in gameTiles)
+        //{
+        //    t.SetPathColor(false);
+        //}
+
+        List<int> leght = new List<int>();
+
+        foreach (var spawn in pathToGoal)
+        {
+            var path = PathFinding(spawn.spawnTile, endTile);
+            var tile = endTile;
+
+            while (tile != null)
+            {
+                //Debug.Log(path);
+                //Debug.Log(tile);
+
+                spawn.tempPathToGoal.Add(tile);
+                //tile.SetPathColor(true);
+                tile = path[tile];
+
+                //Debug.Log(tile.ToString());
+
+            }
+
+            leght.Add(spawn.tempPathToGoal.Count);
+            //currentPath.spawnTile = spawn;
+            //pathToGoal.Add(currentPath);
+
+            Debug.Log("Temp Path Created");
+        }
+
+        return leght;
         //play = true;
         //spwaning.Spawning(spawnTile, pathToGoal);
     }

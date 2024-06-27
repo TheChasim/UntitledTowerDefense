@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class GameTiles : MonoBehaviour, IPointerEnterHandler,
-    IPointerExitHandler
+    IPointerExitHandler, IPointerClickHandler
 {
     private Color originalColor;
     public SpriteRenderer spriteRenderer;
@@ -15,12 +15,11 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
     public SpriteRenderer WallRenderer;
     public SpriteRenderer DamagingRenderer;
 
-
     internal bool IsSelected = false;
     internal bool IsSpawn = false;
     internal bool IsEnd = false;
 
-    internal bool IsBloced = false;
+    public  bool IsBloced = false;
     internal bool IsSlowing = false;
     internal bool IsDamaging = false;
 
@@ -41,12 +40,58 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
     public void OnPointerEnter(PointerEventData eventData)
     {
         SelectedRenderer.enabled = true;
-        //GM.TargetTile = this;
+        GameManager.Instance.TargetTile = this;
+
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         SelectedRenderer.enabled = false;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (!IsBloced && !GameManager.Instance.deleteTower)
+        {
+            IsBloced = true;
+            bool pathFindWay = true;
+
+            //boucle attraver tout les taille des chemins pour voir s'ils sont possible
+            foreach (var leght in GameManager.Instance.GetTempPathLeght())
+            {
+                //si le chemin est de moins de deux tuile empaiche de placer une tour
+                if (leght < 2)
+                {
+                    pathFindWay = false;
+                    break;
+                }
+            }
+
+            //si tout les chemin sont bon continuer
+            if (pathFindWay)
+            {
+                    TowerSpawning.Instance.SpawnTower();
+                
+
+            }
+        }
+
+        if (IsBloced && GameManager.Instance.deleteTower)
+        {
+            foreach (Tower tourel in Tower.allTourel)
+            {
+                Debug.Log(Vector3.Distance(this.transform.position, tourel.transform.position));
+                if (Vector3.Distance(this.transform.position, tourel.transform.position) < 1)
+                {
+                    IsBloced = false;
+                    //player.OnGetMoney(tourel.cost);
+                    tourel.OnRevome();
+                    break;
+                }
+            }
+
+        }
+
     }
 
     internal void TurnSpawn()

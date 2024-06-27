@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 [RequireComponent(typeof(PathFinder))]
 [RequireComponent(typeof(SpawningEnemy))]
@@ -15,10 +16,30 @@ public class GameManager : MonoBehaviour
     internal GameTiles endTile;
     internal GameTiles[,] currentGameTiles;
     GameTiles focusTile;
+    internal bool deleteTower = false;
 
     //script ref
     SpawningEnemy spawningEnemy;
     PathFinder pathFinder;
+
+    //singletone
+    public static GameManager Instance;
+
+    public GameTiles TargetTile { get; internal set; }
+
+    private void Awake()
+    {
+        //Creation of singleton
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
 
     private void Start()
     {
@@ -40,34 +61,16 @@ public class GameManager : MonoBehaviour
 
     }
 
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        // pour le focus sur la tuile 
-        //TileFocus();
-
-
+        if (Input.GetKeyDown(KeyCode.Delete))
+        {
+            deleteTower = !deleteTower;
+        }
     }
 
-
-    private void TileFocus()
+    public List<int> GetTempPathLeght()
     {
-        //set le ray a la position de la souri
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-        //lance le ray
-        if (Physics.Raycast(ray, out hit))
-        {
-            Debug.DrawLine(ray.origin, hit.point, Color.yellow);
-
-            //si touche une tuile set le focus
-            if (hit.collider.GetComponent<GameTiles>())
-            {
-                focusTile = hit.collider.GetComponent<GameTiles>();
-                focusTile.IsSelected = true;
-            }
-        }
+        return pathFinder.SetTempPath();
     }
 }
