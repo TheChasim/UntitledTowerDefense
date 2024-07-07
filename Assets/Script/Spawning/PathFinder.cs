@@ -27,16 +27,16 @@ public class PathFinder : MonoBehaviour
     int ColCount = 0;
     int RowCount = 0;
 
-    //constructeur
-    public PathFinder(GameTiles[,] NewGametiles, List<GameTiles> NewSpawnTile, GameTiles NewEndTil, int NewCol, int NewRow)
-    {
-        gameTiles = NewGametiles;
-        spawnTile = NewSpawnTile;
-        endTile = NewEndTil;
-        ColCount = NewCol;
-        RowCount = NewRow;
+    ////constructeur
+    //public PathFinder(GameTiles[,] NewGametiles, List<GameTiles> NewSpawnTile, GameTiles NewEndTil, int NewCol, int NewRow)
+    //{
+    //    gameTiles = NewGametiles;
+    //    spawnTile = NewSpawnTile;
+    //    endTile = NewEndTil;
+    //    ColCount = NewCol;
+    //    RowCount = NewRow;
 
-    }
+    //}
     internal void SetValue(GameTiles[,] NewGametiles, List<GameTiles> NewSpawnTile, GameTiles NewEndTil, int NewCol, int NewRow)
     {
         gameTiles = NewGametiles;
@@ -63,40 +63,27 @@ public class PathFinder : MonoBehaviour
 
         foreach (var spawn in pathToGoal)
         {
-
+            spawn.pathToGoal.Clear();
             var path = PathFinding(spawn.spawnTile, endTile);
             var tile = endTile;
 
+            Debug.Log($"base path = {path}");
+
             while (tile != null)
             {
-                //Debug.Log(path);
-                //Debug.Log(tile);
-
                 spawn.pathToGoal.Add(tile);
                 tile.SetPathColor(true);
                 tile = path[tile];
-
-                //Debug.Log(tile.ToString());
-
             }
 
-            //currentPath.spawnTile = spawn;
-            //pathToGoal.Add(currentPath);
-
-            Debug.Log("Path Created");
+            Debug.Log($"Path Created and count : {spawn.pathToGoal.Count}");
         }
-
-        //play = true;
-        //spwaning.Spawning(spawnTile, pathToGoal);
     }
 
+
+    
     internal List<int> SetTempPath()
     {
-        //foreach (var t in gameTiles)
-        //{
-        //    t.SetPathColor(false);
-        //}
-
         List<int> leght = new List<int>();
 
         foreach (var spawn in pathToGoal)
@@ -104,29 +91,31 @@ public class PathFinder : MonoBehaviour
             var path = PathFinding(spawn.spawnTile, endTile);
             var tile = endTile;
 
-            while (tile != null)
+            if (path != null)
             {
-                //Debug.Log(path);
-                //Debug.Log(tile);
+                while (tile != null)
+                {
+                    spawn.tempPathToGoal.Add(tile);
+                    //tile.SetPathColor(true);
 
-                spawn.tempPathToGoal.Add(tile);
-                //tile.SetPathColor(true);
-                tile = path[tile];
+                    //Debug.Log(tile);
+                    //Debug.Log(path.Count);
 
-                //Debug.Log(tile.ToString());
+                    tile = path[tile];
+                }
 
+
+                leght.Add(spawn.tempPathToGoal.Count);
             }
-
-            leght.Add(spawn.tempPathToGoal.Count);
-            //currentPath.spawnTile = spawn;
-            //pathToGoal.Add(currentPath);
+            else
+            {
+                leght.Add(0);
+            }
 
             Debug.Log("Temp Path Created");
         }
 
         return leght;
-        //play = true;
-        //spwaning.Spawning(spawnTile, pathToGoal);
     }
     private Dictionary<GameTiles, GameTiles> PathFinding(GameTiles sourceTile, GameTiles targetTile)
     {

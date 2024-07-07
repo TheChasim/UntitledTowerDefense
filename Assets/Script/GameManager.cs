@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
         //set les valeur pour le path
         //plus tard mettre lorsque le joueur commence partie
         pathFinder.SetValue(currentGameTiles, spawnTiles, endTile, col, row);
-        pathFinder.SetPath();
+        SetPath();
 
     }
 
@@ -69,8 +69,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void SetPath()
+    { pathFinder.SetPath(); }
+
     public List<int> GetTempPathLeght()
     {
         return pathFinder.SetTempPath();
     }
+
+
 }

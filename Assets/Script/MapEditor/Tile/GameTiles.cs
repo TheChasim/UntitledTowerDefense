@@ -19,7 +19,7 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
     internal bool IsSpawn = false;
     internal bool IsEnd = false;
 
-    public  bool IsBloced = false;
+    public bool IsBloced = false;
     internal bool IsSlowing = false;
     internal bool IsDamaging = false;
 
@@ -60,18 +60,30 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
             foreach (var leght in GameManager.Instance.GetTempPathLeght())
             {
                 //si le chemin est de moins de deux tuile empaiche de placer une tour
-                if (leght < 2)
+                if (leght <= 2)
                 {
                     pathFindWay = false;
-                    break;
+                    IsBloced = false;
+                    //break;
                 }
             }
+
+            if (pathFindWay)
+            { Debug.Log("Chemin Trouver"); }
+            else
+            { Debug.Log("Chemin Impossible"); }
+
 
             //si tout les chemin sont bon continuer
             if (pathFindWay)
             {
-                    TowerSpawning.Instance.SpawnTower();
-                
+                TowerSpawning.Instance.SpawnTower();
+                GameManager.Instance.SetPath();
+
+                foreach (var enemy in EnemyAI.enemyAIList)
+                {
+                    enemy.setNewPath();
+                }
 
             }
         }
@@ -80,7 +92,7 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
         {
             foreach (Tower tourel in Tower.allTourel)
             {
-                Debug.Log(Vector3.Distance(this.transform.position, tourel.transform.position));
+                //Debug.Log(Vector3.Distance(this.transform.position, tourel.transform.position));
                 if (Vector3.Distance(this.transform.position, tourel.transform.position) < 1)
                 {
                     IsBloced = false;
