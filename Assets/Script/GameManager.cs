@@ -72,6 +72,11 @@ public class GameManager : MonoBehaviour
     public void SetPath()
     { pathFinder.SetPath(); }
 
+    public List<GameTiles> EnemySetPath(GameTiles pos, GameTiles end)
+    {
+        return pathFinder.EnemySetPath(pos, end);
+    }
+
     public List<int> GetTempPathLeght()
     {
         return pathFinder.SetTempPath();

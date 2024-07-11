@@ -11,7 +11,7 @@ public class PathToGoal
     internal GameTiles spawnTile;
     internal List<GameTiles> pathToGoal = new List<GameTiles>();
     internal List<GameTiles> tempPathToGoal = new List<GameTiles>();
-    internal int leght;
+    //internal int leght;
 }
 
 
@@ -80,14 +80,39 @@ public class PathFinder : MonoBehaviour
         }
     }
 
+    internal List<GameTiles> EnemySetPath(GameTiles pos, GameTiles end)
+    {
+        foreach (var t in gameTiles)
+        {
+            t.SetPathColor(false);
+        }
 
-    
+        List<GameTiles> newPath = new List<GameTiles>();
+        var path = PathFinding(pos, end);
+        var tile = end;
+
+        Debug.Log($"base path = {path}");
+
+        while (tile != null)
+        {
+            newPath.Add(tile);
+            tile.SetPathColor(true);
+            tile = path[tile];
+        }
+
+        //Debug.Log($"Path Created and count : {spawn.pathToGoal.Count}");
+
+        return newPath;
+    }
+
+
     internal List<int> SetTempPath()
     {
         List<int> leght = new List<int>();
 
         foreach (var spawn in pathToGoal)
         {
+            spawn.tempPathToGoal.Clear();
             var path = PathFinding(spawn.spawnTile, endTile);
             var tile = endTile;
 

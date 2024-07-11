@@ -23,6 +23,8 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
     internal bool IsSlowing = false;
     internal bool IsDamaging = false;
 
+    
+
     public int X { get; internal set; }
     public int Y { get; internal set; }
 

@@ -49,8 +49,6 @@ public class EnemyAI : MonoBehaviour
             Destroy(gameObject);
         }
 
-
-
         //set la rotation la meme que la cam
         transform.rotation = Camera.main.transform.rotation;
 
@@ -90,84 +88,57 @@ public class EnemyAI : MonoBehaviour
 
     internal void setNewPath()
     {
-        ////boucle attraver tout les chemin
-        //foreach (var way in PathFinder.pathToGoal)
-        //{
-        //    //trouver le spawnTile du chemin et de l'enemy soit le meme
-        //    if (spawnTile.gameObject == way.spawnTile.gameObject)
-        //    {
-        //        //si le chemin est diferant
-        //        //if (!way.pathToGoal.SequenceEqual(pathList))
-        //        //{
-        //            //reset les path
-        //            pathList.Clear();
-
-        //            //set le nouveaul chemin au a un TempPathlist
-        //            tempPathList = way.pathToGoal;
-        //        Debug.Log($"Way.pathToGoal = {way.pathToGoal.Count}");
-
-        //            // Trouver l'indice de la tuile la plus proche.
-        //            //int indexNearestTile = FindIndexOfNearestTile(tempPathList);
-
-
-        //            path.Clear();
-        //            // Mettre à jour le chemin avec les nouvelles tuiles depuis la tuile la plus proche.
-        //            //for (int i = indexNearestTile; i >= 0; i--)
-        //            //{
-        //            //    pathList.Add(way.pathToGoal[i]);
-        //            //}
-        //            //pathList.Reverse();
-
-        //            foreach (GameTiles tile in pathList)
-        //            {
-        //                path.Push(tile);
-        //            }
-        //        //}
-        //    }
-        //}
-
-
-
+        //boucle attraver tout les chemin possible
         foreach (var way in PathFinder.pathToGoal)
         {
-            if(spawnTile.gameObject == way.spawnTile.gameObject)
+            //si l'ennemi et le path on le meme spawn commencer le check
+            if (spawnTile.gameObject == way.spawnTile.gameObject)
             {
-                Debug.Log($"spawn path foud and path cout : {way.pathToGoal.Count} temp paht : {way.tempPathToGoal.Count}");
+                //set le pathlist avec le nouveau chemien
+                pathList = way.pathToGoal;
+                //cherche l'index le tuile du nouveau chemin avec sa posiont actuelle 
+                closeIndex = FindIndexOfNearestTile();
+
+                //efface l'acien chemin temporaire
+                tempPathList.Clear();
+
+                //cree le nouveau chemin temp appartir de l'index 
+                for (int i = closeIndex; i >= 0; i--)
+                {
+                    tempPathList.Add(way.pathToGoal[i]);
+                }
+
+                tempPathList.Reverse();
+
+                //supprime l'ancien path pour mettre le nouveau
+                path.Clear();
+                foreach (GameTiles tile in tempPathList)
+                {
+                    path.Push(tile);
+                }
+
+                //acossi le chemin temporaire avec le vrai
+                pathList = tempPathList;
 
 
-
-
-
-
-
-            }    
+            }
         }
-
-
-
     }
-
-    private int FindIndexOfNearestTile(List<GameTiles> tempPathList)
+    private int FindIndexOfNearestTile()
     {
         float minDistance = float.MaxValue;
         int indexNearest = 0;
 
-
-        for (int i = 0; i < tempPathList.Count; i++)
+        //boucle in all tile in the path to find the closest
+        for (int i = 0; i < pathList.Count; i++)
         {
-            float distance = Vector3.Distance(transform.position, tempPathList[i].transform.position);
+            float distance = Vector3.Distance(transform.position, pathList[i].transform.position);
             if (distance < minDistance)
             {
                 minDistance = distance;
                 indexNearest = i;
             }
         }
-
-        pos = transform.position;
-        Debug.Log($"temp path list cout = {tempPathList.Count}");
-        dir = tempPathList[indexNearest].transform.position;
-
-        closeIndex = indexNearest;
         return indexNearest;
     }
 }
