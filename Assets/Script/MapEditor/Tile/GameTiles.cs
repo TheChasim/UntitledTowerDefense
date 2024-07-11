@@ -23,7 +23,9 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
     internal bool IsSlowing = false;
     internal bool IsDamaging = false;
 
-    
+    [SerializeField] internal float DamageAmout = 0.5f;
+    [SerializeField] internal float SlowingAmout = 2f;
+
 
     public int X { get; internal set; }
     public int Y { get; internal set; }

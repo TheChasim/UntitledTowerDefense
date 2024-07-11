@@ -5,8 +5,8 @@ using UnityEngine;
 public class Healt : MonoBehaviour
 {
     //healt info
-    [SerializeField] int maxHealt;
-    int curentHealt;
+    [SerializeField] float maxHealt;
+    public float curentHealt;
     EnemyAI enemy;
 
     //healt bar
@@ -18,9 +18,10 @@ public class Healt : MonoBehaviour
     private void Start()
     {
         enemy = GetComponent<EnemyAI>();
+        curentHealt = maxHealt;
     }
 
-    internal void OnTakeDamage(int damage)
+    internal void OnTakeDamage(float damage)
     {
         curentHealt = Mathf.Clamp(curentHealt - damage,0,maxHealt);
         healtBar.SetHealtBar(curentHealt, maxHealt);
@@ -32,7 +33,7 @@ public class Healt : MonoBehaviour
         
     }
 
-    internal void OnTakeHealing(int healt)
+    internal void OnTakeHealing(float healt)
     {
         curentHealt = Mathf.Clamp(curentHealt + healt, 0, maxHealt);
         healtBar.SetHealtBar(curentHealt, maxHealt);

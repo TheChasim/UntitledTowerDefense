@@ -31,7 +31,7 @@ public class SpawningEnemy : MonoBehaviour
     {
         var spawnTile = GameManager.spawnTiles[Random.Range(0, GameManager.spawnTiles.Count)];
         var enemy = Instantiate(enemyAIPrefab[Random.Range(0, enemyAIPrefab.Count)],
-                                spawnTile.transform.position,
+                                new Vector3(spawnTile.transform.position.x, spawnTile.transform.position.y+0.25f, spawnTile.transform.position.z),
                                 Quaternion.identity);
 
         enemy.GetComponent<EnemyAI>().SetPath(spawnTile);

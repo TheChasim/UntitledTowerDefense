@@ -15,7 +15,7 @@ public class HealtBar : MonoBehaviour
         curentSize = transform.localScale;
     }
 
-    internal void SetHealtBar(int currentHealt, int maxHealt)
+    internal void SetHealtBar(float currentHealt, float maxHealt)
     {
         curentSize.x = (currentHealt / maxHealt) * maxSizeHpBar.x;
 

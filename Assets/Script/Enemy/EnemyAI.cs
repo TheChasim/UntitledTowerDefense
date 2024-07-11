@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting.Antlr3.Runtime.Collections;
 using UnityEngine;
+using static UnityEngine.UI.Image;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -12,21 +13,44 @@ public class EnemyAI : MonoBehaviour
     public List<GameTiles> pathList = new List<GameTiles>();
     public List<GameTiles> tempPathList = new List<GameTiles>();
     internal GameTiles spawnTile;
+    public GameTiles currentTile;
 
     public int closeIndex;
     public bool showDirection = true;
-    public Vector3 pos;
-    public Vector3 dir;
+
+    Healt healt;
+    bool tileDamage = false;
 
     [SerializeField] float speed = 5f;
+
+    private float _currentSpeed;
+    float currentSpeed
+    {
+        get
+        {
+            if (currentTile.IsSlowing)
+            {
+                return speed / currentTile.SlowingAmout;
+            }
+            else
+            { return speed; }
+        }
+
+    }
 
     private void Awake()
     {
         enemyAIList.Add(this);
+
+        healt = GetComponent<Healt>();
     }
 
     private void Update()
     {
+        SetCurrentTile();
+
+        TileEffect();
+
         if (path.Count != 0)
         {
             if (showDirection)
@@ -36,7 +60,9 @@ public class EnemyAI : MonoBehaviour
 
             Vector3 desPos = path.Peek().transform.position;
 
-            transform.position = Vector3.MoveTowards(transform.position, desPos, speed * Time.deltaTime);
+            desPos.y += 0.25f;
+
+            transform.position = Vector3.MoveTowards(transform.position, desPos, currentSpeed * Time.deltaTime);
 
 
             if (Vector3.Distance(transform.position, desPos) < 0.1f)
@@ -49,9 +75,33 @@ public class EnemyAI : MonoBehaviour
             Destroy(gameObject);
         }
 
+
         //set la rotation la meme que la cam
         transform.rotation = Camera.main.transform.rotation;
 
+    }
+
+    private void SetCurrentTile()
+    {
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 2f))
+        {
+            Debug.DrawRay(transform.position, Vector3.down * hit.distance, Color.red);
+
+            if (hit.collider.GetComponent<GameTiles>())
+            {
+                currentTile = hit.collider.GetComponent<GameTiles>();
+            }
+        }
+    }
+
+    private void TileEffect()
+    {
+        //currentTile = path.Peek();
+
+        if (currentTile.IsDamaging && !tileDamage)
+        {
+            StartCoroutine(OntileDamage(currentTile.DamageAmout));
+        }
     }
 
     internal void SetPath(GameTiles spawnTile)
@@ -74,16 +124,6 @@ public class EnemyAI : MonoBehaviour
             }
 
         }
-    }
-
-    private void OnDestroy()
-    {
-        enemyAIList.Remove(this);
-    }
-
-    internal void IsDead()
-    {
-        Destroy(gameObject);
     }
 
     internal void setNewPath()
@@ -124,6 +164,7 @@ public class EnemyAI : MonoBehaviour
             }
         }
     }
+
     private int FindIndexOfNearestTile()
     {
         float minDistance = float.MaxValue;
@@ -141,4 +182,29 @@ public class EnemyAI : MonoBehaviour
         }
         return indexNearest;
     }
+
+    private IEnumerator OntileDamage(float damageAmout)
+    {
+        tileDamage = true;
+        OnTakeDamage(currentTile.DamageAmout);
+
+        yield return new WaitForSeconds(1);
+        tileDamage = false;
+    }
+
+    private void OnTakeDamage(float damageAmout)
+    {
+        healt.OnTakeDamage(damageAmout);
+    }
+
+    internal void IsDead()
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        enemyAIList.Remove(this);
+    }
+
 }

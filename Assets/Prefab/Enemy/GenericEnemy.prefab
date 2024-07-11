@@ -124,10 +124,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathList: []
   tempPathList: []
+  currentTile: {fileID: 0}
   closeIndex: 0
   showDirection: 1
-  pos: {x: 0, y: 0, z: 0}
-  dir: {x: 0, y: 0, z: 0}
   speed: 3
 --- !u!114 &2105772637410649222
 MonoBehaviour:
@@ -141,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa30c0c0c3ca54a498509880bc65304b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealt: 0
+  maxHealt: 5
   healtBar: {fileID: 7419656684423322844}
 --- !u!54 &1205983289363214908
 Rigidbody:
