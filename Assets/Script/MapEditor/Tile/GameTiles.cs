@@ -102,6 +102,14 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
                     IsBloced = false;
                     //player.OnGetMoney(tourel.cost);
                     tourel.OnRevome();
+
+                    GameManager.Instance.SetPath();
+
+                    foreach (var enemy in EnemyAI.enemyAIList)
+                    {
+                        enemy.setNewPath();
+                    }
+
                     break;
                 }
             }
