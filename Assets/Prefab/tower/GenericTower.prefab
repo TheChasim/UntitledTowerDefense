@@ -99,8 +99,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 0
-  cooldown: 0
+  cooldown: 1
   power: 0
+  enemyInRange: []
+  projectille: {fileID: 2830618384168864860, guid: 14dae626f8e2b9440b77b85b95e6e48a,
+    type: 3}
 --- !u!135 &7552604017294518993
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -116,7 +119,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
