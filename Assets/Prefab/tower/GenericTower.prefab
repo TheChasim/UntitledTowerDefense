@@ -102,7 +102,7 @@ MonoBehaviour:
   cooldown: 1
   power: 0
   enemyInRange: []
-  projectille: {fileID: 2830618384168864860, guid: 14dae626f8e2b9440b77b85b95e6e48a,
+  projectille: {fileID: 4046288104506316116, guid: 4372fff3859f27545bebaba7b4293c8f,
     type: 3}
 --- !u!135 &7552604017294518993
 SphereCollider:
