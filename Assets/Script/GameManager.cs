@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     static internal List<GameTiles> spawnTiles;
     internal GameTiles endTile;
     internal GameTiles[,] currentGameTiles;
-    GameTiles focusTile;
+    internal GameTiles focusTile;
     internal bool deleteTower = false;
 
     //script ref
