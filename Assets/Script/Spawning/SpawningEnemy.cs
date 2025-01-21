@@ -9,13 +9,6 @@ public class SpawningEnemy : MonoBehaviour
     [SerializeField] List<GameObject> enemyAIPrefab = new List<GameObject>();
     public int currentEnemyAmount = 0;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {

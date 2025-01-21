@@ -1,27 +1,61 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class LevelUpSystem : MonoBehaviour
 {
+    bool up;
 
-
-    public void OnPowerUp()
+    internal void setUp()
     {
+        up = true;
+    }
 
-        Debug.Log("Power up");
+    internal void setDowwn()
+    {
+        up = false;
+    }
+
+
+    public void OnPower()
+    {
+        if (up)
+        {
+            Debug.Log("Power up");
+        }
+        else
+        {
+            Debug.Log("Power down");
+        }
 
     }
 
-    public void OnRangeUp()
+    public void OnRange()
     {
-        Debug.Log("Range Up");
+        if (up)
+        {
+            Debug.Log("range up");
+        }
+        else
+        {
+            Debug.Log("Range down");
+        }
     }
 
-    public void OnColdownUp()
+    public void OnColdown()
     {
-        Debug.Log("Coldown Up");
-    }
 
+        if (up)
+        {
+            Debug.Log("Coldown up");
+        }
+        else
+        {
+            Debug.Log("Coldown down");
+        }
+    }
 
 }

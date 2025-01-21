@@ -129,6 +129,8 @@ GameObject:
   - component: {fileID: 8823527941778302116}
   - component: {fileID: 5843365461857551942}
   - component: {fileID: 8638932446013760981}
+  - component: {fileID: 3909223734006689186}
+  - component: {fileID: 696656128344601112}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -180,7 +182,7 @@ MonoBehaviour:
   timeBetweenEnemy: 0.5
   timeBetweenWave: 5
   enemyAIPrefab:
-  - {fileID: 5210191862037226166, guid: e82f678a38f11b648a925a52f7219d5c, type: 3}
+  - {fileID: 4925137300140514, guid: 39304562ad4b7d34383dd4c6c5534b89, type: 3}
   currentEnemyAmount: 0
 --- !u!114 &8638932446013760981
 MonoBehaviour:
@@ -192,5 +194,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59314de7c17b4b040b5bdc92b63761d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3909223734006689186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4136204331232199424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57d892d9609e0ca4b825e8903e158bf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allTower: []
+  TowerPrefab: {fileID: 1561978774687730591, guid: d3fb8de7445e5d644b4315816274915d,
+    type: 3}
+--- !u!114 &696656128344601112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4136204331232199424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b9de5ad173a1e64bb5e27fc0187c7aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

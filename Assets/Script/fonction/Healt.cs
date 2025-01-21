@@ -14,6 +14,15 @@ public class Healt : MonoBehaviour
     private Vector3 maxSizeHpBar;
     private Vector3 curentSize;
 
+    internal float GetMaxHealt()
+    {
+        return maxHealt;
+    }
+
+    internal float gethealt()
+    {
+        return curentHealt;
+    }
 
     private void Start()
     {

@@ -28,38 +28,14 @@ public class ButtonCustomScript : MonoBehaviour, IPointerClickHandler
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            if (Power)
-            {
-                UpSize();
-            }
-            else if (Range)
-            {
-
-                UpSize();
-            }
-            else if (Coldown)
-            {
-                UpSize();
-
-            }
+            UpSize();
+            levelUpSystem.setUp();
         }
 
         if (eventData.button == PointerEventData.InputButton.Right)
         {
-            if (Power)
-            {
-                DownSIze();
-            }
-            else if (Range)
-            {
-                DownSIze();
-
-            }
-            else if (Coldown)
-            {
-                DownSIze();
-
-            }
+            DownSIze();
+            levelUpSystem.setDowwn();
         }
 
 
@@ -71,7 +47,6 @@ public class ButtonCustomScript : MonoBehaviour, IPointerClickHandler
         {
             transform.localScale = transform.localScale + sizeIncreasement;
         }
-
     }
 
     private void DownSIze()
@@ -80,7 +55,6 @@ public class ButtonCustomScript : MonoBehaviour, IPointerClickHandler
         {
             transform.localScale = transform.localScale - sizeIncreasement;
         }
-
     }
 
 }
