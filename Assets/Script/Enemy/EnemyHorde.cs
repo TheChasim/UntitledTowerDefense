@@ -23,9 +23,10 @@ public class EnemyHorde : MonoBehaviour
             transform.position = new Vector3(transform.position.x, hit.point.y, transform.position.z);
         }
 
-        if(horde.enemieHorde.Count+1 != math.round(healt.gethealt()))
+        if(horde.enemieHorde.Count != math.ceil(healt.gethealt()))
         {
             GameObject remove = horde.enemieHorde.Last();
+            //Debug.Log(remove.name + " has die");
             horde.enemieHorde.Remove(remove);
             Destroy(remove);
         }

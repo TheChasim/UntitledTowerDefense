@@ -14,24 +14,22 @@ public class Horde : MonoBehaviour
     private void Awake()
     {
         healt = GetComponent<Healt>();
-        int numHorde = (int)math.round(healt.GetMaxHealt());
-        GameObject emptyObject = new GameObject("EmptyObject");
+        int numHorde = (int)math.ceil(healt.GetMaxHealt());
 
         if (isAHorde)
         {
             GetComponent<SpriteRenderer>().enabled = false;
+            //Debug.Log("nombre par horde " + numHorde);
 
             for (int i = 0; i < numHorde; i++)
             {
-
-                GameObject newEnemie = Instantiate(emptyObject, Vector3.zero, Quaternion.identity);
-
+                GameObject newEnemie = new GameObject($" Enemy_{name}_Horde_{i}");
                 enemieHorde.Add(newEnemie);
 
                 newEnemie.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+                newEnemie.transform.position = new Vector3(UnityEngine.Random.Range(0.5f, 1.5f), UnityEngine.Random.Range(0f, 1f), 1f);
                 newEnemie.transform.parent = transform;
-                newEnemie.transform.position = new Vector3(UnityEngine.Random.Range(0.5f, 1.5f), UnityEngine.Random.Range(0f, 1f) , 1f);
-                
+
                 newEnemie.AddComponent<EnemyHorde>();
                 newEnemie.AddComponent<SpriteRenderer>();
                 newEnemie.GetComponent<SpriteRenderer>().enabled = true;
@@ -40,10 +38,5 @@ public class Horde : MonoBehaviour
 
             }
         }
-    }
-
-    internal void romoveEnemy()
-    {
-       ;
     }
 }

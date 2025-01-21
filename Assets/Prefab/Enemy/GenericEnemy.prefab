@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5113097402606306914}
   - component: {fileID: 8276474681116645552}
   - component: {fileID: 2105772637410649222}
-  - component: {fileID: -8658549154732572188}
   - component: {fileID: 8455680825436231232}
   - component: {fileID: 1205983289363214908}
+  - component: {fileID: -1211638671758177512}
   m_Layer: 2
   m_Name: GenericEnemy
   m_TagString: Untagged
@@ -107,7 +107,7 @@ MonoBehaviour:
   currentTile: {fileID: 0}
   closeIndex: 0
   showDirection: 1
-  speed: 3
+  speed: 1.5
 --- !u!114 &2105772637410649222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,24 +120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa30c0c0c3ca54a498509880bc65304b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealt: 5
+  maxHealt: 12
   curentHealt: 0
   healtBar: {fileID: 2672967879658348395}
---- !u!114 &-8658549154732572188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4925137300140514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78d985541b8a0d24eb93f78acc50ca1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isAHorde: 0
-  sprite:
-  - {fileID: 21300000, guid: 73be7db03102e254dab4432c87e37e53, type: 3}
 --- !u!65 &8455680825436231232
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -186,6 +171,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-1211638671758177512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4925137300140514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78d985541b8a0d24eb93f78acc50ca1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAHorde: 1
+  sprite:
+  - {fileID: 21300000, guid: 73be7db03102e254dab4432c87e37e53, type: 3}
 --- !u!1001 &1349393136255061851
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -198,6 +198,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HealtBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 1782632448718723131, guid: 5bebd2ba775fe3e4196511a6a7f27e30,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6491985876714186015, guid: 5bebd2ba775fe3e4196511a6a7f27e30,
         type: 3}

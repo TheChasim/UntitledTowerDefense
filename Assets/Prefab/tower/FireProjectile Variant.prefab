@@ -133,4 +133,4 @@ MonoBehaviour:
   target: {fileID: 0}
   selfDestroyTime: 3
   speed: 7
-  damage: 2
+  damage: 1
