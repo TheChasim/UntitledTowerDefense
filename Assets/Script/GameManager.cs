@@ -49,8 +49,8 @@ public class GameManager : MonoBehaviour
 
         //set les valeurs
         currentGameTiles = MapLoading.currentGameTiles;
-        row = MapLoading.RowCount;
-        col = MapLoading.ColCount;
+        //row = MapLoading.getRow();
+        //col = MapLoading.getCol();
         spawnTiles = MapLoading.spawnTile;
         endTile = MapLoading.endTile;
 

@@ -41,9 +41,9 @@ public class MapEditor : Editor
             mapLoading.SetPath();
         }
 
-        //if(GUILayout.Button("Reset Map"))
-        //{
-        //    mapLoading.ResetMap();
-        //}
+        if (GUILayout.Button("Resize Map"))
+        {
+            mapLoading.ResizeMap();
+        }
     }
 }

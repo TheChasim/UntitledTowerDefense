@@ -46,5 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 4508796451058780988}
   mapName: lol on change
-  col: 20
+  col: 25
   row: 20

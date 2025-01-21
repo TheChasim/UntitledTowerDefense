@@ -181,7 +181,7 @@ public class Map : MonoBehaviour
         }
     }
 
-    internal void ResetMap(int newRow, int newCol)
+    internal void ResizeMap(int newRow, int newCol)
     {
         map = new char[row, col];
 

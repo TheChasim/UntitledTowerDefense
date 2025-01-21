@@ -6,8 +6,8 @@ using UnityEngine;
 public class MapLoading : MonoBehaviour
 {
     [Header("Map Creator")]
-    [SerializeField] internal const int ColCount = 35;
-    [SerializeField] internal const int RowCount = 20;
+    [SerializeField] int ColCount = 35;
+    [SerializeField] int RowCount = 20;
 
     [SerializeField] GameObject gameTilePrefab;
     static internal GameTiles[,] currentGameTiles;
@@ -39,7 +39,7 @@ public class MapLoading : MonoBehaviour
         Debug.LogWarning(MapObject.name);
 
         //mapList[mapIndex].GetComponent<Map>().LoadJson();
-        
+
         //int currentRow = 0;
         //int currentCol = 0;
 
@@ -52,6 +52,25 @@ public class MapLoading : MonoBehaviour
 
         //load le niveau
         currentMap = mapList[mapIndex].GetComponent<Map>();
+
+        //-----------------------------------------------------------------------
+        //pour modifier la taille de la map
+        //changement de taille
+
+        RowCount = currentMap.row;
+        ColCount = currentMap.col;
+
+
+        if (currentMap.row != RowCount && currentMap.col == ColCount)
+        {
+            Debug.LogWarning("Taille differente set une nouvel taille");
+            //currentMap.row = RowCount;
+            //currentMap.col = ColCount;
+
+        }
+
+        //------------------------------------------------------------------------
+
         currentMap.LoadJson();
         mapName = currentMap.mapName;
         //currentMap.prefab = MapObject;
@@ -169,24 +188,33 @@ public class MapLoading : MonoBehaviour
         CreateMap();
     }
 
-    internal void ResetMap()
+    internal void ResizeMap()
     {
         foreach (var map in GameObject.FindGameObjectsWithTag(tagMap))
         {
-            map.GetComponent<Map>().ResetMap(RowCount, ColCount);
+            map.GetComponent<Map>().ResizeMap(RowCount, ColCount);
         }
     }
 
     internal void SetPath()
     {
-        PathFinder pathFinder = FindAnyObjectByType<PathFinder>().GetComponent<PathFinder>();   
+        PathFinder pathFinder = FindAnyObjectByType<PathFinder>().GetComponent<PathFinder>();
         pathFinder.SetValue(currentGameTiles, spawnTile, endTile, ColCount, RowCount);
         pathFinder.SetPath();
     }
 
     internal void EditMap()
     {
-        
+
     }
 
+    internal int getRow()
+    {
+        return RowCount;
+    }
+
+    internal int getCol()
+    {
+        return ColCount;
+    }
 }
