@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using static UnityEngine.GraphicsBuffer;
 
 [RequireComponent(typeof(PathFinder))]
 [RequireComponent(typeof(SpawningEnemy))]
@@ -46,17 +47,17 @@ public class GameManager : MonoBehaviour
         //get les script
         spawningEnemy = GetComponent<SpawningEnemy>();
         pathFinder = GetComponent<PathFinder>();
+        MapLoading mapLoading = GetComponentInChildren<MapLoading>();
 
         //set les valeurs
         currentGameTiles = MapLoading.currentGameTiles;
-        //row = MapLoading.getRow();
-        //col = MapLoading.getCol();
+        row = mapLoading.RowCount;
+        col = mapLoading.ColCount;
         spawnTiles = MapLoading.spawnTile;
         endTile = MapLoading.endTile;
 
         //set les valeur pour le path
         //plus tard mettre lorsque le joueur commence partie
-        pathFinder.SetValue(currentGameTiles, spawnTiles, endTile, col, row);
         SetPath();
 
     }
@@ -70,7 +71,10 @@ public class GameManager : MonoBehaviour
     }
 
     public void SetPath()
-    { pathFinder.SetPath(); }
+    {
+        pathFinder.SetValue(currentGameTiles, spawnTiles, endTile, col, row);
+        pathFinder.SetPath();
+    }
 
     public List<GameTiles> EnemySetPath(GameTiles pos, GameTiles end)
     {

@@ -36,6 +36,7 @@ public class MapEditor : Editor
         }
 
         EditorGUILayout.Space();
+
         if(GUILayout.Button("Set path"))
         {
             mapLoading.SetPath();

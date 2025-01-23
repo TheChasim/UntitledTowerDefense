@@ -63,6 +63,8 @@ public class PathFinder : MonoBehaviour
 
         foreach (var spawn in pathToGoal)
         {
+            Debug.Log($"Spwan : {spawn.spawnTile.name} | End : {endTile}");
+
             spawn.pathToGoal.Clear();
             var path = PathFinding(spawn.spawnTile, endTile);
             var tile = endTile;
@@ -73,6 +75,7 @@ public class PathFinder : MonoBehaviour
             {
                 spawn.pathToGoal.Add(tile);
                 tile.SetPathColor(true);
+                Debug.Log(tile.name);
                 tile = path[tile];
             }
 

@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using System.IO;
+using Unity.VisualScripting;
 
 [System.Serializable]
 public class MapData
@@ -60,6 +61,7 @@ public class Map : MonoBehaviour
         {
             for (int y = 0; y < map.GetLength(0); y++)
             {
+                Debug.Log($"{x} | {y}");
                 var tile = CurrentMapTile[y, x].GetComponent<GameTiles>();
 
                 //Debug.Log($"Processing tile at ({y}, {x})");
@@ -167,6 +169,7 @@ public class Map : MonoBehaviour
             {
                 for(int j = 0; j < col; j++)
                 {
+                    Debug.Log($"x : {i} y : {j}");
                     map[i,j] = mapData.mapComtainer.map2D[i].row[j];
                 }
 
@@ -183,11 +186,62 @@ public class Map : MonoBehaviour
 
     internal void ResizeMap(int newRow, int newCol)
     {
-        map = new char[row, col];
 
         this.row = newRow;
         this.col = newCol;
-        map = null;
+
+        map = new char[row, col];
+        //MapLoading.currentGameTiles = new GameTiles[newRow, newCol];
+
+        GameTiles[,] newGameTiles = new GameTiles[newRow, newCol];
+
+        for (int x = 0; x < map.GetLength(1); x++)
+        {
+            for (int y = 0; y < map.GetLength(0); y++)
+            {
+                if(newGameTiles[y, x] == null)
+                {
+                    break;
+                }
+
+                Debug.Log($"{x} | {y}");
+                var tile = newGameTiles[y, x].GetComponent<GameTiles>();
+
+
+                //Debug.Log($"Processing tile at ({y}, {x})");
+                if (tile.IsBloced)
+                {
+                    map[y, x] = 'W';
+                    Debug.Log("Wall");
+                }
+                else if (tile.IsDamaging)
+                {
+                    map[y, x] = 'D';
+                    Debug.Log("Fire");
+                }
+                else if (tile.IsSlowing)
+                {
+                    map[y, x] = 'S';
+                    Debug.Log("Water");
+                }
+                else if (tile.IsSpawn)
+                {
+                    map[y, x] = 'E';
+                    Debug.Log("Spawing");
+                }
+                else if (tile.IsEnd)
+                {
+                    map[y, x] = 'F';
+                    Debug.Log("End");
+                }
+                else
+                {
+                    map[y, x] = ' ';
+                }
+            }
+        }
+
+        SaveInJson();
     }
 
 

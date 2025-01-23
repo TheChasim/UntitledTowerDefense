@@ -6,8 +6,8 @@ using UnityEngine;
 public class MapLoading : MonoBehaviour
 {
     [Header("Map Creator")]
-    [SerializeField] int ColCount = 35;
-    [SerializeField] int RowCount = 20;
+    [SerializeField] internal int ColCount = 35;
+    [SerializeField] internal int RowCount = 20;
 
     [SerializeField] GameObject gameTilePrefab;
     static internal GameTiles[,] currentGameTiles;
@@ -36,66 +36,25 @@ public class MapLoading : MonoBehaviour
         RemoveMap();
 
         MapObject = mapList[mapIndex];
-        Debug.LogWarning(MapObject.name);
-
-        //mapList[mapIndex].GetComponent<Map>().LoadJson();
-
-        //int currentRow = 0;
-        //int currentCol = 0;
-
-        //ColCount = mapList[mapIndex].GetComponent<Map>().GetCol();
-        //RowCount = mapList[mapIndex].GetComponent<Map>().GetRow();
+        Debug.LogWarning("Spawnig Map : " + MapObject.name);
 
         //load l'image en background
         // Instancier le prefab dans la scène
         GameObject mapInstance = Instantiate(mapList[mapIndex]);
-
-        //load le niveau
         currentMap = mapList[mapIndex].GetComponent<Map>();
 
-        //-----------------------------------------------------------------------
-        //pour modifier la taille de la map
-        //changement de taille
-
+        
+        //vient chercher les valeur de dimention de la map a spawn
         RowCount = currentMap.row;
         ColCount = currentMap.col;
 
+        //cree un nouveau tableau pour la taille de la map
+        currentMap.map = new char[RowCount, ColCount];
 
-        if (currentMap.row != RowCount && currentMap.col == ColCount)
-        {
-            Debug.LogWarning("Taille differente set une nouvel taille");
-            //currentMap.row = RowCount;
-            //currentMap.col = ColCount;
-
-        }
-
-        //------------------------------------------------------------------------
-
+        //load le niveau
         currentMap.LoadJson();
         mapName = currentMap.mapName;
-        //currentMap.prefab = MapObject;
 
-        //changement de taille
-        //if (currentMap.row == 0 && currentMap.col == 0)
-        //{
-        //    currentMap.row = RowCount;
-        //    currentMap.col = ColCount;
-
-        //}
-
-        //currentRow = currentMap.row;
-        //currentCol = currentMap.col;
-
-        //RowCount = currentMap.row; 
-        //ColCount = currentMap.col;
-
-        //currentMap.row = RowCount;
-        //currentMap.col = ColCount;
-
-        if (currentMap.map == null)
-        {
-            currentMap.map = new char[RowCount, ColCount];
-        }
 
 
         currentGameTiles = new GameTiles[RowCount, ColCount];
@@ -112,6 +71,7 @@ public class MapLoading : MonoBehaviour
                 currentGameTiles[y, x].SetComponent();
                 currentGameTiles[y, x].X = x;
                 currentGameTiles[y, x].Y = y;
+                currentGameTiles[y, x].name = $"tile {x}/{y}";
 
                 //wall
                 if (currentMap.map[y, x] == 'W')
@@ -144,8 +104,6 @@ public class MapLoading : MonoBehaviour
                     endTile = currentGameTiles[y, x];
                     currentGameTiles[y, x].TurnEnd();
                 }
-
-                //Debug.Log(currentMap.map[y, x]);
             }
         }
     }
@@ -190,10 +148,8 @@ public class MapLoading : MonoBehaviour
 
     internal void ResizeMap()
     {
-        foreach (var map in GameObject.FindGameObjectsWithTag(tagMap))
-        {
-            map.GetComponent<Map>().ResizeMap(RowCount, ColCount);
-        }
+        currentMap.ResizeMap(RowCount, ColCount);
+        RefreshMap();
     }
 
     internal void SetPath()

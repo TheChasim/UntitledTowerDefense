@@ -19,7 +19,12 @@ public class TowerSpawning : MonoBehaviour
 
     internal void SpawnTower()
     {
-            Instantiate(TowerPrefab, GameManager.Instance.TargetTile.transform);
+        Transform spawnPos = GameManager.Instance.TargetTile.transform;
+        ////ajoute un  0.5 pour le iso
+        //spawnPos.position = new Vector3(spawnPos.position.x + 0.5f, 
+        //                       spawnPos.position.y + 0.5f, 
+        //                       spawnPos.position.z);
+        Instantiate(TowerPrefab, spawnPos);
     }
 
     private void Awake()

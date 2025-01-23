@@ -22,7 +22,11 @@ public class Tower : MonoBehaviour
     {
         allTourel.Add(this);
         rangeCollider = GetComponent<SphereCollider>();
-    }
+
+        transform.position = new Vector3(transform.position.x + 0.5f,
+                                         transform.position.y,
+                                         transform.position.z + 0.5f); ;
+    }   
 
     private void Update()
     {

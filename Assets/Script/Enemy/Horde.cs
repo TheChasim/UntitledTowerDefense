@@ -26,9 +26,9 @@ public class Horde : MonoBehaviour
                 GameObject newEnemie = new GameObject($" Enemy_{name}_Horde_{i}");
                 enemieHorde.Add(newEnemie);
 
-                newEnemie.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
-                newEnemie.transform.position = new Vector3(UnityEngine.Random.Range(0.5f, 1.5f), UnityEngine.Random.Range(0f, 1f), 1f);
                 newEnemie.transform.parent = transform;
+                newEnemie.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+                newEnemie.transform.localPosition = new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), 0f, UnityEngine.Random.Range(-0.5f, 0.5f));
 
                 newEnemie.AddComponent<EnemyHorde>();
                 newEnemie.AddComponent<SpriteRenderer>();
