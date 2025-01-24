@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     //script ref
     SpawningEnemy spawningEnemy;
     PathFinder pathFinder;
+    NewPathFinder newPathFinder;
 
     //singletone
     public static GameManager Instance;
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour
         //get les script
         spawningEnemy = GetComponent<SpawningEnemy>();
         pathFinder = GetComponent<PathFinder>();
+        newPathFinder = GetComponent<NewPathFinder>();
         MapLoading mapLoading = GetComponentInChildren<MapLoading>();
 
         //set les valeurs
@@ -72,8 +74,11 @@ public class GameManager : MonoBehaviour
 
     public void SetPath()
     {
-        pathFinder.SetValue(currentGameTiles, spawnTiles, endTile, col, row);
-        pathFinder.SetPath();
+        //pathFinder.SetValue(currentGameTiles, spawnTiles, endTile, col, row);
+        //pathFinder.SetPath();
+
+        newPathFinder.SetValue(currentGameTiles, spawnTiles, endTile, col, row);
+        newPathFinder.FindPathAStar();
     }
 
     public List<GameTiles> EnemySetPath(GameTiles pos, GameTiles end)
@@ -81,9 +86,11 @@ public class GameManager : MonoBehaviour
         return pathFinder.EnemySetPath(pos, end);
     }
 
-    public List<int> GetTempPathLeght()
+    public List<int> GetPathLeght()
     {
-        return pathFinder.SetTempPath();
+        //return pathFinder.SetTempPath();
+        SetPath();
+        return newPathFinder.GetLength();
     }
 
 

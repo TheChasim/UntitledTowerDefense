@@ -1,10 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class PathToGoal
 {
@@ -14,29 +9,17 @@ public class PathToGoal
     //internal int leght;
 }
 
-
-
 public class PathFinder : MonoBehaviour
 {
     GameTiles[,] gameTiles;
     internal List<GameTiles> spawnTile;
     internal GameTiles endTile;
     static internal List<PathToGoal> pathToGoal = new List<PathToGoal>();
-    PathToGoal currentPath = new PathToGoal();
+    //PathToGoal currentPath = new PathToGoal();
 
     int ColCount = 0;
     int RowCount = 0;
 
-    ////constructeur
-    //public PathFinder(GameTiles[,] NewGametiles, List<GameTiles> NewSpawnTile, GameTiles NewEndTil, int NewCol, int NewRow)
-    //{
-    //    gameTiles = NewGametiles;
-    //    spawnTile = NewSpawnTile;
-    //    endTile = NewEndTil;
-    //    ColCount = NewCol;
-    //    RowCount = NewRow;
-
-    //}
     internal void SetValue(GameTiles[,] NewGametiles, List<GameTiles> NewSpawnTile, GameTiles NewEndTil, int NewCol, int NewRow)
     {
         gameTiles = NewGametiles;
@@ -228,15 +211,6 @@ public class PathFinder : MonoBehaviour
     {
         var result = new List<GameTiles>();
 
-        //if (u.X - 1 >= 0)
-        //{ result.Add(gameTiles[u.X - 1, u.Y]); }
-        //if (u.X + 1 < ColCount)
-        //{ result.Add(gameTiles[u.X + 1, u.Y]); }
-        //if (u.Y - 1 >= 0)
-        //{ result.Add(gameTiles[u.X, u.Y - 1]); }
-        //if (u.Y + 1 < RowCount)
-        //{ result.Add(gameTiles[u.X, u.Y + 1]); }
-
         if (u.X - 1 >= 0)
         { result.Add(gameTiles[u.Y, u.X - 1]); }
         if (u.X + 1 < ColCount)
@@ -254,3 +228,212 @@ public class PathFinder : MonoBehaviour
         spawnTile.Clear();
     }
 }
+
+//using System;
+//using System.Collections.Generic;
+//using UnityEngine;
+
+//public class PriorityQueue<T>
+//{
+//    private List<(T Element, int Priority)> elements = new List<(T, int)>();
+
+//    public int Count => elements.Count;
+
+//    public void Enqueue(T element, int priority)
+//    {
+//        elements.Add((element, priority));
+//        elements.Sort((x, y) => x.Priority.CompareTo(y.Priority)); // Trie par priorité croissante
+//    }
+
+//    public T Dequeue()
+//    {
+//        if (elements.Count == 0)
+//            throw new InvalidOperationException("The priority queue is empty.");
+
+//        var item = elements[0];
+//        elements.RemoveAt(0); // Supprime l'élément avec la plus haute priorité (le premier)
+//        return item.Element;
+//    }
+
+//    public bool Contains(T element)
+//    {
+//        return elements.Exists(e => EqualityComparer<T>.Default.Equals(e.Element, element));
+//    }
+//}
+
+//public class PathToGoal
+//{
+//    internal GameTiles spawnTile;
+//    internal List<GameTiles> pathToGoal = new List<GameTiles>();
+//    internal List<GameTiles> tempPathToGoal = new List<GameTiles>();
+//}
+
+//public class PathFinder : MonoBehaviour
+//{
+//    GameTiles[,] gameTiles;
+//    internal List<GameTiles> spawnTile;
+//    internal GameTiles endTile;
+//    static internal List<PathToGoal> pathToGoal = new List<PathToGoal>();
+//    Dictionary<(GameTiles, GameTiles), List<GameTiles>> cachedPaths = new Dictionary<(GameTiles, GameTiles), List<GameTiles>>();
+
+//    int ColCount = 0;
+//    int RowCount = 0;
+
+//    internal void SetValue(GameTiles[,] NewGametiles, List<GameTiles> NewSpawnTile, GameTiles NewEndTil, int NewCol, int NewRow)
+//    {
+//        gameTiles = NewGametiles;
+//        endTile = NewEndTil;
+//        ColCount = NewCol;
+//        RowCount = NewRow;
+
+//        foreach (var spawn in NewSpawnTile)
+//        {
+//            PathToGoal tempPath = new PathToGoal();
+//            tempPath.spawnTile = spawn;
+//            pathToGoal.Add(tempPath);
+//        }
+//    }
+
+//    internal void SetPath()
+//    {
+//        // Reset tile colors
+//        foreach (var t in gameTiles)
+//        {
+//            t.SetPathColor(false);
+//        }
+
+//        foreach (var spawn in pathToGoal)
+//        {
+//            if (spawn.spawnTile == null)
+//            {
+//                Debug.LogError("Spawn tile is null in pathToGoal list.");
+//                continue;
+//            }
+
+//            // Check cache
+//            var cacheKey = (spawn.spawnTile, endTile);
+//            if (cachedPaths.ContainsKey(cacheKey))
+//            {
+//                spawn.pathToGoal = new List<GameTiles>(cachedPaths[cacheKey]);
+//                Debug.Log("Using cached path.");
+//                continue;
+//            }
+
+//            spawn.pathToGoal.Clear();
+//            var path = PathFinding(spawn.spawnTile, endTile);
+
+//            if (path == null)
+//            {
+//                Debug.LogError($"PathFinding returned null for spawnTile {spawn.spawnTile.name} and endTile {endTile.name}");
+//                continue;
+//            }
+
+//            var tile = endTile;
+//            while (tile != null)
+//            {
+//                spawn.pathToGoal.Add(tile);
+//                tile.SetPathColor(true);
+//                tile = path[tile];
+//            }
+
+//            // Cache the path
+//            cachedPaths[cacheKey] = new List<GameTiles>(spawn.pathToGoal);
+//            Debug.Log($"Path Created and count: {spawn.pathToGoal.Count}");
+//        }
+//    }
+
+//    private Dictionary<GameTiles, GameTiles> PathFinding(GameTiles sourceTile, GameTiles targetTile)
+//    {
+//        return PathFindingAStar(sourceTile, targetTile);
+//    }
+
+//    private Dictionary<GameTiles, GameTiles> PathFindingAStar(GameTiles sourceTile, GameTiles targetTile)
+//    {
+//        var openSet = new PriorityQueue<GameTiles>();
+//        var cameFrom = new Dictionary<GameTiles, GameTiles>();
+//        var gScore = new Dictionary<GameTiles, int>();
+//        var fScore = new Dictionary<GameTiles, int>();
+
+//        foreach (var tile in gameTiles)
+//        {
+//            gScore[tile] = int.MaxValue;
+//            fScore[tile] = int.MaxValue;
+//        }
+
+//        gScore[sourceTile] = 0;
+//        fScore[sourceTile] = Heuristic(sourceTile, targetTile);
+
+//        openSet.Enqueue(sourceTile, fScore[sourceTile]);
+
+//        while (openSet.Count > 0)
+//        {
+//            var current = openSet.Dequeue();
+
+//            if (current == targetTile)
+//            {
+//                return ReconstructPath(cameFrom, current);
+//            }
+
+//            foreach (var neighbor in FindNeighbor(current))
+//            {
+//                if (neighbor.IsBloced)
+//                    continue;
+
+//                int tentativeGScore = gScore[current] + 1; // Adjust cost for dangerous/slow tiles if needed
+
+//                if (tentativeGScore < gScore[neighbor])
+//                {
+//                    cameFrom[neighbor] = current;
+//                    gScore[neighbor] = tentativeGScore;
+//                    fScore[neighbor] = gScore[neighbor] + Heuristic(neighbor, targetTile);
+
+//                    if (!openSet.Contains(neighbor))
+//                    {
+//                        openSet.Enqueue(neighbor, fScore[neighbor]);
+//                    }
+//                }
+//            }
+//        }
+
+//        return null; // No path found
+//    }
+
+//    private Dictionary<GameTiles, GameTiles> ReconstructPath(Dictionary<GameTiles, GameTiles> cameFrom, GameTiles current)
+//    {
+//        var path = new Dictionary<GameTiles, GameTiles>();
+
+//        while (cameFrom.ContainsKey(current))
+//        {
+//            var prev = cameFrom[current];
+//            path[current] = prev;
+//            current = prev;
+//        }
+
+//        return path;
+//    }
+
+//    private int Heuristic(GameTiles a, GameTiles b)
+//    {
+//        return Mathf.Abs(a.X - b.X) + Mathf.Abs(a.Y - b.Y);
+//    }
+
+//    private List<GameTiles> FindNeighbor(GameTiles u)
+//    {
+//        var neighbors = new List<GameTiles>();
+
+//        if (u.X - 1 >= 0) neighbors.Add(gameTiles[u.Y, u.X - 1]);
+//        if (u.X + 1 < ColCount) neighbors.Add(gameTiles[u.Y, u.X + 1]);
+//        if (u.Y - 1 >= 0) neighbors.Add(gameTiles[u.Y - 1, u.X]);
+//        if (u.Y + 1 < RowCount) neighbors.Add(gameTiles[u.Y + 1, u.X]);
+
+//        return neighbors;
+//    }
+
+//    internal void Reset()
+//    {
+//        spawnTile.Clear();
+//        cachedPaths.Clear();
+//    }
+//}
+
+

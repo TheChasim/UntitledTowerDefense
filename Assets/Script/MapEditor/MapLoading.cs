@@ -154,9 +154,13 @@ public class MapLoading : MonoBehaviour
 
     internal void SetPath()
     {
-        PathFinder pathFinder = FindAnyObjectByType<PathFinder>().GetComponent<PathFinder>();
-        pathFinder.SetValue(currentGameTiles, spawnTile, endTile, ColCount, RowCount);
-        pathFinder.SetPath();
+        //PathFinder pathFinder = FindAnyObjectByType<PathFinder>().GetComponent<PathFinder>();
+        //pathFinder.SetValue(currentGameTiles, spawnTile, endTile, ColCount, RowCount);
+        //pathFinder.SetPath();
+
+        NewPathFinder newPathFinder = FindAnyObjectByType<NewPathFinder>().GetComponent<NewPathFinder>();
+        newPathFinder.SetValue(currentGameTiles, spawnTile, endTile, ColCount, RowCount);
+        newPathFinder.FindPathAStar();
     }
 
     internal void EditMap()

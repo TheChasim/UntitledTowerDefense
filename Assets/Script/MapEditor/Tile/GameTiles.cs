@@ -61,7 +61,7 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
             bool pathFindWay = true;
 
             //boucle attraver tout les taille des chemins pour voir s'ils sont possible
-            foreach (var leght in GameManager.Instance.GetTempPathLeght())
+            foreach (var leght in GameManager.Instance.GetPathLeght())
             {
                 //si le chemin est de moins de deux tuile empaiche de placer une tour
                 if (leght <= 2)
@@ -75,7 +75,10 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
             if (pathFindWay)
             { Debug.Log("Chemin Trouver"); }
             else
-            { Debug.Log("Chemin Impossible"); }
+            {
+                Debug.Log("Chemin Impossible");
+                GameManager.Instance.SetPath();
+            }
 
 
             //si tout les chemin sont bon continuer
