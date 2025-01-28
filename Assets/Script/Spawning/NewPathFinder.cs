@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 // Implémentation de la PriorityQueue (Min-Heap)
@@ -111,7 +110,6 @@ public class NewPathFinder : MonoBehaviour
     public List<GameTiles> FindPathAStar()
     {
 
-
         foreach (var spawn in pathToGoal)
         {
             var openSet = new PriorityQueue<GameTiles>();
@@ -165,8 +163,62 @@ public class NewPathFinder : MonoBehaviour
 
         Debug.Log("Change Path color");
         SetPathColor();
+        // Retourner une liste vide si aucun chemin n'a été trouvé
+        return new List<GameTiles>();
+    }
 
+    public List<GameTiles> FindPathAStar(GameTiles currentTille)
+    {
+        var openSet = new PriorityQueue<GameTiles>();
+        var cameFrom = new Dictionary<GameTiles, GameTiles>();
 
+        var gScore = new Dictionary<GameTiles, float>();
+        var fScore = new Dictionary<GameTiles, float>();
+
+        // Initialisation des scores
+        foreach (var tile in gameTile)
+        {
+            gScore[tile] = float.MaxValue;
+            fScore[tile] = float.MaxValue;
+        }
+
+        gScore[currentTille] = 0;
+        fScore[currentTille] = HeuristicCostEstimate(currentTille, endTile);
+
+        openSet.Enqueue(currentTille, fScore[currentTille]);
+
+        while (openSet.Count > 0)
+        {
+            var current = openSet.Dequeue();
+
+            // Si nous avons atteint la destination, reconstruire le chemin
+            if (current == endTile)
+            {
+                //spawn.pathToGoal = ReconstructPath(cameFrom, current);
+                return ReconstructPath(cameFrom, current);
+            }
+
+            foreach (var neighbor in FindNeighbor(current))
+            {
+                // Calculer le coût pour le voisin
+                float tentativeGScore = gScore[current] + GetTraversalCost(neighbor);
+
+                if (tentativeGScore < gScore[neighbor])
+                {
+                    cameFrom[neighbor] = current;
+                    gScore[neighbor] = tentativeGScore;
+                    fScore[neighbor] = gScore[neighbor] + HeuristicCostEstimate(neighbor, endTile);
+
+                    if (!openSet.Contains(neighbor))
+                    {
+                        openSet.Enqueue(neighbor, fScore[neighbor]);
+                    }
+                }
+            }
+        }
+
+        Debug.Log("Change Path color");
+        SetPathColor();
         // Retourner une liste vide si aucun chemin n'a été trouvé
         return new List<GameTiles>();
     }

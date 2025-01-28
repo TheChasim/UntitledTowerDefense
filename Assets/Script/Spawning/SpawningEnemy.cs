@@ -27,6 +27,7 @@ public class SpawningEnemy : MonoBehaviour
                                 new Vector3(spawnTile.transform.position.x, spawnTile.transform.position.y+0.25f, spawnTile.transform.position.z),
                                 Quaternion.identity);
 
+        //enemy.GetComponent<EnemyAI>().currentTile = spawnTile;
         enemy.GetComponent<EnemyAI>().SetPath(spawnTile);
 
         yield return new WaitForSeconds(timeBetweenEnemy);

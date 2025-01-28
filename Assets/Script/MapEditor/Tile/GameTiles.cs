@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -58,65 +59,49 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
         if (!IsBloced && !GameManager.Instance.deleteTower)
         {
             IsBloced = true;
-            bool pathFindWay = true;
 
-            //boucle attraver tout les taille des chemins pour voir s'ils sont possible
-            foreach (var leght in GameManager.Instance.GetPathLeght())
+            bool pathIsValid = GameManager.Instance.GetPathLeght().All(length => length > 2);
+
+            if (pathIsValid)
             {
-                //si le chemin est de moins de deux tuile empaiche de placer une tour
-                if (leght <= 2)
-                {
-                    pathFindWay = false;
-                    IsBloced = false;
-                    //break;
-                }
-            }
+                Debug.Log("Chemin trouvé");
 
-            if (pathFindWay)
-            { Debug.Log("Chemin Trouver"); }
-            else
-            {
-                Debug.Log("Chemin Impossible");
-                GameManager.Instance.SetPath();
-            }
-
-
-            //si tout les chemin sont bon continuer
-            if (pathFindWay)
-            {
+                // Placer la tour
                 TowerSpawning.Instance.SpawnTower();
                 GameManager.Instance.SetPath();
 
+                // Mettre à jour les chemins pour tous les ennemis
+                foreach (var enemy in EnemyAI.enemyAIList)
+                {
+                    enemy.SetPath();
+                }
+            }
+            else
+            {
+                Debug.Log("Chemin impossible");
+                IsBloced = false; // Annuler le blocage
+            }
+        }
+        else if (IsBloced && GameManager.Instance.deleteTower)
+        {
+            // Trouver la tour proche et la supprimer
+            var nearbyTower = Tower.allTourel.FirstOrDefault(tower =>
+                Vector3.Distance(this.transform.position, tower.transform.position) < 1);
+
+            if (nearbyTower != null)
+            {
+                IsBloced = false;
+
+                // Supprimer la tour
+                nearbyTower.OnRevome();
+                GameManager.Instance.SetPath();
+
+                // Mettre à jour les chemins pour tous les ennemis
                 foreach (var enemy in EnemyAI.enemyAIList)
                 {
                     enemy.setNewPath();
                 }
-
             }
-        }
-
-        if (IsBloced && GameManager.Instance.deleteTower)
-        {
-            foreach (Tower tourel in Tower.allTourel)
-            {
-                //Debug.Log(Vector3.Distance(this.transform.position, tourel.transform.position));
-                if (Vector3.Distance(this.transform.position, tourel.transform.position) < 1)
-                {
-                    IsBloced = false;
-                    //player.OnGetMoney(tourel.cost);
-                    tourel.OnRevome();
-
-                    GameManager.Instance.SetPath();
-
-                    foreach (var enemy in EnemyAI.enemyAIList)
-                    {
-                        enemy.setNewPath();
-                    }
-
-                    break;
-                }
-            }
-
         }
 
     }

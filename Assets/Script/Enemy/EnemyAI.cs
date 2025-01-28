@@ -104,25 +104,49 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    internal void SetPath(GameTiles spawnTile)
+    internal void SetPath()
     {
-        this.spawnTile = spawnTile;
         path.Clear();
         pathList.Clear();
 
-        foreach (var way in PathFinder.pathToGoal)
+        pathList = FindAnyObjectByType<NewPathFinder>().GetComponent<NewPathFinder>().FindPathAStar(currentTile);
+        pathList.Reverse();
+
+        foreach (var tile in pathList)
         {
-            if (spawnTile.gameObject == way.spawnTile.gameObject)
-            {
-                pathList = way.pathToGoal;
+            path.Push(tile);
+        }
+    }
 
-                foreach (GameTiles tile in way.pathToGoal)
-                {
-                    path.Push(tile);
-                }
+    internal void SetPath(GameTiles spawnTile)
+    {
+        //this.spawnTile = spawnTile;
+        //path.Clear();
+        //pathList.Clear();
 
-            }
+        //foreach (var way in PathFinder.pathToGoal)
+        //{
+        //    if (spawnTile.gameObject == way.spawnTile.gameObject)
+        //    {
+        //        pathList = way.pathToGoal;
 
+        //        foreach (GameTiles tile in way.pathToGoal)
+        //        {
+        //            path.Push(tile);
+        //        }
+
+        //    }
+
+        //}
+        path.Clear();
+        pathList.Clear();
+
+        pathList = FindAnyObjectByType<NewPathFinder>().GetComponent<NewPathFinder>().FindPathAStar(spawnTile);
+        pathList.Reverse();
+
+        foreach (var tile in pathList)
+        {
+            path.Push(tile);
         }
     }
 
