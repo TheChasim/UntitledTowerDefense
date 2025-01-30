@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading.Tasks;
+using System.Collections.Concurrent;
 
 // Implémentation de la PriorityQueue (Min-Heap)
 public class PriorityQueue<T>
@@ -85,9 +87,13 @@ public class NewPathFinder : MonoBehaviour
     //internal List<GameTiles> spawnTile;
     internal GameTiles endTile;
     static internal List<PathToGoal> pathToGoal = new List<PathToGoal>();
-    List<PathToGoal> tempPathToGoal = new List<PathToGoal>();
+    List<GameTiles> tempPathToGoal = new List<GameTiles>();
+    //List<PathToGoal> tempPathToGoal = new List<PathToGoal>();
     private int col = 0;
     private int row = 0;
+
+    // File d'attente pour synchroniser les résultats avec Unity
+    private static ConcurrentQueue<Action> mainThreadActions = new ConcurrentQueue<Action>();
 
     // Initialisation de la grille
     internal void SetValue(GameTiles[,] newGameTiles, List<GameTiles> newSpawnTile, GameTiles newEndTile, int newCol, int newRow)
@@ -106,10 +112,55 @@ public class NewPathFinder : MonoBehaviour
         }
     }
 
+    private Dictionary<(GameTiles, GameTiles), List<GameTiles>> pathCache = new Dictionary<(GameTiles, GameTiles), List<GameTiles>>();
+
+    public async Task<List<GameTiles>> CalculatePathsMultithreaded(GameTiles currentTile)
+    {
+        if (pathCache.ContainsKey((currentTile, endTile)))
+        {
+            return new List<GameTiles>(pathCache[(currentTile, endTile)]); // Retourne une copie du cache
+        }
+
+        return await Task.Run(() =>
+        {
+            List<GameTiles> computedPath = FindPathAStar(currentTile);
+            if (computedPath.Count > 0) pathCache[(currentTile, endTile)] = computedPath; // Ajouter au cache
+            return computedPath;
+        });
+    }
+
+    //// Méthode asynchrone pour exécuter A* en arrière-plan et retourner le résultat
+    //public async Task<List<GameTiles>> CalculatePathsMultithreaded(GameTiles currentTile)
+    //{
+    //    List<GameTiles> computedPath = null;
+
+    //    await Task.Run(() =>
+    //    {
+    //        computedPath = FindPathAStar(currentTile);
+
+    //        // Stocker le résultat pour le thread principal
+    //        mainThreadActions.Enqueue(() =>
+    //        {
+    //            tempPathToGoal = computedPath;
+    //        });
+    //    });
+
+    //    return computedPath;
+    //}
+
+    // Synchronisation avec le thread principal (Unity)
+    private void Update()
+    {
+        while (mainThreadActions.TryDequeue(out var action))
+        {
+            action?.Invoke();
+        }
+    }
+
+
     // Algorithme A* pour trouver le chemin
     public List<GameTiles> FindPathAStar()
     {
-
         foreach (var spawn in pathToGoal)
         {
             var openSet = new PriorityQueue<GameTiles>();
@@ -165,6 +216,7 @@ public class NewPathFinder : MonoBehaviour
         SetPathColor();
         // Retourner une liste vide si aucun chemin n'a été trouvé
         return new List<GameTiles>();
+
     }
 
     public List<GameTiles> FindPathAStar(GameTiles currentTille)
@@ -184,7 +236,6 @@ public class NewPathFinder : MonoBehaviour
 
         gScore[currentTille] = 0;
         fScore[currentTille] = HeuristicCostEstimate(currentTille, endTile);
-
         openSet.Enqueue(currentTille, fScore[currentTille]);
 
         while (openSet.Count > 0)
@@ -216,12 +267,9 @@ public class NewPathFinder : MonoBehaviour
                 }
             }
         }
-
-        Debug.Log("Change Path color");
         SetPathColor();
-        // Retourner une liste vide si aucun chemin n'a été trouvé
-        return new List<GameTiles>();
-    }
+        return new List<GameTiles>(); // Aucun chemin trouvé
+    }     
 
     private void SetPathColor()
     {
@@ -233,18 +281,11 @@ public class NewPathFinder : MonoBehaviour
 
         foreach (var path in pathToGoal)
         {
-            Debug.Log(path.pathToGoal.Count);
-            //for (int i = 0; i != path.pathToGoal.Count; i++)
-            //{
-            //    Debug.Log("paint path");
-            //    path.pathToGoal[i].SetPathColor(true);
-            //}
             foreach (var tile in path.pathToGoal)
             {
                 tile.SetPathColor(true);
             }
         }
-
     }
 
     // Heuristique basée sur la distance de Manhattan
@@ -306,72 +347,10 @@ public class NewPathFinder : MonoBehaviour
 
         foreach (var path in pathToGoal)
         {
-            Debug.Log(path.pathToGoal.Count);
+            //Debug.Log(path.pathToGoal.Count);
             lenght.Add(path.pathToGoal.Count);
         }
 
         return lenght;
     }
-
-    //public List<GameTiles> FindTempPathAStar()
-    //{
-    //    foreach (var t in gameTile)
-    //    {
-    //        t.SetPathColor(false);
-    //    }
-
-    //    foreach (var spawn in tempPathToGoal)
-    //    {
-    //        var openSet = new PriorityQueue<GameTiles>();
-    //        var cameFrom = new Dictionary<GameTiles, GameTiles>();
-
-    //        var gScore = new Dictionary<GameTiles, float>();
-    //        var fScore = new Dictionary<GameTiles, float>();
-
-    //        // Initialisation des scores
-    //        foreach (var tile in gameTile)
-    //        {
-    //            gScore[tile] = float.MaxValue;
-    //            fScore[tile] = float.MaxValue;
-    //        }
-
-    //        gScore[spawn.spawnTile] = 0;
-    //        fScore[spawn.spawnTile] = HeuristicCostEstimate(spawn.spawnTile, endTile);
-
-    //        openSet.Enqueue(spawn.spawnTile, fScore[spawn.spawnTile]);
-
-    //        while (openSet.Count > 0)
-    //        {
-    //            var current = openSet.Dequeue();
-
-    //            // Si nous avons atteint la destination, reconstruire le chemin
-    //            if (current == endTile)
-    //            {
-    //                spawn.pathToGoal = ReconstructPath(cameFrom, current);
-    //                //return ReconstructPath(cameFrom, current);
-    //            }
-
-    //            foreach (var neighbor in FindNeighbor(current))
-    //            {
-    //                // Calculer le coût pour le voisin
-    //                float tentativeGScore = gScore[current] + GetTraversalCost(neighbor);
-
-    //                if (tentativeGScore < gScore[neighbor])
-    //                {
-    //                    cameFrom[neighbor] = current;
-    //                    gScore[neighbor] = tentativeGScore;
-    //                    fScore[neighbor] = gScore[neighbor] + HeuristicCostEstimate(neighbor, endTile);
-
-    //                    if (!openSet.Contains(neighbor))
-    //                    {
-    //                        openSet.Enqueue(neighbor, fScore[neighbor]);
-    //                    }
-    //                }
-    //            }
-    //        }
-    //    }
-
-    //    // Retourner une liste vide si aucun chemin n'a été trouvé
-    //    return new List<GameTiles>();
-    //}
 }

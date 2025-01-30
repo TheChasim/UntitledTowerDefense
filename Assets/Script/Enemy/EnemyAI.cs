@@ -1,10 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting.Antlr3.Runtime.Collections;
 using UnityEngine;
-using static UnityEngine.UI.Image;
+using System.Threading.Tasks;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -14,6 +11,7 @@ public class EnemyAI : MonoBehaviour
     public List<GameTiles> tempPathList = new List<GameTiles>();
     internal GameTiles spawnTile;
     public GameTiles currentTile;
+    NewPathFinder pathFinder;
 
     public int closeIndex;
     public bool showDirection = true;
@@ -43,6 +41,7 @@ public class EnemyAI : MonoBehaviour
         enemyAIList.Add(this);
 
         healt = GetComponent<Healt>();
+        pathFinder = FindAnyObjectByType<NewPathFinder>().GetComponent<NewPathFinder>();
     }
 
     private void Update()
@@ -104,40 +103,59 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    internal void SetPath()
+    private float lastPathUpdateTime = 0f;
+    private float minPathUpdateInterval = 1f; // Minimum 1 secondes entre chaque recalcul
+
+    async internal Task SetPath()
     {
-        path.Clear();
-        pathList.Clear();
+        // Vérifier si le chemin est bloqué
+        if (PathIsBlock() && Time.time - lastPathUpdateTime > minPathUpdateInterval)
+        {
+            lastPathUpdateTime = Time.time; // Mise à jour du dernier recalcul
 
-        pathList = FindAnyObjectByType<NewPathFinder>().GetComponent<NewPathFinder>().FindPathAStar(currentTile);
-        pathList.Reverse();
+            Debug.Log($"Recalcul du chemin pour {gameObject.name}");
 
+            // Sauvegarde temporaire
+            List<GameTiles> oldPath = new List<GameTiles>(pathList);
+
+            // Attendre le recalcul du chemin
+            List<GameTiles> newPath = await pathFinder.CalculatePathsMultithreaded(currentTile);
+
+            if (newPath != null && newPath.Count > 0)
+            {
+                path.Clear();
+                newPath.Reverse();
+                pathList = newPath;
+                foreach (var tile in newPath)
+                {
+                    path.Push(tile);
+                }
+                Debug.Log($"Nouveau chemin assigné à {gameObject.name}");
+            }
+            else
+            {
+                Debug.LogWarning($"Impossible de recalculer le chemin, réutilisation de l'ancien chemin.");
+                pathList = oldPath;
+            }
+        }
+    }
+
+    private bool PathIsBlock()
+    {
         foreach (var tile in pathList)
         {
-            path.Push(tile);
+            if (tile.IsBloced)
+            {
+                Debug.Log("path is block");
+                return true;
+            }
         }
+
+        return false;
     }
 
     internal void SetPath(GameTiles spawnTile)
     {
-        //this.spawnTile = spawnTile;
-        //path.Clear();
-        //pathList.Clear();
-
-        //foreach (var way in PathFinder.pathToGoal)
-        //{
-        //    if (spawnTile.gameObject == way.spawnTile.gameObject)
-        //    {
-        //        pathList = way.pathToGoal;
-
-        //        foreach (GameTiles tile in way.pathToGoal)
-        //        {
-        //            path.Push(tile);
-        //        }
-
-        //    }
-
-        //}
         path.Clear();
         pathList.Clear();
 
@@ -148,63 +166,6 @@ public class EnemyAI : MonoBehaviour
         {
             path.Push(tile);
         }
-    }
-
-    internal void setNewPath()
-    {
-        //boucle attraver tout les chemin possible
-        foreach (var way in PathFinder.pathToGoal)
-        {
-            //si l'ennemi et le path on le meme spawn commencer le check
-            if (spawnTile.gameObject == way.spawnTile.gameObject)
-            {
-                //set le pathlist avec le nouveau chemien
-                pathList = way.pathToGoal;
-                //cherche l'index le tuile du nouveau chemin avec sa posiont actuelle 
-                closeIndex = FindIndexOfNearestTile();
-
-                //efface l'acien chemin temporaire
-                tempPathList.Clear();
-
-                //cree le nouveau chemin temp appartir de l'index 
-                for (int i = closeIndex; i >= 0; i--)
-                {
-                    tempPathList.Add(way.pathToGoal[i]);
-                }
-
-                tempPathList.Reverse();
-
-                //supprime l'ancien path pour mettre le nouveau
-                path.Clear();
-                foreach (GameTiles tile in tempPathList)
-                {
-                    path.Push(tile);
-                }
-
-                //acossi le chemin temporaire avec le vrai
-                pathList = tempPathList;
-
-
-            }
-        }
-    }
-
-    private int FindIndexOfNearestTile()
-    {
-        float minDistance = float.MaxValue;
-        int indexNearest = 0;
-
-        //boucle in all tile in the path to find the closest
-        for (int i = 0; i < pathList.Count; i++)
-        {
-            float distance = Vector3.Distance(transform.position, pathList[i].transform.position);
-            if (distance < minDistance)
-            {
-                minDistance = distance;
-                indexNearest = i;
-            }
-        }
-        return indexNearest;
     }
 
     private IEnumerator OntileDamage(float damageAmout)

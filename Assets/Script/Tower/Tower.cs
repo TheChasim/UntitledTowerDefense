@@ -65,7 +65,7 @@ public class Tower : MonoBehaviour
     private IEnumerator Attack()
     {
         attack = true;
-        Debug.Log(transform.parent.transform.position);
+        //Debug.Log(transform.parent.transform.position);
         Instantiate(projectille, transform.parent.transform).GetComponent<Projectile>().SetTarget(target);
 
 

@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 912230690839359327}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.030217, y: 13.427219, z: -6.5269957}
+  m_LocalPosition: {x: -10, y: 13.427219, z: -6.5269957}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44,11 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d0987db49e827e468bbeff82ec236ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ColCount: 20
+  RowCount: 20
   gameTilePrefab: {fileID: 5420789198104391685, guid: 0beb82c5067242246a7f266d3875ab72,
     type: 3}
   mapList:
   - {fileID: 4508796451058780988, guid: 64a7becc71c7c0d44aee550063ac47d0, type: 3}
-  mapIndex: 0
+  - {fileID: 4508796451058780988, guid: f058d1fb42d57a2458099638209fd2f9, type: 3}
+  - {fileID: 4508796451058780988, guid: 72dff13beea98bc44ae2ae315db22e96, type: 3}
+  mapIndex: 1
 --- !u!1 &2364715637739099082
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,6 +133,7 @@ GameObject:
   - component: {fileID: 8823527941778302116}
   - component: {fileID: 5843365461857551942}
   - component: {fileID: 8638932446013760981}
+  - component: {fileID: 5490684352541414803}
   - component: {fileID: 3909223734006689186}
   - component: {fileID: 696656128344601112}
   m_Layer: 0
@@ -179,7 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46441ded560caf84993a4a3e0bcb2d54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenEnemy: 0.5
+  timeBetweenEnemy: 2
   timeBetweenWave: 5
   enemyAIPrefab:
   - {fileID: 4925137300140514, guid: 39304562ad4b7d34383dd4c6c5534b89, type: 3}
@@ -194,6 +199,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59314de7c17b4b040b5bdc92b63761d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5490684352541414803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4136204331232199424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f213d57ae1ca994eb782829c2419eee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &3909223734006689186

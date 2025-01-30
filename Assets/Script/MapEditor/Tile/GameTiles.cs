@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -54,7 +53,7 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
         SelectedRenderer.enabled = false;
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    async public void OnPointerClick(PointerEventData eventData)
     {
         if (!IsBloced && !GameManager.Instance.deleteTower)
         {
@@ -70,15 +69,14 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
                 TowerSpawning.Instance.SpawnTower();
                 GameManager.Instance.SetPath();
 
-                // Mettre à jour les chemins pour tous les ennemis
-                foreach (var enemy in EnemyAI.enemyAIList)
-                {
-                    enemy.SetPath();
-                }
+                // Paralléliser la mise à jour des chemins pour tous les ennemis
+                Task[] updateTasks = EnemyAI.enemyAIList.Select(enemi => enemi.SetPath()).ToArray();
+                await Task.WhenAll(updateTasks);
+
             }
             else
             {
-                Debug.Log("Chemin impossible");
+                Debug.LogWarning("Chemin impossible");
                 IsBloced = false; // Annuler le blocage
             }
         }
@@ -96,11 +94,9 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
                 nearbyTower.OnRevome();
                 GameManager.Instance.SetPath();
 
-                // Mettre à jour les chemins pour tous les ennemis
-                foreach (var enemy in EnemyAI.enemyAIList)
-                {
-                    enemy.setNewPath();
-                }
+                // Paralléliser la mise à jour des chemins pour tous les ennemis
+                Task[] updateTasks = EnemyAI.enemyAIList.Select(enemi => enemi.SetPath()).ToArray();
+                await Task.WhenAll(updateTasks);
             }
         }
 
