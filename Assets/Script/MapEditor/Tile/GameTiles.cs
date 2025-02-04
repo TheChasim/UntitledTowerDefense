@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -18,33 +19,37 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
     [SerializeField] internal float normalCost = 1;
     [SerializeField] internal float damageCost = 3;
     [SerializeField] internal float slowingCost = 1.5f;
-    internal Vector3 worldPosition;
-    internal int gridX, gridY;
-    private float _cost;
-    internal float cost
-    {
-        get
-        {
-            if (IsEnd) return 0;
-            if (IsSlowing) return slowingCost;
-            if (IsDamaging) return damageCost;
-            if (IsBloced) return float.MaxValue;
-            return _cost;
-        }
-        set
-        {
-            _cost = value;
-        }
-    }
-
+    [SerializeField] internal float cost;
     [SerializeField] internal float DamageAmout = 0.5f;
     [SerializeField] internal float SlowingAmout = 2f;
+
     [Space]
+    [Header("General Info")]
+    [SerializeField] internal Vector3 worldPosition;
+    [SerializeField] internal int gridX, gridY;
+    [Space]
+
+    //public float _cost;
+    //{
+    //    get
+    //    {
+    //        if (IsEnd) return 0;
+    //        if (IsSlowing) return slowingCost;
+    //        if (IsDamaging) return damageCost;
+    //        if (IsBloced) return float.MaxValue;
+    //        return normalCost;
+    //    }
+    //    set
+    //    {
+    //        _cost = value;
+    //    }
+    //}
+
 
     [Header("Direction")]
     [SerializeField] internal Vector2 flowDirection = Vector2.zero;
     private LineRenderer lineRenderer; // Affichage du Flow Field
-
+    [Space]
 
     [Header("Sprite Setting")]
     public SpriteRenderer spriteRenderer;
@@ -219,5 +224,35 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
         float intensity = Mathf.Clamp01(1 - (distanceToTarget / 10f));
         lineRenderer.startColor = new Color(1, intensity * 0.5f, intensity * 0.5f); // Rouge plus intense proche de la cible
         lineRenderer.endColor = lineRenderer.startColor;
+    }
+
+    internal void SetCost()
+    {
+        if (IsEnd)
+        {
+            cost = 0;
+        }
+        else if (IsSlowing)
+        {
+            cost = slowingCost;
+            //Debug.LogWarning($"{name}- est une case lent");
+        }
+        else if (IsDamaging)
+        {
+            cost = damageCost;
+            //Debug.LogWarning($"{name}- est une case qui fait mal");
+        }
+        else if (IsBloced)
+        {
+            cost = float.MaxValue;
+            //Debug.LogWarning($"{name}- est une case qui est bloqué");
+        }
+        else
+        {
+            cost = normalCost;
+            //Debug.LogWarning($"{name}- est une case normal");
+        }
+
+        //Debug.LogWarning($"{name}- Cost défini: {cost}");
     }
 }

@@ -48,7 +48,7 @@ public class FlowFieldPathfinding : MonoBehaviour
         // Initialiser toutes les cellules à un coût très élevé
         foreach (GameTiles tile in gameTile)
         {
-            tile.cost = float.MaxValue; // Par défaut, coût max
+            tile.SetCost();
             if (tile.IsEnd)
             {
                 targetNode = tile;
@@ -62,6 +62,9 @@ public class FlowFieldPathfinding : MonoBehaviour
         }
 
         targetNode.cost = 0;
+        Debug.Log($"Target Node cost : {targetNode.cost}");
+        targetNode.SetCost();
+
         nodesQueue.Enqueue(targetNode);
 
         while (nodesQueue.Count > 0)
@@ -70,6 +73,7 @@ public class FlowFieldPathfinding : MonoBehaviour
 
             foreach (GameTiles neighbor in GetNeighbors(current, gameTile))
             {
+
                 if (neighbor.cost == float.MaxValue) continue; // Ignorer obstacles
 
                 float newCost = current.cost + 1;
@@ -117,7 +121,7 @@ public class FlowFieldPathfinding : MonoBehaviour
         {
             List<GameTiles> neighbors = GetNeighbors(tile, gameTile);
             GameTiles bestNeighbor = null;
-            float lowestCost = float.MaxValue;
+            float lowestCost = tile.cost;
 
             foreach (GameTiles neighbor in neighbors)
             {
@@ -134,6 +138,7 @@ public class FlowFieldPathfinding : MonoBehaviour
                 Vector3 flowDir = (bestNeighbor.worldPosition - tile.worldPosition).normalized;
                 tile.flowDirection = new Vector3(flowDir.x, 0, flowDir.z); // Ignore Y
             }
+            //Debug.Log($"{tile.name} cost : {tile.cost}");
         }
     }
 

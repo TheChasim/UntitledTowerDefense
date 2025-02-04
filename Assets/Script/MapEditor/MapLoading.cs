@@ -43,7 +43,7 @@ public class MapLoading : MonoBehaviour
         GameObject mapInstance = Instantiate(mapList[mapIndex]);
         currentMap = mapList[mapIndex].GetComponent<Map>();
 
-        
+
         //vient chercher les valeur de dimention de la map a spawn
         RowCount = currentMap.row;
         ColCount = currentMap.col;
@@ -59,50 +59,50 @@ public class MapLoading : MonoBehaviour
 
         currentGameTiles = new GameTiles[RowCount, ColCount];
 
-        for (int x = 0; x < ColCount; x++)
+        for (int x = 0; x < RowCount; x++)
         {
-            for (int y = 0; y < RowCount; y++)
+            for (int y = 0; y < ColCount; y++)
             {
 
                 var spawnPosition = new Vector3(x, 0, y);
                 var tile = Instantiate(gameTilePrefab, spawnPosition, Quaternion.Euler(90, 0, 0));
                 tile.transform.parent = mapInstance.transform;
-                currentGameTiles[y, x] = tile.GetComponent<GameTiles>();
-                currentGameTiles[y, x].SetComponent();
-                currentGameTiles[y, x].X = x;
-                currentGameTiles[y, x].Y = y;
-                currentGameTiles[y, x].name = $"tile {x}/{y}";
+                currentGameTiles[x, y] = tile.GetComponent<GameTiles>();
+                currentGameTiles[x, y].SetComponent();
+                currentGameTiles[x, y].X = x;
+                currentGameTiles[x, y].Y = y;
+                currentGameTiles[x, y].name = $"tile {x}/{y}";
 
                 //wall
-                if (currentMap.map[y, x] == 'W')
+                if (currentMap.map[x, y] == 'W')
                 {
-                    currentGameTiles[y, x].TurnBloced();
+                    currentGameTiles[x, y].TurnBloced();
                 }
                 //Slowing Block
-                else if (currentMap.map[y, x] == 'S')
+                else if (currentMap.map[x, y] == 'S')
                 {
-                    currentGameTiles[y, x].TurnSlow();
+                    currentGameTiles[x, y].TurnSlow();
                 }
                 //Damaging Block
-                else if (currentMap.map[y, x] == 'D')
+                else if (currentMap.map[x, y] == 'D')
                 {
-                    currentGameTiles[y, x].TurnDamaging();
+                    currentGameTiles[x, y].TurnDamaging();
                 }
                 //Spawn Tile
-                else if (currentMap.map[y, x] == 'E')
+                else if (currentMap.map[x, y] == 'E')
                 {
                     spawnPoint.x = spawnPosition.x;
                     spawnPoint.y = spawnPosition.z;
                     spawnTile.Add(currentGameTiles[y, x]);
-                    currentGameTiles[y, x].TurnSpawn();
+                    currentGameTiles[x, y].TurnSpawn();
                 }
                 //end Tile
-                else if (currentMap.map[y, x] == 'F')
+                else if (currentMap.map[x, y] == 'F')
                 {
                     endPoint.x = spawnPosition.x;
                     endPoint.y = spawnPosition.z;
-                    endTile = currentGameTiles[y, x];
-                    currentGameTiles[y, x].TurnEnd();
+                    endTile = currentGameTiles[x, y];
+                    currentGameTiles[x, y].TurnEnd();
                 }
             }
         }
