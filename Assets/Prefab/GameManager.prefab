@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 2118651991942377238}
   - component: {fileID: 8823527941778302116}
   - component: {fileID: 5843365461857551942}
+  - component: {fileID: 7153480545425678085}
   - component: {fileID: 8638932446013760981}
   - component: {fileID: 5490684352541414803}
   - component: {fileID: 3909223734006689186}
@@ -189,6 +190,22 @@ MonoBehaviour:
   enemyAIPrefab:
   - {fileID: 4925137300140514, guid: 39304562ad4b7d34383dd4c6c5534b89, type: 3}
   currentEnemyAmount: 0
+--- !u!114 &7153480545425678085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4136204331232199424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7401312f38e8c3c4b8e2c38dec367e4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowArrow: 0
+  lineRendererPrefab: {fileID: 6803514348406408264, guid: 8515638c99f88594ea6770dac64f5d45,
+    type: 3}
+  cellSize: 1
 --- !u!114 &8638932446013760981
 MonoBehaviour:
   m_ObjectHideFlags: 0

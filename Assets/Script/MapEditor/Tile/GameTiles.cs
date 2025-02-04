@@ -6,7 +6,47 @@ using UnityEngine.EventSystems;
 public class GameTiles : MonoBehaviour, IPointerEnterHandler,
     IPointerExitHandler, IPointerClickHandler
 {
-    private Color originalColor;
+    [Header("Tille Infos")]
+    internal bool IsSelected = false;
+    internal bool IsSpawn = false;
+    internal bool IsEnd = false;
+    internal bool IsBloced = false;
+    internal bool IsSlowing = false;
+    internal bool IsDamaging = false;
+
+    [Header("Cout de deplacement")]
+    [SerializeField] internal float normalCost = 1;
+    [SerializeField] internal float damageCost = 3;
+    [SerializeField] internal float slowingCost = 1.5f;
+    internal Vector3 worldPosition;
+    internal int gridX, gridY;
+    private float _cost;
+    internal float cost
+    {
+        get
+        {
+            if (IsEnd) return 0;
+            if (IsSlowing) return slowingCost;
+            if (IsDamaging) return damageCost;
+            if (IsBloced) return float.MaxValue;
+            return _cost;
+        }
+        set
+        {
+            _cost = value;
+        }
+    }
+
+    [SerializeField] internal float DamageAmout = 0.5f;
+    [SerializeField] internal float SlowingAmout = 2f;
+    [Space]
+
+    [Header("Direction")]
+    [SerializeField] internal Vector2 flowDirection = Vector2.zero;
+    private LineRenderer lineRenderer; // Affichage du Flow Field
+
+
+    [Header("Sprite Setting")]
     public SpriteRenderer spriteRenderer;
     public SpriteRenderer SelectedRenderer;
     public SpriteRenderer spriteSpawn;
@@ -14,22 +54,17 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
     public SpriteRenderer SlowingRenderer;
     public SpriteRenderer WallRenderer;
     public SpriteRenderer DamagingRenderer;
-
-    internal bool IsSelected = false;
-    internal bool IsSpawn = false;
-    internal bool IsEnd = false;
-
-    public bool IsBloced = false;
-    internal bool IsSlowing = false;
-    internal bool IsDamaging = false;
-
-    [SerializeField] internal float DamageAmout = 0.5f;
-    [SerializeField] internal float SlowingAmout = 2f;
-
+    private Color originalColor;
 
     public int X { get; internal set; }
     public int Y { get; internal set; }
 
+    internal void SetValue(Vector3 newWorldPos, int newX, int newY)
+    {
+        worldPosition = newWorldPos;
+        gridX = newX;
+        gridY = newY;
+    }
     internal void SetComponent()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -144,5 +179,45 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
         Color transparentOrange = new Color(1, 0.375f, 0, 0.5f);
 
         spriteRenderer.color = isPath ? transparentOrange : originalColor;
+    }
+
+    // Initialise le LineRenderer
+    public void SetLineRenderer(GameObject lineRendererPrefab, Transform parent)
+    {
+        GameObject lineObj = GameObject.Instantiate(lineRendererPrefab, parent);
+        lineRenderer = lineObj.GetComponent<LineRenderer>();
+
+        if (lineRenderer != null)
+        {
+            lineRenderer.positionCount = 2;
+            lineRenderer.startColor = Color.white;
+            lineRenderer.endColor = Color.white;
+        }
+    }
+
+    // Met à jour la direction et la largeur de la ligne
+    public void UpdateLineRenderer(GameTiles targetNode)
+    {
+        if (lineRenderer == null || flowDirection == Vector2.zero) return;
+
+        // Position de départ (milieu de la tuile)
+        Vector3 startPos = worldPosition + Vector3.up * 0.1f;
+        // Position de fin selon la direction
+        Vector3 endPos = startPos + new Vector3(flowDirection.x, 0, flowDirection.y) * 0.5f;
+
+        lineRenderer.SetPosition(0, startPos);
+        lineRenderer.SetPosition(1, endPos);
+
+        // Calcul de l'épaisseur de la ligne en fonction de la distance à la cible
+        float distanceToTarget = Vector3.Distance(worldPosition, targetNode.worldPosition);
+        float thickness = Mathf.Clamp(0.05f + (1 - (distanceToTarget / 10f)) * 0.2f, 0.05f, 0.2f); // Max épaisseur = 0.2
+
+        lineRenderer.startWidth = thickness;
+        lineRenderer.endWidth = thickness;
+
+        // Changer la couleur en fonction de la proximité
+        float intensity = Mathf.Clamp01(1 - (distanceToTarget / 10f));
+        lineRenderer.startColor = new Color(1, intensity * 0.5f, intensity * 0.5f); // Rouge plus intense proche de la cible
+        lineRenderer.endColor = lineRenderer.startColor;
     }
 }

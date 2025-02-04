@@ -9,6 +9,7 @@ public class TileEditor : Editor
     {
         DrawDefaultInspector();
         GameTiles tile = (GameTiles)target;
+        EditorGUILayout.Space();
 
         if (GUILayout.Button("Spawn"))
         {

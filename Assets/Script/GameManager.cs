@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     SpawningEnemy spawningEnemy;
     PathFinder pathFinder;
     NewPathFinder newPathFinder;
+    FlowFieldPathfinding flowFlieldPathfinding;
 
     //singletone
     public static GameManager Instance;
@@ -49,6 +50,7 @@ public class GameManager : MonoBehaviour
         spawningEnemy = GetComponent<SpawningEnemy>();
         pathFinder = GetComponent<PathFinder>();
         newPathFinder = GetComponent<NewPathFinder>();
+        flowFlieldPathfinding = GetComponent<FlowFieldPathfinding>();
         MapLoading mapLoading = GetComponentInChildren<MapLoading>();
 
         //set les valeurs
@@ -77,8 +79,10 @@ public class GameManager : MonoBehaviour
         //pathFinder.SetValue(currentGameTiles, spawnTiles, endTile, col, row);
         //pathFinder.SetPath();
 
-        newPathFinder.SetValue(currentGameTiles, spawnTiles, endTile, col, row);
-        newPathFinder.FindPathAStar();
+        //newPathFinder.SetValue(currentGameTiles, spawnTiles, endTile, col, row);
+        //newPathFinder.FindPathAStar();
+
+        flowFlieldPathfinding.SetFlowField(currentGameTiles);
     }
 
     public List<GameTiles> EnemySetPath(GameTiles pos, GameTiles end)

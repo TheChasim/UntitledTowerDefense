@@ -491,6 +491,7 @@ GameObject:
   - component: {fileID: 4079424084369470711}
   - component: {fileID: 5926223268366759856}
   - component: {fileID: 5971386960418722349}
+  - component: {fileID: 7550279871649554624}
   - component: {fileID: 7973159724972081667}
   - component: {fileID: 4975964378007089683}
   - component: {fileID: -5262089129179422771}
@@ -597,6 +598,22 @@ MonoBehaviour:
   IsBloced: 0
   DamageAmout: 0.5
   SlowingAmout: 2
+--- !u!114 &7550279871649554624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5420789198104391685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4af257ae34bfd6243964fbbd67d1bf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalCost: 1
+  damageCost: 3
+  slowingCost: 1.5
+  flowDirection: {x: 0, y: 0}
 --- !u!114 &7973159724972081667
 MonoBehaviour:
   m_ObjectHideFlags: 0
