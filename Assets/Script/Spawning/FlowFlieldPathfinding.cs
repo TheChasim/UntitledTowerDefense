@@ -49,6 +49,7 @@ public class FlowFieldPathfinding : MonoBehaviour
         foreach (GameTiles tile in gameTile)
         {
             tile.SetCost();
+            tile.cost = 10000;
             if (tile.IsEnd)
             {
                 targetNode = tile;
@@ -61,9 +62,8 @@ public class FlowFieldPathfinding : MonoBehaviour
             return;
         }
 
-        targetNode.cost = 0;
+        targetNode.cost = 0f;
         Debug.Log($"Target Node cost : {targetNode.cost}");
-        targetNode.SetCost();
 
         nodesQueue.Enqueue(targetNode);
 
@@ -76,9 +76,12 @@ public class FlowFieldPathfinding : MonoBehaviour
 
                 if (neighbor.cost == float.MaxValue) continue; // Ignorer obstacles
 
+
                 float newCost = current.cost + 1;
+                Debug.Log($" Vérification avant IF: Tile [{neighbor.gridX}, {neighbor.gridY}] - Cost actuel: {neighbor.cost}, Nouveau cost: {newCost}");
                 if (newCost < neighbor.cost)
                 {
+                    Debug.Log($"Update Cost: Tile [{neighbor.gridX}, {neighbor.gridY}] - Ancien Cost: {neighbor.cost} -> Nouveau Cost: {newCost}");
                     neighbor.cost = newCost;
                     nodesQueue.Enqueue(neighbor);
                 }
