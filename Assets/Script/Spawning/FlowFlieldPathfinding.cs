@@ -77,7 +77,16 @@ public class FlowFieldPathfinding : MonoBehaviour
                 if (neighbor.cost == float.MaxValue) continue; // Ignorer obstacles
 
 
-                float newCost = current.cost + 1;
+                float newCost;
+
+                //set le cost de la tuille 
+                if(current.IsDamaging)
+                { newCost = current.cost + 3; }
+                else if(current.IsSlowing)
+                { newCost = current.cost + 2; }
+                else
+                { newCost = current.cost + 1; }
+
                 Debug.Log($" Vérification avant IF: Tile [{neighbor.gridX}, {neighbor.gridY}] - Cost actuel: {neighbor.cost}, Nouveau cost: {newCost}");
                 if (newCost < neighbor.cost)
                 {
