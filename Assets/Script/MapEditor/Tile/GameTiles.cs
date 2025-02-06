@@ -29,25 +29,8 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
     [SerializeField] internal int gridX, gridY;
     [Space]
 
-    //public float _cost;
-    //{
-    //    get
-    //    {
-    //        if (IsEnd) return 0;
-    //        if (IsSlowing) return slowingCost;
-    //        if (IsDamaging) return damageCost;
-    //        if (IsBloced) return float.MaxValue;
-    //        return normalCost;
-    //    }
-    //    set
-    //    {
-    //        _cost = value;
-    //    }
-    //}
-
-
     [Header("Direction")]
-    [SerializeField] internal Vector2 flowDirection = Vector2.zero;
+    [SerializeField] internal Vector3 flowDirection = Vector3.zero;
     private LineRenderer lineRenderer; // Affichage du Flow Field
     [Space]
 
@@ -99,9 +82,9 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
         {
             IsBloced = true;
 
-            bool pathIsValid = GameManager.Instance.GetPathLeght().All(length => length > 2);
+            //bool pathIsValid = GameManager.Instance.GetPathLeght().All(length => length > 2);
 
-            if (pathIsValid)
+            if (true) //Changer ca pour assurer que au moins un chemin est disponible depuis le spawn jusqu'a l'arriver
             {
                 Debug.Log("Chemin trouvé");
 
@@ -109,9 +92,9 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
                 TowerSpawning.Instance.SpawnTower();
                 GameManager.Instance.SetPath();
 
-                // Paralléliser la mise à jour des chemins pour tous les ennemis
-                Task[] updateTasks = EnemyAI.enemyAIList.Select(enemi => enemi.SetPath()).ToArray();
-                await Task.WhenAll(updateTasks);
+                //// Paralléliser la mise à jour des chemins pour tous les ennemis
+                //Task[] updateTasks = EnemyAI.enemyAIList.Select(enemi => enemi.SetPath()).ToArray();
+                //await Task.WhenAll(updateTasks);
 
             }
             else
@@ -203,7 +186,7 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
     // Met à jour la direction et la largeur de la ligne
     public void UpdateLineRenderer(GameTiles targetNode)
     {
-        if (lineRenderer == null || flowDirection == Vector2.zero) return;
+        if (lineRenderer == null || flowDirection == Vector3.zero) return;
 
         // Position de départ (milieu de la tuile)
         Vector3 startPos = worldPosition + Vector3.up * 0.1f;
@@ -228,31 +211,13 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
 
     internal void SetCost()
     {
-        if (IsEnd)
-        {
-            cost = 0;
-        }
-        else if (IsSlowing)
-        {
-            cost = slowingCost;
-            //Debug.LogWarning($"{name}- est une case lent");
-        }
-        else if (IsDamaging)
-        {
-            cost = damageCost;
-            //Debug.LogWarning($"{name}- est une case qui fait mal");
-        }
-        else if (IsBloced)
+        if(IsBloced)
         {
             cost = float.MaxValue;
-            //Debug.LogWarning($"{name}- est une case qui est bloqué");
         }
         else
         {
-            cost = normalCost;
-            //Debug.LogWarning($"{name}- est une case normal");
+            cost = 10000;
         }
-
-        //Debug.LogWarning($"{name}- Cost défini: {cost}");
     }
 }

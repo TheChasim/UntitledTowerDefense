@@ -93,7 +93,7 @@ public class MapLoading : MonoBehaviour
                 {
                     spawnPoint.x = spawnPosition.x;
                     spawnPoint.y = spawnPosition.z;
-                    spawnTile.Add(currentGameTiles[y, x]);
+                    spawnTile.Add(currentGameTiles[x, y]);
                     currentGameTiles[x, y].TurnSpawn();
                 }
                 //end Tile

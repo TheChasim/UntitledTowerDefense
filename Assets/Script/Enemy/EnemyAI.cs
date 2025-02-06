@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
+using UnityEngine.EventSystems;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class EnemyAI : MonoBehaviour
     bool tileDamage = false;
 
     [SerializeField] float speed = 5f;
+
+    Vector3 moveDirection;
 
     private float _currentSpeed;
     float currentSpeed
@@ -44,39 +47,55 @@ public class EnemyAI : MonoBehaviour
         pathFinder = FindAnyObjectByType<NewPathFinder>().GetComponent<NewPathFinder>();
     }
 
-    private void Update()
+    private void Start()
     {
         SetCurrentTile();
+    }
+
+    private void Update()
+    {
+        
 
         TileEffect();
 
-        if (path.Count != 0)
+        //if (path.Count != 0)
+        //{
+        //    if (showDirection)
+        //    {
+        //        Debug.DrawLine(transform.position, path.Peek().transform.position, Color.blue);
+        //    }
+
+        //    Vector3 desPos = path.Peek().transform.position;
+
+        //    desPos.y += 0.25f;
+
+        //    transform.position = Vector3.MoveTowards(transform.position, desPos, currentSpeed * Time.deltaTime);
+
+
+        //    if (Vector3.Distance(transform.position, desPos) < 0.1f)
+        //    {
+        //        path.Pop();
+        //    }
+        //}
+        //else
+        //{
+        //    Destroy(gameObject);
+        //}
+
+        //transform.position = Vector3.MoveTowards(transform.position, currentTile.flowDirection, currentSpeed * Time.deltaTime);
+
+        // Déplacement basé sur la direction du Flow Field
+        moveDirection = new Vector3(currentTile.flowDirection.x, 0, currentTile.flowDirection.z);
+        transform.position += moveDirection * currentSpeed * Time.deltaTime;
+
+        // Vérifie si l'ennemi atteint le centre d'une nouvelle tuile
+        if (Vector3.Distance(transform.position, currentTile.worldPosition)+0.5f < 0.1f)
         {
-            if (showDirection)
-            {
-                Debug.DrawLine(transform.position, path.Peek().transform.position, Color.blue);
-            }
-
-            Vector3 desPos = path.Peek().transform.position;
-
-            desPos.y += 0.25f;
-
-            transform.position = Vector3.MoveTowards(transform.position, desPos, currentSpeed * Time.deltaTime);
-
-
-            if (Vector3.Distance(transform.position, desPos) < 0.1f)
-            {
-                path.Pop();
-            }
+            
         }
-        else
-        {
-            Destroy(gameObject);
-        }
-
-
         //set la rotation la meme que la cam
         transform.rotation = Camera.main.transform.rotation;
+        SetCurrentTile();
 
     }
 

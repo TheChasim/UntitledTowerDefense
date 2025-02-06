@@ -49,7 +49,10 @@ public class FlowFieldPathfinding : MonoBehaviour
         foreach (GameTiles tile in gameTile)
         {
             tile.SetCost();
-            tile.cost = 10000;
+            if(tile.cost != float.MaxValue)
+            {
+                tile.cost = 10000;
+            }
             if (tile.IsEnd)
             {
                 targetNode = tile;
@@ -73,7 +76,7 @@ public class FlowFieldPathfinding : MonoBehaviour
 
             foreach (GameTiles neighbor in GetNeighbors(current, gameTile))
             {
-
+                //neighbor.SetCost();
                 if (neighbor.cost == float.MaxValue) continue; // Ignorer obstacles
 
 
@@ -84,6 +87,10 @@ public class FlowFieldPathfinding : MonoBehaviour
                 { newCost = current.cost + 3; }
                 else if(current.IsSlowing)
                 { newCost = current.cost + 2; }
+                else if( current.IsBloced)
+                {
+                    newCost = float.MaxValue;
+                }
                 else
                 { newCost = current.cost + 1; }
 
@@ -148,7 +155,12 @@ public class FlowFieldPathfinding : MonoBehaviour
             {
                 // Utilisation de `Vector3` pour s'assurer que l'axe Y reste à 0 (pas de distorsion)
                 Vector3 flowDir = (bestNeighbor.worldPosition - tile.worldPosition).normalized;
+                Debug.Log($"{tile.name} meilleur chemin ver {flowDir}");
                 tile.flowDirection = new Vector3(flowDir.x, 0, flowDir.z); // Ignore Y
+            }
+            if(bestNeighbor == null)
+            {
+                Debug.Log($"{tile.name} n'a pas de meilleur chemin");
             }
             //Debug.Log($"{tile.name} cost : {tile.cost}");
         }
