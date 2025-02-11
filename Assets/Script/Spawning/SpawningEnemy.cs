@@ -9,11 +9,6 @@ public class SpawningEnemy : MonoBehaviour
     [SerializeField] List<GameObject> enemyAIPrefab = new List<GameObject>();
     public int currentEnemyAmount = 0;
 
-    void Start()
-    {
-        Debug.Log($" Nombre de SpawnTiles enregistrés : {GameManager.spawnTiles.Count}");
-    }
-
     // Update is called once per frame
     void Update()
     {

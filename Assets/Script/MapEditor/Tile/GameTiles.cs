@@ -31,6 +31,7 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
 
     [Header("Direction")]
     [SerializeField] internal Vector3 flowDirection = Vector3.zero;
+    [SerializeField] internal GameTiles nextTile;
     private LineRenderer lineRenderer; // Affichage du Flow Field
     [Space]
 
@@ -117,9 +118,9 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
                 nearbyTower.OnRevome();
                 GameManager.Instance.SetPath();
 
-                // Paralléliser la mise à jour des chemins pour tous les ennemis
-                Task[] updateTasks = EnemyAI.enemyAIList.Select(enemi => enemi.SetPath()).ToArray();
-                await Task.WhenAll(updateTasks);
+                //// Paralléliser la mise à jour des chemins pour tous les ennemis
+                //Task[] updateTasks = EnemyAI.enemyAIList.Select(enemi => enemi.SetPath()).ToArray();
+                //await Task.WhenAll(updateTasks);
             }
         }
 

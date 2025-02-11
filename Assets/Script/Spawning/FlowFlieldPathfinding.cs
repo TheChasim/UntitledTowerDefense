@@ -49,7 +49,7 @@ public class FlowFieldPathfinding : MonoBehaviour
         foreach (GameTiles tile in gameTile)
         {
             tile.SetCost();
-            if(tile.cost != float.MaxValue)
+            if (tile.cost != float.MaxValue)
             {
                 tile.cost = 10000;
             }
@@ -83,14 +83,12 @@ public class FlowFieldPathfinding : MonoBehaviour
                 float newCost;
 
                 //set le cost de la tuille 
-                if(current.IsDamaging)
+                if (current.IsDamaging)
                 { newCost = current.cost + 3; }
-                else if(current.IsSlowing)
+                else if (current.IsSlowing)
                 { newCost = current.cost + 2; }
-                else if( current.IsBloced)
-                {
-                    newCost = float.MaxValue;
-                }
+                else if (current.IsBloced)
+                { newCost = float.MaxValue; }
                 else
                 { newCost = current.cost + 1; }
 
@@ -99,6 +97,7 @@ public class FlowFieldPathfinding : MonoBehaviour
                 {
                     Debug.Log($"Update Cost: Tile [{neighbor.gridX}, {neighbor.gridY}] - Ancien Cost: {neighbor.cost} -> Nouveau Cost: {newCost}");
                     neighbor.cost = newCost;
+                    neighbor.nextTile = current;
                     nodesQueue.Enqueue(neighbor);
                 }
             }
@@ -158,7 +157,7 @@ public class FlowFieldPathfinding : MonoBehaviour
                 Debug.Log($"{tile.name} meilleur chemin ver {flowDir}");
                 tile.flowDirection = new Vector3(flowDir.x, 0, flowDir.z); // Ignore Y
             }
-            if(bestNeighbor == null)
+            if (bestNeighbor == null)
             {
                 Debug.Log($"{tile.name} n'a pas de meilleur chemin");
             }

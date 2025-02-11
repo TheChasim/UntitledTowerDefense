@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
 using UnityEngine.EventSystems;
+using TMPro;
+using Unity.Burst.CompilerServices;
+using System;
+using Unity.VisualScripting;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -22,7 +26,9 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField] float speed = 5f;
 
-    Vector3 moveDirection;
+    [SerializeField] Vector3 moveDirection;
+    [SerializeField] Vector3 targetPosition;
+    [SerializeField] GameTiles nextTile;
 
     private float _currentSpeed;
     float currentSpeed
@@ -44,19 +50,24 @@ public class EnemyAI : MonoBehaviour
         enemyAIList.Add(this);
 
         healt = GetComponent<Healt>();
-        pathFinder = FindAnyObjectByType<NewPathFinder>().GetComponent<NewPathFinder>();
+        //pathFinder = FindAnyObjectByType<NewPathFinder>().GetComponent<NewPathFinder>();
     }
 
     private void Start()
     {
         SetCurrentTile();
+        if (currentTile != null)
+        {
+            targetPosition = currentTile.worldPosition + Vector3.up * 0.5f;
+        }
     }
 
     private void Update()
     {
-        
+
 
         TileEffect();
+        SetCurrentTile();
 
         //if (path.Count != 0)
         //{
@@ -85,18 +96,40 @@ public class EnemyAI : MonoBehaviour
         //transform.position = Vector3.MoveTowards(transform.position, currentTile.flowDirection, currentSpeed * Time.deltaTime);
 
         // Déplacement basé sur la direction du Flow Field
-        moveDirection = new Vector3(currentTile.flowDirection.x, 0, currentTile.flowDirection.z);
-        transform.position += moveDirection * currentSpeed * Time.deltaTime;
 
-        // Vérifie si l'ennemi atteint le centre d'une nouvelle tuile
-        if (Vector3.Distance(transform.position, currentTile.worldPosition)+0.5f < 0.1f)
+        //moveDirection = new Vector3(currentTile.flowDirection.x, 0, currentTile.flowDirection.z);
+
+
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+
+        if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
         {
-            
+            nextTile = GetNextTile();
+
+            if (nextTile == null)
+            {
+                Debug.Log("destroy");
+                Destroy(gameObject);
+
+            }
+            else
+            {
+                targetPosition = currentTile.nextTile.transform.position + new Vector3(0, 0.25f, 0);
+            }
+
         }
+        //transform.position += moveDirection * currentSpeed * Time.deltaTime;
+
+
         //set la rotation la meme que la cam
         transform.rotation = Camera.main.transform.rotation;
-        SetCurrentTile();
+        Debug.DrawLine(transform.position, targetPosition, Color.blue);
 
+    }
+
+    private GameTiles GetNextTile()
+    {
+        return currentTile.nextTile;
     }
 
     private void SetCurrentTile()
@@ -107,7 +140,15 @@ public class EnemyAI : MonoBehaviour
 
             if (hit.collider.GetComponent<GameTiles>())
             {
+
                 currentTile = hit.collider.GetComponent<GameTiles>();
+                moveDirection = new Vector3(currentTile.flowDirection.x, 0, currentTile.flowDirection.z);
+                //if (targetPosition == Vector3.zero)
+                //{
+                //    targetPosition = currentTile.transform.position;
+                //}
+                //targetPosition = currentTile.nextTile.transform.position;
+
             }
         }
     }
@@ -122,70 +163,70 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private float lastPathUpdateTime = 0f;
-    private float minPathUpdateInterval = 1f; // Minimum 1 secondes entre chaque recalcul
+    //private float lastPathUpdateTime = 0f;
+    //private float minPathUpdateInterval = 1f; // Minimum 1 secondes entre chaque recalcul
 
-    async internal Task SetPath()
-    {
-        // Vérifier si le chemin est bloqué
-        if (PathIsBlock() && Time.time - lastPathUpdateTime > minPathUpdateInterval)
-        {
-            lastPathUpdateTime = Time.time; // Mise à jour du dernier recalcul
+    //async internal Task SetPath()
+    //{
+    //    // Vérifier si le chemin est bloqué
+    //    if (PathIsBlock() && Time.time - lastPathUpdateTime > minPathUpdateInterval)
+    //    {
+    //        lastPathUpdateTime = Time.time; // Mise à jour du dernier recalcul
 
-            Debug.Log($"Recalcul du chemin pour {gameObject.name}");
+    //        Debug.Log($"Recalcul du chemin pour {gameObject.name}");
 
-            // Sauvegarde temporaire
-            List<GameTiles> oldPath = new List<GameTiles>(pathList);
+    //        // Sauvegarde temporaire
+    //        List<GameTiles> oldPath = new List<GameTiles>(pathList);
 
-            // Attendre le recalcul du chemin
-            List<GameTiles> newPath = await pathFinder.CalculatePathsMultithreaded(currentTile);
+    //        // Attendre le recalcul du chemin
+    //        List<GameTiles> newPath = await pathFinder.CalculatePathsMultithreaded(currentTile);
 
-            if (newPath != null && newPath.Count > 0)
-            {
-                path.Clear();
-                newPath.Reverse();
-                pathList = newPath;
-                foreach (var tile in newPath)
-                {
-                    path.Push(tile);
-                }
-                Debug.Log($"Nouveau chemin assigné à {gameObject.name}");
-            }
-            else
-            {
-                Debug.LogWarning($"Impossible de recalculer le chemin, réutilisation de l'ancien chemin.");
-                pathList = oldPath;
-            }
-        }
-    }
+    //        if (newPath != null && newPath.Count > 0)
+    //        {
+    //            path.Clear();
+    //            newPath.Reverse();
+    //            pathList = newPath;
+    //            foreach (var tile in newPath)
+    //            {
+    //                path.Push(tile);
+    //            }
+    //            Debug.Log($"Nouveau chemin assigné à {gameObject.name}");
+    //        }
+    //        else
+    //        {
+    //            Debug.LogWarning($"Impossible de recalculer le chemin, réutilisation de l'ancien chemin.");
+    //            pathList = oldPath;
+    //        }
+    //    }
+    //}
 
-    private bool PathIsBlock()
-    {
-        foreach (var tile in pathList)
-        {
-            if (tile.IsBloced)
-            {
-                Debug.Log("path is block");
-                return true;
-            }
-        }
+    //private bool PathIsBlock()
+    //{
+    //    foreach (var tile in pathList)
+    //    {
+    //        if (tile.IsBloced)
+    //        {
+    //            Debug.Log("path is block");
+    //            return true;
+    //        }
+    //    }
 
-        return false;
-    }
+    //    return false;
+    //}
 
-    internal void SetPath(GameTiles spawnTile)
-    {
-        path.Clear();
-        pathList.Clear();
+    //internal void SetPath(GameTiles spawnTile)
+    //{
+    //    path.Clear();
+    //    pathList.Clear();
 
-        pathList = FindAnyObjectByType<NewPathFinder>().GetComponent<NewPathFinder>().FindPathAStar(spawnTile);
-        pathList.Reverse();
+    //    pathList = FindAnyObjectByType<NewPathFinder>().GetComponent<NewPathFinder>().FindPathAStar(spawnTile);
+    //    pathList.Reverse();
 
-        foreach (var tile in pathList)
-        {
-            path.Push(tile);
-        }
-    }
+    //    foreach (var tile in pathList)
+    //    {
+    //        path.Push(tile);
+    //    }
+    //}
 
     private IEnumerator OntileDamage(float damageAmout)
     {
