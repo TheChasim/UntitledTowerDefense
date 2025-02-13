@@ -10,27 +10,23 @@ using Unity.VisualScripting;
 
 public class EnemyAI : MonoBehaviour
 {
+    //liste static pour l'ensseble des enemie
     static internal HashSet<EnemyAI> enemyAIList = new HashSet<EnemyAI>();
-    private Stack<GameTiles> path = new Stack<GameTiles>();
-    public List<GameTiles> pathList = new List<GameTiles>();
-    public List<GameTiles> tempPathList = new List<GameTiles>();
-    internal GameTiles spawnTile;
-    public GameTiles currentTile;
-    NewPathFinder pathFinder;
 
-    public int closeIndex;
+    [Header("Tile Info")]
+    [SerializeField] GameTiles currentTile;
+    [SerializeField] GameTiles nextTile;
+    [SerializeField] Vector3 targetPosition;
     public bool showDirection = true;
+    [Space]
 
+    //Healt Info
     Healt healt;
     bool tileDamage = false;
 
+    //Speed info
+    [Header("Speed")]
     [SerializeField] float speed = 5f;
-
-    [SerializeField] Vector3 moveDirection;
-    [SerializeField] Vector3 targetPosition;
-    [SerializeField] GameTiles nextTile;
-
-    private float _currentSpeed;
     float currentSpeed
     {
         get
@@ -47,186 +43,85 @@ public class EnemyAI : MonoBehaviour
 
     private void Awake()
     {
+        //ajoute l'enemie a une liste globale
         enemyAIList.Add(this);
-
+        //get le script pour la vie de l'enemie
         healt = GetComponent<Healt>();
-        //pathFinder = FindAnyObjectByType<NewPathFinder>().GetComponent<NewPathFinder>();
     }
 
     private void Start()
     {
+        //get le tile actuel
         SetCurrentTile();
+
+        //set la premiere target au spawn
         if (currentTile != null)
         {
-            targetPosition = currentTile.worldPosition + Vector3.up * 0.5f;
+            targetPosition = currentTile.worldPosition + Vector3.up * 0.25f;
         }
     }
 
     private void Update()
     {
-
-
-        TileEffect();
+        //get le tile actuel
         SetCurrentTile();
+        //aplique l'effet de la tuille actuel
+        TileEffect();
 
-        //if (path.Count != 0)
-        //{
-        //    if (showDirection)
-        //    {
-        //        Debug.DrawLine(transform.position, path.Peek().transform.position, Color.blue);
-        //    }
+        //deplace l'enemie a la prochaine tuille
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, currentSpeed * Time.deltaTime);
 
-        //    Vector3 desPos = path.Peek().transform.position;
-
-        //    desPos.y += 0.25f;
-
-        //    transform.position = Vector3.MoveTowards(transform.position, desPos, currentSpeed * Time.deltaTime);
-
-
-        //    if (Vector3.Distance(transform.position, desPos) < 0.1f)
-        //    {
-        //        path.Pop();
-        //    }
-        //}
-        //else
-        //{
-        //    Destroy(gameObject);
-        //}
-
-        //transform.position = Vector3.MoveTowards(transform.position, currentTile.flowDirection, currentSpeed * Time.deltaTime);
-
-        // Déplacement basé sur la direction du Flow Field
-
-        //moveDirection = new Vector3(currentTile.flowDirection.x, 0, currentTile.flowDirection.z);
-
-
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
-
+        //si l'enemie est rendue au centre de la prochaine tuille
         if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
         {
-            nextTile = GetNextTile();
+            //get la nouvelle tuile
+            nextTile = currentTile.nextTile;
 
+            //si il n'y a plus de nouvel tuille l'enemie est rendu a la fin
             if (nextTile == null)
             {
                 Debug.Log("destroy");
-                Destroy(gameObject);
+                IsDead();
 
             }
+            //set la nouvelle target a la prochaine tuile
             else
             {
                 targetPosition = currentTile.nextTile.transform.position + new Vector3(0, 0.25f, 0);
             }
-
         }
-        //transform.position += moveDirection * currentSpeed * Time.deltaTime;
 
-
-        //set la rotation la meme que la cam
+        //set l'enemie de la meme orrientation de la cam
         transform.rotation = Camera.main.transform.rotation;
+        //affiche une ligne pour monttrer la prochaine tuille de l'ennemie
         Debug.DrawLine(transform.position, targetPosition, Color.blue);
-
-    }
-
-    private GameTiles GetNextTile()
-    {
-        return currentTile.nextTile;
     }
 
     private void SetCurrentTile()
     {
+        //si le ray touche une tuille
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 2f))
         {
+            //affiche le ray
             Debug.DrawRay(transform.position, Vector3.down * hit.distance, Color.red);
 
+            //si le ray touche une tuile
             if (hit.collider.GetComponent<GameTiles>())
             {
-
+                //set la tuille du ray a currentTile
                 currentTile = hit.collider.GetComponent<GameTiles>();
-                moveDirection = new Vector3(currentTile.flowDirection.x, 0, currentTile.flowDirection.z);
-                //if (targetPosition == Vector3.zero)
-                //{
-                //    targetPosition = currentTile.transform.position;
-                //}
-                //targetPosition = currentTile.nextTile.transform.position;
-
             }
         }
     }
 
     private void TileEffect()
     {
-        //currentTile = path.Peek();
-
+        //si la tuille a pour effet de faire du domage start un Coroutine pour apliquer les dega
         if (currentTile.IsDamaging && !tileDamage)
         {
             StartCoroutine(OntileDamage(currentTile.DamageAmout));
         }
     }
-
-    //private float lastPathUpdateTime = 0f;
-    //private float minPathUpdateInterval = 1f; // Minimum 1 secondes entre chaque recalcul
-
-    //async internal Task SetPath()
-    //{
-    //    // Vérifier si le chemin est bloqué
-    //    if (PathIsBlock() && Time.time - lastPathUpdateTime > minPathUpdateInterval)
-    //    {
-    //        lastPathUpdateTime = Time.time; // Mise à jour du dernier recalcul
-
-    //        Debug.Log($"Recalcul du chemin pour {gameObject.name}");
-
-    //        // Sauvegarde temporaire
-    //        List<GameTiles> oldPath = new List<GameTiles>(pathList);
-
-    //        // Attendre le recalcul du chemin
-    //        List<GameTiles> newPath = await pathFinder.CalculatePathsMultithreaded(currentTile);
-
-    //        if (newPath != null && newPath.Count > 0)
-    //        {
-    //            path.Clear();
-    //            newPath.Reverse();
-    //            pathList = newPath;
-    //            foreach (var tile in newPath)
-    //            {
-    //                path.Push(tile);
-    //            }
-    //            Debug.Log($"Nouveau chemin assigné à {gameObject.name}");
-    //        }
-    //        else
-    //        {
-    //            Debug.LogWarning($"Impossible de recalculer le chemin, réutilisation de l'ancien chemin.");
-    //            pathList = oldPath;
-    //        }
-    //    }
-    //}
-
-    //private bool PathIsBlock()
-    //{
-    //    foreach (var tile in pathList)
-    //    {
-    //        if (tile.IsBloced)
-    //        {
-    //            Debug.Log("path is block");
-    //            return true;
-    //        }
-    //    }
-
-    //    return false;
-    //}
-
-    //internal void SetPath(GameTiles spawnTile)
-    //{
-    //    path.Clear();
-    //    pathList.Clear();
-
-    //    pathList = FindAnyObjectByType<NewPathFinder>().GetComponent<NewPathFinder>().FindPathAStar(spawnTile);
-    //    pathList.Reverse();
-
-    //    foreach (var tile in pathList)
-    //    {
-    //        path.Push(tile);
-    //    }
-    //}
 
     private IEnumerator OntileDamage(float damageAmout)
     {

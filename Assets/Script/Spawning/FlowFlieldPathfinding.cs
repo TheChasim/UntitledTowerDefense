@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class FlowFieldPathfinding : MonoBehaviour
 {
-    [Header("Show Direction")]
-    [SerializeField] bool ShowArrow;
-    public GameObject lineRendererPrefab;
-
     [SerializeField] float cellSize = 1f;
     private int col;
     private int row;
@@ -21,11 +17,6 @@ public class FlowFieldPathfinding : MonoBehaviour
         GenerateIntegrationField(gameTile);
         GenerateFlowField(gameTile);
 
-        if (ShowArrow)
-        {
-            PlaceLineRenderers(gameTile);
-            UpdateAllLineRenderers(gameTile);
-        }
     }
 
     void GenerateGrid(GameTiles[,] gameTile)
@@ -66,7 +57,6 @@ public class FlowFieldPathfinding : MonoBehaviour
         }
 
         targetNode.cost = 0f;
-        Debug.Log($"Target Node cost : {targetNode.cost}");
 
         nodesQueue.Enqueue(targetNode);
 
@@ -91,11 +81,9 @@ public class FlowFieldPathfinding : MonoBehaviour
                 { newCost = float.MaxValue; }
                 else
                 { newCost = current.cost + 1; }
-
-                Debug.Log($" Vérification avant IF: Tile [{neighbor.gridX}, {neighbor.gridY}] - Cost actuel: {neighbor.cost}, Nouveau cost: {newCost}");
+          
                 if (newCost < neighbor.cost)
-                {
-                    Debug.Log($"Update Cost: Tile [{neighbor.gridX}, {neighbor.gridY}] - Ancien Cost: {neighbor.cost} -> Nouveau Cost: {newCost}");
+                {         
                     neighbor.cost = newCost;
                     neighbor.nextTile = current;
                     nodesQueue.Enqueue(neighbor);
@@ -149,53 +137,27 @@ public class FlowFieldPathfinding : MonoBehaviour
                     bestNeighbor = neighbor;
                 }
             }
-
-            if (bestNeighbor != null)
-            {
-                // Utilisation de `Vector3` pour s'assurer que l'axe Y reste à 0 (pas de distorsion)
-                Vector3 flowDir = (bestNeighbor.worldPosition - tile.worldPosition).normalized;
-                Debug.Log($"{tile.name} meilleur chemin ver {flowDir}");
-                tile.flowDirection = new Vector3(flowDir.x, 0, flowDir.z); // Ignore Y
-            }
-            if (bestNeighbor == null)
-            {
-                Debug.Log($"{tile.name} n'a pas de meilleur chemin");
-            }
-            //Debug.Log($"{tile.name} cost : {tile.cost}");
         }
     }
 
-    public void PlaceLineRenderers(GameTiles[,] gameTile)
+    // === OPTIMISATION : Recalcule seulement une partie du Flow Field ===
+    public void UpdateFlowFieldAround(Vector2Int position, GameTiles[,] gameTile, int radius = 3)
     {
-        foreach (GameTiles tile in gameTile)
-        {
-            tile.SetLineRenderer(lineRendererPrefab, transform);
-        }
-    }
+        int startX = Mathf.Max(0, position.x - radius);
+        int startY = Mathf.Max(0, position.y - radius);
+        int endX = Mathf.Min(col - 1, position.x + radius);
+        int endY = Mathf.Min(row - 1, position.y + radius);
 
-    public void UpdateAllLineRenderers(GameTiles[,] gameTile)
-    {
-        GameTiles targetNode = null;
-
-        foreach (GameTiles tile in gameTile)
+        for (int x = startX; x <= endX; x++)
         {
-            if (tile.IsEnd)
+            for (int y = startY; y <= endY; y++)
             {
-                targetNode = tile;
-                break;
+                gameTile[x, y].SetCost();
             }
         }
 
-        if (targetNode == null)
-        {
-            Debug.LogError("Pas de case cible trouvée !");
-            return;
-        }
-
-        foreach (GameTiles tile in gameTile)
-        {
-            tile.UpdateLineRenderer(targetNode);
-        }
+        GenerateIntegrationField(gameTile);
+        GenerateFlowField(gameTile);
     }
 }
 

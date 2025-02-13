@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public class GameTiles : MonoBehaviour, IPointerEnterHandler,
     IPointerExitHandler, IPointerClickHandler
@@ -30,7 +31,7 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
     [Space]
 
     [Header("Direction")]
-    [SerializeField] internal Vector3 flowDirection = Vector3.zero;
+    //[SerializeField] internal Vector3 flowDirection = Vector3.zero;
     [SerializeField] internal GameTiles nextTile;
     private LineRenderer lineRenderer; // Affichage du Flow Field
     [Space]
@@ -91,7 +92,12 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
 
                 // Placer la tour
                 TowerSpawning.Instance.SpawnTower();
-                GameManager.Instance.SetPath();
+                //GameManager.Instance.SetPath();
+                Vector2Int position = new Vector2Int((int)GameManager.Instance.TargetTile.transform.position.x,
+                                                     (int)GameManager.Instance.TargetTile.transform.position.z);
+
+                GameManager.Instance.UpdateFlowFieldAround(position);
+                //GameManager.Instance.SetPath();
 
                 //// Paralléliser la mise à jour des chemins pour tous les ennemis
                 //Task[] updateTasks = EnemyAI.enemyAIList.Select(enemi => enemi.SetPath()).ToArray();
@@ -184,31 +190,31 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
         }
     }
 
-    // Met à jour la direction et la largeur de la ligne
-    public void UpdateLineRenderer(GameTiles targetNode)
-    {
-        if (lineRenderer == null || flowDirection == Vector3.zero) return;
+    //// Met à jour la direction et la largeur de la ligne
+    //public void UpdateLineRenderer(GameTiles targetNode)
+    //{
+    //    if (lineRenderer == null || flowDirection == Vector3.zero) return;
 
-        // Position de départ (milieu de la tuile)
-        Vector3 startPos = worldPosition + Vector3.up * 0.1f;
-        // Position de fin selon la direction
-        Vector3 endPos = startPos + new Vector3(flowDirection.x, 0, flowDirection.y) * 0.5f;
+    //    // Position de départ (milieu de la tuile)
+    //    Vector3 startPos = worldPosition + Vector3.up * 0.1f;
+    //    // Position de fin selon la direction
+    //    Vector3 endPos = startPos + new Vector3(flowDirection.x, 0, flowDirection.y) * 0.5f;
 
-        lineRenderer.SetPosition(0, startPos);
-        lineRenderer.SetPosition(1, endPos);
+    //    lineRenderer.SetPosition(0, startPos);
+    //    lineRenderer.SetPosition(1, endPos);
 
-        // Calcul de l'épaisseur de la ligne en fonction de la distance à la cible
-        float distanceToTarget = Vector3.Distance(worldPosition, targetNode.worldPosition);
-        float thickness = Mathf.Clamp(0.05f + (1 - (distanceToTarget / 10f)) * 0.2f, 0.05f, 0.2f); // Max épaisseur = 0.2
+    //    // Calcul de l'épaisseur de la ligne en fonction de la distance à la cible
+    //    float distanceToTarget = Vector3.Distance(worldPosition, targetNode.worldPosition);
+    //    float thickness = Mathf.Clamp(0.05f + (1 - (distanceToTarget / 10f)) * 0.2f, 0.05f, 0.2f); // Max épaisseur = 0.2
 
-        lineRenderer.startWidth = thickness;
-        lineRenderer.endWidth = thickness;
+    //    lineRenderer.startWidth = thickness;
+    //    lineRenderer.endWidth = thickness;
 
-        // Changer la couleur en fonction de la proximité
-        float intensity = Mathf.Clamp01(1 - (distanceToTarget / 10f));
-        lineRenderer.startColor = new Color(1, intensity * 0.5f, intensity * 0.5f); // Rouge plus intense proche de la cible
-        lineRenderer.endColor = lineRenderer.startColor;
-    }
+    //    // Changer la couleur en fonction de la proximité
+    //    float intensity = Mathf.Clamp01(1 - (distanceToTarget / 10f));
+    //    lineRenderer.startColor = new Color(1, intensity * 0.5f, intensity * 0.5f); // Rouge plus intense proche de la cible
+    //    lineRenderer.endColor = lineRenderer.startColor;
+    //}
 
     internal void SetCost()
     {
