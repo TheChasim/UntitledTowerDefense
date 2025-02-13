@@ -267,9 +267,9 @@ public class NewPathFinder : MonoBehaviour
                 }
             }
         }
-        SetPathColor();
+        //SetPathColor();
         return new List<GameTiles>(); // Aucun chemin trouvé
-    }     
+    }
 
     private void SetPathColor()
     {
@@ -288,7 +288,7 @@ public class NewPathFinder : MonoBehaviour
         }
     }
 
-    // Heuristique basée sur la distance de Manhattan
+    //Heuristique basée sur la distance de Manhattan
     private float HeuristicCostEstimate(GameTiles from, GameTiles to)
     {
         return Mathf.Abs(from.X - to.X) + Mathf.Abs(from.Y - to.Y);
@@ -342,6 +342,8 @@ public class NewPathFinder : MonoBehaviour
 
     internal List<int> GetLength()
     {
+        FindPathAStar();
+
         List<int> lenght = new List<int>();
         //FindTempPathAStar();
 

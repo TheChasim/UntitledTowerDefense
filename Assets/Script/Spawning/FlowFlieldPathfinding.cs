@@ -5,6 +5,7 @@ using UnityEngine;
 public class FlowFieldPathfinding : MonoBehaviour
 {
     [SerializeField] float cellSize = 1f;
+    [SerializeField] int changingRadius = 3;
     private int col;
     private int row;
 
@@ -141,12 +142,12 @@ public class FlowFieldPathfinding : MonoBehaviour
     }
 
     // === OPTIMISATION : Recalcule seulement une partie du Flow Field ===
-    public void UpdateFlowFieldAround(Vector2Int position, GameTiles[,] gameTile, int radius = 3)
+    public void UpdateFlowFieldAround(Vector2Int position, GameTiles[,] gameTile)
     {
-        int startX = Mathf.Max(0, position.x - radius);
-        int startY = Mathf.Max(0, position.y - radius);
-        int endX = Mathf.Min(col - 1, position.x + radius);
-        int endY = Mathf.Min(row - 1, position.y + radius);
+        int startX = Mathf.Max(0, position.x - changingRadius);
+        int startY = Mathf.Max(0, position.y - changingRadius);
+        int endX = Mathf.Min(col - 1, position.x + changingRadius);
+        int endY = Mathf.Min(row - 1, position.y + changingRadius);
 
         for (int x = startX; x <= endX; x++)
         {

@@ -94,8 +94,14 @@ public class GameManager : MonoBehaviour
     public List<int> GetPathLeght()
     {
         //return pathFinder.SetTempPath();
-        SetPath();
+        SetAStarPath();
         return newPathFinder.GetLength();
+    }
+
+    private void SetAStarPath()
+    {
+        newPathFinder.SetValue(currentGameTiles, spawnTiles, endTile, col, row);
+        newPathFinder.FindPathAStar();
     }
 
     internal void UpdateFlowFieldAround(Vector2Int position)
