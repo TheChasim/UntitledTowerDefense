@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -82,9 +83,8 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
     {
         if (!IsBloced && !GameManager.Instance.deleteTower)
         {
-            IsBloced = true;
 
-            if (true) //Changer ca pour assurer que au moins un chemin est disponible depuis le spawn jusqu'a l'arriver
+            if (IsPathAvailable(GameManager.Instance.currentGameTiles))
             {
                 Debug.Log("Chemin trouvé");
 
@@ -116,7 +116,45 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
                 GameManager.Instance.SetPath();
             }
         }
+    }
 
+    public bool IsPathAvailable(GameTiles[,] gameTile)
+    {
+        // Trouver la tuile de départ (Spawn)
+        GameTiles startTile = null;
+        GameTiles endTile = null;
+
+        foreach (GameTiles tile in gameTile)
+        {
+            if (tile.IsSpawn)
+                startTile = tile;
+            if (tile.IsEnd)
+                endTile = tile;
+        }
+
+        if (startTile == null || endTile == null)
+        {
+            Debug.LogError("Aucune tuile de départ ou de fin définie !");
+            return false;
+        }
+
+        // Parcourir le Flow Field pour voir si on peut atteindre l'arrivée
+        GameTiles currentTile = startTile;
+        HashSet<GameTiles> visited = new HashSet<GameTiles>(); // Évite les boucles infinies
+
+        while (currentTile != null && !visited.Contains(currentTile))
+        {
+            visited.Add(currentTile);
+
+            if (currentTile == endTile)
+            {
+                return true; // Un chemin existe
+            }
+
+            currentTile = currentTile.nextTile; // Passer à la tuile suivante
+        }
+
+        return false; // Aucune route vers l'arrivée
     }
 
     internal void TurnSpawn()
@@ -165,7 +203,7 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
 
     internal void SetCost()
     {
-        if(IsBloced)
+        if (IsBloced)
         {
             cost = float.MaxValue;
         }
