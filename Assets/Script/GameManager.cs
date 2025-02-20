@@ -1,11 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
-using static UnityEngine.GraphicsBuffer;
 
-[RequireComponent(typeof(PathFinder))]
+[RequireComponent(typeof(FlowFieldPathfinding))]
 [RequireComponent(typeof(SpawningEnemy))]
 public class GameManager : MonoBehaviour
 {
@@ -22,8 +18,6 @@ public class GameManager : MonoBehaviour
 
     //script ref
     SpawningEnemy spawningEnemy;
-    PathFinder pathFinder;
-    NewPathFinder newPathFinder;
     FlowFieldPathfinding flowFlieldPathfinding;
 
     //singletone
@@ -49,8 +43,6 @@ public class GameManager : MonoBehaviour
     {
         //get les script
         spawningEnemy = GetComponent<SpawningEnemy>();
-        pathFinder = GetComponent<PathFinder>();
-        newPathFinder = GetComponent<NewPathFinder>();
         flowFlieldPathfinding = GetComponent<FlowFieldPathfinding>();
         MapLoading mapLoading = GetComponentInChildren<MapLoading>();
 
@@ -61,8 +53,6 @@ public class GameManager : MonoBehaviour
         spawnTiles = MapLoading.spawnTile;
         endTile = MapLoading.endTile;
 
-        //set les valeur pour le path
-        //plus tard mettre lorsque le joueur commence partie
         SetPath();
 
     }
@@ -77,31 +67,7 @@ public class GameManager : MonoBehaviour
 
     public void SetPath()
     {
-        //pathFinder.SetValue(currentGameTiles, spawnTiles, endTile, col, row);
-        //pathFinder.SetPath();
-
-        //newPathFinder.SetValue(currentGameTiles, spawnTiles, endTile, col, row);
-        //newPathFinder.FindPathAStar();
-
         flowFlieldPathfinding.SetFlowField(currentGameTiles);
-    }
-
-    public List<GameTiles> EnemySetPath(GameTiles pos, GameTiles end)
-    {
-        return pathFinder.EnemySetPath(pos, end);
-    }
-
-    public List<int> GetPathLeght()
-    {
-        //return pathFinder.SetTempPath();
-        SetAStarPath();
-        return newPathFinder.GetLength();
-    }
-
-    private void SetAStarPath()
-    {
-        newPathFinder.SetValue(currentGameTiles, spawnTiles, endTile, col, row);
-        newPathFinder.FindPathAStar();
     }
 
     internal void UpdateFlowFieldAround(Vector2Int position)
