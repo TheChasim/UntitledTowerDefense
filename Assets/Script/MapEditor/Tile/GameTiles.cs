@@ -79,59 +79,91 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
         SelectedRenderer.enabled = false;
     }
 
-    async public void OnPointerClick(PointerEventData eventData)
+    public void OnPointerClick(PointerEventData eventData)
     {
-        if (!IsBloced && !GameManager.Instance.deleteTower)
-        {
+        //optien les info de la tuille actuel
+        GameTiles tempTile;
+        Vector2Int position = new Vector2Int((int)GameManager.Instance.TargetTile.transform.position.x,
+                                             (int)GameManager.Instance.TargetTile.transform.position.z);
 
+        //si la tuille n'est pas deja utiliser et n'est pas en supression
+        if (CanPlace() && !GameManager.Instance.deleteTower)
+        {
+            //prend le nextTile et le met en temp au cas on doit lui remmetre
+            tempTile = nextTile;
+            //rend la tuille bloquer et en suprime le nextTile
+            IsBloced = true;
+            nextTile = null;
+            
+            //uptade le flowField avec la nouvelle tuille bloquer
+            GameManager.Instance.UpdateFlowFieldAround(position);
+
+            //si tout les chemin son encore possible continuer
             if (IsPathAvailable(GameManager.Instance.currentGameTiles))
             {
                 Debug.Log("Chemin trouvé");
-
                 // Placer la tour
                 TowerSpawning.Instance.SpawnTower();
-                Vector2Int position = new Vector2Int((int)GameManager.Instance.TargetTile.transform.position.x,
-                                                     (int)GameManager.Instance.TargetTile.transform.position.z);
-
-                GameManager.Instance.UpdateFlowFieldAround(position);
             }
+            //si tout les chemins ne sont pas possible
             else
             {
                 Debug.LogWarning("Chemin impossible");
                 IsBloced = false; // Annuler le blocage
+                nextTile = tempTile; // remettre le nextTile
+                GameManager.Instance.UpdateFlowFieldAround(position); //update le flowfield
             }
         }
+        //si la tuille est bloquer et en mode supression
         else if (IsBloced && GameManager.Instance.deleteTower)
         {
-            // Trouver la tour proche et la supprimer
+            // Trouver la tour la plus proche sans depasser une tuile de distance et la supprimer
             var nearbyTower = Tower.allTourel.FirstOrDefault(tower =>
                 Vector3.Distance(this.transform.position, tower.transform.position) < 1);
 
+            //si il y a une toure suprimer
             if (nearbyTower != null)
             {
                 IsBloced = false;
 
                 // Supprimer la tour
                 nearbyTower.OnRevome();
-                GameManager.Instance.SetPath();
+                //update le flowField
+                GameManager.Instance.UpdateFlowFieldAround(position);
             }
         }
+    }
+
+    private bool CanPlace()
+    {
+        //si la tuille a une de ces variable true 
+        //cette tuille est imposible a mettre une tour
+        if( IsBloced || IsEnd || IsSpawn)
+        {
+            return false;
+        }
+        else
+        { return true; }
     }
 
     public bool IsPathAvailable(GameTiles[,] gameTile)
     {
         // Trouver la tuile de départ (Spawn)
-        GameTiles startTile = null;
+        List<GameTiles> startTile = new List<GameTiles>();
         GameTiles endTile = null;
+        int numOfPathFind = 0;
 
+        //passe atraver toute les tuile pour trouver la tuille de fin
+        //et les tuille de spawn
         foreach (GameTiles tile in gameTile)
         {
             if (tile.IsSpawn)
-                startTile = tile;
+            { startTile.Add(tile); }
             if (tile.IsEnd)
-                endTile = tile;
+            { endTile = tile; }
         }
 
+        //si aucun spawn ou fin trouver envoye une erreure
         if (startTile == null || endTile == null)
         {
             Debug.LogError("Aucune tuile de départ ou de fin définie !");
@@ -139,22 +171,41 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
         }
 
         // Parcourir le Flow Field pour voir si on peut atteindre l'arrivée
-        GameTiles currentTile = startTile;
-        HashSet<GameTiles> visited = new HashSet<GameTiles>(); // Évite les boucles infinies
-
-        while (currentTile != null && !visited.Contains(currentTile))
+        foreach (GameTiles start in startTile)
         {
-            visited.Add(currentTile);
+            GameTiles currentTile = start; // premiere tuile a cherher
+            HashSet<GameTiles> visited = new HashSet<GameTiles>(); // Évite les boucles infinies
 
-            if (currentTile == endTile)
+            //parcour toute les tuile jusqua ce que la tuille soit null ou qu'elle est deja parcourue 
+            while (currentTile != null && !visited.Contains(currentTile))
             {
-                return true; // Un chemin existe
-            }
+                //ajoute cette tuile au set de tuille visiter
+                visited.Add(currentTile);
 
-            currentTile = currentTile.nextTile; // Passer à la tuile suivante
+                //si la tuille actuel et la tuille de fin finir
+                if (currentTile == endTile)
+                {
+                    Debug.Log("rendu a la fin");
+                    numOfPathFind++; //ajoute le nomdre de chemin trouver
+                    break; //met fin a la recherche
+                }
+
+                //passe a la prochaine tuille
+                currentTile = currentTile.nextTile; // Passer à la tuile suivante
+            }
         }
 
-        return false; // Aucune route vers l'arrivée
+        Debug.Log($"Nombre de chemin trouver : {numOfPathFind} sur {startTile.Count} spawn");
+
+        //si a trouver le meme nombre de chemin possible au nombre de spawn c'est bon les chemin son valide
+        if (numOfPathFind == startTile.Count)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     internal void TurnSpawn()
