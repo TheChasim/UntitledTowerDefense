@@ -117,7 +117,19 @@ MonoBehaviour:
     m_ActionId: eaa68b24-0be9-4252-bf8c-a3dd97780bf6
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1339422029018770938}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: OnZoom
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 48ff4b28-52bc-423a-9d15-5a9823757306
     m_ActionName: Player/Zoom[/Mouse/scroll]
   - m_PersistentCalls:
@@ -177,6 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5770a485d0d99da44813c40f2f3cee5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 6111679545860158431}
 --- !u!1 &2152325386349502602
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,6 +199,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2914852638362815246}
+  - component: {fileID: 6111679545860158431}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -208,6 +222,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2118651991942377238}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6111679545860158431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2152325386349502602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc26e25449b9abd41a278eac7e9f8d2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoomSensitivity: 0.01
+  minZoom: 1
+  maxZoom: 10
 --- !u!1 &2364715637739099082
 GameObject:
   m_ObjectHideFlags: 0
