@@ -102,15 +102,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e98d79f5aeec44f8fecaf3e4b46b56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathList: []
-  tempPathList: []
   currentTile: {fileID: 0}
-  closeIndex: 0
+  nextTile: {fileID: 0}
+  targetPosition: {x: 0, y: 0, z: 0}
   showDirection: 1
   speed: 1
-  moveDirection: {x: 0, y: 0, z: 0}
-  targetPosition: {x: 0, y: 0, z: 0}
-  nextTile: {fileID: 0}
 --- !u!114 &2105772637410649222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,6 +185,8 @@ MonoBehaviour:
   isAHorde: 1
   sprite:
   - {fileID: 21300000, guid: 73be7db03102e254dab4432c87e37e53, type: 3}
+  deadParticul:
+  - {fileID: 3466239434954106460, guid: a690e58a499289e4dbff530fa70a9238, type: 3}
 --- !u!1001 &1349393136255061851
 PrefabInstance:
   m_ObjectHideFlags: 0

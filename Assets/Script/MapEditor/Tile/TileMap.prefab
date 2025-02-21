@@ -125,7 +125,7 @@ Transform:
   m_GameObject: {fileID: 886432760103154909}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.00066636596, y: -0.022807866, z: 0.05}
+  m_LocalPosition: {x: 0.05, y: 0.05, z: 0.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -588,6 +588,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16b032fad8b24974ab5b4db6a45ee849, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalCost: 1
+  damageCost: 3
+  slowingCost: 1.5
+  cost: 0
+  DamageAmout: 0.5
+  SlowingAmout: 2
+  worldPosition: {x: 0, y: 0, z: 0}
+  gridX: 0
+  gridY: 0
+  nextTile: {fileID: 0}
   spriteRenderer: {fileID: 0}
   SelectedRenderer: {fileID: 8292357776747863034}
   spriteSpawn: {fileID: 8634670325943477491}
@@ -595,9 +605,6 @@ MonoBehaviour:
   SlowingRenderer: {fileID: 5735011882219729140}
   WallRenderer: {fileID: 6426265771777549529}
   DamagingRenderer: {fileID: 5282176176518606200}
-  IsBloced: 0
-  DamageAmout: 0.5
-  SlowingAmout: 2
 --- !u!114 &7550279871649554624
 MonoBehaviour:
   m_ObjectHideFlags: 0

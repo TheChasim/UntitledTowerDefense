@@ -10,4 +10,9 @@ public class InputManager : MonoBehaviour
     {
         cam.OnZoom(context);
     }
+
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        cam.OnMove(context);
+    }
 }

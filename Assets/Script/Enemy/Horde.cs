@@ -7,6 +7,7 @@ public class Horde : MonoBehaviour
 {
     [SerializeField] bool isAHorde = false;
     [SerializeField] List<Sprite> sprite = new List<Sprite>();
+    [SerializeField] List<GameObject> deadParticul = new List<GameObject>();
     internal List<GameObject> enemieHorde = new List<GameObject>();
 
     Healt healt;
@@ -31,11 +32,12 @@ public class Horde : MonoBehaviour
                 newEnemie.transform.localPosition = new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), 0f, UnityEngine.Random.Range(-0.5f, 0.5f));
 
                 newEnemie.AddComponent<EnemyHorde>();
+                newEnemie.GetComponent<EnemyHorde>().deadParticul = deadParticul[UnityEngine.Random.Range(0, sprite.Count)];
+
                 newEnemie.AddComponent<SpriteRenderer>();
                 newEnemie.GetComponent<SpriteRenderer>().enabled = true;
                 newEnemie.GetComponent<SpriteRenderer>().sortingOrder = GetComponent<SpriteRenderer>().sortingOrder;
                 newEnemie.GetComponent<SpriteRenderer>().sprite = sprite[UnityEngine.Random.Range(0, sprite.Count)];
-
             }
         }
     }
