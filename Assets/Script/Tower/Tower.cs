@@ -8,12 +8,18 @@ public class Tower : MonoBehaviour
 {
     public static HashSet<Tower> allTourel = new HashSet<Tower>();
 
+    [Header("Tower Info")]
     [SerializeField] float range;
     [SerializeField] float cooldown;
     [SerializeField] int power;
     public List<EnemyAI> enemyInRange = new List<EnemyAI>();
-
     [SerializeField] GameObject projectille;
+    [Space]
+
+    [Header("Type of attack")]
+    [SerializeField] bool projectil;
+    [SerializeField] bool zone;
+ 
     SphereCollider rangeCollider;
     GameObject target;
     bool attack = false;
@@ -35,11 +41,11 @@ public class Tower : MonoBehaviour
 
         if (enemyInRange.Count > 0)
         {
-            OnAttack();
+            OnAttackProjectil();
         }
     }
 
-    private void OnAttack()
+    private void OnAttackProjectil()
     {
         float dist = math.INFINITY;
 

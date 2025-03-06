@@ -31,6 +31,9 @@ public class Horde : MonoBehaviour
                 newEnemie.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
                 newEnemie.transform.localPosition = new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), 0f, UnityEngine.Random.Range(-0.5f, 0.5f));
 
+                newEnemie.AddComponent<EnemyColor>();
+                newEnemie.GetComponent<EnemyColor>().colorGradiant = GetComponent<EnemyColor>().colorGradiant;
+
                 newEnemie.AddComponent<EnemyHorde>();
                 newEnemie.GetComponent<EnemyHorde>().deadParticul = deadParticul[UnityEngine.Random.Range(0, sprite.Count)];
 
@@ -38,6 +41,8 @@ public class Horde : MonoBehaviour
                 newEnemie.GetComponent<SpriteRenderer>().enabled = true;
                 newEnemie.GetComponent<SpriteRenderer>().sortingOrder = GetComponent<SpriteRenderer>().sortingOrder;
                 newEnemie.GetComponent<SpriteRenderer>().sprite = sprite[UnityEngine.Random.Range(0, sprite.Count)];
+                newEnemie.GetComponent<SpriteRenderer>().material = GetComponent<SpriteRenderer>().material;
+
             }
         }
     }
