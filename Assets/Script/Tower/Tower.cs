@@ -11,17 +11,21 @@ public class Tower : MonoBehaviour
     [Header("Tower Info")]
     [SerializeField] float range;
     [SerializeField] float cooldown;
-    [SerializeField] int power;
+    [SerializeField] float power;
+    [SerializeField] float rotationSpeed = 5;
     public List<EnemyAI> enemyInRange = new List<EnemyAI>();
+    //[SerializeField] Collider rangeCollider;
     [SerializeField] GameObject projectille;
+    [SerializeField] GameObject damagingZone;
     [Space]
 
     [Header("Type of attack")]
     [SerializeField] bool projectil;
     [SerializeField] bool zone;
- 
+
     SphereCollider rangeCollider;
     GameObject target;
+    internal List<EnemyAI> targets = new List<EnemyAI>();
     bool attack = false;
 
     private void Awake()
@@ -31,8 +35,12 @@ public class Tower : MonoBehaviour
 
         transform.position = new Vector3(transform.position.x,
                                          transform.position.y,
-                                         transform.position.z ); ;
-    }   
+                                         transform.position.z);
+        if (damagingZone != null)
+        {
+            damagingZone.GetComponent<ParticleSystem>().Stop();
+        }
+    }
 
     private void Update()
     {
@@ -41,7 +49,55 @@ public class Tower : MonoBehaviour
 
         if (enemyInRange.Count > 0)
         {
-            OnAttackProjectil();
+            if (projectil)
+            {
+                OnAttackProjectil();
+            }
+            else if (zone)
+            {
+                OnAttackZone();
+                damagingZone.GetComponent<ParticleSystem>().Play();
+            }
+        }
+        else
+        {
+            damagingZone.GetComponent<ParticleSystem>().Stop();
+        }
+    }
+
+    private void OnAttackZone()
+    {
+        float dist = math.INFINITY;
+
+        foreach (EnemyAI enemy in enemyInRange)
+        {
+            if (enemy != null)
+            {
+                if (Vector3.Distance(transform.position, enemy.gameObject.transform.position) < dist)
+                {
+                    target = enemy.gameObject;
+                    dist = Vector3.Distance(transform.position, enemy.gameObject.transform.position);
+                    Vector3 direction = target.transform.position - damagingZone.transform.position;
+                    //damagingZone.transform.rotation = Quaternion.RotateTowards(damagingZone.transform.rotation,
+                    //                                  Quaternion.LookRotation(target.transform.position - damagingZone.transform.position),
+                    //                                  rotationSpeed * Time.deltaTime);
+
+                    Quaternion targetRotation = Quaternion.LookRotation(direction); // Rotation cible basée sur la direction
+
+                    // Rotation progressive vers la cible
+                    damagingZone.transform.rotation = Quaternion.RotateTowards(
+                        damagingZone.transform.rotation,
+                        targetRotation,
+                        rotationSpeed * Time.deltaTime);
+
+                    /*quaternion.LookRotation(target.transform.position, Vector3.up);*/
+                }
+            }
+        }
+
+        if (!attack)
+        {
+            StartCoroutine(AttackZone());
         }
     }
 
@@ -71,9 +127,24 @@ public class Tower : MonoBehaviour
     {
         attack = true;
         //Debug.Log(transform.parent.transform.position);
-        Instantiate(projectille, transform.parent.transform).GetComponent<Projectile>().SetTarget(target);
+        if (projectil)
+        {
+            Instantiate(projectille, transform.parent.transform).GetComponent<Projectile>().SetTarget(target);
+        }
 
+        yield return new WaitForSeconds(cooldown);
 
+        attack = false;
+    }
+
+    private IEnumerator AttackZone()
+    {
+        attack = true;
+
+        foreach (var enemie in targets)
+        {
+            enemie.GetComponent<Healt>().OnTakeDamage(power);
+        }
 
         yield return new WaitForSeconds(cooldown);
 
@@ -82,20 +153,42 @@ public class Tower : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
         if (other.gameObject.GetComponent<EnemyAI>())
         {
             //Debug.Log($"add {other.name} au range de {gameObject.name}");
             enemyInRange.Add(other.gameObject.GetComponent<EnemyAI>());
         }
 
+
+        if (other == damagingZone.GetComponent<CapsuleCollider>())
+        {
+            if (other.gameObject.GetComponent<EnemyAI>())
+            {
+                //Debug.Log($"add {other.name} au range de {gameObject.name}");
+                targets.Add(other.gameObject.GetComponent<EnemyAI>());
+            }
+        }
+
     }
 
     private void OnTriggerExit(Collider other)
     {
+
         if (other.gameObject.GetComponent<EnemyAI>())
         {
-            //Debug.Log($"Remove {other.name} au range de {gameObject.name}");
+            //Debug.Log($"add {other.name} au range de {gameObject.name}");
             enemyInRange.Remove(other.gameObject.GetComponent<EnemyAI>());
+        }
+
+
+        if (other == damagingZone.GetComponent<CapsuleCollider>())
+        {
+            if (other.gameObject.GetComponent<EnemyAI>())
+            {
+                //Debug.Log($"add {other.name} au range de {gameObject.name}");
+                targets.Remove(other.gameObject.GetComponent<EnemyAI>());
+            }
         }
     }
 
