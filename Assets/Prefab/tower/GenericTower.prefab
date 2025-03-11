@@ -99,11 +99,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 0
+  minRange: 0
   cooldown: 1
   power: 0
+  rotationSpeed: 5
   enemyInRange: []
   projectille: {fileID: 4046288104506316116, guid: 4372fff3859f27545bebaba7b4293c8f,
     type: 3}
+  damagingZone: {fileID: 0}
+  projectil: 1
+  AOE: 0
+  canMove: 0
 --- !u!135 &7552604017294518993
 SphereCollider:
   m_ObjectHideFlags: 0

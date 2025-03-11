@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8455680825436231232}
   - component: {fileID: 1205983289363214908}
   m_Layer: 2
-  m_Name: GenericEnemy
+  m_Name: GenericEnemyHorde
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,7 +107,7 @@ MonoBehaviour:
   nextTile: {fileID: 0}
   targetPosition: {x: 0, y: 0, z: 0}
   showDirection: 1
-  speed: 0.3
+  speed: 1
 --- !u!114 &2105772637410649222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa30c0c0c3ca54a498509880bc65304b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealt: 20
+  maxHealt: 12
   curentHealt: 0
   healtBar: {fileID: 2672967879658348395}
 --- !u!114 &-1211638671758177512
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d985541b8a0d24eb93f78acc50ca1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAHorde: 0
+  isAHorde: 1
   sprite:
   - {fileID: 21300000, guid: 73be7db03102e254dab4432c87e37e53, type: 3}
   deadParticul:

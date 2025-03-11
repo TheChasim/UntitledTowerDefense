@@ -22,7 +22,7 @@ public class SpawningEnemy : MonoBehaviour
 
     IEnumerator SpawnEnemyCoroutine()
     {
-        Debug.Log("num of spawn tile : " + GameManager.spawnTiles.Count);
+        //Debug.Log("num of spawn tile : " + GameManager.spawnTiles.Count);
         if (enemyAIPrefab == null || enemyAIPrefab.Count == 0)
         {
             Debug.LogError("ERREUR : Aucun prefab d'ennemi défini !");

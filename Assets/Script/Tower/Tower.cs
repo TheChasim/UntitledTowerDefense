@@ -10,6 +10,7 @@ public class Tower : MonoBehaviour
 
     [Header("Tower Info")]
     [SerializeField] float range;
+    [SerializeField] float minRange;
     [SerializeField] float cooldown;
     [SerializeField] float power;
     [SerializeField] float rotationSpeed = 5;
@@ -21,7 +22,12 @@ public class Tower : MonoBehaviour
 
     [Header("Type of attack")]
     [SerializeField] bool projectil;
-    [SerializeField] bool zone;
+    [SerializeField] bool AOE;
+    [SerializeField] bool canMove;
+
+    [Header("Type of effect")]
+    [SerializeField] bool overTime;
+    [SerializeField] bool brust;
 
     SphereCollider rangeCollider;
     GameObject target;
@@ -53,16 +59,47 @@ public class Tower : MonoBehaviour
             {
                 OnAttackProjectil();
             }
-            else if (zone)
+            else if (AOE)
             {
                 OnAttackZone();
-                damagingZone.GetComponent<ParticleSystem>().Play();
+
+                if (!damagingZone.GetComponent<ParticleSystem>().isPlaying)
+                {
+                    if (overTime)
+                    {
+                        damagingZone.GetComponent<ParticleSystem>().Play();
+                    }
+                }
             }
         }
-        else
+        else if (damagingZone.GetComponent<ParticleSystem>().isPlaying)
         {
-            damagingZone.GetComponent<ParticleSystem>().Stop();
+            if (overTime)
+            {
+                damagingZone.GetComponent<ParticleSystem>().Stop();
+            }
         }
+
+        //clean la liste
+        try
+        {
+            foreach (EnemyAI target in targets)
+            {
+                if (target == null)
+                { targets.Remove(target); }
+            }
+            foreach (EnemyAI target in enemyInRange)
+            {
+                if (target == null)
+                { enemyInRange.Remove(target); }
+            }
+        }
+        catch (Exception ex)
+        {
+
+        }
+
+
     }
 
     private void OnAttackZone()
@@ -76,21 +113,20 @@ public class Tower : MonoBehaviour
                 if (Vector3.Distance(transform.position, enemy.gameObject.transform.position) < dist)
                 {
                     target = enemy.gameObject;
-                    dist = Vector3.Distance(transform.position, enemy.gameObject.transform.position);
-                    Vector3 direction = target.transform.position - damagingZone.transform.position;
-                    //damagingZone.transform.rotation = Quaternion.RotateTowards(damagingZone.transform.rotation,
-                    //                                  Quaternion.LookRotation(target.transform.position - damagingZone.transform.position),
-                    //                                  rotationSpeed * Time.deltaTime);
 
-                    Quaternion targetRotation = Quaternion.LookRotation(direction); // Rotation cible basée sur la direction
+                    if (canMove)
+                    {
+                        dist = Vector3.Distance(transform.position, enemy.gameObject.transform.position);
+                        Vector3 direction = target.transform.position - damagingZone.transform.position;
+                        direction = new Vector3(direction.x, direction.y - 0.5f, direction.z);
+                        Quaternion targetRotation = Quaternion.LookRotation(direction); // Rotation cible basée sur la direction
 
-                    // Rotation progressive vers la cible
-                    damagingZone.transform.rotation = Quaternion.RotateTowards(
-                        damagingZone.transform.rotation,
-                        targetRotation,
-                        rotationSpeed * Time.deltaTime);
-
-                    /*quaternion.LookRotation(target.transform.position, Vector3.up);*/
+                        // Rotation progressive vers la cible
+                        damagingZone.transform.rotation = Quaternion.RotateTowards(
+                            damagingZone.transform.rotation,
+                            targetRotation,
+                            rotationSpeed * Time.deltaTime);
+                    }
                 }
             }
         }
@@ -140,10 +176,19 @@ public class Tower : MonoBehaviour
     private IEnumerator AttackZone()
     {
         attack = true;
+        
+        if(brust)
+        {
+            damagingZone.GetComponent<ParticleSystem>().Play();
+        }
 
         foreach (var enemie in targets)
         {
-            enemie.GetComponent<Healt>().OnTakeDamage(power);
+            if (enemie != null)
+            {
+                enemie.GetComponent<Healt>().OnTakeDamage(power);
+
+            }
         }
 
         yield return new WaitForSeconds(cooldown);
