@@ -334,7 +334,7 @@ GameObject:
   - component: {fileID: 696656128344601112}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GamaManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -386,6 +386,7 @@ MonoBehaviour:
   timeBetweenWave: 5
   enemyAIPrefab:
   - {fileID: 4925137300140514, guid: 39304562ad4b7d34383dd4c6c5534b89, type: 3}
+  - {fileID: 4925137300140514, guid: 31780f42cdf36384dad1edd683af6b59, type: 3}
   currentEnemyAmount: 0
 --- !u!114 &7153480545425678085
 MonoBehaviour:
@@ -414,8 +415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allTower: []
-  TowerPrefab: {fileID: 1561978774687730591, guid: d3fb8de7445e5d644b4315816274915d,
-    type: 3}
+  towers: []
 --- !u!114 &696656128344601112
 MonoBehaviour:
   m_ObjectHideFlags: 0

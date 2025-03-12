@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,16 +16,18 @@ public class TowerSpawning : MonoBehaviour
 
 
     [SerializeField] internal List<GameObject> allTower = new List<GameObject>();
-    [SerializeField] private GameObject TowerPrefab;
+    [SerializeField] private List<GameObject> towers = new List<GameObject>();
+    GameObject selectTower;
+
+    internal void OnSelectIndex(int indextower)
+    {
+        selectTower = towers[indextower];
+    }
 
     internal void SpawnTower()
     {
         Transform spawnPos = GameManager.Instance.TargetTile.transform;
-        ////ajoute un  0.5 pour le iso
-        //spawnPos.position = new Vector3(spawnPos.position.x + 0.5f, 
-        //                       spawnPos.position.y + 0.5f, 
-        //                       spawnPos.position.z);
-        Instantiate(TowerPrefab, spawnPos);
+        Instantiate(selectTower, spawnPos);
     }
 
     private void Awake()
@@ -38,6 +41,11 @@ public class TowerSpawning : MonoBehaviour
         else
         {
             Destroy(this.gameObject);
+        }
+
+        if (selectTower == null)
+        {
+            selectTower = towers.First();
         }
     }
 
