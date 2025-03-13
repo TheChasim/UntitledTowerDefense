@@ -110,6 +110,8 @@ MonoBehaviour:
   projectil: 1
   AOE: 0
   canMove: 0
+  overTime: 0
+  brust: 0
 --- !u!135 &7552604017294518993
 SphereCollider:
   m_ObjectHideFlags: 0

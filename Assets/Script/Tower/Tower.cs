@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class Tower : MonoBehaviour
 {
@@ -44,8 +45,10 @@ public class Tower : MonoBehaviour
                                          transform.position.z);
         if (damagingZone != null)
         {
-            damagingZone.GetComponent<ParticleSystem>().Stop();
+            StopEffect();
         }
+
+
     }
 
     private void Update()
@@ -53,30 +56,65 @@ public class Tower : MonoBehaviour
         //set la rotation la meme que la cam
         transform.rotation = Camera.main.transform.rotation;
 
-        if (enemyInRange.Count > 0)
+        if (projectil)
         {
-            if (projectil)
+            if (enemyInRange.Count > 0)
             {
-                OnAttackProjectil();
-            }
-            else if (AOE)
-            {
-                OnAttackZone();
-
-                if (!damagingZone.GetComponent<ParticleSystem>().isPlaying)
+                if (projectil)
                 {
-                    if (overTime)
-                    {
-                        damagingZone.GetComponent<ParticleSystem>().Play();
-                    }
+                    OnAttackProjectil();
                 }
             }
         }
-        else if (damagingZone.GetComponent<ParticleSystem>().isPlaying)
+        else if (AOE)
         {
-            if (overTime)
+            if (enemyInRange.Count > 0)
             {
-                damagingZone.GetComponent<ParticleSystem>().Stop();
+                if (damagingZone != null)
+                {
+                    OnAttackZone();
+
+                    //si c'est une particul effect
+                    if (damagingZone.GetComponent<ParticleSystem>())
+                    {
+                        if (!damagingZone.GetComponent<ParticleSystem>().isPlaying)
+                        {
+                            if (overTime)
+                            {
+                                //damagingZone.GetComponent<ParticleSystem>().Play();
+                                PlayEffect();
+                            }
+                        }
+                    }
+                    else if (damagingZone.GetComponent<VisualEffect>())
+                    {
+                        if (!damagingZone.GetComponent<VisualEffect>().HasAnySystemAwake())
+                        {
+                            if (overTime)
+                            {
+                                //damagingZone.GetComponent<ParticleSystem>().Play();
+                                PlayEffect();
+                            }
+                        }
+                    }
+                }
+            }
+            else if (overTime)
+            {
+                if (damagingZone.GetComponent<ParticleSystem>())
+                {
+                    if (damagingZone.GetComponent<ParticleSystem>().isPlaying)
+                    {
+                        StopEffect();
+                    }
+                }
+                else if (damagingZone.GetComponent<VisualEffect>())
+                {
+                    if (damagingZone.GetComponent<VisualEffect>().HasAnySystemAwake())
+                    {
+                        StopEffect();
+                    }
+                }
             }
         }
 
@@ -98,9 +136,35 @@ public class Tower : MonoBehaviour
         {
 
         }
-
-
     }
+
+    private void PlayEffect()
+    {
+        if (damagingZone.GetComponent<ParticleSystem>())
+        {
+            damagingZone.GetComponent<ParticleSystem>().Play();
+            Debug.Log($"{name} play particul effect");
+        }
+        else if (damagingZone.GetComponent<VisualEffect>())
+        {
+            damagingZone.GetComponent<VisualEffect>().Play();
+            Debug.Log($"{name} play Vfx");
+        }
+    }
+    private void StopEffect()
+    {
+        if (damagingZone.GetComponent<ParticleSystem>())
+        {
+            damagingZone.GetComponent<ParticleSystem>().Stop();
+            Debug.Log($"{name} stop particul effect");
+        }
+        else if (damagingZone.GetComponent<VisualEffect>())
+        {
+            damagingZone.GetComponent<VisualEffect>().Stop();
+            Debug.Log($"{name} stop Vfx");
+        }
+    }
+
 
     private void OnAttackZone()
     {
@@ -176,8 +240,8 @@ public class Tower : MonoBehaviour
     private IEnumerator AttackZone()
     {
         attack = true;
-        
-        if(brust)
+
+        if (brust)
         {
             damagingZone.GetComponent<ParticleSystem>().Play();
         }
@@ -205,16 +269,17 @@ public class Tower : MonoBehaviour
             enemyInRange.Add(other.gameObject.GetComponent<EnemyAI>());
         }
 
-
-        if (other == damagingZone.GetComponent<CapsuleCollider>())
+        if (damagingZone != null)
         {
-            if (other.gameObject.GetComponent<EnemyAI>())
+            if (other == damagingZone.GetComponent<CapsuleCollider>())
             {
-                //Debug.Log($"add {other.name} au range de {gameObject.name}");
-                targets.Add(other.gameObject.GetComponent<EnemyAI>());
+                if (other.gameObject.GetComponent<EnemyAI>())
+                {
+                    //Debug.Log($"add {other.name} au range de {gameObject.name}");
+                    targets.Add(other.gameObject.GetComponent<EnemyAI>());
+                }
             }
         }
-
     }
 
     private void OnTriggerExit(Collider other)
@@ -226,15 +291,18 @@ public class Tower : MonoBehaviour
             enemyInRange.Remove(other.gameObject.GetComponent<EnemyAI>());
         }
 
-
-        if (other == damagingZone.GetComponent<CapsuleCollider>())
+        if (damagingZone != null)
         {
-            if (other.gameObject.GetComponent<EnemyAI>())
+            if (other == damagingZone.GetComponent<CapsuleCollider>())
             {
-                //Debug.Log($"add {other.name} au range de {gameObject.name}");
-                targets.Remove(other.gameObject.GetComponent<EnemyAI>());
+                if (other.gameObject.GetComponent<EnemyAI>())
+                {
+                    //Debug.Log($"add {other.name} au range de {gameObject.name}");
+                    targets.Remove(other.gameObject.GetComponent<EnemyAI>());
+                }
             }
         }
+
     }
 
     internal void OnRevome()
