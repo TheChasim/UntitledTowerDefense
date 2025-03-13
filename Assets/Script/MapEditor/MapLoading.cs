@@ -6,8 +6,8 @@ using UnityEngine;
 public class MapLoading : MonoBehaviour
 {
     [Header("Map Creator")]
-    [SerializeField] internal int ColCount = 35;
     [SerializeField] internal int RowCount = 20;
+    [SerializeField] internal int ColCount = 35;
 
     [SerializeField] GameObject gameTilePrefab;
     static internal GameTiles[,] currentGameTiles;
@@ -179,5 +179,15 @@ public class MapLoading : MonoBehaviour
     internal int getCol()
     {
         return ColCount;
+    }
+
+    internal IEnumerable<object> GetSpawnPoint()
+    {
+        return spawnTile;
+    }
+
+    internal GameTiles[,] GetCurrentMap()
+    {
+        return currentGameTiles;
     }
 }
