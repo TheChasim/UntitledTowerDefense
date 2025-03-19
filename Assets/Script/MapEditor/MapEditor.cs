@@ -7,13 +7,14 @@ public class MapEditor : Editor
     private MapLoading mapLoading;
     bool showMap = true;
     GameTiles[,] currentMap;
+    int[] colorIndex = new int[5]; 
+    int currentColor; //0 = vide, 1 = block, 2 = water, 3 = fire, 4 = spawn, 5 = end
 
     private void OnEnable()
     {
         mapLoading = (MapLoading)target;
         mapLoading.CreateMap();
     }
-
 
     public override void OnInspectorGUI()
     {
@@ -44,11 +45,6 @@ public class MapEditor : Editor
             mapLoading.SaveMap();
         }
 
-        //if (GUILayout.Button("Edit Map"))
-        //{
-        //    mapLoading.EditMap();
-        //}
-
         if (GUILayout.Button("Remove Map"))
         {
             mapLoading.RemoveMap();
@@ -66,52 +62,6 @@ public class MapEditor : Editor
         {
             mapLoading.ResizeMap();
         }
-
-
-        #region
-        //serializedObject.Update();
-
-        //if (mapLoading.GetCurrentMap() != null && showMap)
-        //{
-        //    EditorGUILayout.Space();
-        //    EditorGUILayout.LabelField("Grid Cells", EditorStyles.boldLabel);
-
-
-        //    for (int x = 0; x < mapLoading.RowCount; x++)
-        //    {
-        //        EditorGUILayout.BeginHorizontal();
-        //        for (int y = 0; y < mapLoading.ColCount; y++)
-        //        {
-        //            GameTiles cell = mapLoading.GetCurrentMap()[x, y];
-
-        //            EditorGUILayout.BeginVertical(GUILayout.Width(50));
-        //            GUIStyle buttonStyle = new GUIStyle(GUI.skin.button);
-        //            if (cell.IsBloced)
-        //            {
-        //                buttonStyle.normal.background = MakeTex(16, 16, Color.black);
-        //            }
-        //            else if (cell.IsSlowing)
-        //            {
-        //                buttonStyle.normal.background = MakeTex(16, 16, Color.blue);
-        //            }
-        //            else if (cell.IsDamaging)
-        //            {
-        //                buttonStyle.normal.background = MakeTex(16, 16, Color.red);
-        //            }
-        //            else
-        //            {
-        //                buttonStyle.normal.background = MakeTex(16, 16, Color.white);
-        //            }
-
-        //            GUILayout.Button("", buttonStyle, GUILayout.Width(30), GUILayout.Height(30));
-
-        //            EditorGUILayout.EndVertical();
-        //        }
-        //        EditorGUILayout.EndHorizontal();
-        //    }
-        //}
-
-        #endregion
         serializedObject.Update();
 
         if (mapLoading.GetCurrentMap() == null)
@@ -121,63 +71,98 @@ public class MapEditor : Editor
         }
 
         EditorGUILayout.Space();
+        EditorGUILayout.Space();
         EditorGUILayout.LabelField("Grille de la Carte", EditorStyles.boldLabel);
+
+        EditorGUILayout.BeginHorizontal();
+
+        //0 = vide (blanc), 1 = block (noir), 2 = water (blue), 3 = fire (rouge), 4 = spawn (orange), 5 = end (jaune)
+        if (GUILayout.Button("vide"))
+        {
+            currentColor = 0;
+        }
+
+        if (GUILayout.Button("Block"))
+        {
+            currentColor = 1;
+        }
+
+        if (GUILayout.Button("Water"))
+        {
+            currentColor = 2;
+        }
+
+        if (GUILayout.Button("Fire"))
+        {
+            currentColor = 3;
+        }
+
+        EditorGUILayout.EndHorizontal();
+
         if (showMap)
         {
+            if (currentMap == null)
+            {
+                currentMap = mapLoading.GetCurrentMap();
+            }
+
             // Taille des cases
             float cellSize = 15f;
             float padding = 2f;
 
-
             //Création de la grille
             Rect gridRect = GUILayoutUtility.GetRect(mapLoading.ColCount * (cellSize + padding), mapLoading.RowCount * (cellSize + padding));
 
-            for (int y = 0; y < mapLoading.ColCount; y++  /*int x = mapLoading.RowCount - 1; x >= 0; x--*/)
+            for (int y = 0; y < mapLoading.ColCount; y++)
             {
-                for (int x = 0; x < mapLoading.RowCount; x++ /*int x = mapLoading.RowCount - 1; x >= 0; x--*/)
+                for (int x = 0; x < mapLoading.RowCount; x++)
                 {
-
                     Rect cellRect = new Rect(
-                        //gridRect.x + x * (cellSize + padding),
-                        //gridRect.y + y * (cellSize + padding),
                         gridRect.x + (mapLoading.ColCount - 1 - y) * (cellSize + padding), // Inverser X pour corriger le miroir horizontal
                         gridRect.y + x * (cellSize + padding), // Ne pas inverser Y pour correspondre à l'affichage du jeu
                         cellSize,
-                        cellSize
-                    );
+                        cellSize );
 
                     // Dessiner la case
-                    EditorGUI.DrawRect(cellRect, GetTileColor(currentMap[x, y] /*mapLoading.GetCurrentMap()[x,y]*/));
+                    EditorGUI.DrawRect(cellRect, GetTileColor(currentMap[x, y]));
+
 
                     // Vérifier le clic sur la case
                     if (Event.current.type == EventType.MouseDown && cellRect.Contains(Event.current.mousePosition))
                     {
-                        //mapLoading.GetCurrentMap()[x, y].cellColor = GetNextColor(mapLoading.grid[x, y].cellColor);
-                        //Event.current.Use(); // Empêche d'autres interactions
+                        // Marquer l'objet comme modifié pour Undo/Redo
+                        Undo.RecordObject(mapLoading, "Change Tile State");
+
+                        // Modifier l'état de la tuile
+                        CycleTileState(currentMap[x, y]);
+
+                        // Dire à Unity que l'objet a été modifié
+                        EditorUtility.SetDirty(mapLoading);
+
+                        // Rafraîchir l'affichage
+                        Repaint();
+
+                        // Bloquer l'événement pour éviter qu'il soit propagé
+                        Event.current.Use();
                     }
                 }
             }
-
-            //for (int y = 0; y < mapLoading.ColCount; y++)
-            //{
-            //    for (int x = mapLoading.RowCount - 1; x >= 0; x--) // Inversion de l'affichage des lignes
-            //    {
-            //        Rect cellRect = new Rect(
-            //            gridRect.x + y * (cellSize + padding),
-            //            gridRect.y + (mapLoading.RowCount - 1 - x) * (cellSize + padding), // Corrige l'orientation verticale
-            //            cellSize,
-            //            cellSize
-            //        );
-
-            //        EditorGUI.DrawRect(cellRect, GetTileColor(currentMap[x, y]));
-
-            //        if (Event.current.type == EventType.MouseDown && cellRect.Contains(Event.current.mousePosition))
-            //        {
-            //            // Gestion du clic sur la case
-            //        }
-            //    }
-            //}
         }
+
+        EditorGUILayout.BeginHorizontal();
+
+        //0 = vide (blanc), 1 = block (noir), 2 = water (blue), 3 = fire (rouge), 4 = spawn (orange), 5 = end (jaune)
+        if (GUILayout.Button("Spawn"))
+        {
+            currentColor = 4;
+        }
+
+        if (GUILayout.Button("End"))
+        {
+            currentColor = 5;
+        }
+
+        EditorGUILayout.EndHorizontal();
 
         serializedObject.ApplyModifiedProperties();
 
@@ -197,36 +182,53 @@ public class MapEditor : Editor
     // Change l'état du tile en cliquant dessus
     private void CycleTileState(GameTiles cell)
     {
-        if (cell.IsBloced)
+        //0 = vide (blanc), 1 = block (noir), 2 = water (blue), 3 = fire (rouge), 4 = spawn (orange), 5 = end (jaune)
+        switch(currentColor)
         {
-            cell.IsBloced = false;
-            cell.IsSlowing = true;
-        }
-        else if (cell.IsSlowing)
-        {
-            cell.IsSlowing = false;
-            cell.IsDamaging = true;
-        }
-        else if (cell.IsDamaging)
-        {
-            cell.IsDamaging = false;
-        }
-        else
-        {
-            cell.IsBloced = true;
-        }
-    }
+            case 0:
+                cell.IsBloced = false;
+                cell.IsSlowing = false;
+                cell.IsDamaging = false;
+                cell.IsSpawn = false;
+                cell.IsEnd = false;
+                break;
+            case 1:
+                cell.IsBloced = true;
+                cell.IsSlowing = false;
+                cell.IsDamaging = false;
+                cell.IsSpawn = false;
+                cell.IsEnd = false;
+                break;
+            case 2:
+                cell.IsBloced = false;
+                cell.IsSlowing = true;
+                cell.IsDamaging = false;
+                cell.IsSpawn = false;
+                cell.IsEnd = false;
+                break;
+            case 3:
+                cell.IsBloced = false;
+                cell.IsSlowing = false;
+                cell.IsDamaging = true;
+                cell.IsSpawn = false;
+                cell.IsEnd = false;
+                break;
+            case 4:
+                cell.IsBloced = false;
+                cell.IsSlowing = false;
+                cell.IsDamaging = false;
+                cell.IsSpawn = true;
+                cell.IsEnd = false;
+                break;
+            case 5:
+                cell.IsBloced = false;
+                cell.IsSlowing = false;
+                cell.IsDamaging = false;
+                cell.IsSpawn = false;
+                cell.IsEnd = true;
+                break;
 
-    private Texture2D MakeTex(int width, int height, Color col)
-    {
-        Color[] pix = new Color[width * height];
-        for (int i = 0; i < pix.Length; i++)
-            pix[i] = col;
-
-        Texture2D result = new Texture2D(width, height);
-        result.SetPixels(pix);
-        result.Apply();
-        return result;
+        }
     }
 
     static void InvertRows(GameTiles[,] array)
@@ -244,5 +246,4 @@ public class MapEditor : Editor
             }
         }
     }
-
 }
