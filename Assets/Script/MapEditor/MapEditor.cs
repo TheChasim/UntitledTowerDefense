@@ -7,7 +7,7 @@ public class MapEditor : Editor
     private MapLoading mapLoading;
     bool showMap = true;
     GameTiles[,] currentMap;
-    int[] colorIndex = new int[5]; 
+    int[] colorIndex = new int[5];
     int currentColor; //0 = vide, 1 = block, 2 = water, 3 = fire, 4 = spawn, 5 = end
 
     private void OnEnable()
@@ -37,7 +37,6 @@ public class MapEditor : Editor
             mapLoading.CreateMap();
             showMap = true;
             currentMap = mapLoading.GetCurrentMap();
-            InvertRows(currentMap);
         }
 
         if (GUILayout.Button("Save Map"))
@@ -101,9 +100,10 @@ public class MapEditor : Editor
 
         if (showMap)
         {
-            if (currentMap == null)
+            if (currentMap == null || currentMap != mapLoading.GetCurrentMap())
             {
                 currentMap = mapLoading.GetCurrentMap();
+
             }
 
             // Taille des cases
@@ -118,32 +118,43 @@ public class MapEditor : Editor
                 for (int x = 0; x < mapLoading.RowCount; x++)
                 {
                     Rect cellRect = new Rect(
-                        gridRect.x + (mapLoading.ColCount - 1 - y) * (cellSize + padding), // Inverser X pour corriger le miroir horizontal
-                        gridRect.y + x * (cellSize + padding), // Ne pas inverser Y pour correspondre à l'affichage du jeu
+                        gridRect.x + (mapLoading.ColCount - 1 - y) * (cellSize + padding), // Inverser X pour corriger le miroir horizontal                   
+                        gridRect.y + (mapLoading.RowCount - 1 - x) * (cellSize + padding),  // Inverser Y
                         cellSize,
-                        cellSize );
+                        cellSize);
 
                     // Dessiner la case
                     EditorGUI.DrawRect(cellRect, GetTileColor(currentMap[x, y]));
 
 
                     // Vérifier le clic sur la case
-                    if (Event.current.type == EventType.MouseDown && cellRect.Contains(Event.current.mousePosition))
+                    if (Event.current.type == EventType.MouseDrag && cellRect.Contains(Event.current.mousePosition))
+
                     {
-                        // Marquer l'objet comme modifié pour Undo/Redo
-                        Undo.RecordObject(mapLoading, "Change Tile State");
+                        foreach (var tile in mapLoading.GetCurrentMap())
+                        {
+                            if (currentMap[x, y].gameObject == tile.gameObject)
+                            {
+                                // Marquer l'objet comme modifié pour Undo/Redo
+                                Undo.RecordObject(mapLoading, "Change Tile State");
 
-                        // Modifier l'état de la tuile
-                        CycleTileState(currentMap[x, y]);
+                                // Modifier l'état de la tuile
+                                //CycleTileState(currentMap[x, y]);
+                                CycleTileState(tile);
 
-                        // Dire à Unity que l'objet a été modifié
-                        EditorUtility.SetDirty(mapLoading);
+                                // Dire à Unity que l'objet a été modifié
+                                EditorUtility.SetDirty(mapLoading);
 
-                        // Rafraîchir l'affichage
-                        Repaint();
+                                // Rafraîchir l'affichage
+                                Repaint();
 
-                        // Bloquer l'événement pour éviter qu'il soit propagé
-                        Event.current.Use();
+                                // Bloquer l'événement pour éviter qu'il soit propagé
+                                Event.current.Use();
+
+                                tile.SetTileRender();
+                            }
+                        }
+
                     }
                 }
             }
@@ -183,7 +194,7 @@ public class MapEditor : Editor
     private void CycleTileState(GameTiles cell)
     {
         //0 = vide (blanc), 1 = block (noir), 2 = water (blue), 3 = fire (rouge), 4 = spawn (orange), 5 = end (jaune)
-        switch(currentColor)
+        switch (currentColor)
         {
             case 0:
                 cell.IsBloced = false;

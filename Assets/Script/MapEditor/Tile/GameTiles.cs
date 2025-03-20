@@ -94,7 +94,7 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
             //rend la tuille bloquer et en suprime le nextTile
             IsBloced = true;
             nextTile = null;
-            
+
             //uptade le flowField avec la nouvelle tuille bloquer
             GameManager.Instance.UpdateFlowFieldAround(position);
 
@@ -138,7 +138,7 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
     {
         //si la tuille a une de ces variable true 
         //cette tuille est imposible a mettre une tour
-        if( IsBloced || IsEnd || IsSpawn)
+        if (IsBloced || IsEnd || IsSpawn)
         {
             return false;
         }
@@ -263,4 +263,14 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
             cost = 10000;
         }
     }
+
+    public void SetTileRender()
+    {
+        spriteSpawn.enabled = IsSpawn;
+        spriteEnd.enabled = IsEnd;
+        SlowingRenderer.enabled = IsSlowing;
+        WallRenderer.enabled = IsBloced;
+        DamagingRenderer.enabled = IsDamaging;
+    }
+
 }
