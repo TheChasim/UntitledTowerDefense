@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class MapLoading : MonoBehaviour
 {
+    public enum TileSets
+    {
+        Grass,
+        StonePath,
+        StoneBluiding,
+    }
+
     [Header("Map Creator")]
     [SerializeField] internal int RowCount = 20;
     [SerializeField] internal int ColCount = 35;
@@ -25,6 +32,28 @@ public class MapLoading : MonoBehaviour
     internal string mapName = "n/a";
     //string tagBackground = "Background";
     string tagMap = "Map";
+
+    [Header("Tile set")]
+    //variable pour le tilling des niveau
+    public TileSets tilesets;
+
+    public TileSet grassTileSet;
+    public TileSet stoneBluiding;
+    public TileSet stonePath;
+
+    public TileSet CurrentTileSet
+    {
+        get
+        {
+            return tilesets switch
+            {
+                TileSets.Grass => grassTileSet,
+                TileSets.StoneBluiding => stoneBluiding,
+                TileSets.StonePath => stonePath,
+                _ => null,
+            };
+        }
+    }
 
     private void Awake()
     {
@@ -103,6 +132,10 @@ public class MapLoading : MonoBehaviour
                     endPoint.y = spawnPosition.z;
                     endTile = currentGameTiles[x, y];
                     currentGameTiles[x, y].TurnEnd();
+                }
+                else
+                {
+                    currentGameTiles[x, y].TurnBlank();
                 }
             }
         }

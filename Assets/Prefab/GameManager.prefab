@@ -44,15 +44,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d0987db49e827e468bbeff82ec236ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColCount: 20
   RowCount: 20
+  ColCount: 20
   gameTilePrefab: {fileID: 5420789198104391685, guid: 0beb82c5067242246a7f266d3875ab72,
     type: 3}
   mapList:
   - {fileID: 4508796451058780988, guid: 64a7becc71c7c0d44aee550063ac47d0, type: 3}
   - {fileID: 4508796451058780988, guid: f058d1fb42d57a2458099638209fd2f9, type: 3}
   - {fileID: 4508796451058780988, guid: 72dff13beea98bc44ae2ae315db22e96, type: 3}
+  - {fileID: 4508796451058780988, guid: f7a808ff981efe648b17ef614a0962be, type: 3}
   mapIndex: 1
+  tilesets: 0
+  grassTileSet: {fileID: 11400000, guid: e69e13b75f5387c45834a2a53da3fdcc, type: 2}
+  stoneBluiding: {fileID: 11400000, guid: 6a6210214ffd8d84cb418819fdd688ef, type: 2}
+  stonePath: {fileID: 11400000, guid: f493452fecb6d6a42af3a5888158f0a4, type: 2}
 --- !u!1 &1046462512414955013
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,7 +420,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allTower: []
-  towers: []
+  towers:
+  - {fileID: 1561978774687730591, guid: d3fb8de7445e5d644b4315816274915d, type: 3}
+  - {fileID: 242614616833155605, guid: a0575e652dab2fc42b378f0da6038d1b, type: 3}
+  - {fileID: 3612579345630182176, guid: 70630ca22ac2c2d43b238721d844c888, type: 3}
 --- !u!114 &696656128344601112
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,11 +4,27 @@ using UnityEditor;
 [CustomEditor(typeof(MapLoading))]
 public class MapEditor : Editor
 {
+    public enum MapLayout
+    {
+        Base,
+        Terrain,
+        Nature,
+        Decoration,
+    }
+
     private MapLoading mapLoading;
     bool showMap = true;
     GameTiles[,] currentMap;
     int[] colorIndex = new int[5];
     int currentColor; //0 = vide, 1 = block, 2 = water, 3 = fire, 4 = spawn, 5 = end
+    
+    //variable pour le tile set
+    MapLayout mapLayer;
+    MapLayout terrainLayer;
+    int pixelResolution = 32;
+    int nombreParLigne = 9;
+
+    private bool showSpawnPoints = false; //pour le dropdown pour l'affichage des spawn point
 
     private void OnEnable()
     {
@@ -21,14 +37,24 @@ public class MapEditor : Editor
         DrawDefaultInspector();
         MapLoading mapLoading = (MapLoading)target;
 
+        #region map button
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("Map Name : ", mapLoading.mapName);
 
-        EditorGUILayout.LabelField("Spawn point : ");
-        foreach (var spawn in mapLoading.GetSpawnPoint())
+        showSpawnPoints = EditorGUILayout.Foldout(showSpawnPoints, "Spawn Points");
+        if (showSpawnPoints)
         {
-            EditorGUILayout.LabelField(/*"Spawn point : ",S*/" ", spawn.ToString());
+            EditorGUI.indentLevel++;
+
+            EditorGUILayout.LabelField("Liste des Spawn Points :");
+            foreach (var spawn in mapLoading.GetSpawnPoint())
+            {
+                EditorGUILayout.LabelField("•", spawn.ToString());
+            }
+
+            EditorGUI.indentLevel--;
         }
+
         EditorGUILayout.LabelField("End point : ", mapLoading.endPoint.ToString());
         EditorGUILayout.Space();
 
@@ -71,32 +97,100 @@ public class MapEditor : Editor
 
         EditorGUILayout.Space();
         EditorGUILayout.Space();
+        #endregion
+
+        #region map editor
         EditorGUILayout.LabelField("Grille de la Carte", EditorStyles.boldLabel);
 
-        EditorGUILayout.BeginHorizontal();
+        //dropdown pour la selection du layer de la map
+        mapLayer = (MapLayout)EditorGUILayout.EnumPopup("Layer de la map", mapLayer);
 
-        //0 = vide (blanc), 1 = block (noir), 2 = water (blue), 3 = fire (rouge), 4 = spawn (orange), 5 = end (jaune)
-        if (GUILayout.Button("vide"))
+        //si la selection du layer base est selectioner afficher cette selection
+        //dans la selection base on peut venir modifier les information de la carte
+        if (mapLayer == MapLayout.Base)
         {
-            currentColor = 0;
+            EditorGUILayout.BeginHorizontal();
+
+            //0 = vide (blanc), 1 = block (noir), 2 = water (blue), 3 = fire (rouge), 4 = spawn (orange), 5 = end (jaune)
+            if (GUILayout.Button("vide"))
+            {
+                currentColor = 0;
+            }
+
+            if (GUILayout.Button("Block"))
+            {
+                currentColor = 1;
+            }
+
+            if (GUILayout.Button("Water"))
+            {
+                currentColor = 2;
+            }
+
+            if (GUILayout.Button("Fire"))
+            {
+                currentColor = 3;
+            }
+
+            EditorGUILayout.EndHorizontal();
+
+            EditorGUILayout.BeginHorizontal();
+
+            //0 = vide (blanc), 1 = block (noir), 2 = water (blue), 3 = fire (rouge), 4 = spawn (orange), 5 = end (jaune)
+            if (GUILayout.Button("Spawn"))
+            {
+                currentColor = 4;
+            }
+
+            if (GUILayout.Button("End"))
+            {
+                currentColor = 5;
+            }
+
+            EditorGUILayout.EndHorizontal();
         }
 
-        if (GUILayout.Button("Block"))
+        //si la selection du layer Terrain est selectioner afficher cette selection
+        //dans la selection Terrain on peut venir modifer le terrain de la map 
+        if (mapLayer == MapLayout.Terrain)
         {
-            currentColor = 1;
-        }
+            //reset les valeurs pour la couleur
+            currentColor = -1;
 
-        if (GUILayout.Button("Water"))
-        {
-            currentColor = 2;
-        }
+            EditorGUILayout.LabelField("Tile Set selectioner : ", EditorStyles.boldLabel);
 
-        if (GUILayout.Button("Fire"))
-        {
-            currentColor = 3;
-        }
+            //pour afficher les tiles a l'horizontal
+            //affiche 10 tille par ligne
+            int currentLigne = 0;
+            EditorGUILayout.BeginHorizontal();      
 
-        EditorGUILayout.EndHorizontal();
+            foreach (var sprite in mapLoading.CurrentTileSet.tiles)
+            {
+                if (sprite == null)
+                { continue; }
+
+                Texture2D preview = AssetPreview.GetAssetPreview(sprite);
+
+                if (preview != null)
+                {
+                    GUILayout.Box(preview, GUILayout.Width(pixelResolution), GUILayout.Height(pixelResolution));
+                }
+                else
+                {
+                    GUILayout.Label("?", GUILayout.Width(pixelResolution), GUILayout.Height(pixelResolution));
+                }
+
+                currentLigne++;
+                if (currentLigne == nombreParLigne)
+                {                
+                    EditorGUILayout.EndHorizontal();
+                    EditorGUILayout.BeginHorizontal();
+                    currentLigne = 0;
+                }
+            }
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.Space();
+        }
 
         if (showMap)
         {
@@ -128,7 +222,7 @@ public class MapEditor : Editor
 
 
                     // Vérifier le clic sur la case
-                    if (Event.current.type == EventType.MouseDrag && cellRect.Contains(Event.current.mousePosition))
+                    if ((Event.current.type == EventType.MouseDrag || Event.current.type == EventType.MouseDown) && cellRect.Contains(Event.current.mousePosition))
 
                     {
                         foreach (var tile in mapLoading.GetCurrentMap())
@@ -160,20 +254,8 @@ public class MapEditor : Editor
             }
         }
 
-        EditorGUILayout.BeginHorizontal();
 
-        //0 = vide (blanc), 1 = block (noir), 2 = water (blue), 3 = fire (rouge), 4 = spawn (orange), 5 = end (jaune)
-        if (GUILayout.Button("Spawn"))
-        {
-            currentColor = 4;
-        }
-
-        if (GUILayout.Button("End"))
-        {
-            currentColor = 5;
-        }
-
-        EditorGUILayout.EndHorizontal();
+        #endregion
 
         serializedObject.ApplyModifiedProperties();
 
@@ -242,6 +324,8 @@ public class MapEditor : Editor
         }
     }
 
+
+    //inutile mais je sais pas on garde
     static void InvertRows(GameTiles[,] array)
     {
         int rows = array.GetLength(0);

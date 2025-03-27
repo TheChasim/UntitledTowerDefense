@@ -1,10 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
 
 public class GameTiles : MonoBehaviour, IPointerEnterHandler,
     IPointerExitHandler, IPointerClickHandler
@@ -38,6 +36,7 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
     [Space]
 
     [Header("Sprite Setting")]
+    public SpriteRenderer renderer;
     public SpriteRenderer spriteRenderer;
     public SpriteRenderer SelectedRenderer;
     public SpriteRenderer spriteSpawn;
@@ -46,6 +45,12 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
     public SpriteRenderer WallRenderer;
     public SpriteRenderer DamagingRenderer;
     private Color originalColor;
+
+    [Header("Tile set")]
+    //pour le base
+    public TileSet baseLayer;//0-base layer, 1-spawn, 2-end, 3-slowing, 4-damaging, 5-wall
+    public TileSet grass;
+    public TileSet water;
 
     public int X { get; internal set; }
     public int Y { get; internal set; }
@@ -58,13 +63,15 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
     }
     internal void SetComponent()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        originalColor = spriteRenderer.color;
+        //spriteRenderer = GetComponent<SpriteRenderer>();
+        //originalColor = spriteRenderer.color;
     }
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        originalColor = spriteRenderer.color;
+        //spriteRenderer = GetComponent<SpriteRenderer>();
+        //originalColor = spriteRenderer.color;
+        //GetComponent<SpriteRenderer>().sprite = spriteRenderer[UnityEngine.Random.Range(0, spriteRenderer.Count())];
+
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -208,6 +215,11 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
         }
     }
 
+    internal void TurnBlank()
+    {
+        renderer.sprite = baseLayer.tiles[0];
+    }
+
     internal void TurnSpawn()
     {
         IsSpawn = !IsSpawn;
@@ -224,32 +236,35 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
     {
         Color currentColor = originalColor;
         Color newColor = new Color(currentColor.grayscale, currentColor.grayscale, currentColor.grayscale, 0.5f);
-        spriteRenderer.color = newColor;
+        //spriteRenderer.color = newColor;
     }
 
     internal void TurnBloced()
     {
         IsBloced = !IsBloced;
-        WallRenderer.enabled = IsBloced;
+        //WallRenderer.enabled = IsBloced;
+        renderer.sprite = baseLayer.tiles[5];
     }
 
     internal void TurnSlow()
     {
         IsSlowing = !IsSlowing;
-        SlowingRenderer.enabled = IsSlowing;
+        //SlowingRenderer.enabled = IsSlowing;
+        renderer.sprite = baseLayer.tiles[3];
     }
 
     internal void TurnDamaging()
     {
         IsDamaging = !IsDamaging;
-        DamagingRenderer.enabled = IsDamaging;
+        //DamagingRenderer.enabled = IsDamaging;
+        renderer.sprite = baseLayer.tiles[4];
     }
 
     internal void SetPathColor(bool isPath)
     {
         Color transparentOrange = new Color(1, 0.375f, 0, 0.5f);
 
-        spriteRenderer.color = isPath ? transparentOrange : originalColor;
+        //spriteRenderer.color = isPath ? transparentOrange : originalColor;
     }
 
     internal void SetCost()
@@ -266,11 +281,23 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
 
     public void SetTileRender()
     {
-        spriteSpawn.enabled = IsSpawn;
-        spriteEnd.enabled = IsEnd;
-        SlowingRenderer.enabled = IsSlowing;
-        WallRenderer.enabled = IsBloced;
-        DamagingRenderer.enabled = IsDamaging;
+        //spriteSpawn.enabled = IsSpawn;
+        //spriteEnd.enabled = IsEnd;
+        //SlowingRenderer.enabled = IsSlowing;
+        //WallRenderer.enabled = IsBloced;
+        //DamagingRenderer.enabled = IsDamaging;
+
+        if (IsBloced)
+        { renderer.sprite = baseLayer.tiles[5]; }
+        else if (IsDamaging)
+        { renderer.sprite = baseLayer.tiles[4]; }
+        else if (IsSlowing)
+        { renderer.sprite = baseLayer.tiles[3]; }
+        else
+        { renderer.sprite = baseLayer.tiles[0]; }
+
+
+
     }
 
 }
