@@ -5,6 +5,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Collections;
 using System.Diagnostics;
+using UnityEngine.U2D;
 
 [CustomEditor(typeof(MapLoading))]
 public class MapEditor : Editor
@@ -17,10 +18,10 @@ public class MapEditor : Editor
         Decoration,
     }
 
-    public enum NatureLayout
-    {
-        Plaine,
-    }
+    //public enum NatureLayout
+    //{
+    //    Plaine,
+    //}
 
     private MapLoading mapLoading;
     bool showMap = true;
@@ -35,7 +36,8 @@ public class MapEditor : Editor
     int nombreParLigne = 9;
     //variable pour le layer Nature
     bool autoFill = false;
-    NatureLayout natureLayer;
+    GroupTileSet natureLayer;
+    private int selectedSpriteIndex;
 
     private bool showSpawnPoints = false; //pour le dropdown pour l'affichage des spawn point
 
@@ -167,21 +169,29 @@ public class MapEditor : Editor
         //dans la selection Nature permet de modifier le terrain de la carte par exemple forest/plaine, desert, volcon, chateau, etc
         if (mapLayer == MapLayout.Nature)
         {
-            //reset les valeurs pour la couleur
-            //currentColor = -1;
+            //assosi les valeur des variable
+            natureLayer = mapLoading.gameTilePrefab.GetComponent<GameTiles>().natureLayer;
 
             //selection pour la map
             EditorGUILayout.BeginHorizontal();
+            //buttun pour le auto fill ce qui permet de selectioner automatiquement quelle tuille sera afficher
             autoFill = EditorGUILayout.Toggle("AutoFill", autoFill);
-            natureLayer = (NatureLayout)EditorGUILayout.EnumPopup("Layer de la map", natureLayer);
-            //mapLoading.gameTilePrefab.GetComponent<GameTiles>().natureLayer
+
+            //trasforme les nom des Tile set dans le Group set pour selectionner le bon
+            string[] tileSetNames = new string[natureLayer.groupSet.Length];
+
+            for (int i = 0; i < natureLayer.groupSet.Length; i++)
+            {
+                tileSetNames[i] = natureLayer.groupSet[i].name;
+            }
+
+            //pop up pour la selection du Tile set
+            mapLoading.natureLayerIndex = EditorGUILayout.Popup("Layer de la map : ",
+                                                                mapLoading.natureLayerIndex,
+                                                                tileSetNames);
             EditorGUILayout.EndHorizontal();
 
-            if (autoFill)
-            {
-
-            }
-            else if (!autoFill)
+            if (!autoFill)
             {
                 EditorGUILayout.LabelField("Tile Set selectioner : ", EditorStyles.boldLabel);
 
@@ -190,20 +200,16 @@ public class MapEditor : Editor
                 int currentLigne = 0;
                 EditorGUILayout.BeginHorizontal();
 
-                foreach (var sprite in mapLoading.CurrentTileSet.tiles)
+                for (int i = 0; i < natureLayer.groupSet[mapLoading.natureLayerIndex].tiles.Length - 1; i++)
                 {
-                    if (sprite == null)
-                    { continue; }
+                    Sprite sprite = natureLayer.groupSet[mapLoading.natureLayerIndex].tiles[i];
 
                     Texture2D preview = AssetPreview.GetAssetPreview(sprite);
 
-                    if (preview != null)
+                    if (GUILayout.Button(preview != null ? preview : Texture2D.grayTexture,
+                               GUILayout.Width(pixelResolution), GUILayout.Height(pixelResolution)))
                     {
-                        GUILayout.Box(preview, GUILayout.Width(pixelResolution), GUILayout.Height(pixelResolution));
-                    }
-                    else
-                    {
-                        GUILayout.Label("?", GUILayout.Width(pixelResolution), GUILayout.Height(pixelResolution));
+                        selectedSpriteIndex = i;
                     }
 
                     currentLigne++;
@@ -263,7 +269,7 @@ public class MapEditor : Editor
             EditorGUILayout.Space();
         }
 
-
+        //Permet D'afficher la map
         if (showMap)
         {
             if (currentMap == null || currentMap != mapLoading.GetCurrentMap())
@@ -290,7 +296,30 @@ public class MapEditor : Editor
                         cellSize);
 
                     // Dessiner la case
-                    EditorGUI.DrawRect(cellRect, GetTileColor(currentMap[x, y]));
+                    switch (mapLayer)
+                    {
+                        case MapLayout.Base:
+                            EditorGUI.DrawRect(cellRect, GetTileColor(currentMap[x, y]));
+                            break;
+                        case MapLayout.Nature:
+                            if (currentMap[x, y].natureRenderer.sprite == null)
+                            {
+                                EditorGUI.DrawRect(cellRect, GetTileColor(currentMap[x, y]));
+                            }
+                            else
+                            {
+                                Texture2D texture = currentMap[x, y].natureRenderer.sprite.texture;
+                                GUI.DrawTextureWithTexCoords(cellRect, texture, cellRect);
+                            }
+                            break;
+                        case MapLayout.Terrain:
+                            EditorGUI.DrawRect(cellRect, GetTileColor(currentMap[x, y]));
+                            break;
+                        case MapLayout.Decoration:
+                            EditorGUI.DrawRect(cellRect, GetTileColor(currentMap[x, y]));
+                            break;
+
+                    }
 
 
                     // Vérifier le clic sur la case
@@ -314,7 +343,11 @@ public class MapEditor : Editor
                                     case MapLayout.Nature:
                                         if (autoFill)
                                         {
-                                            tile.SetTileRenderNature(natureLayer, autoFill, null);
+                                            tile.SetTileRenderNature(mapLoading.natureLayerIndex, autoFill, -1);
+                                        }
+                                        else
+                                        {
+                                            tile.SetTileRenderNature(mapLoading.natureLayerIndex, autoFill, selectedSpriteIndex);
                                         }
                                         break;
                                     case MapLayout.Terrain:
@@ -331,9 +364,6 @@ public class MapEditor : Editor
 
                                 // Bloquer l'événement pour éviter qu'il soit propagé
                                 Event.current.Use();
-
-
-
                             }
                         }
 
@@ -341,10 +371,7 @@ public class MapEditor : Editor
                 }
             }
         }
-
-
         #endregion
-
         serializedObject.ApplyModifiedProperties();
 
     }

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groupSet:
   - {fileID: 11400000, guid: e69e13b75f5387c45834a2a53da3fdcc, type: 2}
+  - {fileID: 11400000, guid: 6a6210214ffd8d84cb418819fdd688ef, type: 2}

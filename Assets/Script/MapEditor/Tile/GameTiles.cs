@@ -304,15 +304,22 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
         { renderer.sprite = baseLayer.tiles[0]; }
     }
 
-    public void SetTileRenderNature(NatureLayout natureLayer, bool autofil, Sprite sprite)
+    public void SetTileRenderNature(int natureLayerIndex, bool autofil, int spriteIndex)
     {
         if(autofil)
         {
-            if(NatureLayout.Plaine == natureLayer)
-            {
-                renderer.sprite = this.natureLayer.groupSet[0].tiles[Random.Range(0, this.natureLayer.groupSet[0].tiles.Length)];
-            }
+            //if(NatureLayout.Plaine == natureLayer)
+            //{
+            //    renderer.sprite = this.natureLayer.groupSet[0].tiles[Random.Range(0, this.natureLayer.groupSet[0].tiles.Length)];
+            //}
 
+            natureRenderer.sprite = this.natureLayer.groupSet[natureLayerIndex].tiles[Random.Range(0, this.natureLayer.groupSet[natureLayerIndex].tiles.Length)];
+            //}
+
+        }
+        else
+        {
+            natureRenderer.sprite = this.natureLayer.groupSet[natureLayerIndex].tiles[spriteIndex];
         }
     }
 
