@@ -16,7 +16,7 @@ public class MapLoading : MonoBehaviour
     [SerializeField] internal int RowCount = 20;
     [SerializeField] internal int ColCount = 35;
 
-    [SerializeField] GameObject gameTilePrefab;
+    [SerializeField] internal GameObject gameTilePrefab;
     static internal GameTiles[,] currentGameTiles;
     internal Vector2 spawnPoint;
     internal Vector2 endPoint;
@@ -33,13 +33,12 @@ public class MapLoading : MonoBehaviour
     //string tagBackground = "Background";
     string tagMap = "Map";
 
-    [Header("Tile set")]
     //variable pour le tilling des niveau
-    public TileSets tilesets;
-
+    [Header("Tile set")]
     public TileSet grassTileSet;
     public TileSet stoneBluiding;
     public TileSet stonePath;
+    internal TileSets tilesets;
 
     public TileSet CurrentTileSet
     {
@@ -52,6 +51,17 @@ public class MapLoading : MonoBehaviour
                 TileSets.StonePath => stonePath,
                 _ => null,
             };
+        }
+        set
+        {
+            if (value == grassTileSet)
+                tilesets = TileSets.Grass;
+            else if (value == stoneBluiding)
+                tilesets = TileSets.StoneBluiding;
+            else if (value == stonePath)
+                tilesets = TileSets.StonePath;
+            else
+                Debug.LogWarning("TileSet non reconnu dans CurrentTileSet.set");
         }
     }
 

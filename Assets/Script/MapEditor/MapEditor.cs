@@ -1,5 +1,10 @@
 using UnityEngine;
 using UnityEditor;
+using static MapLoading;
+using System;
+using System.Runtime.InteropServices;
+using System.Collections;
+using System.Diagnostics;
 
 [CustomEditor(typeof(MapLoading))]
 public class MapEditor : Editor
@@ -7,9 +12,14 @@ public class MapEditor : Editor
     public enum MapLayout
     {
         Base,
-        Terrain,
         Nature,
+        Terrain,
         Decoration,
+    }
+
+    public enum NatureLayout
+    {
+        Plaine,
     }
 
     private MapLoading mapLoading;
@@ -17,12 +27,15 @@ public class MapEditor : Editor
     GameTiles[,] currentMap;
     int[] colorIndex = new int[5];
     int currentColor; //0 = vide, 1 = block, 2 = water, 3 = fire, 4 = spawn, 5 = end
-    
+
     //variable pour le tile set
     MapLayout mapLayer;
-    MapLayout terrainLayer;
+    //MapLayout terrainLayer;
     int pixelResolution = 32;
     int nombreParLigne = 9;
+    //variable pour le layer Nature
+    bool autoFill = false;
+    NatureLayout natureLayer;
 
     private bool showSpawnPoints = false; //pour le dropdown pour l'affichage des spawn point
 
@@ -150,19 +163,77 @@ public class MapEditor : Editor
             EditorGUILayout.EndHorizontal();
         }
 
+        //si la selection du layer base est selectioner afficher cette selection
+        //dans la selection Nature permet de modifier le terrain de la carte par exemple forest/plaine, desert, volcon, chateau, etc
+        if (mapLayer == MapLayout.Nature)
+        {
+            //reset les valeurs pour la couleur
+            //currentColor = -1;
+
+            //selection pour la map
+            EditorGUILayout.BeginHorizontal();
+            autoFill = EditorGUILayout.Toggle("AutoFill", autoFill);
+            natureLayer = (NatureLayout)EditorGUILayout.EnumPopup("Layer de la map", natureLayer);
+            //mapLoading.gameTilePrefab.GetComponent<GameTiles>().natureLayer
+            EditorGUILayout.EndHorizontal();
+
+            if (autoFill)
+            {
+
+            }
+            else if (!autoFill)
+            {
+                EditorGUILayout.LabelField("Tile Set selectioner : ", EditorStyles.boldLabel);
+
+                //pour afficher les tiles a l'horizontal
+                //affiche 10 tille par ligne
+                int currentLigne = 0;
+                EditorGUILayout.BeginHorizontal();
+
+                foreach (var sprite in mapLoading.CurrentTileSet.tiles)
+                {
+                    if (sprite == null)
+                    { continue; }
+
+                    Texture2D preview = AssetPreview.GetAssetPreview(sprite);
+
+                    if (preview != null)
+                    {
+                        GUILayout.Box(preview, GUILayout.Width(pixelResolution), GUILayout.Height(pixelResolution));
+                    }
+                    else
+                    {
+                        GUILayout.Label("?", GUILayout.Width(pixelResolution), GUILayout.Height(pixelResolution));
+                    }
+
+                    currentLigne++;
+                    if (currentLigne == nombreParLigne)
+                    {
+                        EditorGUILayout.EndHorizontal();
+                        EditorGUILayout.BeginHorizontal();
+                        currentLigne = 0;
+                    }
+                }
+                EditorGUILayout.EndHorizontal();
+                EditorGUILayout.Space();
+            }
+        }
+
         //si la selection du layer Terrain est selectioner afficher cette selection
         //dans la selection Terrain on peut venir modifer le terrain de la map 
         if (mapLayer == MapLayout.Terrain)
         {
             //reset les valeurs pour la couleur
             currentColor = -1;
-
+            //terrainLayer = (MapLayout)EditorGUILayout.EnumPopup("Layer de la map", mapLoading.tilesets);
+            //mapLoading.CurrentTileSet = EditorGUILayout.EnumPopup("Layer de la map", mapLoading.tilesets);
+            mapLoading.tilesets = (TileSets)EditorGUILayout.EnumPopup("Layer de la map", mapLoading.tilesets);
             EditorGUILayout.LabelField("Tile Set selectioner : ", EditorStyles.boldLabel);
 
             //pour afficher les tiles a l'horizontal
             //affiche 10 tille par ligne
             int currentLigne = 0;
-            EditorGUILayout.BeginHorizontal();      
+            EditorGUILayout.BeginHorizontal();
 
             foreach (var sprite in mapLoading.CurrentTileSet.tiles)
             {
@@ -182,7 +253,7 @@ public class MapEditor : Editor
 
                 currentLigne++;
                 if (currentLigne == nombreParLigne)
-                {                
+                {
                     EditorGUILayout.EndHorizontal();
                     EditorGUILayout.BeginHorizontal();
                     currentLigne = 0;
@@ -191,6 +262,7 @@ public class MapEditor : Editor
             EditorGUILayout.EndHorizontal();
             EditorGUILayout.Space();
         }
+
 
         if (showMap)
         {
@@ -232,9 +304,24 @@ public class MapEditor : Editor
                                 // Marquer l'objet comme modifié pour Undo/Redo
                                 Undo.RecordObject(mapLoading, "Change Tile State");
 
-                                // Modifier l'état de la tuile
-                                //CycleTileState(currentMap[x, y]);
-                                CycleTileState(tile);
+                                switch (mapLayer)
+                                {
+                                    case MapLayout.Base:
+                                        // Modifier l'état de la tuile
+                                        CycleTileState(tile);
+                                        tile.SetTileRender();
+                                        break;
+                                    case MapLayout.Nature:
+                                        if (autoFill)
+                                        {
+                                            tile.SetTileRenderNature(natureLayer, autoFill, null);
+                                        }
+                                        break;
+                                    case MapLayout.Terrain:
+                                        break;
+                                    case MapLayout.Decoration:
+                                        break;
+                                }
 
                                 // Dire à Unity que l'objet a été modifié
                                 EditorUtility.SetDirty(mapLoading);
@@ -245,7 +332,8 @@ public class MapEditor : Editor
                                 // Bloquer l'événement pour éviter qu'il soit propagé
                                 Event.current.Use();
 
-                                tile.SetTileRender();
+
+
                             }
                         }
 

@@ -1,8 +1,8 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static MapEditor;
 
 public class GameTiles : MonoBehaviour, IPointerEnterHandler,
     IPointerExitHandler, IPointerClickHandler
@@ -46,11 +46,18 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
     public SpriteRenderer DamagingRenderer;
     private Color originalColor;
 
-    [Header("Tile set")]
+    [Header("Tile set Layer")]
     //pour le base
     public TileSet baseLayer;//0-base layer, 1-spawn, 2-end, 3-slowing, 4-damaging, 5-wall
+    public GroupTileSet natureLayer; //0- grass
+    [Header("Tile set")]
     public TileSet grass;
     public TileSet water;
+
+    [Header("Tile Set layer Renderer")]
+    public SpriteRenderer natureRenderer;
+    public SpriteRenderer terrainRenderer;
+    public SpriteRenderer decoRenderer;
 
     public int X { get; internal set; }
     public int Y { get; internal set; }
@@ -295,9 +302,18 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
         { renderer.sprite = baseLayer.tiles[3]; }
         else
         { renderer.sprite = baseLayer.tiles[0]; }
+    }
 
+    public void SetTileRenderNature(NatureLayout natureLayer, bool autofil, Sprite sprite)
+    {
+        if(autofil)
+        {
+            if(NatureLayout.Plaine == natureLayer)
+            {
+                renderer.sprite = this.natureLayer.groupSet[0].tiles[Random.Range(0, this.natureLayer.groupSet[0].tiles.Length)];
+            }
 
-
+        }
     }
 
 }
