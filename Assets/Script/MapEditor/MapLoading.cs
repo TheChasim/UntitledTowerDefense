@@ -35,7 +35,7 @@ public class MapLoading : MonoBehaviour
 
     //variable pour le tilling des niveau
     [Header("Tile set")]
-    internal int natureLayerIndex = -1;
+    internal int natureLayerIndex = 0;
     public TileSet grassTileSet;
     public TileSet stoneBluiding;
     public TileSet stonePath;

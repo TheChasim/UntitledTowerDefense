@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEditor;
-using static MapLoading;
 using System;
 using System.Runtime.InteropServices;
 using System.Collections;
-using System.Diagnostics;
 using UnityEngine.U2D;
+
+using static MapLoading;
+//using System.Diagnostics;
 
 [CustomEditor(typeof(MapLoading))]
 public class MapEditor : Editor
@@ -28,6 +29,8 @@ public class MapEditor : Editor
     GameTiles[,] currentMap;
     int[] colorIndex = new int[5];
     int currentColor; //0 = vide, 1 = block, 2 = water, 3 = fire, 4 = spawn, 5 = end
+
+    bool isToggled = false;
 
     //variable pour le tile set
     MapLayout mapLayer;
@@ -191,6 +194,27 @@ public class MapEditor : Editor
                                                                 tileSetNames);
             EditorGUILayout.EndHorizontal();
 
+            #region Toggle Sup buttun
+            // Changer la couleur du bouton selon l'état
+            Color originalColor = GUI.color;
+            GUI.color = isToggled ? Color.red : Color.white;
+            // Toggle bouton
+            isToggled = GUILayout.Toggle(isToggled, isToggled ? "ACTIF" : "Supprimer la tuile", "Button", GUILayout.Height(20));
+            // Rétablir la couleur originale
+            GUI.color = originalColor;
+            #endregion
+
+            if (isToggled)
+            {
+                selectedSpriteIndex = -1;
+            }
+            else if (!isToggled && autoFill)
+            {
+                selectedSpriteIndex = 1;
+
+            }
+            Debug.LogWarning(selectedSpriteIndex);
+
             if (!autoFill)
             {
                 EditorGUILayout.LabelField("Tile Set selectioner : ", EditorStyles.boldLabel);
@@ -199,6 +223,10 @@ public class MapEditor : Editor
                 //affiche 10 tille par ligne
                 int currentLigne = 0;
                 EditorGUILayout.BeginHorizontal();
+
+                Debug.LogWarning(natureLayer.groupSet);
+                Debug.LogWarning(mapLoading.natureLayerIndex);
+                Debug.LogWarning(natureLayer.groupSet[mapLoading.natureLayerIndex].tiles.Length);
 
                 for (int i = 0; i < natureLayer.groupSet[mapLoading.natureLayerIndex].tiles.Length - 1; i++)
                 {
@@ -220,6 +248,27 @@ public class MapEditor : Editor
                         currentLigne = 0;
                     }
                 }
+
+                //foreach( var sprite in natureLayer.groupSet[mapLoading.natureLayerIndex].tiles)
+                //{
+
+
+                //    Texture2D preview = AssetPreview.GetAssetPreview(sprite);
+
+                //    if (GUILayout.Button(preview != null ? preview : Texture2D.grayTexture,
+                //               GUILayout.Width(pixelResolution), GUILayout.Height(pixelResolution)))
+                //    {
+                //        selectedSpriteIndex = 
+                //    }
+
+                //    currentLigne++;
+                //    if (currentLigne == nombreParLigne)
+                //    {
+                //        EditorGUILayout.EndHorizontal();
+                //        EditorGUILayout.BeginHorizontal();
+                //        currentLigne = 0;
+                //    }
+                //}
                 EditorGUILayout.EndHorizontal();
                 EditorGUILayout.Space();
             }
