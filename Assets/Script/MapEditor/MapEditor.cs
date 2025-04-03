@@ -17,12 +17,8 @@ public class MapEditor : Editor
         Nature,
         Terrain,
         Decoration,
+        VegetationObstacle,
     }
-
-    //public enum NatureLayout
-    //{
-    //    Plaine,
-    //}
 
     private MapLoading mapLoading;
     bool showMap = true;
@@ -35,12 +31,17 @@ public class MapEditor : Editor
     //variable pour le tile set
     MapLayout mapLayer;
     //MapLayout terrainLayer;
-    int pixelResolution = 32;
-    int nombreParLigne = 9;
+    int pixelResolution = 64;
+    int nombreParLigne = 5;
     //variable pour le layer Nature
     bool autoFill = false;
     GroupTileSet natureLayer;
     private int selectedSpriteIndex;
+    private Vector2 scrollNatureSelection;
+    private Vector2 scrollTerrainSelection;
+    private Vector2 scrollDecoSelection;
+    private Vector2 scrollVegetationObstacleSelection;
+    private Vector2 scrollPosition;
 
     private bool showSpawnPoints = false; //pour le dropdown pour l'affichage des spawn point
 
@@ -52,6 +53,9 @@ public class MapEditor : Editor
 
     public override void OnInspectorGUI()
     {
+        pixelResolution = 64;
+        nombreParLigne = 20;
+
         DrawDefaultInspector();
         MapLoading mapLoading = (MapLoading)target;
 
@@ -213,29 +217,26 @@ public class MapEditor : Editor
                 selectedSpriteIndex = 1;
 
             }
-            Debug.LogWarning(selectedSpriteIndex);
 
             if (!autoFill)
             {
                 EditorGUILayout.LabelField("Tile Set selectioner : ", EditorStyles.boldLabel);
 
+                EditorGUILayout.BeginVertical("box"); // ma boite
+                scrollNatureSelection = EditorGUILayout.BeginScrollView(scrollNatureSelection);
                 //pour afficher les tiles a l'horizontal
                 //affiche 10 tille par ligne
                 int currentLigne = 0;
                 EditorGUILayout.BeginHorizontal();
-
-                Debug.LogWarning(natureLayer.groupSet);
-                Debug.LogWarning(mapLoading.natureLayerIndex);
-                Debug.LogWarning(natureLayer.groupSet[mapLoading.natureLayerIndex].tiles.Length);
 
                 for (int i = 0; i < natureLayer.groupSet[mapLoading.natureLayerIndex].tiles.Length - 1; i++)
                 {
                     Sprite sprite = natureLayer.groupSet[mapLoading.natureLayerIndex].tiles[i];
 
                     Texture2D preview = AssetPreview.GetAssetPreview(sprite);
-
+ 
                     if (GUILayout.Button(preview != null ? preview : Texture2D.grayTexture,
-                               GUILayout.Width(pixelResolution), GUILayout.Height(pixelResolution)))
+                               GUILayout.Width(pixelResolution), GUILayout.Height(64)))
                     {
                         selectedSpriteIndex = i;
                     }
@@ -249,27 +250,11 @@ public class MapEditor : Editor
                     }
                 }
 
-                //foreach( var sprite in natureLayer.groupSet[mapLoading.natureLayerIndex].tiles)
-                //{
-
-
-                //    Texture2D preview = AssetPreview.GetAssetPreview(sprite);
-
-                //    if (GUILayout.Button(preview != null ? preview : Texture2D.grayTexture,
-                //               GUILayout.Width(pixelResolution), GUILayout.Height(pixelResolution)))
-                //    {
-                //        selectedSpriteIndex = 
-                //    }
-
-                //    currentLigne++;
-                //    if (currentLigne == nombreParLigne)
-                //    {
-                //        EditorGUILayout.EndHorizontal();
-                //        EditorGUILayout.BeginHorizontal();
-                //        currentLigne = 0;
-                //    }
-                //}
                 EditorGUILayout.EndHorizontal();
+
+                EditorGUILayout.EndScrollView();
+                EditorGUILayout.EndVertical();
+
                 EditorGUILayout.Space();
             }
         }
@@ -284,6 +269,10 @@ public class MapEditor : Editor
             //mapLoading.CurrentTileSet = EditorGUILayout.EnumPopup("Layer de la map", mapLoading.tilesets);
             mapLoading.tilesets = (TileSets)EditorGUILayout.EnumPopup("Layer de la map", mapLoading.tilesets);
             EditorGUILayout.LabelField("Tile Set selectioner : ", EditorStyles.boldLabel);
+
+
+            EditorGUILayout.BeginVertical("box"); // ma boite
+            scrollTerrainSelection = EditorGUILayout.BeginScrollView(scrollTerrainSelection);
 
             //pour afficher les tiles a l'horizontal
             //affiche 10 tille par ligne
@@ -315,6 +304,10 @@ public class MapEditor : Editor
                 }
             }
             EditorGUILayout.EndHorizontal();
+
+            EditorGUILayout.EndVertical();
+            EditorGUILayout.EndScrollView();
+
             EditorGUILayout.Space();
         }
 
@@ -327,20 +320,26 @@ public class MapEditor : Editor
 
             }
 
+
+            //pour mettre la carte dans une boite pour scroll
+            EditorGUILayout.BeginVertical("box"); // ma boite
+            scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
+            
             // Taille des cases
-            float cellSize = 15f;
+            float cellSize = 20f;
             float padding = 2f;
 
             //Création de la grille
             Rect gridRect = GUILayoutUtility.GetRect(mapLoading.ColCount * (cellSize + padding), mapLoading.RowCount * (cellSize + padding));
 
+            //boucle pour la carte
             for (int y = 0; y < mapLoading.ColCount; y++)
             {
                 for (int x = 0; x < mapLoading.RowCount; x++)
                 {
                     Rect cellRect = new Rect(
-                        gridRect.x + (mapLoading.ColCount - 1 - y) * (cellSize + padding), // Inverser X pour corriger le miroir horizontal                   
-                        gridRect.y + (mapLoading.RowCount - 1 - x) * (cellSize + padding),  // Inverser Y
+                        gridRect.x + x * (cellSize + padding),
+                        gridRect.y + +(mapLoading.ColCount - 1 - y) * (cellSize + padding),
                         cellSize,
                         cellSize);
 
@@ -392,7 +391,7 @@ public class MapEditor : Editor
                                     case MapLayout.Nature:
                                         if (autoFill)
                                         {
-                                            tile.SetTileRenderNature(mapLoading.natureLayerIndex, autoFill, -1);
+                                            tile.SetTileRenderNature(mapLoading.natureLayerIndex, autoFill, selectedSpriteIndex);
                                         }
                                         else
                                         {
@@ -419,6 +418,12 @@ public class MapEditor : Editor
                     }
                 }
             }
+
+            //fin de la boite et du scroll
+            EditorGUILayout.EndVertical();
+            EditorGUILayout.EndScrollView();
+
+
         }
         #endregion
         serializedObject.ApplyModifiedProperties();
