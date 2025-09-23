@@ -609,6 +609,7 @@ MonoBehaviour:
   DamagingRenderer: {fileID: 0}
   baseLayer: {fileID: 11400000, guid: fc4eb9275df1dd84d912a73d82ae8d35, type: 2}
   natureLayer: {fileID: 11400000, guid: 3e35930254abf1e4798d4be65fb1edb5, type: 2}
+  terrainLayer: {fileID: 11400000, guid: 25a3e49e88641144d8577aa671c02b30, type: 2}
   grass: {fileID: 11400000, guid: e69e13b75f5387c45834a2a53da3fdcc, type: 2}
   water: {fileID: 0}
   natureRenderer: {fileID: 1471074284753627257}

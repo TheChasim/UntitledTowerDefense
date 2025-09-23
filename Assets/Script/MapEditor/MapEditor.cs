@@ -32,10 +32,11 @@ public class MapEditor : Editor
     MapLayout mapLayer;
     //MapLayout terrainLayer;
     int pixelResolution = 64;
-    int nombreParLigne = 5;
+    int nombreParLigne = 6;
     //variable pour le layer Nature
     bool autoFill = false;
     GroupTileSet natureLayer;
+    GroupTileSet terrainLayer;
     private int selectedSpriteIndex;
     private Vector2 scrollNatureSelection;
     private Vector2 scrollTerrainSelection;
@@ -54,7 +55,7 @@ public class MapEditor : Editor
     public override void OnInspectorGUI()
     {
         pixelResolution = 64;
-        nombreParLigne = 20;
+        //nombreParLigne = 20;
 
         DrawDefaultInspector();
         MapLoading mapLoading = (MapLoading)target;
@@ -176,7 +177,7 @@ public class MapEditor : Editor
         //dans la selection Nature permet de modifier le terrain de la carte par exemple forest/plaine, desert, volcon, chateau, etc
         if (mapLayer == MapLayout.Nature)
         {
-            //assosi les valeur des variable
+            //associ les valeur des variable
             natureLayer = mapLoading.gameTilePrefab.GetComponent<GameTiles>().natureLayer;
 
             //selection pour la map
@@ -225,30 +226,10 @@ public class MapEditor : Editor
                 EditorGUILayout.BeginVertical("box"); // ma boite
                 scrollNatureSelection = EditorGUILayout.BeginScrollView(scrollNatureSelection);
                 //pour afficher les tiles a l'horizontal
-                //affiche 10 tille par ligne
-                int currentLigne = 0;
                 EditorGUILayout.BeginHorizontal();
 
-                for (int i = 0; i < natureLayer.groupSet[mapLoading.natureLayerIndex].tiles.Length - 1; i++)
-                {
-                    Sprite sprite = natureLayer.groupSet[mapLoading.natureLayerIndex].tiles[i];
-
-                    Texture2D preview = AssetPreview.GetAssetPreview(sprite);
- 
-                    if (GUILayout.Button(preview != null ? preview : Texture2D.grayTexture,
-                               GUILayout.Width(pixelResolution), GUILayout.Height(64)))
-                    {
-                        selectedSpriteIndex = i;
-                    }
-
-                    currentLigne++;
-                    if (currentLigne == nombreParLigne)
-                    {
-                        EditorGUILayout.EndHorizontal();
-                        EditorGUILayout.BeginHorizontal();
-                        currentLigne = 0;
-                    }
-                }
+                //fonction pour afficher le tile map
+                ShowTimeMap(natureLayer, mapLoading.natureLayerIndex);
 
                 EditorGUILayout.EndHorizontal();
 
@@ -263,52 +244,67 @@ public class MapEditor : Editor
         //dans la selection Terrain on peut venir modifer le terrain de la map 
         if (mapLayer == MapLayout.Terrain)
         {
-            //reset les valeurs pour la couleur
-            currentColor = -1;
-            //terrainLayer = (MapLayout)EditorGUILayout.EnumPopup("Layer de la map", mapLoading.tilesets);
-            //mapLoading.CurrentTileSet = EditorGUILayout.EnumPopup("Layer de la map", mapLoading.tilesets);
-            mapLoading.tilesets = (TileSets)EditorGUILayout.EnumPopup("Layer de la map", mapLoading.tilesets);
-            EditorGUILayout.LabelField("Tile Set selectioner : ", EditorStyles.boldLabel);
+            //associ les valeur des variable
+            terrainLayer = mapLoading.gameTilePrefab.GetComponent<GameTiles>().terrainLayer;
 
-
-            EditorGUILayout.BeginVertical("box"); // ma boite
-            scrollTerrainSelection = EditorGUILayout.BeginScrollView(scrollTerrainSelection);
-
-            //pour afficher les tiles a l'horizontal
-            //affiche 10 tille par ligne
-            int currentLigne = 0;
+            //selection pour la map
             EditorGUILayout.BeginHorizontal();
+            //buttun pour le auto fill ce qui permet de selectioner automatiquement quelle tuille sera afficher
+            autoFill = EditorGUILayout.Toggle("AutoFill", autoFill);
 
-            foreach (var sprite in mapLoading.CurrentTileSet.tiles)
+            //trasforme les nom des Tile set dans le Group set pour selectionner le bon
+            string[] tileSetNames = new string[terrainLayer.groupSet.Length];
+
+            for (int i = 0; i < terrainLayer.groupSet.Length; i++)
             {
-                if (sprite == null)
-                { continue; }
-
-                Texture2D preview = AssetPreview.GetAssetPreview(sprite);
-
-                if (preview != null)
-                {
-                    GUILayout.Box(preview, GUILayout.Width(pixelResolution), GUILayout.Height(pixelResolution));
-                }
-                else
-                {
-                    GUILayout.Label("?", GUILayout.Width(pixelResolution), GUILayout.Height(pixelResolution));
-                }
-
-                currentLigne++;
-                if (currentLigne == nombreParLigne)
-                {
-                    EditorGUILayout.EndHorizontal();
-                    EditorGUILayout.BeginHorizontal();
-                    currentLigne = 0;
-                }
+                tileSetNames[i] = terrainLayer.groupSet[i].name;
             }
+
+            //pop up pour la selection du Tile set
+            mapLoading.natureLayerIndex = EditorGUILayout.Popup("Layer de la map : ",
+                                                                mapLoading.natureLayerIndex,
+                                                                tileSetNames);
             EditorGUILayout.EndHorizontal();
 
-            EditorGUILayout.EndVertical();
-            EditorGUILayout.EndScrollView();
+            #region Toggle Sup buttun
+            // Changer la couleur du bouton selon l'état
+            Color originalColor = GUI.color;
+            GUI.color = isToggled ? Color.red : Color.white;
+            // Toggle bouton
+            isToggled = GUILayout.Toggle(isToggled, isToggled ? "ACTIF" : "Supprimer la tuile", "Button", GUILayout.Height(20));
+            // Rétablir la couleur originale
+            GUI.color = originalColor;
+            #endregion
 
-            EditorGUILayout.Space();
+            if (isToggled)
+            {
+                selectedSpriteIndex = -1;
+            }
+            else if (!isToggled && autoFill)
+            {
+                selectedSpriteIndex = 1;
+
+            }
+
+            if (!autoFill)
+            {
+                EditorGUILayout.LabelField("Tile Set selectioner : ", EditorStyles.boldLabel);
+
+                EditorGUILayout.BeginVertical("box"); // ma boite
+                scrollTerrainSelection = EditorGUILayout.BeginScrollView(scrollTerrainSelection);
+                //pour afficher les tiles a l'horizontal
+                EditorGUILayout.BeginHorizontal();
+
+                //fonction pour afficher le tile map
+                ShowTimeMap(terrainLayer, mapLoading.terrainLayerIndex);
+
+                EditorGUILayout.EndHorizontal();
+
+                EditorGUILayout.EndScrollView();
+                EditorGUILayout.EndVertical();
+
+                EditorGUILayout.Space();
+            }
         }
 
         //Permet D'afficher la map
@@ -324,7 +320,7 @@ public class MapEditor : Editor
             //pour mettre la carte dans une boite pour scroll
             EditorGUILayout.BeginVertical("box"); // ma boite
             scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
-            
+
             // Taille des cases
             float cellSize = 20f;
             float padding = 2f;
@@ -361,7 +357,15 @@ public class MapEditor : Editor
                             }
                             break;
                         case MapLayout.Terrain:
-                            EditorGUI.DrawRect(cellRect, GetTileColor(currentMap[x, y]));
+                            if (currentMap[x, y].terrainRenderer.sprite == null)
+                            {
+                                EditorGUI.DrawRect(cellRect, GetTileColor(currentMap[x, y]));
+                            }
+                            else
+                            {
+                                Texture2D texture = currentMap[x, y].terrainRenderer.sprite.texture;
+                                GUI.DrawTextureWithTexCoords(cellRect, texture, cellRect);
+                            }
                             break;
                         case MapLayout.Decoration:
                             EditorGUI.DrawRect(cellRect, GetTileColor(currentMap[x, y]));
@@ -399,6 +403,14 @@ public class MapEditor : Editor
                                         }
                                         break;
                                     case MapLayout.Terrain:
+                                        if (autoFill)
+                                        {
+                                            tile.SetTileRenderTerrain(mapLoading.terrainLayerIndex, autoFill, selectedSpriteIndex);
+                                        }
+                                        else
+                                        {
+                                            tile.SetTileRenderTerrain(mapLoading.terrainLayerIndex, autoFill, selectedSpriteIndex);
+                                        }
                                         break;
                                     case MapLayout.Decoration:
                                         break;
@@ -428,6 +440,33 @@ public class MapEditor : Editor
         #endregion
         serializedObject.ApplyModifiedProperties();
 
+    }
+
+    private void ShowTimeMap(GroupTileSet tileSet, int index)
+    {
+        int currentLigne = 0;
+        //bloucle a traver toute les tuile pour l'afichage
+        for (int i = 0; i < tileSet.groupSet[index].tiles.Length - 1; i++)
+        {
+            Sprite sprite = tileSet.groupSet[index].tiles[i];
+
+            Texture2D preview = AssetPreview.GetAssetPreview(sprite);
+
+            if (GUILayout.Button(preview != null ? preview : Texture2D.grayTexture,
+                       GUILayout.Width(pixelResolution), GUILayout.Height(64)))
+            {
+                selectedSpriteIndex = i;
+            }
+
+            currentLigne++;
+            //apres 6 tuile pase a la profaine ligne
+            if (currentLigne == 6)
+            {
+                EditorGUILayout.EndHorizontal();
+                EditorGUILayout.BeginHorizontal();
+                currentLigne = 0;
+            }
+        }
     }
 
     // Définir la couleur en fonction du type de tile

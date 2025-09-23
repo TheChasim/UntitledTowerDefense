@@ -50,6 +50,7 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
     //pour le base
     public TileSet baseLayer;//0-base layer, 1-spawn, 2-end, 3-slowing, 4-damaging, 5-wall
     public GroupTileSet natureLayer; //0- grass
+    public GroupTileSet terrainLayer; //0- grass
     [Header("Tile set")]
     public TileSet grass;
     public TileSet water;
@@ -68,10 +69,10 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
         gridX = newX;
         gridY = newY;
     }
-    internal void SetComponent()
+    internal void SetComponent(int X, int Y)
     {
-        //spriteRenderer = GetComponent<SpriteRenderer>();
-        //originalColor = spriteRenderer.color;
+        gridX = X;
+        gridY = Y;
     }
     private void Awake()
     {
@@ -330,4 +331,29 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
         }
     }
 
+    public void SetTileRenderTerrain(int natureLayerIndex, bool autofil, int spriteIndex)
+    {
+        if (autofil)
+        {
+            if (spriteIndex == -1)
+            {
+                terrainRenderer.sprite = null;
+            }
+            else
+            {
+                terrainRenderer.sprite = this.terrainLayer.groupSet[natureLayerIndex].tiles[Random.Range(0, this.terrainLayer.groupSet[natureLayerIndex].tiles.Length)];
+            }
+        }
+        else
+        {
+            if (spriteIndex == -1)
+            {
+                terrainRenderer.sprite = null;
+            }
+            else
+            {
+                terrainRenderer.sprite = this.terrainLayer.groupSet[natureLayerIndex].tiles[spriteIndex];
+            }
+        }
+    }
 }

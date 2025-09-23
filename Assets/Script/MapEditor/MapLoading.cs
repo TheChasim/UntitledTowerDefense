@@ -1,5 +1,6 @@
-using System;
-using System.Collections;
+#if UNITY_EDITOR
+using UnityEditor;
+
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,6 +26,7 @@ public class MapLoading : MonoBehaviour
 
     [SerializeField] List<GameObject> mapList = new List<GameObject>();
     static public GameObject MapObject;
+    public GameObject mapPrefab;
     Map currentMap;
 
     [Header("Map loading")]
@@ -36,6 +38,7 @@ public class MapLoading : MonoBehaviour
     //variable pour le tilling des niveau
     [Header("Tile set")]
     internal int natureLayerIndex = 0;
+    internal int terrainLayerIndex = 0;
     public TileSet grassTileSet;
     public TileSet stoneBluiding;
     public TileSet stonePath;
@@ -75,112 +78,151 @@ public class MapLoading : MonoBehaviour
     {
         RemoveMap();
 
-        MapObject = mapList[mapIndex];
-        Debug.LogWarning("Spawnig Map : " + MapObject.name);
+        if (mapList == null || mapList.Count == 0)
+        {
+            Debug.LogError("mapList vide.");
+            return;
+        }
 
-        //load l'image en background
-        // Instancier le prefab dans la scène
-        GameObject mapInstance = Instantiate(mapList[mapIndex]);
-        currentMap = mapList[mapIndex].GetComponent<Map>();
+        // 1) Instancier le prefab de map
+        var mapPrefabAsset = mapList[mapIndex];
+        GameObject mapInstance = Instantiate(mapPrefabAsset);
+        mapInstance.tag = tagMap;         // <- IMPORTANT
+        MapObject = mapInstance;
 
+        // 2) Utiliser le composant Map de l'INSTANCE (pas du prefab)
+        currentMap = MapObject.GetComponent<Map>();
 
-        //vient chercher les valeur de dimention de la map a spawn
+        // 3) Dimensions déclarées par la Map
         RowCount = currentMap.row;
         ColCount = currentMap.col;
 
-        //cree un nouveau tableau pour la taille de la map
-        currentMap.map = new char[RowCount, ColCount];
-
-        //load le niveau
+        // 4) Charger la grille depuis JSON (remplit currentMap.map[,])
         currentMap.LoadJson();
         mapName = currentMap.mapName;
 
+        currentMap.LoadMap();
+       
+        // S'assurer que currentMap.map existe et a la bonne taille
+        if (currentMap.map == null
+            || currentMap.map.GetLength(0) != RowCount
+            || currentMap.map.GetLength(1) != ColCount)
+        {
+            Debug.LogWarning("Map char[,] manquante ou taille incorrecte. Création d'une grille vide ' ' par défaut.");
+            currentMap.map = new char[RowCount, ColCount];
+            for (int x = 0; x < RowCount; x++)
+                for (int y = 0; y < ColCount; y++)
+                    currentMap.map[x, y] = ' ';
+        }
+        else
+        {
+            currentGameTiles = currentMap.mapTiles;
+            Debug.Log(currentGameTiles);
+        }
+
+        Debug.LogWarning($"Map Tiles : {currentGameTiles}");
+        if(currentMap)
+
+        // S'assurer que la liste des spawns est initialisée
+        if (spawnTile == null) spawnTile = new List<GameTiles>();
 
 
-        currentGameTiles = new GameTiles[RowCount, ColCount];
-
+        // 5) Créer/peupler les tiles enfants sous mapInstance
         for (int x = 0; x < RowCount; x++)
         {
             for (int y = 0; y < ColCount; y++)
-            {
+            {         
+                GameTiles gt = currentGameTiles[x, y];
 
-                var spawnPosition = new Vector3(x, 0, y);
-                var tile = Instantiate(gameTilePrefab, spawnPosition, Quaternion.Euler(90, 0, 0));
-                tile.transform.parent = mapInstance.transform;
-                currentGameTiles[x, y] = tile.GetComponent<GameTiles>();
-                currentGameTiles[x, y].SetComponent();
-                currentGameTiles[x, y].X = x;
-                currentGameTiles[x, y].Y = y;
-                currentGameTiles[x, y].name = $"tile {x}/{y}";
+                // ---> Le point clé : instancier si gt est null (et pas selon currentMap.map)
+                if (gt == null)
+                {
+                    var spawnPosition = new Vector3(x, 0, y);
+                    var tileGO = Instantiate(gameTilePrefab, spawnPosition, Quaternion.Euler(90, 0, 0), mapInstance.transform);
 
-                //wall
-                if (currentMap.map[x, y] == 'W')
-                {
-                    currentGameTiles[x, y].TurnBloced();
+                    gt = tileGO.GetComponent<GameTiles>();
+                    if (gt == null)
+                    {
+                        Debug.LogError("gameTilePrefab n'a pas de composant GameTiles.");
+                        continue;
+                    }
+
+                    currentGameTiles[x, y] = gt;
+                    gt.SetComponent(x,y);
+                    gt.X = x; gt.Y = y;
+                    gt.name = $"tile {x}/{y}";
                 }
-                //Slowing Block
-                else if (currentMap.map[x, y] == 'S')
+
+                // Ici gt est garanti non-null
+                char c = currentMap.map[x, y];
+                switch (c)
                 {
-                    currentGameTiles[x, y].TurnSlow();
-                }
-                //Damaging Block
-                else if (currentMap.map[x, y] == 'D')
-                {
-                    currentGameTiles[x, y].TurnDamaging();
-                }
-                //Spawn Tile
-                else if (currentMap.map[x, y] == 'E')
-                {
-                    spawnPoint.x = spawnPosition.x;
-                    spawnPoint.y = spawnPosition.z;
-                    spawnTile.Add(currentGameTiles[x, y]);
-                    currentGameTiles[x, y].TurnSpawn();
-                }
-                //end Tile
-                else if (currentMap.map[x, y] == 'F')
-                {
-                    endPoint.x = spawnPosition.x;
-                    endPoint.y = spawnPosition.z;
-                    endTile = currentGameTiles[x, y];
-                    currentGameTiles[x, y].TurnEnd();
-                }
-                else
-                {
-                    currentGameTiles[x, y].TurnBlank();
+                    case 'W': gt.TurnBloced(); break;
+                    case 'S': gt.TurnSlow(); break;
+                    case 'D': gt.TurnDamaging(); break;
+                    case 'E':
+                        spawnPoint = new Vector2(gt.transform.position.x, gt.transform.position.z);
+                        spawnTile.Add(gt);
+                        gt.TurnSpawn();
+                        break;
+                    case 'F':
+                        endPoint = new Vector2(gt.transform.position.x, gt.transform.position.z);
+                        endTile = gt;
+                        gt.TurnEnd();
+                        break;
+                    default:
+                        gt.TurnBlank(); // 'B' par défaut
+                        break;
                 }
             }
         }
+
+        // (optionnel) garder un pointeur côté Map
+        currentMap.mapTiles = currentGameTiles;
+    }
+
+    void SafeDestroy(GameObject go)
+    {
+#if UNITY_EDITOR
+        if (Application.isPlaying) Destroy(go);
+        else DestroyImmediate(go);
+#else
+    Destroy(go);
+#endif
     }
 
     internal void RemoveMap()
     {
-
         mapName = "n/a";
         spawnPoint = Vector2.zero;
         endPoint = Vector2.zero;
-        GameObject[] tiles = GameObject.FindGameObjectsWithTag("Tile");
 
-        //remove tiles
-        foreach (var tile in tiles)
-        {
-            DestroyImmediate(tile);
-        }
+        foreach (var tile in GameObject.FindGameObjectsWithTag("Tile"))
+            SafeDestroy(tile);
 
-        //remove map 
         foreach (var map in GameObject.FindGameObjectsWithTag(tagMap))
-        {
-            DestroyImmediate(map);
-            Debug.Log($"map destroy");
-        }
+            SafeDestroy(map);
 
         PathFinder.pathToGoal.Clear();
         spawnTile.Clear();
-
     }
 
     internal void SaveMap()
     {
+        currentMap.mapTiles = currentGameTiles;
         mapList[mapIndex].GetComponent<Map>().SaveMap(currentGameTiles);
+
+        //section pour save en prefab permetent de mettre plus d'object
+        const string defaultDir = "Assets/Map";
+        string path = EditorUtility.SaveFilePanelInProject(
+            "Save Prefab",
+            mapPrefab.name,
+            "prefab",
+            "Choisis l'emplacement",
+            defaultDir
+        );
+        PrefabUtility.SaveAsPrefabAssetAndConnect(MapObject, path, InteractionMode.AutomatedAction);
+
         RefreshMap();
     }
 
@@ -235,3 +277,4 @@ public class MapLoading : MonoBehaviour
         return currentGameTiles;
     }
 }
+#endif
