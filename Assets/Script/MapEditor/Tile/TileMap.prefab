@@ -610,11 +610,13 @@ MonoBehaviour:
   baseLayer: {fileID: 11400000, guid: fc4eb9275df1dd84d912a73d82ae8d35, type: 2}
   natureLayer: {fileID: 11400000, guid: 3e35930254abf1e4798d4be65fb1edb5, type: 2}
   terrainLayer: {fileID: 11400000, guid: 25a3e49e88641144d8577aa671c02b30, type: 2}
+  Object3DLayer: {fileID: 11400000, guid: 23f0f65ad6c8dc545a22e31a98fe8cee, type: 2}
   grass: {fileID: 11400000, guid: e69e13b75f5387c45834a2a53da3fdcc, type: 2}
   water: {fileID: 0}
   natureRenderer: {fileID: 1471074284753627257}
   terrainRenderer: {fileID: 1462945076231964097}
   decoRenderer: {fileID: 7182878677527370665}
+  Object3DSet: {fileID: 0}
 --- !u!114 &7550279871649554624
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -45,12 +45,14 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
     public SpriteRenderer WallRenderer;
     public SpriteRenderer DamagingRenderer;
     private Color originalColor;
+    //public GameObject Object3D;
 
     [Header("Tile set Layer")]
     //pour le base
     public TileSet baseLayer;//0-base layer, 1-spawn, 2-end, 3-slowing, 4-damaging, 5-wall
     public GroupTileSet natureLayer; //0- grass
     public GroupTileSet terrainLayer; //0- grass
+    public GroupObjectTileSet Object3DLayer;
     [Header("Tile set")]
     public TileSet grass;
     public TileSet water;
@@ -59,6 +61,7 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
     public SpriteRenderer natureRenderer;
     public SpriteRenderer terrainRenderer;
     public SpriteRenderer decoRenderer;
+    public GameObject Object3DSet;
 
     public int X { get; internal set; }
     public int Y { get; internal set; }
@@ -353,6 +356,32 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
             else
             {
                 terrainRenderer.sprite = this.terrainLayer.groupSet[natureLayerIndex].tiles[spriteIndex];
+            }
+        }
+    }
+
+    public void SetObjectTileRenderTerrain(int Object3DLayerIndex, bool autofil, int spriteIndex)
+    {
+        if (autofil)
+        {
+            if (spriteIndex == -1)
+            {
+                terrainRenderer.sprite = null;
+            }
+            else
+            {
+                //terrainRenderer.sprite = this.Object3DLayer.objectTileSet[Object3DLayerIndex].tiles[Random.Range(0, this.terrainLayer.groupSet[Object3DLayerIndex].tiles.Length)];
+            }
+        }
+        else
+        {
+            if (spriteIndex == -1)
+            {
+                terrainRenderer.sprite = null;
+            }
+            else
+            {
+                Object3DSet = this.Object3DLayer.objectTileSet[Object3DLayerIndex].objects[spriteIndex];
             }
         }
     }

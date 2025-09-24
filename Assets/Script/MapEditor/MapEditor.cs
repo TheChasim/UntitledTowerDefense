@@ -16,7 +16,7 @@ public class MapEditor : Editor
         Base,
         Nature,
         Terrain,
-        Decoration,
+        Object,
         VegetationObstacle,
     }
 
@@ -37,6 +37,7 @@ public class MapEditor : Editor
     bool autoFill = false;
     GroupTileSet natureLayer;
     GroupTileSet terrainLayer;
+    GroupObjectTileSet objectLayer;
     private int selectedSpriteIndex;
     private Vector2 scrollNatureSelection;
     private Vector2 scrollTerrainSelection;
@@ -229,7 +230,7 @@ public class MapEditor : Editor
                 EditorGUILayout.BeginHorizontal();
 
                 //fonction pour afficher le tile map
-                ShowTimeMap(natureLayer, mapLoading.natureLayerIndex);
+                ShowTimeMap(objectLayer, mapLoading.natureLayerIndex);
 
                 EditorGUILayout.EndHorizontal();
 
@@ -296,7 +297,7 @@ public class MapEditor : Editor
                 EditorGUILayout.BeginHorizontal();
 
                 //fonction pour afficher le tile map
-                ShowTimeMap(terrainLayer, mapLoading.terrainLayerIndex);
+                ShowTimeMap(objectLayer, mapLoading.terrainLayerIndex);
 
                 EditorGUILayout.EndHorizontal();
 
@@ -305,6 +306,76 @@ public class MapEditor : Editor
 
                 EditorGUILayout.Space();
             }
+        }
+
+
+        //si la selection du layer Terrain est selectioner afficher cette selection
+        //dans la selection Terrain on peut venir modifer le terrain de la map 
+        if (mapLayer == MapLayout.Object)
+        {
+            // terrainLayer = mapLoading.gameTilePrefab.GetComponent<GameTiles>().terrainLayer;
+            //associ les valeur des variable
+            objectLayer = mapLoading.gameTilePrefab.GetComponent<GameTiles>().Object3DLayer;
+
+            //selection pour la map
+            EditorGUILayout.BeginHorizontal();
+            //buttun pour le auto fill ce qui permet de selectioner automatiquement quelle tuille sera afficher
+            autoFill = EditorGUILayout.Toggle("AutoFill", autoFill);
+
+            //trasforme les nom des Tile set dans le Group set pour selectionner le bon
+            string[] tileSetNames = new string[objectLayer.objectTileSet.Length];
+
+            for (int i = 0; i < objectLayer.objectTileSet.Length; i++)
+            {
+                tileSetNames[i] = objectLayer.objectTileSet[i].name;
+            }
+
+            //pop up pour la selection du Tile set
+            mapLoading.natureLayerIndex = EditorGUILayout.Popup("Layer de la map : ",
+                                                                mapLoading.object3DLayerIndex,
+                                                                tileSetNames);
+            EditorGUILayout.EndHorizontal();
+
+            #region Toggle Sup buttun
+            // Changer la couleur du bouton selon l'état
+            Color originalColor = GUI.color;
+            GUI.color = isToggled ? Color.red : Color.white;
+            // Toggle bouton
+            isToggled = GUILayout.Toggle(isToggled, isToggled ? "ACTIF" : "Supprimer la tuile", "Button", GUILayout.Height(20));
+            // Rétablir la couleur originale
+            GUI.color = originalColor;
+            #endregion
+
+            if (isToggled)
+            {
+                selectedSpriteIndex = -1;
+            }
+            else if (!isToggled && autoFill)
+            {
+                selectedSpriteIndex = 1;
+
+            }
+
+            if (!autoFill)
+            {
+                EditorGUILayout.LabelField("Tile Set selectioner : ", EditorStyles.boldLabel);
+
+                EditorGUILayout.BeginVertical("box"); // ma boite
+                scrollTerrainSelection = EditorGUILayout.BeginScrollView(scrollTerrainSelection);
+                //pour afficher les tiles a l'horizontal
+                EditorGUILayout.BeginHorizontal();
+
+                //fonction pour afficher le tile map
+                ShowTimeMap(objectLayer, mapLoading.object3DLayerIndex);
+
+                EditorGUILayout.EndHorizontal();
+
+                EditorGUILayout.EndScrollView();
+                EditorGUILayout.EndVertical();
+
+                EditorGUILayout.Space();
+            }
+
         }
 
         //Permet D'afficher la map
@@ -367,7 +438,7 @@ public class MapEditor : Editor
                                 GUI.DrawTextureWithTexCoords(cellRect, texture, cellRect);
                             }
                             break;
-                        case MapLayout.Decoration:
+                        case MapLayout.Object:
                             EditorGUI.DrawRect(cellRect, GetTileColor(currentMap[x, y]));
                             break;
 
@@ -412,7 +483,10 @@ public class MapEditor : Editor
                                             tile.SetTileRenderTerrain(mapLoading.terrainLayerIndex, autoFill, selectedSpriteIndex);
                                         }
                                         break;
-                                    case MapLayout.Decoration:
+                                    case MapLayout.Object:
+                                        {
+                                            tile.SetObjectTileRenderTerrain(mapLoading.object3DLayerIndex, autoFill, selectedSpriteIndex);
+                                        }
                                         break;
                                 }
 
@@ -442,15 +516,15 @@ public class MapEditor : Editor
 
     }
 
-    private void ShowTimeMap(GroupTileSet tileSet, int index)
+    private void ShowTimeMap(GroupObjectTileSet tileSet, int index)
     {
         int currentLigne = 0;
         //bloucle a traver toute les tuile pour l'afichage
-        for (int i = 0; i < tileSet.groupSet[index].tiles.Length - 1; i++)
+        for (int i = 0; i < tileSet.objectTileSet[index].objects.Length - 1; i++)
         {
-            Sprite sprite = tileSet.groupSet[index].tiles[i];
+            GameObject objects = tileSet.objectTileSet[index].objects[i];
 
-            Texture2D preview = AssetPreview.GetAssetPreview(sprite);
+            Texture2D preview = AssetPreview.GetAssetPreview(objects);
 
             if (GUILayout.Button(preview != null ? preview : Texture2D.grayTexture,
                        GUILayout.Width(pixelResolution), GUILayout.Height(64)))

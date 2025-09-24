@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewTileSet", menuName = "Level Editor/Tile Set")]
+[CreateAssetMenu(fileName = "NewTileSet", menuName = "Level Editor/Tile Set/Tile Set")]
 public class TileSet : ScriptableObject
 {
     public Sprite[] tiles;
