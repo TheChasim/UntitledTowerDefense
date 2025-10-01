@@ -41,35 +41,35 @@ public class MapLoading : MonoBehaviour
     internal int terrainLayerIndex = 0;
     internal int object3DLayerIndex = 0;
     internal int decorationlayerIndex = 0;
-    public TileSet grassTileSet;
-    public TileSet stoneBluiding;
-    public TileSet stonePath;
+    //public TileSet grassTileSet;
+    //public TileSet stoneBluiding;
+    //public TileSet stonePath;
     internal TileSets tilesets;
 
-    public TileSet CurrentTileSet
-    {
-        get
-        {
-            return tilesets switch
-            {
-                TileSets.Grass => grassTileSet,
-                TileSets.StoneBluiding => stoneBluiding,
-                TileSets.StonePath => stonePath,
-                _ => null,
-            };
-        }
-        set
-        {
-            if (value == grassTileSet)
-                tilesets = TileSets.Grass;
-            else if (value == stoneBluiding)
-                tilesets = TileSets.StoneBluiding;
-            else if (value == stonePath)
-                tilesets = TileSets.StonePath;
-            else
-                Debug.LogWarning("TileSet non reconnu dans CurrentTileSet.set");
-        }
-    }
+    //public TileSet CurrentTileSet
+    //{
+    //    get
+    //    {
+    //        return tilesets switch
+    //        {
+    //            TileSets.Grass => grassTileSet,
+    //            TileSets.StoneBluiding => stoneBluiding,
+    //            TileSets.StonePath => stonePath,
+    //            _ => null,
+    //        };
+    //    }
+    //    set
+    //    {
+    //        if (value == grassTileSet)
+    //            tilesets = TileSets.Grass;
+    //        else if (value == stoneBluiding)
+    //            tilesets = TileSets.StoneBluiding;
+    //        else if (value == stonePath)
+    //            tilesets = TileSets.StonePath;
+    //        else
+    //            Debug.LogWarning("TileSet non reconnu dans CurrentTileSet.set");
+    //    }
+    //}
 
     private void Awake()
     {

@@ -38,10 +38,11 @@ public class MapEditor : Editor
     GroupTileSet natureLayer;
     GroupTileSet terrainLayer;
     GroupTileSet decorationLayer;
-    //GroupObjectTileSet objectLayer;
+    GroupObjectTileSet objectLayer;
     private int selectedSpriteIndex;
     private Vector2 scrollNatureSelection;
     private Vector2 scrollTerrainSelection;
+    private Vector2 scrollObject3DSelection;
     private Vector2 scrollDecorationSelection;
     private Vector2 scrollPosition;
 
@@ -311,72 +312,72 @@ public class MapEditor : Editor
 
         //si la selection du layer Terrain est selectioner afficher cette selection
         //dans la selection Terrain on peut venir modifer le terrain de la map 
-        //if (mapLayer == MapLayout.Object)
-        //{
-        //    // terrainLayer = mapLoading.gameTilePrefab.GetComponent<GameTiles>().terrainLayer;
-        //    //associ les valeur des variable
-        //    objectLayer = mapLoading.gameTilePrefab.GetComponent<GameTiles>().Object3DLayer;
+        if (mapLayer == MapLayout.Object)
+        {
+            // terrainLayer = mapLoading.gameTilePrefab.GetComponent<GameTiles>().terrainLayer;
+            //associ les valeur des variable
+            objectLayer = mapLoading.gameTilePrefab.GetComponent<GameTiles>().Object3DLayer;
 
-        //    //selection pour la map
-        //    EditorGUILayout.BeginHorizontal();
-        //    //buttun pour le auto fill ce qui permet de selectioner automatiquement quelle tuille sera afficher
-        //    autoFill = EditorGUILayout.Toggle("AutoFill", autoFill);
+            //selection pour la map
+            EditorGUILayout.BeginHorizontal();
+            //buttun pour le auto fill ce qui permet de selectioner automatiquement quelle tuille sera afficher
+            autoFill = EditorGUILayout.Toggle("AutoFill", autoFill);
 
-        //    //trasforme les nom des Tile set dans le Group set pour selectionner le bon
-        //    string[] tileSetNames = new string[objectLayer.objectTileSet.Length];
+            //trasforme les nom des Tile set dans le Group set pour selectionner le bon
+            string[] tileSetNames = new string[objectLayer.objectTileSet.Length];
 
-        //    for (int i = 0; i < objectLayer.objectTileSet.Length; i++)
-        //    {
-        //        tileSetNames[i] = objectLayer.objectTileSet[i].name;
-        //    }
+            for (int i = 0; i < objectLayer.objectTileSet.Length; i++)
+            {
+                tileSetNames[i] = objectLayer.objectTileSet[i].name;
+            }
 
-        //    //pop up pour la selection du Tile set
-        //    mapLoading.natureLayerIndex = EditorGUILayout.Popup("Layer de la map : ",
-        //                                                        mapLoading.object3DLayerIndex,
-        //                                                        tileSetNames);
-        //    EditorGUILayout.EndHorizontal();
+            //pop up pour la selection du Tile set
+            mapLoading.object3DLayerIndex = EditorGUILayout.Popup("Layer de la map : ",
+                                                                mapLoading.object3DLayerIndex,
+                                                                tileSetNames);
+            EditorGUILayout.EndHorizontal();
 
-        //    #region Toggle Sup buttun
-        //    // Changer la couleur du bouton selon l'état
-        //    Color originalColor = GUI.color;
-        //    GUI.color = isToggled ? Color.red : Color.white;
-        //    // Toggle bouton
-        //    isToggled = GUILayout.Toggle(isToggled, isToggled ? "ACTIF" : "Supprimer la tuile", "Button", GUILayout.Height(20));
-        //    // Rétablir la couleur originale
-        //    GUI.color = originalColor;
-        //    #endregion
+            #region Toggle Sup buttun
+            // Changer la couleur du bouton selon l'état
+            Color originalColor = GUI.color;
+            GUI.color = isToggled ? Color.red : Color.white;
+            // Toggle bouton
+            isToggled = GUILayout.Toggle(isToggled, isToggled ? "ACTIF" : "Supprimer la tuile", "Button", GUILayout.Height(20));
+            // Rétablir la couleur originale
+            GUI.color = originalColor;
+            #endregion
 
-        //    if (isToggled)
-        //    {
-        //        selectedSpriteIndex = -1;
-        //    }
-        //    else if (!isToggled && autoFill)
-        //    {
-        //        selectedSpriteIndex = 1;
+            if (isToggled)
+            {
+                selectedSpriteIndex = -1;
+            }
+            else if (!isToggled && autoFill)
+            {
+                selectedSpriteIndex = 1;
 
-        //    }
+            }
 
-        //    if (!autoFill)
-        //    {
-        //        EditorGUILayout.LabelField("Tile Set selectioner : ", EditorStyles.boldLabel);
+            if (!autoFill)
+            {
+                EditorGUILayout.LabelField("Tile Set selectioner : ", EditorStyles.boldLabel);
 
-        //        EditorGUILayout.BeginVertical("box"); // ma boite
-        //        scrollTerrainSelection = EditorGUILayout.BeginScrollView(scrollTerrainSelection);
-        //        //pour afficher les tiles a l'horizontal
-        //        EditorGUILayout.BeginHorizontal();
+                EditorGUILayout.BeginVertical("box"); // ma boite
+                scrollObject3DSelection = EditorGUILayout.BeginScrollView(scrollObject3DSelection);
+                //pour afficher les tiles a l'horizontal
+                EditorGUILayout.BeginHorizontal();
 
-        //        //fonction pour afficher le tile map
-        //        ShowObjectTileMap(objectLayer, mapLoading.object3DLayerIndex);
+                //fonction pour afficher le tile map
+                ShowObjectTileMap(objectLayer, mapLoading.object3DLayerIndex);
 
-        //        EditorGUILayout.EndHorizontal();
+                EditorGUILayout.EndHorizontal();
 
-        //        EditorGUILayout.EndScrollView();
-        //        EditorGUILayout.EndVertical();
+                EditorGUILayout.EndScrollView();
+                EditorGUILayout.EndVertical();
 
-        //        EditorGUILayout.Space();
-        //    }
+                EditorGUILayout.Space();
+            }
 
-        //}
+        }
 
         if (mapLayer == MapLayout.Decoration)
         {
@@ -516,8 +517,15 @@ public class MapEditor : Editor
                             break;
                         case MapLayout.Object:
                             {
-                                //Texture2D texture = currentMap[x, y].Object3DSet.;
-                                //GUI.DrawTextureWithTexCoords(cellRect, texture, cellRect);
+                                if (currentMap[x, y].Object3DSet == null)
+                                {
+                                    EditorGUI.DrawRect(cellRect, GetTileColor(currentMap[x, y]));
+                                }
+                                else
+                                {
+                                    Texture2D texture = currentMap[x, y].Object3DSet.GetComponent<SpriteRenderer>().sprite.texture;
+                                    GUI.DrawTextureWithTexCoords(cellRect, texture, cellRect);
+                                }
                             }
                             //EditorGUI.DrawRect(cellRect, GetTileColor(currentMap[x, y]));
                             break;
@@ -563,10 +571,11 @@ public class MapEditor : Editor
                                             tile.SetTileRenderTerrain(mapLoading.terrainLayerIndex, autoFill, selectedSpriteIndex);
                                         }
                                         break;
-                                    //case MapLayout.Object:
-                                    //    {
-                                    //        tile.SetObjectTileRenderTerrain(mapLoading.object3DLayerIndex, autoFill, selectedSpriteIndex);
-                                    //    }
+                                    case MapLayout.Object:
+                                        {
+                                            tile.SetObjectTileRenderTerrain(mapLoading.object3DLayerIndex, autoFill, selectedSpriteIndex);
+                                        }
+                                        break;
                                     case MapLayout.Decoration:
                                         {
                                             tile.SetTileRenderDecoration(mapLoading.decorationlayerIndex, autoFill, selectedSpriteIndex);
@@ -631,7 +640,7 @@ public class MapEditor : Editor
     {
         int currentLigne = 0;
         //bloucle a traver toute les tuile pour l'afichage
-        for (int i = 0; i < tileSet.objectTileSet[index].objects.Length - 1; i++)
+        for (int i = 0; i < tileSet.objectTileSet[index].objects.Length ; i++)
         {
             GameObject objects = tileSet.objectTileSet[index].objects[i];
 
