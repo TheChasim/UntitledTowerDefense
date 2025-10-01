@@ -40,6 +40,7 @@ public class MapLoading : MonoBehaviour
     internal int natureLayerIndex = 0;
     internal int terrainLayerIndex = 0;
     internal int object3DLayerIndex = 0;
+    internal int decorationlayerIndex = 0;
     public TileSet grassTileSet;
     public TileSet stoneBluiding;
     public TileSet stonePath;

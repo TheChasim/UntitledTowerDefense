@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c449eac6d5c3174ea91f1c0e2fe2488, type: 3}
+  m_Name: ForestSprite
+  m_EditorClassIdentifier: 
+  tiles:
+  - {fileID: 1726746916, guid: 55f92f70988db9d44b25cab3192be5da, type: 3}
+  - {fileID: -1956608797, guid: 55f92f70988db9d44b25cab3192be5da, type: 3}
+  - {fileID: 813451076, guid: 55f92f70988db9d44b25cab3192be5da, type: 3}
+  - {fileID: 1960233508, guid: 55f92f70988db9d44b25cab3192be5da, type: 3}
+  - {fileID: 1494898816, guid: 55f92f70988db9d44b25cab3192be5da, type: 3}
+  - {fileID: 659875289, guid: 55f92f70988db9d44b25cab3192be5da, type: 3}
+  - {fileID: 1091815963, guid: 55f92f70988db9d44b25cab3192be5da, type: 3}
+  - {fileID: 2138095332, guid: 55f92f70988db9d44b25cab3192be5da, type: 3}
+  - {fileID: -371042709, guid: 55f92f70988db9d44b25cab3192be5da, type: 3}
+  - {fileID: 381743356, guid: 55f92f70988db9d44b25cab3192be5da, type: 3}
+  - {fileID: 1341991534, guid: 55f92f70988db9d44b25cab3192be5da, type: 3}
+  - {fileID: 683915718, guid: 55f92f70988db9d44b25cab3192be5da, type: 3}
+  - {fileID: 1052962885, guid: 55f92f70988db9d44b25cab3192be5da, type: 3}
+  - {fileID: -2060870285, guid: 55f92f70988db9d44b25cab3192be5da, type: 3}
+  - {fileID: 1384873792, guid: 55f92f70988db9d44b25cab3192be5da, type: 3}
+  - {fileID: 1716457950, guid: 55f92f70988db9d44b25cab3192be5da, type: 3}
+  - {fileID: 1867436695, guid: 55f92f70988db9d44b25cab3192be5da, type: 3}
+  - {fileID: 1135039333, guid: 55f92f70988db9d44b25cab3192be5da, type: 3}

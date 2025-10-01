@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c449eac6d5c3174ea91f1c0e2fe2488, type: 3}
+  m_Name: WoodPath
+  m_EditorClassIdentifier: 
+  tiles:
+  - {fileID: 1160909937, guid: 4a03b53457c0ee54b8822f14857716f1, type: 3}
+  - {fileID: -295388587, guid: 4a03b53457c0ee54b8822f14857716f1, type: 3}
+  - {fileID: 1960422147, guid: 4a03b53457c0ee54b8822f14857716f1, type: 3}
+  - {fileID: 973919844, guid: 4a03b53457c0ee54b8822f14857716f1, type: 3}
+  - {fileID: 485509707, guid: 4a03b53457c0ee54b8822f14857716f1, type: 3}
+  - {fileID: -557497725, guid: 4a03b53457c0ee54b8822f14857716f1, type: 3}
+  - {fileID: -664913844, guid: 4a03b53457c0ee54b8822f14857716f1, type: 3}
+  - {fileID: -1872300603, guid: 4a03b53457c0ee54b8822f14857716f1, type: 3}
+  - {fileID: 1578946800, guid: 4a03b53457c0ee54b8822f14857716f1, type: 3}
+  - {fileID: 274273232, guid: 4a03b53457c0ee54b8822f14857716f1, type: 3}

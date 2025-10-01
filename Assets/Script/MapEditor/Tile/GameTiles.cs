@@ -52,6 +52,7 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
     public TileSet baseLayer;//0-base layer, 1-spawn, 2-end, 3-slowing, 4-damaging, 5-wall
     public GroupTileSet natureLayer; //0- grass
     public GroupTileSet terrainLayer; //0- grass
+    public GroupTileSet DecorationLayer;
     public GroupObjectTileSet Object3DLayer;
     [Header("Tile set")]
     public TileSet grass;
@@ -60,7 +61,7 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
     [Header("Tile Set layer Renderer")]
     public SpriteRenderer natureRenderer;
     public SpriteRenderer terrainRenderer;
-    public SpriteRenderer decoRenderer;
+    public SpriteRenderer decorationRenderer;
     public GameObject Object3DSet;
 
     public int X { get; internal set; }
@@ -356,6 +357,32 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
             else
             {
                 terrainRenderer.sprite = this.terrainLayer.groupSet[natureLayerIndex].tiles[spriteIndex];
+            }
+        }
+    }
+
+    public void SetTileRenderDecoration(int decorationLayerIndex, bool autofil, int spriteIndex)
+    {
+        if (autofil)
+        {
+            if (spriteIndex == -1)
+            {
+                decorationRenderer.sprite = null;
+            }
+            else
+            {
+                decorationRenderer.sprite = this.DecorationLayer.groupSet[decorationLayerIndex].tiles[Random.Range(0, this.DecorationLayer.groupSet[decorationLayerIndex].tiles.Length)];
+            }
+        }
+        else
+        {
+            if (spriteIndex == -1)
+            {
+                decorationRenderer.sprite = null;
+            }
+            else
+            {
+                decorationRenderer.sprite = this.DecorationLayer.groupSet[decorationLayerIndex].tiles[spriteIndex];
             }
         }
     }
