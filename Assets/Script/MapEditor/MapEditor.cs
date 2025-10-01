@@ -230,7 +230,7 @@ public class MapEditor : Editor
                 EditorGUILayout.BeginHorizontal();
 
                 //fonction pour afficher le tile map
-                ShowTimeMap(objectLayer, mapLoading.natureLayerIndex);
+                ShowTileMap(natureLayer, mapLoading.natureLayerIndex);
 
                 EditorGUILayout.EndHorizontal();
 
@@ -297,7 +297,7 @@ public class MapEditor : Editor
                 EditorGUILayout.BeginHorizontal();
 
                 //fonction pour afficher le tile map
-                ShowTimeMap(objectLayer, mapLoading.terrainLayerIndex);
+                ShowTileMap(terrainLayer, mapLoading.terrainLayerIndex);
 
                 EditorGUILayout.EndHorizontal();
 
@@ -366,7 +366,7 @@ public class MapEditor : Editor
                 EditorGUILayout.BeginHorizontal();
 
                 //fonction pour afficher le tile map
-                ShowTimeMap(objectLayer, mapLoading.object3DLayerIndex);
+                ShowObjectTileMap(objectLayer, mapLoading.object3DLayerIndex);
 
                 EditorGUILayout.EndHorizontal();
 
@@ -439,7 +439,11 @@ public class MapEditor : Editor
                             }
                             break;
                         case MapLayout.Object:
-                            EditorGUI.DrawRect(cellRect, GetTileColor(currentMap[x, y]));
+                            {
+                                //Texture2D texture = currentMap[x, y].Object3DSet.;
+                                //GUI.DrawTextureWithTexCoords(cellRect, texture, cellRect);
+                            }
+                            //EditorGUI.DrawRect(cellRect, GetTileColor(currentMap[x, y]));
                             break;
 
                     }
@@ -516,7 +520,34 @@ public class MapEditor : Editor
 
     }
 
-    private void ShowTimeMap(GroupObjectTileSet tileSet, int index)
+    private void ShowTileMap(GroupTileSet tileSet, int index)
+    {
+        int currentLigne = 0;
+        //bloucle a traver toute les tuile pour l'afichage
+        for (int i = 0; i < tileSet.groupSet[index].tiles.Length - 1; i++)
+        {
+            Sprite sprite = tileSet.groupSet[index].tiles[i];
+
+            Texture2D preview = AssetPreview.GetAssetPreview(sprite);
+
+            if (GUILayout.Button(preview != null ? preview : Texture2D.grayTexture,
+                       GUILayout.Width(pixelResolution), GUILayout.Height(64)))
+            {
+                selectedSpriteIndex = i;
+            }
+
+            currentLigne++;
+            //apres 6 tuile pase a la profaine ligne
+            if (currentLigne == 6)
+            {
+                EditorGUILayout.EndHorizontal();
+                EditorGUILayout.BeginHorizontal();
+                currentLigne = 0;
+            }
+        }
+    }
+
+    private void ShowObjectTileMap(GroupObjectTileSet tileSet, int index)
     {
         int currentLigne = 0;
         //bloucle a traver toute les tuile pour l'afichage

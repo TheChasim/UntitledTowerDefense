@@ -65,8 +65,11 @@ public class Map : MonoBehaviour
             {
                 //childrenTile.Add(child.gameObject);
 
-                mapTiles[child.GetComponent<GameTiles>().gridX, 
-                         child.GetComponent<GameTiles>().gridY] = child.GetComponent<GameTiles>();
+                if (child.GetComponent<GameTiles>())
+                {
+                    mapTiles[child.GetComponent<GameTiles>().gridX,
+                             child.GetComponent<GameTiles>().gridY] = child.GetComponent<GameTiles>();
+                }
             }
 
         }

@@ -381,7 +381,11 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
             }
             else
             {
+                Debug.LogWarning($"Layer index = {Object3DLayerIndex}");
+                Debug.LogWarning($"Sprite index = {spriteIndex}");
+                Debug.LogWarning($"Object3DSet = {Object3DLayer.objectTileSet[Object3DLayerIndex].objects[spriteIndex]}");
                 Object3DSet = this.Object3DLayer.objectTileSet[Object3DLayerIndex].objects[spriteIndex];
+                
             }
         }
     }
