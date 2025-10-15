@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5984620012535377979}
   - component: {fileID: 7499304674354478603}
   - component: {fileID: 8629239094389300567}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FullCube
-  m_TagString: Untagged
+  m_TagString: obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

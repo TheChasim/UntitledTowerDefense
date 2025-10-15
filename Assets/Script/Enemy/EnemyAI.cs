@@ -8,10 +8,31 @@ using Unity.Burst.CompilerServices;
 using System;
 using Unity.VisualScripting;
 
+public enum EnemyType
+{
+    Normal, 
+    Heal, 
+    Explosif
+}
+
 public class EnemyAI : MonoBehaviour
 {
     //liste static pour l'ensseble des enemie
     static internal HashSet<EnemyAI> enemyAIList = new HashSet<EnemyAI>();
+
+    [Header("Enemie Info")]
+    [SerializeField] internal EnemyType enemyType;
+    [SerializeField] float speed = 5f;
+
+    [Header("Healing info")]
+    [SerializeField] bool canHeal = false;
+    [SerializeField] float healRange = 3.5f;
+    [SerializeField] float healAmount = 1.0f;
+
+    [Header("explosion info")]
+    [SerializeField] bool canExplose = false;
+    [SerializeField] float explosionRange = 3.5f;
+    [SerializeField] float explosionDamage = 2f;
 
     [Header("Tile Info")]
     [SerializeField] GameTiles currentTile;
@@ -24,9 +45,7 @@ public class EnemyAI : MonoBehaviour
     Healt healt;
     bool tileDamage = false;
 
-    //Speed info
-    [Header("Speed")]
-    [SerializeField] float speed = 5f;
+    
     float currentSpeed
     {
         get
@@ -91,10 +110,32 @@ public class EnemyAI : MonoBehaviour
             }
         }
 
+
+        if(canHeal)
+        {
+            Heal();
+        }
+
+        if(canExplose)
+        {
+            Explose();
+        }
+
+
         //set l'enemie de la meme orrientation de la cam
         transform.rotation = Camera.main.transform.rotation;
         //affiche une ligne pour monttrer la prochaine tuille de l'ennemie
         Debug.DrawLine(transform.position, targetPosition, Color.blue);
+    }
+
+    private void Heal()
+    {
+
+    }
+
+    private void Explose()
+    {
+
     }
 
     private void SetCurrentTile()

@@ -6,6 +6,7 @@ using System.Collections;
 using UnityEngine.U2D;
 
 using static MapLoading;
+using Unity.VisualScripting;
 //using System.Diagnostics;
 
 [CustomEditor(typeof(MapLoading))]
@@ -17,6 +18,7 @@ public class MapEditor : Editor
         Nature,
         Terrain,
         Object,
+        Module,
         Decoration,
     }
 
@@ -39,11 +41,13 @@ public class MapEditor : Editor
     GroupTileSet terrainLayer;
     GroupTileSet decorationLayer;
     GroupObjectTileSet objectLayer;
+    GroupObjectTileSet moduleLayer;
     private int selectedSpriteIndex;
     private Vector2 scrollNatureSelection;
     private Vector2 scrollTerrainSelection;
     private Vector2 scrollObject3DSelection;
     private Vector2 scrollDecorationSelection;
+    private Vector2 scrollModuleSelection;
     private Vector2 scrollPosition;
 
     private bool showSpawnPoints = false; //pour le dropdown pour l'affichage des spawn point
@@ -379,6 +383,73 @@ public class MapEditor : Editor
 
         }
 
+        if (mapLayer == MapLayout.Module)
+        {
+            // terrainLayer = mapLoading.gameTilePrefab.GetComponent<GameTiles>().terrainLayer;
+            //associ les valeur des variable
+            moduleLayer = mapLoading.gameTilePrefab.GetComponent<GameTiles>().ModuleLayer;
+
+            //selection pour la map
+            EditorGUILayout.BeginHorizontal();
+            //buttun pour le auto fill ce qui permet de selectioner automatiquement quelle tuille sera afficher
+            autoFill = EditorGUILayout.Toggle("AutoFill", autoFill);
+
+            //trasforme les nom des Tile set dans le Group set pour selectionner le bon
+            string[] tileSetNames = new string[moduleLayer.objectTileSet.Length];
+
+            for (int i = 0; i < moduleLayer.objectTileSet.Length; i++)
+            {
+                tileSetNames[i] = moduleLayer.objectTileSet[i].name;
+            }
+
+            //pop up pour la selection du Tile set
+            mapLoading.moduleLayerIndex = EditorGUILayout.Popup("Layer de la map : ",
+                                                                mapLoading.moduleLayerIndex,
+                                                                tileSetNames);
+            EditorGUILayout.EndHorizontal();
+
+            #region Toggle Sup buttun
+            // Changer la couleur du bouton selon l'état
+            Color originalColor = GUI.color;
+            GUI.color = isToggled ? Color.red : Color.white;
+            // Toggle bouton
+            isToggled = GUILayout.Toggle(isToggled, isToggled ? "ACTIF" : "Supprimer la tuile", "Button", GUILayout.Height(20));
+            // Rétablir la couleur originale
+            GUI.color = originalColor;
+            #endregion
+
+            if (isToggled)
+            {
+                selectedSpriteIndex = -1;
+            }
+            else if (!isToggled && autoFill)
+            {
+                selectedSpriteIndex = 1;
+
+            }
+
+            if (!autoFill)
+            {
+                EditorGUILayout.LabelField("Tile Set selectioner : ", EditorStyles.boldLabel);
+
+                EditorGUILayout.BeginVertical("box"); // ma boite
+                scrollModuleSelection = EditorGUILayout.BeginScrollView(scrollModuleSelection);
+                //pour afficher les tiles a l'horizontal
+                EditorGUILayout.BeginHorizontal();
+
+                //fonction pour afficher le tile map
+                ShowObjectTileMap(moduleLayer, mapLoading.moduleLayerIndex);
+
+                EditorGUILayout.EndHorizontal();
+
+                EditorGUILayout.EndScrollView();
+                EditorGUILayout.EndVertical();
+
+                EditorGUILayout.Space();
+            }
+
+        }
+
         if (mapLayer == MapLayout.Decoration)
         {
             decorationLayer = mapLoading.gameTilePrefab.GetComponent<GameTiles>().DecorationLayer;
@@ -527,6 +598,24 @@ public class MapEditor : Editor
                                     GUI.DrawTextureWithTexCoords(cellRect, texture, cellRect);
                                 }
                             }
+                            break;
+                        case MapLayout.Module:
+                            {
+                                if (currentMap[x, y].ModuleSet == null)
+                                {
+                                    EditorGUI.DrawRect(cellRect, GetTileColor(currentMap[x, y]));
+                                }
+                                else
+                                {
+                                    //Texture2D texture = (Texture2D)currentMap[x, y].ModuleLayer.GetComponent<MeshRenderer>().material.mainTexture();
+
+                                    //Texture2D texture = (Texture2D)currentMap[x, y].ModuleLayer.GetComponent<Renderer>().sharedMaterial.mainTexture;
+                                    //Texture2D texture  = new Texture2D(16,16);
+                                    //texture.
+                                    //GUI.DrawTextureWithTexCoords(cellRect, texture, cellRect);
+                                    EditorGUI.DrawRect(cellRect, Color.gray);
+                                }
+                            }
                             //EditorGUI.DrawRect(cellRect, GetTileColor(currentMap[x, y]));
                             break;
 
@@ -574,6 +663,11 @@ public class MapEditor : Editor
                                     case MapLayout.Object:
                                         {
                                             tile.SetObjectTileRenderTerrain(mapLoading.object3DLayerIndex, autoFill, selectedSpriteIndex);
+                                        }
+                                        break;
+                                    case MapLayout.Module:
+                                        {
+                                            tile.SetModuleTileRenderTerrain(mapLoading.moduleLayerIndex, autoFill, selectedSpriteIndex);
                                         }
                                         break;
                                     case MapLayout.Decoration:

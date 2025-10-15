@@ -10,8 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e85f59a596df2e45bee426bd70bbdd0, type: 3}
-  m_Name: ObjectGroupSet
+  m_Name: ModuleGroup
   m_EditorClassIdentifier: 
   objectTileSet:
-  - {fileID: 11400000, guid: e61063c77e0f4104eb76fbc51481e3fa, type: 2}
-  - {fileID: 11400000, guid: 48785eca1b77bd14190eaf29ccf17d4e, type: 2}
+  - {fileID: 11400000, guid: 7c754880b44e5d74a8d3dfed57a0aaae, type: 2}

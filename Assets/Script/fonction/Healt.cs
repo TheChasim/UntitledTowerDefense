@@ -33,7 +33,7 @@ public class Healt : MonoBehaviour
     internal void OnTakeDamage(float damage)
     {
         curentHealt = Mathf.Clamp(curentHealt - damage,0,maxHealt);
-        healtBar.SetHealtBar(curentHealt, maxHealt);
+        //healtBar.SetHealtBar(curentHealt, maxHealt);
 
         if (curentHealt == 0)
         {
@@ -45,6 +45,6 @@ public class Healt : MonoBehaviour
     internal void OnTakeHealing(float healt)
     {
         curentHealt = Mathf.Clamp(curentHealt + healt, 0, maxHealt);
-        healtBar.SetHealtBar(curentHealt, maxHealt);
+        //healtBar.SetHealtBar(curentHealt, maxHealt);
     }
 }

@@ -612,6 +612,7 @@ MonoBehaviour:
   terrainLayer: {fileID: 11400000, guid: 25a3e49e88641144d8577aa671c02b30, type: 2}
   DecorationLayer: {fileID: 11400000, guid: 3bd0e838552886049b196234181c03a2, type: 2}
   Object3DLayer: {fileID: 11400000, guid: 23f0f65ad6c8dc545a22e31a98fe8cee, type: 2}
+  ModuleLayer: {fileID: 11400000, guid: 7602003ea0f158f4389cfa087cedc423, type: 2}
   grass: {fileID: 11400000, guid: e69e13b75f5387c45834a2a53da3fdcc, type: 2}
   water: {fileID: 0}
   natureRenderer: {fileID: 1471074284753627257}

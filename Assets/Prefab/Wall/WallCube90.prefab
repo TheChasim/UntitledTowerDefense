@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3923546288351135393}
   - component: {fileID: 7489888382780626716}
   - component: {fileID: 2399861189258314319}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WallCube90
-  m_TagString: Untagged
+  m_TagString: obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

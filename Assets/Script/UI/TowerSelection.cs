@@ -18,4 +18,9 @@ public class TowerSelection : MonoBehaviour
     {
         spaning.GetComponent<TowerSpawning>().OnSelectIndex(indextower);
     }
+
+    public void OnChange(int index)
+    {
+        spaning.GetComponent<TowerSpawning>().OnSelectIndex(index);
+    }
 }

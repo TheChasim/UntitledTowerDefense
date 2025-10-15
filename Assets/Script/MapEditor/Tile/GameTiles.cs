@@ -57,6 +57,7 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
     public GroupTileSet terrainLayer; //0- grass
     public GroupTileSet DecorationLayer;
     public GroupObjectTileSet Object3DLayer;
+    public GroupObjectTileSet ModuleLayer;
     [Header("Tile set")]
     public TileSet grass;
     public TileSet water;
@@ -66,6 +67,7 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
     public SpriteRenderer terrainRenderer;
     public SpriteRenderer decorationRenderer;
     public GameObject Object3DSet;
+    public GameObject ModuleSet;
 
     public int X { get; internal set; }
     public int Y { get; internal set; }
@@ -260,7 +262,8 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
 
     internal void TurnBloced()
     {
-        IsBloced = !IsBloced;
+        //IsBloced = !IsBloced;
+        IsBloced = true; 
         //WallRenderer.enabled = IsBloced;
         renderer.sprite = baseLayer.tiles[5];
     }
@@ -298,30 +301,57 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
         }
     }
 
-    internal void RemoveObject()
+    internal void RemoveObject(int layer) // 0 pour object 1 pour Module
     {
         GameObject obj = null;
         bool find = false;
 
         foreach (Transform child in this.transform)
         {
-            if (Object3DSet != null)
+
+            switch (layer)
             {
-                if (child.gameObject.GetComponent<SpriteRenderer>().sprite == Object3DSet.GetComponent<SpriteRenderer>().sprite)
-                {
-                    //DestroyImmediate(child.gameObject);
-
-                    if (Object3DSet.CompareTag("obstacle"))
+                case 0:
+                    if (Object3DSet != null)
                     {
-                        TurnBlank();
-                    }
+                        if (child.gameObject.GetComponent<SpriteRenderer>().sprite == Object3DSet.GetComponent<SpriteRenderer>().sprite)
+                        {
+                            //DestroyImmediate(child.gameObject);
 
-                    Object3DSet = null;
-                    obj = child.gameObject;
-                    find = true;
+                            if (Object3DSet.CompareTag("obstacle"))
+                            {
+                                TurnBlank();
+                            }
+
+                            Object3DSet = null;
+                            obj = child.gameObject;
+                            find = true;
+                            break;
+                        }
+                    }
                     break;
-                }
+                case 1:
+                    if (ModuleSet != null)
+                    {
+                        if (child.gameObject.layer == 3)
+                        {
+                            //DestroyImmediate(child.gameObject);
+
+                            if (ModuleSet.CompareTag("obstacle"))
+                            {
+                                TurnBlank();
+                            }
+
+                            ModuleSet = null;
+                            obj = child.gameObject;
+                            find = true;
+                            break;
+                        }
+                    }
+                    break;
+
             }
+           
         }
 
 
@@ -434,23 +464,21 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
         {
             if (spriteIndex == -1)
             {
-                RemoveObject();
+                RemoveObject(0);// un set 0 pour object set 1 pour module
             }
             else
             {
                 if (spriteIndex == -1)
                 {
-                    RemoveObject();
+                    RemoveObject(0);
                 }
                 else
                 {
                     if (Object3DSet != null)
                     {
-                        RemoveObject();
+                        RemoveObject(0);
                     }
-                    //Debug.LogWarning($"Layer index = {Object3DLayerIndex}");
-                    //Debug.LogWarning($"Sprite index = {spriteIndex}");
-                    //Debug.LogWarning($"Object3DSet = {Object3DLayer.objectTileSet[Object3DLayerIndex].objects[spriteIndex]}");
+
                     Object3DSet = this.Object3DLayer.objectTileSet[Object3DLayerIndex].objects[Random.Range(0, this.Object3DLayer.objectTileSet[Object3DLayerIndex].objects.Length)];
 
                     var inst = (GameObject)PrefabUtility.InstantiatePrefab(Object3DSet);
@@ -469,29 +497,89 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
         {
             if (spriteIndex == -1)
             {
-                RemoveObject();           
+                RemoveObject(0);
             }
             else
             {
                 if (Object3DSet != null)
                 {
-                    RemoveObject();
+                    RemoveObject(0);
                 }
-                    //Debug.LogWarning($"Layer index = {Object3DLayerIndex}");
-                    //Debug.LogWarning($"Sprite index = {spriteIndex}");
-                    //Debug.LogWarning($"Object3DSet = {Object3DLayer.objectTileSet[Object3DLayerIndex].objects[spriteIndex]}");
-                    Object3DSet = this.Object3DLayer.objectTileSet[Object3DLayerIndex].objects[spriteIndex];
 
+                Object3DSet = this.Object3DLayer.objectTileSet[Object3DLayerIndex].objects[spriteIndex];
 
-                    var inst = (GameObject)PrefabUtility.InstantiatePrefab(Object3DSet);
+                var inst = (GameObject)PrefabUtility.InstantiatePrefab(Object3DSet);
+                inst.transform.position = new Vector3(transform.position.x, inst.transform.position.y, transform.position.z);
+                inst.transform.parent = transform;
+
+                if (Object3DSet.CompareTag("obstacle"))
+                {
+                    TurnBloced();
+                }
+
+            }
+        }
+    }
+
+    public void SetModuleTileRenderTerrain(int moduleLayerIndex, bool autofil, int spriteIndex)
+    {
+        if (autofil)
+        {
+            if (spriteIndex == -1)
+            {
+                RemoveObject(1); // un set 0 pour object set 1 pour module
+            }
+            else
+            {
+                if (spriteIndex == -1)
+                {
+                    RemoveObject(1);
+                }
+                else
+                {
+                    if (ModuleSet != null)
+                    {
+                        RemoveObject(1);
+                    }
+
+                    ModuleSet = this.ModuleLayer.objectTileSet[moduleLayerIndex].objects[Random.Range(0, this.ModuleLayer.objectTileSet[moduleLayerIndex].objects.Length)];
+
+                    var inst = (GameObject)PrefabUtility.InstantiatePrefab(ModuleSet);
                     inst.transform.position = new Vector3(transform.position.x, inst.transform.position.y, transform.position.z);
                     inst.transform.parent = transform;
 
-                    if(Object3DSet.CompareTag("obstacle"))
+                    if (ModuleSet.CompareTag("obstacle"))
                     {
                         TurnBloced();
                     }
-                
+
+                }
+            }
+        }
+        else
+        {
+            if (spriteIndex == -1)
+            {
+                RemoveObject(1);
+            }
+            else
+            {
+                if (ModuleSet != null)
+                {
+                    RemoveObject(1);
+                }
+
+                ModuleSet = this.ModuleLayer.objectTileSet[moduleLayerIndex].objects[spriteIndex];
+
+                var inst = (GameObject)PrefabUtility.InstantiatePrefab(ModuleSet);
+                inst.transform.position = new Vector3(transform.position.x, inst.transform.position.y, transform.position.z);
+                inst.transform.parent = transform;
+
+                if (ModuleSet.CompareTag("obstacle"))
+                {
+                    TurnBloced();
+                }
+
             }
         }
     }
