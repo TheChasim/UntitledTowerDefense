@@ -5,11 +5,29 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.VFX;
 
+enum TowerType
+{
+    Projectil,
+    AOE,
+    Camp,
+}
+
+[System.Flags]
+public enum TypeOfEffect
+{
+    None = 0,
+    OverTime = 1,  // 1
+    Burst = 2 ,  // 2
+    CanMove = 4 ,  // 4
+    Spawning = 8 ,  // 8
+}
 public class Tower : MonoBehaviour
 {
     public static HashSet<Tower> allTourel = new HashSet<Tower>();
 
     [Header("Tower Info")]
+    [SerializeField] TowerType type;
+    [SerializeField] TypeOfEffect effect;
     [SerializeField] float range;
     [SerializeField] float minRange;
     [SerializeField] float cooldown;
@@ -21,14 +39,14 @@ public class Tower : MonoBehaviour
     [SerializeField] GameObject damagingZone;
     [Space]
 
-    [Header("Type of attack")]
-    [SerializeField] bool projectil;
-    [SerializeField] bool AOE;
-    [SerializeField] bool canMove;
+    //[Header("Type of attack")]
+    //[SerializeField] bool projectil;
+    //[SerializeField] bool AOE;
+    //[SerializeField] bool canMove;
 
-    [Header("Type of effect")]
-    [SerializeField] bool overTime;
-    [SerializeField] bool brust;
+    //[Header("Type of effect")]
+    //[SerializeField] bool overTime;
+    //[SerializeField] bool brust;
 
     SphereCollider rangeCollider;
     GameObject target;
@@ -56,17 +74,17 @@ public class Tower : MonoBehaviour
         //set la rotation la meme que la cam
         transform.rotation = Camera.main.transform.rotation;
 
-        if (projectil)
+        if (type.HasFlag(TowerType.Projectil))
         {
             if (enemyInRange.Count > 0)
             {
-                if (projectil)
+                if (type.HasFlag(TowerType.Projectil))
                 {
                     OnAttackProjectil();
                 }
             }
         }
-        else if (AOE)
+        else if (type.HasFlag(TowerType.AOE))
         {
             if (enemyInRange.Count > 0)
             {
@@ -79,8 +97,8 @@ public class Tower : MonoBehaviour
                     {
                         if (!damagingZone.GetComponent<ParticleSystem>().isPlaying)
                         {
-                            if (overTime)
-                            {
+                            if (effect.HasFlag(TypeOfEffect.OverTime))
+                            {                          
                                 //damagingZone.GetComponent<ParticleSystem>().Play();
                                 PlayEffect();
                             }
@@ -90,7 +108,7 @@ public class Tower : MonoBehaviour
                     {
                         if (!damagingZone.GetComponent<VisualEffect>().HasAnySystemAwake())
                         {
-                            if (overTime)
+                            if (effect.HasFlag(TypeOfEffect.OverTime))
                             {
                                 //damagingZone.GetComponent<ParticleSystem>().Play();
                                 PlayEffect();
@@ -99,7 +117,7 @@ public class Tower : MonoBehaviour
                     }
                 }
             }
-            else if (overTime)
+            else if (effect.HasFlag(TypeOfEffect.OverTime))
             {
                 if (damagingZone.GetComponent<ParticleSystem>())
                 {
@@ -178,7 +196,7 @@ public class Tower : MonoBehaviour
                 {
                     target = enemy.gameObject;
 
-                    if (canMove)
+                    if (effect.HasFlag(TypeOfEffect.CanMove))
                     {
                         dist = Vector3.Distance(transform.position, enemy.gameObject.transform.position);
                         Vector3 direction = target.transform.position - damagingZone.transform.position;
@@ -227,8 +245,8 @@ public class Tower : MonoBehaviour
     {
         attack = true;
         //Debug.Log(transform.parent.transform.position);
-        if (projectil)
-        {
+        if (type.HasFlag(TowerType.Projectil))
+        {   
             Instantiate(projectille, transform.parent.transform).GetComponent<Projectile>().SetTarget(target);
         }
 
@@ -241,7 +259,7 @@ public class Tower : MonoBehaviour
     {
         attack = true;
 
-        if (brust)
+        if (effect.HasFlag(TypeOfEffect.Burst))
         {
             damagingZone.GetComponent<ParticleSystem>().Play();
         }

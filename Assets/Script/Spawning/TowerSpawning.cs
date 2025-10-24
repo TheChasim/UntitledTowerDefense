@@ -16,7 +16,7 @@ public class TowerSpawning : MonoBehaviour
 
 
     [SerializeField] internal List<GameObject> allTower = new List<GameObject>();
-    [SerializeField] private List<GameObject> towers = new List<GameObject>();
+    [SerializeField] internal List<GameObject> towers = new List<GameObject>();
     GameObject selectTower;
 
     internal void OnSelectIndex(int indextower)

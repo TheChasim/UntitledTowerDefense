@@ -5,7 +5,7 @@ using UnityEngine;
 public class Healt : MonoBehaviour
 {
     //healt info
-    [SerializeField] float maxHealt;
+    [SerializeField] internal float maxHealt;
     public float curentHealt;
     EnemyAI enemy;
 

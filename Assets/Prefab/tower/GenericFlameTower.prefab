@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93433cb0d080c3a4bb1569ead52d6325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 1
+  effect: 5
   range: 2.25
   minRange: 0
   cooldown: 0.3
@@ -107,11 +109,6 @@ MonoBehaviour:
   enemyInRange: []
   projectille: {fileID: 0}
   damagingZone: {fileID: 5552800240716465481}
-  projectil: 0
-  AOE: 1
-  canMove: 1
-  overTime: 1
-  brust: 0
 --- !u!135 &2755842009750012348
 SphereCollider:
   m_ObjectHideFlags: 0

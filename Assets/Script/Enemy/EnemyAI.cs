@@ -1,17 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
-using System.Threading.Tasks;
-using UnityEngine.EventSystems;
-using TMPro;
-using Unity.Burst.CompilerServices;
-using System;
-using Unity.VisualScripting;
 
 public enum EnemyType
 {
-    Normal, 
-    Heal, 
+    Normal,
+    Heal,
     Explosif
 }
 
@@ -25,12 +20,15 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] float speed = 5f;
 
     [Header("Healing info")]
-    [SerializeField] bool canHeal = false;
+    [SerializeField] bool isHealing = false;
     [SerializeField] float healRange = 3.5f;
     [SerializeField] float healAmount = 1.0f;
+    [SerializeField] float healColddown = 0.75f;
+    [SerializeField] GameObject healEffect;
+    ParticleSystem healEffectParticle;
+    [SerializeField] LineRenderer healLine;
 
     [Header("explosion info")]
-    [SerializeField] bool canExplose = false;
     [SerializeField] float explosionRange = 3.5f;
     [SerializeField] float explosionDamage = 2f;
 
@@ -45,7 +43,7 @@ public class EnemyAI : MonoBehaviour
     Healt healt;
     bool tileDamage = false;
 
-    
+
     float currentSpeed
     {
         get
@@ -66,6 +64,17 @@ public class EnemyAI : MonoBehaviour
         enemyAIList.Add(this);
         //get le script pour la vie de l'enemie
         healt = GetComponent<Healt>();
+
+        //if (canHeal)
+        //{
+        //    healEffect.GetComponent<ParticleSystem>().Stop();
+        //}
+
+        if (enemyType == EnemyType.Heal)
+        {
+            healEffectParticle = healEffect.GetComponent<ParticleSystem>();
+            healEffect.gameObject.SetActive(true);
+        }
     }
 
     private void Start()
@@ -111,12 +120,12 @@ public class EnemyAI : MonoBehaviour
         }
 
 
-        if(canHeal)
+        if (enemyType == EnemyType.Heal)
         {
             Heal();
         }
 
-        if(canExplose)
+        if (enemyType == EnemyType.Explosif)
         {
             Explose();
         }
@@ -130,7 +139,56 @@ public class EnemyAI : MonoBehaviour
 
     private void Heal()
     {
+        EnemyAI target = null;
+        float prevPv = 999;
+        foreach (var enemy in enemyAIList)
+        {
+            if (Vector3.Distance(transform.position, enemy.transform.position) < healRange && enemy.gameObject != this.gameObject)
+            {
+                if (enemy.GetComponent<Healt>().curentHealt < prevPv)
+                {
+                    target = enemy;
+                    prevPv = target.GetComponent<Healt>().curentHealt;
+                }
+            }
+        }
 
+        if (target != null)
+        {
+            healEffect.transform.position = target.transform.position;
+            healEffect.gameObject.SetActive(true);
+            healEffectParticle.Play();
+
+            healLine.SetPosition(1, target.transform.position);
+            healLine.SetPosition(0, transform.position);
+            healLine.enabled = true;
+
+            if (!isHealing)
+            {
+                if (target.GetComponent<Healt>().curentHealt != target.GetComponent<Healt>().maxHealt)
+                {
+                    StartCoroutine(OnHeal(target));
+                }
+            }
+        }
+        else
+        {
+            healLine.enabled = false;
+            healEffectParticle.Stop();
+        }
+    }
+
+    IEnumerator OnHeal(EnemyAI target)
+    {
+        isHealing = true;
+        target.OntakeHealing(healAmount);
+        yield return new WaitForSeconds(healColddown);
+        isHealing = false;
+    }
+
+    internal void OntakeHealing(float amount)
+    {
+        healt.OnTakeHealing(amount);
     }
 
     private void Explose()
