@@ -15,4 +15,9 @@ public class InputManager : MonoBehaviour
     {
         cam.OnMove(context);
     }
+
+    public void OnRotateCam(InputAction.CallbackContext context)
+    {
+        cam.OnRotateCam(context);
+    }    
 }

@@ -21,6 +21,7 @@ public class MapLoading : MonoBehaviour
     static internal GameTiles[,] currentGameTiles;
     internal Vector2 spawnPoint;
     internal Vector2 endPoint;
+    static internal Vector2 target;
     static internal List<GameTiles> spawnTile = new List<GameTiles>();
     static internal GameTiles endTile;
 
@@ -48,6 +49,7 @@ public class MapLoading : MonoBehaviour
     private void Awake()
     {
         CreateMap();
+        target = new Vector2(RowCount / 2, ColCount / 2);
     }
 
     public void CreateMap()
@@ -72,6 +74,8 @@ public class MapLoading : MonoBehaviour
         // 3) Dimensions déclarées par la Map
         RowCount = currentMap.row;
         ColCount = currentMap.col;
+
+        
 
         // 4) Charger la grille depuis JSON (remplit currentMap.map[,])
         currentMap.LoadJson();
