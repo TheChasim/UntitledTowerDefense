@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7877543382882085705}
   - component: {fileID: 745825558078566940}
   - component: {fileID: 603911156479459868}
+  - component: {fileID: 9086331198952311911}
   m_Layer: 2
   m_Name: GenericElectricTower
   m_TagString: Untagged
@@ -99,6 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93433cb0d080c3a4bb1569ead52d6325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 1
+  effect: 2
   range: 1.5
   minRange: 0
   cooldown: 2
@@ -107,11 +110,6 @@ MonoBehaviour:
   enemyInRange: []
   projectille: {fileID: 0}
   damagingZone: {fileID: 5024661721087157483}
-  projectil: 0
-  AOE: 1
-  canMove: 0
-  overTime: 0
-  brust: 1
 --- !u!135 &603911156479459868
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -133,6 +131,18 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &9086331198952311911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3612579345630182176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4168647147855829855
 PrefabInstance:
   m_ObjectHideFlags: 0

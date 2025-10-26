@@ -318073,6 +318073,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1852422652}
   - component: {fileID: 1852422653}
+  - component: {fileID: 1852422654}
   m_Layer: 0
   m_Name: ThreeThin
   m_TagString: obstacle
@@ -318147,6 +318148,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1852422654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852422651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1852469015
 GameObject:
   m_ObjectHideFlags: 0
@@ -343718,6 +343731,8 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: GenericElectricTower
       m_Image: {fileID: 0}
+    - m_Text: Camp
+      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -357244,12 +357259,12 @@ PrefabInstance:
     - target: {fileID: 3780863707854636028, guid: 6b6c284559740a24cac141e700f6d249,
         type: 3}
       propertyPath: orthographic
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3780863707854636028, guid: 6b6c284559740a24cac141e700f6d249,
         type: 3}
       propertyPath: near clip plane
-      value: -100
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 4961569778387151605, guid: 6b6c284559740a24cac141e700f6d249,
         type: 3}
@@ -357259,7 +357274,7 @@ PrefabInstance:
     - target: {fileID: 4961569778387151605, guid: 6b6c284559740a24cac141e700f6d249,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4961569778387151605, guid: 6b6c284559740a24cac141e700f6d249,
         type: 3}
@@ -357269,27 +357284,27 @@ PrefabInstance:
     - target: {fileID: 4961569778387151605, guid: 6b6c284559740a24cac141e700f6d249,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8811196
+      value: 0.8535535
       objectReference: {fileID: 0}
     - target: {fileID: 4961569778387151605, guid: 6b6c284559740a24cac141e700f6d249,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.27781588
+      value: 0.35355338
       objectReference: {fileID: 0}
     - target: {fileID: 4961569778387151605, guid: 6b6c284559740a24cac141e700f6d249,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.36497167
+      value: 0.35355338
       objectReference: {fileID: 0}
     - target: {fileID: 4961569778387151605, guid: 6b6c284559740a24cac141e700f6d249,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.1150751
+      value: -0.1464466
       objectReference: {fileID: 0}
     - target: {fileID: 4961569778387151605, guid: 6b6c284559740a24cac141e700f6d249,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 35
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 4961569778387151605, guid: 6b6c284559740a24cac141e700f6d249,
         type: 3}
@@ -357372,13 +357387,13 @@ PrefabInstance:
     - target: {fileID: 3909223734006689186, guid: f5d919ee08f9b144fba6f6f84cd01d11,
         type: 3}
       propertyPath: towers.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3909223734006689186, guid: f5d919ee08f9b144fba6f6f84cd01d11,
         type: 3}
       propertyPath: towers.Array.data[3]
       value: 
-      objectReference: {fileID: 3612579345630182176, guid: 70630ca22ac2c2d43b238721d844c888,
+      objectReference: {fileID: 1561978774687730591, guid: e26f62f769abe5f42932a78dca14e2eb,
         type: 3}
     - target: {fileID: 4136204331232199424, guid: f5d919ee08f9b144fba6f6f84cd01d11,
         type: 3}
@@ -357434,6 +357449,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4508796451058780988, guid: f058d1fb42d57a2458099638209fd2f9,
         type: 3}
+    - target: {fileID: 6111679545860158431, guid: f5d919ee08f9b144fba6f6f84cd01d11,
+        type: 3}
+      propertyPath: rotationType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6111679545860158431, guid: f5d919ee08f9b144fba6f6f84cd01d11,
+        type: 3}
+      propertyPath: rotationAngle
+      value: 11.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6111679545860158431, guid: f5d919ee08f9b144fba6f6f84cd01d11,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 7776237310479498340, guid: f5d919ee08f9b144fba6f6f84cd01d11,
         type: 3}
       propertyPath: m_ActionEvents.Array.size

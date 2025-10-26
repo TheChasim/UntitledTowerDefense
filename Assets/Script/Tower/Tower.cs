@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -17,9 +18,9 @@ public enum TypeOfEffect
 {
     None = 0,
     OverTime = 1,  // 1
-    Burst = 2 ,  // 2
-    CanMove = 4 ,  // 4
-    Spawning = 8 ,  // 8
+    Burst = 2,  // 2
+    CanMove = 4,  // 4
+    Spawning = 8,  // 8
 }
 public class Tower : MonoBehaviour
 {
@@ -33,10 +34,13 @@ public class Tower : MonoBehaviour
     [SerializeField] float cooldown;
     [SerializeField] float power;
     [SerializeField] float rotationSpeed = 5;
+    [SerializeField] int maxUnit = 7;
+    HashSet<GameObject> unitlist = new HashSet<GameObject>();
     public List<EnemyAI> enemyInRange = new List<EnemyAI>();
     //[SerializeField] Collider rangeCollider;
     [SerializeField] GameObject projectille;
     [SerializeField] GameObject damagingZone;
+    [SerializeField] GameObject spwaningUnit;
     [Space]
 
     //[Header("Type of attack")]
@@ -71,10 +75,7 @@ public class Tower : MonoBehaviour
 
     private void Update()
     {
-        //set la rotation la meme que la cam
-        transform.rotation = Camera.main.transform.rotation;
-
-        if (type.HasFlag(TowerType.Projectil))
+        if (type == TowerType.Projectil)
         {
             if (enemyInRange.Count > 0)
             {
@@ -84,7 +85,7 @@ public class Tower : MonoBehaviour
                 }
             }
         }
-        else if (type.HasFlag(TowerType.AOE))
+        else if (type == TowerType.AOE)
         {
             if (enemyInRange.Count > 0)
             {
@@ -98,7 +99,7 @@ public class Tower : MonoBehaviour
                         if (!damagingZone.GetComponent<ParticleSystem>().isPlaying)
                         {
                             if (effect.HasFlag(TypeOfEffect.OverTime))
-                            {                          
+                            {
                                 //damagingZone.GetComponent<ParticleSystem>().Play();
                                 PlayEffect();
                             }
@@ -133,6 +134,18 @@ public class Tower : MonoBehaviour
                         StopEffect();
                     }
                 }
+            }
+        }
+        else if (type == TowerType.Camp)
+        {
+            if (!attack && unitlist.Count < maxUnit) //utilise attack pour le coldown entre chaque spawn d<uniter afin d'eviter trop de variable
+            {
+                StartCoroutine(OnSpawnUnit());
+            }
+
+            if (enemyInRange.Count > 0)
+            {
+                SendUnit();
             }
         }
 
@@ -246,9 +259,54 @@ public class Tower : MonoBehaviour
         attack = true;
         //Debug.Log(transform.parent.transform.position);
         if (type.HasFlag(TowerType.Projectil))
-        {   
+        {
             Instantiate(projectille, transform.parent.transform).GetComponent<Projectile>().SetTarget(target);
         }
+
+        yield return new WaitForSeconds(cooldown);
+
+        attack = false;
+    }
+
+    private void SendUnit()
+    {
+
+        foreach (EnemyAI enemy in enemyInRange)
+        {
+            Vector3 dir = (enemy.transform.position - transform.position).normalized;
+            //float dist = Vector3.Distance(transform.position, enemy.transform.position);
+
+            Physics.Raycast(transform.position, dir, out RaycastHit hit);
+            Debug.DrawLine(transform.position, hit.point, Color.magenta);
+
+            if(Vector3.Distance(transform.position, enemy.transform.position) > range)
+            { target = null; }
+
+            if (target == null)
+            {
+                if (hit.transform == enemy.transform)
+                {
+                    target = enemy.gameObject;
+
+                    foreach(var unit in unitlist)
+                    {
+                        unit.GetComponent<Unit>().target = target;
+                    }
+                }
+        }
+    }
+
+
+
+    }
+
+    private IEnumerator OnSpawnUnit()
+    {
+        attack = true;
+
+        GameObject unit = Instantiate(spwaningUnit, transform.parent.transform);
+        //unit.GetComponent<Unit>().range = this.range;
+        unitlist.Add(unit);
 
         yield return new WaitForSeconds(cooldown);
 

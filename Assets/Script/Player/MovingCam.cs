@@ -1,19 +1,30 @@
 using System;
+using System.Runtime.CompilerServices;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
 
+internal enum RotationType
+{
+    Continue,
+    Step,
+
+};
+
 public class MovingCam : MonoBehaviour
 {
     [SerializeField] float zoomSensitivity = 0.5f;
-    [SerializeField] float roationSpeed = 50f;
+    [SerializeField] float rotationSpeed = 50f;  //for rotation continue it will turn by a speed
+    [SerializeField] float rotationAngle = 75f;  //for rotation by step it will rotate by an specefic angle
+    [SerializeField] RotationType rotationType;
     [SerializeField] float minZoom = 1;
     [SerializeField] float maxZoom = 10;
 
     [SerializeField] float moveSpeed;
     Vector2 moveInput;
+    float rotationValue;
     float zoomValue;
     Vector3 target;
 
@@ -25,10 +36,17 @@ public class MovingCam : MonoBehaviour
         target = new Vector3(MapLoading.target.x, 0, MapLoading.target.y);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         HandleZoom();
         HandleMovement();
+
+        if(rotationType == RotationType.Continue)
+        {
+            Camera.main.transform.RotateAround(target, Vector3.up, rotationValue * rotationSpeed * Time.fixedDeltaTime);
+        }
+
+        Debug.DrawLine(Camera.main.transform.position, target, Color.red);
 
     }
 
@@ -51,6 +69,11 @@ public class MovingCam : MonoBehaviour
         cam.GetComponent<Camera>().orthographicSize += zoomValue * Time.deltaTime;
 
         cam.GetComponent<Camera>().orthographicSize = Mathf.Clamp(cam.GetComponent<Camera>().orthographicSize, minZoom, maxZoom);
+
+        Camera.main.fieldOfView += zoomValue * Time.deltaTime;
+        Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, 10, 60);
+
+
     }
 
     public void OnZoom(InputAction.CallbackContext context)
@@ -72,10 +95,13 @@ public class MovingCam : MonoBehaviour
 
     internal void OnRotateCam(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        rotationValue = context.ReadValue<float>();
+
+        if (rotationType == RotationType.Step)
         {
             Debug.Log(context.ReadValue<float>());
-            Camera.main.transform.RotateAround(target, Vector3.up, context.ReadValue<float>()* roationSpeed * Time.deltaTime);
+            Camera.main.transform.RotateAround(target, Vector3.up, rotationValue * rotationAngle);
+            //Camera.main.transform.rotation.y += rotationValue * rotationAngle;
 
         }
 

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 774191025443660505}
   - component: {fileID: 4516672098630089224}
   - component: {fileID: 7552604017294518993}
+  - component: {fileID: 2169062749939831392}
   m_Layer: 2
   m_Name: Camp
   m_TagString: Untagged
@@ -98,20 +99,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93433cb0d080c3a4bb1569ead52d6325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 0
+  type: 2
+  effect: 8
+  range: 5
   minRange: 0
   cooldown: 1
   power: 0
-  rotationSpeed: 5
+  rotationSpeed: 0
+  maxUnit: 7
   enemyInRange: []
-  projectille: {fileID: 4046288104506316116, guid: 4372fff3859f27545bebaba7b4293c8f,
-    type: 3}
+  projectille: {fileID: 0}
   damagingZone: {fileID: 0}
-  projectil: 1
-  AOE: 0
-  canMove: 0
-  overTime: 0
-  brust: 0
+  spwaningUnit: {fileID: 6090137221554794757, guid: 25329c2f92b80ee4e841b63441e09732,
+    type: 3}
 --- !u!135 &7552604017294518993
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -133,3 +133,15 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 2.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2169062749939831392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1561978774687730591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

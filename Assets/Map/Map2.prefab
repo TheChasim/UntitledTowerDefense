@@ -301927,6 +301927,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1578723070491245863}
   - component: {fileID: 5698696998938801468}
+  - component: {fileID: 6959743414386672293}
   m_Layer: 0
   m_Name: ThreeThin
   m_TagString: obstacle
@@ -302001,6 +302002,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6959743414386672293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7922036996139807888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7923000445617072151
 GameObject:
   m_ObjectHideFlags: 0
