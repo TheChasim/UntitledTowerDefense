@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -2595680673660356299}
   - component: {fileID: -1144122522048599984}
   - component: {fileID: 4471830620328865506}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: HealEnnemi
   m_TagString: Untagged
   m_Icon: {fileID: 0}

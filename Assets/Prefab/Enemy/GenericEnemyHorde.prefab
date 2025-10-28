@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7233855171050757657}
   - component: {fileID: 8455680825436231232}
   - component: {fileID: 1205983289363214908}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: GenericEnemyHorde
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,7 +254,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1782632448718723131, guid: 5bebd2ba775fe3e4196511a6a7f27e30,
         type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1782632448718723131, guid: 5bebd2ba775fe3e4196511a6a7f27e30,
+        type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3881021345583274457, guid: 5bebd2ba775fe3e4196511a6a7f27e30,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4980482721383387969, guid: 5bebd2ba775fe3e4196511a6a7f27e30,
+        type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6491985876714186015, guid: 5bebd2ba775fe3e4196511a6a7f27e30,
@@ -305,6 +320,11 @@ PrefabInstance:
     - target: {fileID: 6491985876714186015, guid: 5bebd2ba775fe3e4196511a6a7f27e30,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7043307856750379814, guid: 5bebd2ba775fe3e4196511a6a7f27e30,
+        type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

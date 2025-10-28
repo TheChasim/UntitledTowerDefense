@@ -53,11 +53,9 @@ MonoBehaviour:
   - {fileID: 4508796451058780988, guid: f058d1fb42d57a2458099638209fd2f9, type: 3}
   - {fileID: 4508796451058780988, guid: 72dff13beea98bc44ae2ae315db22e96, type: 3}
   - {fileID: 4508796451058780988, guid: f7a808ff981efe648b17ef614a0962be, type: 3}
+  mapPrefab: {fileID: 4508796451058780988, guid: f058d1fb42d57a2458099638209fd2f9,
+    type: 3}
   mapIndex: 1
-  tilesets: 0
-  grassTileSet: {fileID: 11400000, guid: e69e13b75f5387c45834a2a53da3fdcc, type: 2}
-  stoneBluiding: {fileID: 11400000, guid: 6a6210214ffd8d84cb418819fdd688ef, type: 2}
-  stonePath: {fileID: 11400000, guid: f493452fecb6d6a42af3a5888158f0a4, type: 2}
 --- !u!1 &1046462512414955013
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,6 +187,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 67d6dba3-65ef-4376-b643-66004c1debad
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1339422029018770938}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: OnRotateCam
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ead22d49-ae9f-41ee-b579-5c0b0e9d9d0b
+    m_ActionName: Player/Rotate[/Keyboard/q,/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -252,6 +266,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zoomSensitivity: 1
+  rotationSpeed: 50
+  rotationAngle: 11.25
+  rotationType: 0
   minZoom: 1
   maxZoom: 10
   moveSpeed: 7
@@ -390,8 +407,9 @@ MonoBehaviour:
   timeBetweenEnemy: 2
   timeBetweenWave: 5
   enemyAIPrefab:
-  - {fileID: 4925137300140514, guid: 39304562ad4b7d34383dd4c6c5534b89, type: 3}
   - {fileID: 4925137300140514, guid: 31780f42cdf36384dad1edd683af6b59, type: 3}
+  - {fileID: 4925137300140514, guid: 39304562ad4b7d34383dd4c6c5534b89, type: 3}
+  - {fileID: 7757297550476751686, guid: 03c7e8de1bcf3f147ab30b07213b763f, type: 3}
   currentEnemyAmount: 0
 --- !u!114 &7153480545425678085
 MonoBehaviour:
@@ -424,6 +442,7 @@ MonoBehaviour:
   - {fileID: 1561978774687730591, guid: d3fb8de7445e5d644b4315816274915d, type: 3}
   - {fileID: 242614616833155605, guid: a0575e652dab2fc42b378f0da6038d1b, type: 3}
   - {fileID: 3612579345630182176, guid: 70630ca22ac2c2d43b238721d844c888, type: 3}
+  - {fileID: 1561978774687730591, guid: e26f62f769abe5f42932a78dca14e2eb, type: 3}
 --- !u!114 &696656128344601112
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7233855171050757657}
   - component: {fileID: 8455680825436231232}
   - component: {fileID: 1205983289363214908}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: GenericEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,11 +103,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e98d79f5aeec44f8fecaf3e4b46b56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: 0
+  speed: 0.3
+  isHealing: 0
+  healRange: 3.5
+  healAmount: 1
+  healColddown: 0.75
+  healEffect: {fileID: 0}
+  healLine: {fileID: 0}
+  explosionRange: 3.5
+  explosionDamage: 2
   currentTile: {fileID: 0}
   nextTile: {fileID: 0}
   targetPosition: {x: 0, y: 0, z: 0}
   showDirection: 1
-  speed: 0.3
 --- !u!114 &2105772637410649222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,7 +254,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1782632448718723131, guid: 5bebd2ba775fe3e4196511a6a7f27e30,
         type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1782632448718723131, guid: 5bebd2ba775fe3e4196511a6a7f27e30,
+        type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3881021345583274457, guid: 5bebd2ba775fe3e4196511a6a7f27e30,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4980482721383387969, guid: 5bebd2ba775fe3e4196511a6a7f27e30,
+        type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6491985876714186015, guid: 5bebd2ba775fe3e4196511a6a7f27e30,
@@ -296,6 +320,11 @@ PrefabInstance:
     - target: {fileID: 6491985876714186015, guid: 5bebd2ba775fe3e4196511a6a7f27e30,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7043307856750379814, guid: 5bebd2ba775fe3e4196511a6a7f27e30,
+        type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

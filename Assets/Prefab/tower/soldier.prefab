@@ -110,3 +110,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20cc74a8e91ec534c8863dcefe41ee0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0.5
+  range: 0.5
+  cooldown: 1
+  health: 5
+  speed: 1.25
+  radiusForEnemy: 0.25
+  separationRadius: 0.5
+  separationForce: 1
+  obstaclesMask:
+    serializedVersion: 2
+    m_Bits: 8

@@ -107,9 +107,11 @@ MonoBehaviour:
   cooldown: 2
   power: 2
   rotationSpeed: 5
+  maxUnit: 7
   enemyInRange: []
   projectille: {fileID: 0}
   damagingZone: {fileID: 5024661721087157483}
+  spwaningUnit: {fileID: 0}
 --- !u!135 &603911156479459868
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -151,6 +153,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 321495131070883828}
     m_Modifications:
+    - target: {fileID: 517058127858894792, guid: 917c9e94c14aced4aa5f15cdda5b1e1c,
+        type: 3}
+      propertyPath: CollisionModule.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 517058127858894792, guid: 917c9e94c14aced4aa5f15cdda5b1e1c,
+        type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 517058127858894792, guid: 917c9e94c14aced4aa5f15cdda5b1e1c,
+        type: 3}
+      propertyPath: CollisionModule.collisionMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6269113319136486765, guid: 917c9e94c14aced4aa5f15cdda5b1e1c,
         type: 3}
       propertyPath: m_LocalPosition.x

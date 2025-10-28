@@ -231,7 +231,7 @@ public class EnemyAI : MonoBehaviour
         tileDamage = false;
     }
 
-    private void OnTakeDamage(float damageAmout)
+    public void OnTakeDamage(float damageAmout)
     {
         healt.OnTakeDamage(damageAmout);
     }

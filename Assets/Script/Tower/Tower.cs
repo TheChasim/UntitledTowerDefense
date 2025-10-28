@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -35,22 +34,13 @@ public class Tower : MonoBehaviour
     [SerializeField] float power;
     [SerializeField] float rotationSpeed = 5;
     [SerializeField] int maxUnit = 7;
-    HashSet<GameObject> unitlist = new HashSet<GameObject>();
+    internal HashSet<GameObject> unitlist = new HashSet<GameObject>();
+    static internal HashSet<GameObject> allUnitList = new HashSet<GameObject>();
     public List<EnemyAI> enemyInRange = new List<EnemyAI>();
-    //[SerializeField] Collider rangeCollider;
     [SerializeField] GameObject projectille;
     [SerializeField] GameObject damagingZone;
     [SerializeField] GameObject spwaningUnit;
     [Space]
-
-    //[Header("Type of attack")]
-    //[SerializeField] bool projectil;
-    //[SerializeField] bool AOE;
-    //[SerializeField] bool canMove;
-
-    //[Header("Type of effect")]
-    //[SerializeField] bool overTime;
-    //[SerializeField] bool brust;
 
     SphereCollider rangeCollider;
     GameObject target;
@@ -61,6 +51,7 @@ public class Tower : MonoBehaviour
     {
         allTourel.Add(this);
         rangeCollider = GetComponent<SphereCollider>();
+        rangeCollider.radius = range;
 
         transform.position = new Vector3(transform.position.x,
                                          transform.position.y,
@@ -236,6 +227,7 @@ public class Tower : MonoBehaviour
     {
         float dist = math.INFINITY;
 
+
         foreach (EnemyAI enemy in enemyInRange)
         {
             if (enemy != null)
@@ -270,34 +262,31 @@ public class Tower : MonoBehaviour
 
     private void SendUnit()
     {
+        float dist = math.INFINITY;
 
         foreach (EnemyAI enemy in enemyInRange)
         {
-            Vector3 dir = (enemy.transform.position - transform.position).normalized;
-            //float dist = Vector3.Distance(transform.position, enemy.transform.position);
-
-            Physics.Raycast(transform.position, dir, out RaycastHit hit);
-            Debug.DrawLine(transform.position, hit.point, Color.magenta);
-
-            if(Vector3.Distance(transform.position, enemy.transform.position) > range)
-            { target = null; }
-
-            if (target == null)
+            if (enemy != null)
             {
-                if (hit.transform == enemy.transform)
+                if (Vector3.Distance(transform.position, enemy.gameObject.transform.position) < dist)
                 {
                     target = enemy.gameObject;
+                    dist = Vector3.Distance(transform.position, enemy.gameObject.transform.position);
 
-                    foreach(var unit in unitlist)
+
+                    Debug.DrawLine(transform.position, target.transform.position, Color.red);
+
+                    foreach (var unit in unitlist)
                     {
-                        unit.GetComponent<Unit>().target = target;
+                        if (unit != null)
+                        {
+                            unit.GetComponent<Unit>().target = target;
+                        }
                     }
+
                 }
+            }
         }
-    }
-
-
-
     }
 
     private IEnumerator OnSpawnUnit()
@@ -305,7 +294,7 @@ public class Tower : MonoBehaviour
         attack = true;
 
         GameObject unit = Instantiate(spwaningUnit, transform.parent.transform);
-        //unit.GetComponent<Unit>().range = this.range;
+        unit.GetComponent<Unit>().campRef = this;
         unitlist.Add(unit);
 
         yield return new WaitForSeconds(cooldown);
@@ -383,6 +372,14 @@ public class Tower : MonoBehaviour
 
     internal void OnRevome()
     {
+        if (effect.HasFlag(TypeOfEffect.Spawning))
+        {
+            foreach (var unit in unitlist)
+            {
+                Destroy(unit.gameObject);
+            }
+        }
+
         allTourel.Remove(this);
         Destroy(gameObject);
     }
