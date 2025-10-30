@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8231288008886561928}
   - component: {fileID: 8498676986174663338}
   - component: {fileID: -5865400582409149189}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ThreeApple
   m_TagString: obstacle
   m_Icon: {fileID: 0}

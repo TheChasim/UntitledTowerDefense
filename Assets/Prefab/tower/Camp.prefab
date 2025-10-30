@@ -106,7 +106,7 @@ MonoBehaviour:
   cooldown: 1
   power: 0
   rotationSpeed: 0
-  maxUnit: 7
+  maxUnit: 4
   enemyInRange: []
   projectille: {fileID: 0}
   damagingZone: {fileID: 0}

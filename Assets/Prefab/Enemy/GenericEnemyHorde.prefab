@@ -130,6 +130,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealt: 12
+  txtDamage: {fileID: 7901987003851355459, guid: 232d90fbdd643ad47bad9e9c93b6869a,
+    type: 3}
   curentHealt: 0
   healtBar: {fileID: 2672967879658348395}
 --- !u!114 &-1211638671758177512

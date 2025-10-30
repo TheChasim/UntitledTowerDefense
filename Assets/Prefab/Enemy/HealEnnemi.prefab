@@ -129,6 +129,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealt: 7
+  txtDamage: {fileID: 7901987003851355459, guid: 232d90fbdd643ad47bad9e9c93b6869a,
+    type: 3}
   curentHealt: 0
   healtBar: {fileID: 0}
 --- !u!65 &-2595680673660356299

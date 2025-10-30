@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6013003305534339014}
   - component: {fileID: 8159174390091954571}
   - component: {fileID: 4887798307591069499}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ChampieRedGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6427802263636265258}
   - component: {fileID: 2934720193450153520}
   - component: {fileID: -6540332766446324688}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: woodTrunk3
   m_TagString: obstacle
   m_Icon: {fileID: 0}

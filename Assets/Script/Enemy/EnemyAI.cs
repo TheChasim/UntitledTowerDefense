@@ -92,12 +92,18 @@ public class EnemyAI : MonoBehaviour
     private void Update()
     {
         //get le tile actuel
-        SetCurrentTile();
+        //SetCurrentTile();
         //aplique l'effet de la tuille actuel
         TileEffect();
 
-        //deplace l'enemie a la prochaine tuille
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, currentSpeed * Time.deltaTime);
+        if (Vector3.Distance(transform.position, targetPosition) < 0.5f)
+        {
+            SetCurrentTile();
+        }
+
+
+            //deplace l'enemie a la prochaine tuille
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, currentSpeed * Time.deltaTime);
 
         //si l'enemie est rendue au centre de la prochaine tuille
         if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
@@ -198,27 +204,50 @@ public class EnemyAI : MonoBehaviour
 
     private void SetCurrentTile()
     {
-        //si le ray touche une tuille
-        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 2f))
-        {
-            //affiche le ray
-            Debug.DrawRay(transform.position, Vector3.down * hit.distance, Color.red);
+        float probeRadius = 2f;
+        Collider[] nearby = Physics.OverlapSphere(transform.position, probeRadius, ~0, QueryTriggerInteraction.Ignore);
 
-            //si le ray touche une tuile
-            if (hit.collider.GetComponent<GameTiles>())
+        float bestDist = Mathf.Infinity;
+        GameTiles nearest = null;
+
+        foreach (var col in nearby)
+        {
+            GameTiles tile = col.GetComponent<GameTiles>();
+            if (tile != null)
             {
-                //set la tuille du ray a currentTile
-                currentTile = hit.collider.GetComponent<GameTiles>();
+                float dist = Vector3.Distance(transform.position, tile.worldPosition);
+                if (dist < bestDist)
+                {
+                    bestDist = dist;
+                    nearest = tile;
+                }
             }
+        }
+
+        if (nearest != null)
+        {
+            currentTile = nearest;
+            return; // tuile de secours trouvée
         }
     }
 
     private void TileEffect()
     {
+        if (currentTile == null) return;
         //si la tuille a pour effet de faire du domage start un Coroutine pour apliquer les dega
-        if (currentTile.IsDamaging && !tileDamage)
+        try
         {
-            StartCoroutine(OntileDamage(currentTile.DamageAmout));
+            if (currentTile.IsDamaging && !tileDamage)
+            {
+                StartCoroutine(OntileDamage(currentTile.DamageAmout));
+            }
+        }
+        catch
+        {
+
+            Debug.Log($"currentTile= {currentTile.worldPosition}");
+            Debug.Log($"currentTile.IsDamaging = {currentTile.IsDamaging}");
+            Debug.Log($"tileDamage = {!tileDamage}");
         }
     }
 
@@ -244,6 +273,11 @@ public class EnemyAI : MonoBehaviour
     private void OnDestroy()
     {
         enemyAIList.Remove(this);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        
     }
 
 }

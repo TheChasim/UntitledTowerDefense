@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3860088631372802086}
   - component: {fileID: 7881402201544253328}
   - component: {fileID: 8512369488786352656}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: blueFlower
   m_TagString: Untagged
   m_Icon: {fileID: 0}

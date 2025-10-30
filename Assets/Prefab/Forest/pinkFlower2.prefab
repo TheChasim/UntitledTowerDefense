@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8685975384464380149}
   - component: {fileID: 5656626509810344175}
   - component: {fileID: -7122088151206445802}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: pinkFlower2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

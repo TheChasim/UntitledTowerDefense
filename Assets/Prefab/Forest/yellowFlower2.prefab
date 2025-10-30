@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3230178288731842879}
   - component: {fileID: 3623163299413845456}
   - component: {fileID: 1441632220926324138}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: yellowFlower2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

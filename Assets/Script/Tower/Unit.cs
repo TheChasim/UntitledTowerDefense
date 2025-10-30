@@ -83,7 +83,7 @@ public class Unit : MonoBehaviour
             transform.position += moveDir * speed * Time.fixedDeltaTime;
         }
 
-        transform.position = new Vector3 (transform.position.x, 0, transform.position.z);
+        transform.position = new Vector3 (transform.position.x, 0.25f, transform.position.z);
     }
 
     private IEnumerator OnAttack()

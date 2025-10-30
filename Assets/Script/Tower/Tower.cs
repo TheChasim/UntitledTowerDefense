@@ -178,12 +178,12 @@ public class Tower : MonoBehaviour
         if (damagingZone.GetComponent<ParticleSystem>())
         {
             damagingZone.GetComponent<ParticleSystem>().Stop();
-            Debug.Log($"{name} stop particul effect");
+            //Debug.Log($"{name} stop particul effect");
         }
         else if (damagingZone.GetComponent<VisualEffect>())
         {
             damagingZone.GetComponent<VisualEffect>().Stop();
-            Debug.Log($"{name} stop Vfx");
+            //Debug.Log($"{name} stop Vfx");
         }
     }
 

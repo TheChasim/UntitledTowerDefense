@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1739858812302968245}
   - component: {fileID: 3372024765873218636}
   - component: {fileID: -7780733596073433303}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ThreeThin
   m_TagString: obstacle
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2739968617078540716}
   - component: {fileID: 8176987537738046394}
   - component: {fileID: -7934738383134618792}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: herbre2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
