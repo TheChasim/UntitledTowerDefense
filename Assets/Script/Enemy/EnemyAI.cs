@@ -18,6 +18,7 @@ public class EnemyAI : MonoBehaviour
     [Header("Enemie Info")]
     [SerializeField] internal EnemyType enemyType;
     [SerializeField] float speed = 5f;
+    [SerializeField] int damege = 1;
 
     [Header("Healing info")]
     [SerializeField] bool isHealing = false;
@@ -102,8 +103,8 @@ public class EnemyAI : MonoBehaviour
         }
 
 
-            //deplace l'enemie a la prochaine tuille
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, currentSpeed * Time.deltaTime);
+        //deplace l'enemie a la prochaine tuille
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, currentSpeed * Time.deltaTime);
 
         //si l'enemie est rendue au centre de la prochaine tuille
         if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
@@ -116,6 +117,15 @@ public class EnemyAI : MonoBehaviour
             {
                 Debug.Log("destroy");
                 IsDead();
+                if (GetComponent<Horde>())
+                {
+                    //si c'est une horde multiplier les dega par le nombre de pv restant
+                    PlayerScript.Singleton.OnTakeDamege(damege*(int)GetComponent<Healt>().curentHealt);
+                }
+                else
+                {
+                    PlayerScript.Singleton.OnTakeDamege(damege);
+                }
 
             }
             //set la nouvelle target a la prochaine tuile
@@ -277,7 +287,7 @@ public class EnemyAI : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
+
     }
 
 }
