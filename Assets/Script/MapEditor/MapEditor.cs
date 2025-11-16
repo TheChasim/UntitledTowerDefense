@@ -521,7 +521,6 @@ public class MapEditor : Editor
                 currentMap = mapLoading.GetCurrentMap();
             }
 
-
             //pour mettre la carte dans une boite pour scroll
             EditorGUILayout.BeginVertical("box"); // ma boite
             scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);

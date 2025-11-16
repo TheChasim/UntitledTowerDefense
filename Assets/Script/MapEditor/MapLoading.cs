@@ -49,7 +49,7 @@ public class MapLoading : MonoBehaviour
     internal TileSets tilesets;
 
     private void Awake()
-    {    
+    {
         CreateMap();
         target = new Vector2(RowCount / 2, ColCount / 2);
     }
@@ -100,21 +100,9 @@ public class MapLoading : MonoBehaviour
                     currentMap.map[x, y] = ' ';
 
             //load la map Char[,] en GameTile[,]
-            //currentMap.LoadMap();
-            //currentGameTiles = currentMap.mapTiles;
-
-            currentGameTiles = new GameTiles[currentMap.row, currentMap.col];
-
-            foreach (Transform child in currentMap.transform)
-            {
-                //childrenTile.Add(child.gameObject);
-
-                if (child.GetComponent<GameTiles>())
-                {
-                    currentGameTiles[child.GetComponent<GameTiles>().gridX,
-                             child.GetComponent<GameTiles>().gridY] = child.GetComponent<GameTiles>();
-                }
-            }
+            currentMap.LoadMap();
+            currentGameTiles = currentMap.mapTiles;
+            Debug.Log($"la map et est-elle vide apres le load? : {currentMap.mapTiles == null}");
 
         }
         else
@@ -123,13 +111,12 @@ public class MapLoading : MonoBehaviour
             Debug.Log(currentGameTiles);
         }
 
-        Debug.Log($"la map et est-elle vide apres le load? : {currentMap.mapTiles == null}");
 
         Debug.LogWarning($"Map Tiles : {currentGameTiles}");
-        if(currentMap)
+        if (currentMap)
 
-        // S'assurer que la liste des spawns est initialisée
-        if (spawnTile == null) spawnTile = new List<GameTiles>();
+            // S'assurer que la liste des spawns est initialisée
+            if (spawnTile == null) spawnTile = new List<GameTiles>();
 
 
         // 5) Créer/peupler les tiles enfants sous mapInstance
@@ -186,7 +173,7 @@ public class MapLoading : MonoBehaviour
         }
 
         // (optionnel) garder un pointeur côté Map
-        currentMap.mapTiles = currentGameTiles;
+        //currentMap.mapTiles = currentGameTiles;
     }
 
     void SafeDestroy(GameObject go)
@@ -230,7 +217,7 @@ public class MapLoading : MonoBehaviour
             "Choisis l'emplacement",
             defaultDir
         );
-        
+
         PrefabUtility.SaveAsPrefabAssetAndConnect(MapObject, path, InteractionMode.AutomatedAction);
 
         RefreshMap();

@@ -76,103 +76,103 @@ public class Map : MonoBehaviour
         }
     }
 
-    // ---------- ECRITURE JSON ----------
-    private void SaveInJson()
-    {
-        if (map == null)
-        {
-            Debug.LogError("SaveInJson: map est null.");
-            return;
-        }
+    //// ---------- ECRITURE JSON ----------
+    //private void SaveInJson()
+    //{
+    //    if (map == null)
+    //    {
+    //        Debug.LogError("SaveInJson: map est null.");
+    //        return;
+    //    }
 
-        // Transforme char[,] -> lignes de char (sérialisable par JsonUtility)
-        var container = new CharArray2DContainer
-        {
-            map2D = new CharArray2D[row]
-        };
+    //    // Transforme char[,] -> lignes de char (sérialisable par JsonUtility)
+    //    var container = new CharArray2DContainer
+    //    {
+    //        map2D = new CharArray2D[row]
+    //    };
 
-        for (int y = 0; y < row; y++)
-        {
-            var line = new CharArray2D { row = new char[col] };
-            for (int x = 0; x < col; x++)
-                line.row[x] = map[y, x];
-            container.map2D[y] = line;
-        }
+    //    for (int y = 0; y < row; y++)
+    //    {
+    //        var line = new CharArray2D { row = new char[col] };
+    //        for (int x = 0; x < col; x++)
+    //            line.row[x] = map[y, x];
+    //        container.map2D[y] = line;
+    //    }
 
-        var mapData = new MapData
-        {
-            mapName = this.mapName,
-            col = this.col,
-            row = this.row,
-            mapComtainer = container,
-            map = null //JsonUtility ne sait pas sérialiser char[,]; on n'utilise pas ce champ
-        };
+    //    var mapData = new MapData
+    //    {
+    //        mapName = this.mapName,
+    //        col = this.col,
+    //        row = this.row,
+    //        mapComtainer = container,
+    //        map = null //JsonUtility ne sait pas sérialiser char[,]; on n'utilise pas ce champ
+    //    };
 
-        string dir = Path.Combine(Application.persistentDataPath, "Saves");
-        Directory.CreateDirectory(dir); // s`assure que le dossier existe
-        string path = Path.Combine(dir, $"{mapName}.json");
+    //    string dir = Path.Combine(Application.persistentDataPath, "Saves");
+    //    Directory.CreateDirectory(dir); // s`assure que le dossier existe
+    //    string path = Path.Combine(dir, $"{mapName}.json");
 
-        string json = JsonUtility.ToJson(mapData, true);
-        File.WriteAllText(path, json);
+    //    string json = JsonUtility.ToJson(mapData, true);
+    //    File.WriteAllText(path, json);
 
-        Debug.Log($"Map sauvegardée ? {path}");
-    }
+    //    Debug.Log($"Map sauvegardée ? {path}");
+    //}
 
-    // ---------- LECTURE JSON ----------
-    internal void LoadJson()
-    {
-        string dir = Path.Combine(Application.persistentDataPath, "Saves");
-        string path = Path.Combine(dir, $"{mapName}.json");
+    //// ---------- LECTURE JSON ----------
+    //internal void LoadJson()
+    //{
+    //    string dir = Path.Combine(Application.persistentDataPath, "Saves");
+    //    string path = Path.Combine(dir, $"{mapName}.json");
 
-        if (!File.Exists(path))
-        {
-            // Pas de fichier: crée une grille vide (utile la toute première fois)
-            if (row <= 0 || col <= 0)
-            {
-                Debug.LogWarning($"LoadJson: pas de fichier et dimensions inconnues. Défaut 10x10.");
-                row = Mathf.Max(row, 10);
-                col = Mathf.Max(col, 10);
-            }
+    //    if (!File.Exists(path))
+    //    {
+    //        // Pas de fichier: crée une grille vide (utile la toute première fois)
+    //        if (row <= 0 || col <= 0)
+    //        {
+    //            Debug.LogWarning($"LoadJson: pas de fichier et dimensions inconnues. Défaut 10x10.");
+    //            row = Mathf.Max(row, 10);
+    //            col = Mathf.Max(col, 10);
+    //        }
 
-            map = new char[row, col];
-            for (int y = 0; y < row; y++)
-                for (int x = 0; x < col; x++)
-                    map[y, x] = ' ';
-            Debug.LogWarning($"Aucun fichier trouvé ({path}). Grille vierge créée.");
-            return;
-        }
+    //        map = new char[row, col];
+    //        for (int y = 0; y < row; y++)
+    //            for (int x = 0; x < col; x++)
+    //                map[y, x] = ' ';
+    //        Debug.LogWarning($"Aucun fichier trouvé ({path}). Grille vierge créée.");
+    //        return;
+    //    }
 
-        string json = File.ReadAllText(path);
-        var mapData = JsonUtility.FromJson<MapData>(json);
+    //    string json = File.ReadAllText(path);
+    //    var mapData = JsonUtility.FromJson<MapData>(json);
 
-        // Dimensions à partir du fichier
-        this.mapName = mapData.mapName;
-        this.row = mapData.row;
-        this.col = mapData.col;
+    //    // Dimensions à partir du fichier
+    //    this.mapName = mapData.mapName;
+    //    this.row = mapData.row;
+    //    this.col = mapData.col;
 
-        // Reconstruit char[,]
-        map = new char[row, col];
-        if (mapData.mapComtainer == null || mapData.mapComtainer.map2D == null || mapData.mapComtainer.map2D.Length != row)
-        {
-            Debug.LogError("LoadJson: données corrompues ou dimensions incompatibles.");
-            return;
-        }
+    //    // Reconstruit char[,]
+    //    map = new char[row, col];
+    //    if (mapData.mapComtainer == null || mapData.mapComtainer.map2D == null || mapData.mapComtainer.map2D.Length != row)
+    //    {
+    //        Debug.LogError("LoadJson: données corrompues ou dimensions incompatibles.");
+    //        return;
+    //    }
 
-        for (int y = 0; y < row; y++)
-        {
-            var line = mapData.mapComtainer.map2D[y]?.row;
-            if (line == null || line.Length != col)
-            {
-                Debug.LogError($"LoadJson: ligne {y} invalide.");
-                return;
-            }
+    //    for (int y = 0; y < row; y++)
+    //    {
+    //        var line = mapData.mapComtainer.map2D[y]?.row;
+    //        if (line == null || line.Length != col)
+    //        {
+    //            Debug.LogError($"LoadJson: ligne {y} invalide.");
+    //            return;
+    //        }
 
-            for (int x = 0; x < col; x++)
-                map[y, x] = line[x];
-        }
+    //        for (int x = 0; x < col; x++)
+    //            map[y, x] = line[x];
+    //    }
 
-        Debug.Log($"Map chargée ? {path}");
-    }
+    //    Debug.Log($"Map chargée ? {path}");
+    //}
 
     // ---------- REDIMENSIONNER la grille ----------
     internal void ResizeMap(int newRow, int newCol)
@@ -203,7 +203,8 @@ public class Map : MonoBehaviour
         col = newCol;
 
         // Optionnel: sauver tout de suite
-        SaveInJson();
+        //SaveInJson();
+        //SaveMap();
     }
 }
 

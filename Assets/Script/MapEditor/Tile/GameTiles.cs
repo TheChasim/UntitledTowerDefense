@@ -11,12 +11,12 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
     IPointerExitHandler, IPointerClickHandler
 {
     [Header("Tille Infos")]
-    internal bool IsSelected = false;
-    internal bool IsSpawn = false;
-    internal bool IsEnd = false;
-    internal bool IsBloced = false;
-    internal bool IsSlowing = false;
-    internal bool IsDamaging = false;
+    [SerializeField] internal bool IsSelected = false;
+    [SerializeField] internal bool IsSpawn = false;
+    [SerializeField] internal bool IsEnd = false;
+    [SerializeField] internal bool IsBloced = false;
+    [SerializeField] internal bool IsSlowing = false;
+    [SerializeField] internal bool IsDamaging = false;
 
     [Header("Cout de deplacement")]
     [SerializeField] internal float normalCost = 1;
