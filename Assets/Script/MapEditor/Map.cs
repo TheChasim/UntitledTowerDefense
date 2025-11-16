@@ -12,6 +12,7 @@ public class Map : MonoBehaviour
     internal GameTiles[,] mapTiles;
     [SerializeField] internal int col;
     [SerializeField] internal int row;
+    
 
     // ---------- SAVE depuis la grille d'instances ----------
     public void SaveMap(GameTiles[,] CurrentMapTile)
@@ -50,7 +51,7 @@ public class Map : MonoBehaviour
             }
         }
 
-        SaveInJson();
+        //SaveInJson();
     }
 
     internal void LoadMap()

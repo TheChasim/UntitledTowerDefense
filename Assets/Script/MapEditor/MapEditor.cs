@@ -519,7 +519,6 @@ public class MapEditor : Editor
             if (currentMap == null || currentMap != mapLoading.GetCurrentMap())
             {
                 currentMap = mapLoading.GetCurrentMap();
-
             }
 
 
