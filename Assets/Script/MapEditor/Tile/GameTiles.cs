@@ -376,8 +376,24 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
         { renderer.sprite = baseLayer.tiles[4]; }
         else if (IsSlowing)
         { renderer.sprite = baseLayer.tiles[3]; }
+        else if (IsEnd)
+        { 
+            spriteEnd.enabled = true;
+            spriteSpawn.enabled = false;
+        }
+        else if(IsSpawn)
+        {
+            spriteEnd.enabled = false;
+            spriteSpawn.enabled = true;
+        }
         else
         { renderer.sprite = baseLayer.tiles[0]; }
+
+        if(!IsEnd && !IsSpawn)
+        {
+            spriteEnd.enabled = false;
+            spriteSpawn.enabled = false;
+        }
     }
 
     public void SetTileRenderNature(int natureLayerIndex, bool autofil, int spriteIndex)

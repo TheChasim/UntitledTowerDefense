@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 528acf97792f66a4aa34ba513d371972, type: 3}
+  m_Name: Props
+  m_EditorClassIdentifier: 
+  objects:
+  - {fileID: 8433129651494949393, guid: a665b54f23d0ae048a448acb93036ba7, type: 3}
+  - {fileID: 7223847138895555488, guid: 0b1077714d371d343bab4074782da2b5, type: 3}
+  - {fileID: 7759949333641109529, guid: 520acd41527d68249b2b1bd1433f0da7, type: 3}
+  - {fileID: 4510662169809114701, guid: 6e77d3c3db6cfd049aee487349f8a894, type: 3}
+  - {fileID: 8194862455417938070, guid: 25acffb8bc1599a4686dbbcf60e8a938, type: 3}
+  - {fileID: 338663985516452395, guid: 69b62feaafc4a8845bdab1054218b4f0, type: 3}
+  - {fileID: 9029217476831554095, guid: 3ef80b6d1f8ae114b9cb63b37616242e, type: 3}
+  - {fileID: 5721507963963167112, guid: 880f553b7dbc9a84bbb224407410b874, type: 3}
+  - {fileID: 953204840943775370, guid: 9364977a42d08844eb5b2606a3d53360, type: 3}
+  - {fileID: 4978617448529939362, guid: 28cc0ec46af00b2418e431fcb39ec52e, type: 3}
+  - {fileID: 459280818185691031, guid: b33e2bfb1609a654c985486bd1de11dd, type: 3}
+  - {fileID: 4293430660575807990, guid: fb617cbf776f0984ab3864651c62fda1, type: 3}
+  - {fileID: 5732277296470207294, guid: a7817a0539667c744b94ba38409620d8, type: 3}
+  - {fileID: 3855100725809566571, guid: a25335a12886fc646ab5b0d7251c0a28, type: 3}
+  - {fileID: 8729175204776374979, guid: ac95372ca57471e40b05571a609c949f, type: 3}
+  - {fileID: 960659473595440849, guid: 67cf6241577120e4c87711959e587a90, type: 3}
+  - {fileID: 8069147097674130915, guid: 94c1ed7d55dda9e4eb6eb87c3ded0257, type: 3}
+  - {fileID: 1845216295012337778, guid: 3e5d76ebc548c4944b523ebb7e4c61e7, type: 3}
+  - {fileID: 209383981527749897, guid: b3ed92bc51c8f7a4680ee7c961962634, type: 3}
+  - {fileID: 7318380460133844030, guid: 292d35639d97c4c4287ec8e3530e5eb1, type: 3}
+  - {fileID: 3878119827023745560, guid: ca8b1bc351e37ef4e8d0f9be8ac6fba9, type: 3}

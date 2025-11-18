@@ -15,3 +15,4 @@ MonoBehaviour:
   objectTileSet:
   - {fileID: 11400000, guid: e61063c77e0f4104eb76fbc51481e3fa, type: 2}
   - {fileID: 11400000, guid: 48785eca1b77bd14190eaf29ccf17d4e, type: 2}
+  - {fileID: 11400000, guid: 9c22fa1917e8ef843ba1e91daa713a35, type: 2}

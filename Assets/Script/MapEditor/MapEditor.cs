@@ -619,7 +619,7 @@ public class MapEditor : Editor
 
                     }
 
-
+//lorsque le clic est fait sur la tuile change l'etat de la tuile
                     // Vérifier le clic sur la case
                     if ((Event.current.type == EventType.MouseDrag || Event.current.type == EventType.MouseDown) && cellRect.Contains(Event.current.mousePosition))
 

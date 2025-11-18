@@ -115,12 +115,23 @@ public class MapLoading : MonoBehaviour
         Debug.LogWarning($"Map Tiles : {currentGameTiles}");
         if (currentMap)
 
-            // S'assurer que la liste des spawns est initialisée
-            if (spawnTile == null) spawnTile = new List<GameTiles>();
+            //// S'assurer que la liste des spawns est initialisée
+            //if (spawnTile == null) spawnTile = new List<GameTiles>();
 
 
-        // 5) Créer/peupler les tiles enfants sous mapInstance
-        if (currentMap.mapTiles == null)
+        for (int x = 0; x < RowCount; x++)
+        {
+            for (int y = 0; y < ColCount; y++)
+            {
+                if(currentGameTiles[x, y].IsSpawn)
+                {
+                    spawnTile.Add(currentGameTiles[x, y]);
+                }
+            }
+        }
+
+                // 5) Créer/peupler les tiles enfants sous mapInstance
+                if (currentMap.mapTiles == null)
         {
             for (int x = 0; x < RowCount; x++)
             {
