@@ -72,6 +72,11 @@ public class Map : MonoBehaviour
                              child.GetComponent<GameTiles>().gridY] = child.GetComponent<GameTiles>();
                 }
             }
+            if(transform.childCount == 0)
+            {
+                //mapTiles = new GameTiles[row, col];
+                mapTiles = null;
+            }
 
         }
     }

@@ -118,26 +118,39 @@ public class MapLoading : MonoBehaviour
             //// S'assurer que la liste des spawns est initialisée
             //if (spawnTile == null) spawnTile = new List<GameTiles>();
 
-
-        for (int x = 0; x < RowCount; x++)
-        {
-            for (int y = 0; y < ColCount; y++)
+            if (currentMap.mapTiles != null)
             {
-                if(currentGameTiles[x, y].IsSpawn)
+                for (int x = 0; x < RowCount; x++)
                 {
-                    spawnTile.Add(currentGameTiles[x, y]);
+                    for (int y = 0; y < ColCount; y++)
+                    {
+                        if (currentGameTiles[x, y].IsSpawn)
+                        {
+                            spawnTile.Add(currentGameTiles[x, y]);
+                        }
+                    }
                 }
             }
-        }
 
-                // 5) Créer/peupler les tiles enfants sous mapInstance
-                if (currentMap.mapTiles == null)
+        // 5) Créer/peupler les tiles enfants sous mapInstance
+        if (currentMap.mapTiles == null)
         {
+            currentGameTiles = new GameTiles[currentMap.row, currentMap.col];
+
             for (int x = 0; x < RowCount; x++)
             {
                 for (int y = 0; y < ColCount; y++)
                 {
                     GameTiles gt = currentGameTiles[x, y];
+
+                    //if(currentMap.mapTiles != null)
+                    //{
+                    //    gt = currentGameTiles[x, y];
+                    //}
+                    //else
+                    //{
+                    //    gt = null;
+                    //}
 
                     // ---> Le point clé : instancier si gt est null (et pas selon currentMap.map)
                     if (gt == null)
