@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 1512067127006904783}
   - component: {fileID: 526555358495078380}
   - component: {fileID: 2281029859891264482}
-  m_Layer: 0
+  - component: {fileID: 5534518312226020129}
+  m_Layer: 2
   m_Name: FreePack_6
   m_TagString: obstacle
   m_Icon: {fileID: 0}
@@ -97,3 +98,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &5534518312226020129
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8386777451642368355}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.41
+  m_Height: 4.26
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.953125, z: 0}
