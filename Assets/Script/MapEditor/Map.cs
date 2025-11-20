@@ -12,7 +12,7 @@ public class Map : MonoBehaviour
     internal GameTiles[,] mapTiles;
     [SerializeField] internal int col;
     [SerializeField] internal int row;
-    
+
 
     // ---------- SAVE depuis la grille d'instances ----------
     public void SaveMap(GameTiles[,] CurrentMapTile)
@@ -68,11 +68,44 @@ public class Map : MonoBehaviour
 
                 if (child.GetComponent<GameTiles>())
                 {
-                    mapTiles[child.GetComponent<GameTiles>().gridX,
-                             child.GetComponent<GameTiles>().gridY] = child.GetComponent<GameTiles>();
+                    Debug.Log($"{child.GetComponent<GameTiles>().gridX} < {row} = {child.GetComponent<GameTiles>().gridX < row}");
+                    Debug.Log($"{child.GetComponent<GameTiles>().gridY} < {col} = {child.GetComponent<GameTiles>().gridY < col}");
+
+                    if (child.GetComponent<GameTiles>().gridX < row &
+                        child.GetComponent<GameTiles>().gridY < col)
+                    {
+                        mapTiles[child.GetComponent<GameTiles>().gridX,
+                                 child.GetComponent<GameTiles>().gridY] = child.GetComponent<GameTiles>();
+                    }
                 }
             }
-            if(transform.childCount == 0)
+
+            foreach (Transform child in transform)
+            {
+                bool findTile = false;
+
+                if (child.GetComponent<GameTiles>())
+                {
+                    for (int x = 0; x < row; x++)
+                    {
+                        for (int y = 0; y < col; y++)
+                        {
+                            if(child.gameObject == mapTiles[x,y].gameObject)
+                            {
+                                findTile = true;
+                            }
+
+                        }
+                    }
+                }
+
+                if(!findTile)
+                {
+                    DestroyImmediate(child.gameObject);
+                }
+            }
+
+            if (transform.childCount == 0)
             {
                 //mapTiles = new GameTiles[row, col];
                 mapTiles = null;

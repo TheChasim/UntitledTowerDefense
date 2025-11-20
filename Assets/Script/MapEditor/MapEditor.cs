@@ -556,8 +556,10 @@ public class MapEditor : Editor
                             }
                             else
                             {
-                                Texture2D texture = currentMap[x, y].natureRenderer.sprite.texture;
-                                GUI.DrawTextureWithTexCoords(cellRect, texture, cellRect);
+                                //Texture2D texture = currentMap[x, y].natureRenderer.sprite.texture;
+                                //GUI.DrawTextureWithTexCoords(cellRect, texture, cellRect);
+                                Color c = SpriteColorUtils.GetDominantColorFast(currentMap[x, y].natureRenderer.sprite);
+                                EditorGUI.DrawRect(cellRect,/* GetTileColor(currentMap[x, y]*/ c);
                             }
                             break;
                         case MapLayout.Terrain:
@@ -567,9 +569,12 @@ public class MapEditor : Editor
                             }
                             else
                             {
-                                Texture2D texture = currentMap[x, y].terrainRenderer.sprite.texture;
-                                GUI.DrawTextureWithTexCoords(cellRect, texture, cellRect);
+                                //Texture2D texture = currentMap[x, y].terrainRenderer.sprite.texture;
+                                //GUI.DrawTextureWithTexCoords(cellRect, texture, cellRect);
+                                Color c1 = SpriteColorUtils.GetDominantColorFast(currentMap[x, y].terrainRenderer.sprite);
+                                EditorGUI.DrawRect(cellRect,/* GetTileColor(currentMap[x, y]*/ c1);
                             }
+                           
                             break;
                         case MapLayout.Decoration:
                             {
@@ -579,10 +584,13 @@ public class MapEditor : Editor
                                 }
                                 else
                                 {
-                                    Texture2D texture = currentMap[x, y].decorationRenderer.sprite.texture;
-                                    GUI.DrawTextureWithTexCoords(cellRect, texture, cellRect);
+                                    //Texture2D texture = currentMap[x, y].decorationRenderer.sprite.texture;
+                                    //GUI.DrawTextureWithTexCoords(cellRect, texture, cellRect);
+                                    Color c2 = SpriteColorUtils.GetDominantColorFast(currentMap[x, y].decorationRenderer.sprite);
+                                    EditorGUI.DrawRect(cellRect,/* GetTileColor(currentMap[x, y]*/ c2);
                                 }
                             }
+                           
                             break;
                         case MapLayout.Object:
                             {
@@ -592,8 +600,10 @@ public class MapEditor : Editor
                                 }
                                 else
                                 {
-                                    Texture2D texture = currentMap[x, y].Object3DSet.GetComponent<SpriteRenderer>().sprite.texture;
-                                    GUI.DrawTextureWithTexCoords(cellRect, texture, cellRect);
+                                    //Texture2D texture = currentMap[x, y].Object3DSet.GetComponent<SpriteRenderer>().sprite.texture;
+                                    //GUI.DrawTextureWithTexCoords(cellRect, texture, cellRect);
+                                    Color c3 = SpriteColorUtils.GetDominantColorFast(currentMap[x, y].Object3DSet.GetComponent<SpriteRenderer>().sprite);
+                                    EditorGUI.DrawRect(cellRect,/* GetTileColor(currentMap[x, y]*/ c3);
                                 }
                             }
                             break;
@@ -758,11 +768,14 @@ public class MapEditor : Editor
     // Définir la couleur en fonction du type de tile
     private Color GetTileColor(GameTiles cell)
     {
+        
         if (cell.IsBloced) return Color.black; // Noir
         if (cell.IsSlowing) return Color.blue; // Bleu
         if (cell.IsDamaging) return Color.red; // Rouge
         if (cell.IsSpawn) return Color.green;
         if (cell.IsEnd) return Color.yellow;
+
+        //return SpriteColorUtils.GetDominantColor(cell.GetComponent<SpriteRenderer>().sprite);
         return Color.white; // Blanc (Normal)
     }
 

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c449eac6d5c3174ea91f1c0e2fe2488, type: 3}
+  m_Name: StoneGround
+  m_EditorClassIdentifier: 
+  tiles:
+  - {fileID: -2010601495, guid: cb289e93be6ffd84ba32a198c85f8729, type: 3}
+  - {fileID: -774289210, guid: cb289e93be6ffd84ba32a198c85f8729, type: 3}
+  - {fileID: -115660487, guid: cb289e93be6ffd84ba32a198c85f8729, type: 3}
+  - {fileID: 1606037529, guid: cb289e93be6ffd84ba32a198c85f8729, type: 3}
+  - {fileID: -400858869, guid: cb289e93be6ffd84ba32a198c85f8729, type: 3}
+  - {fileID: 705641725, guid: cb289e93be6ffd84ba32a198c85f8729, type: 3}
+  - {fileID: -750785587, guid: cb289e93be6ffd84ba32a198c85f8729, type: 3}
+  - {fileID: 331571266, guid: cb289e93be6ffd84ba32a198c85f8729, type: 3}
+  - {fileID: -1400830289, guid: cb289e93be6ffd84ba32a198c85f8729, type: 3}
+  - {fileID: 1827284919, guid: cb289e93be6ffd84ba32a198c85f8729, type: 3}
+  - {fileID: 1196099329, guid: cb289e93be6ffd84ba32a198c85f8729, type: 3}
+  - {fileID: 526273328, guid: cb289e93be6ffd84ba32a198c85f8729, type: 3}
+  - {fileID: -840635271, guid: cb289e93be6ffd84ba32a198c85f8729, type: 3}
+  - {fileID: 1519477032, guid: cb289e93be6ffd84ba32a198c85f8729, type: 3}
