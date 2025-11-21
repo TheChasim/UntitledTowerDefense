@@ -297,5 +297,56 @@ public class MapLoading : MonoBehaviour
     {
         return currentGameTiles;
     }
+
+    public void NextMap()
+    {
+        if (mapIndex+1 <= mapList.Count-1)
+        {
+            mapIndex++;
+        }
+        else
+        {
+            mapIndex = 0;
+        }
+
+        RefreshMap();
+        ResetInfo();
+    }
+
+    public void PrevMap()
+    {
+        if (mapIndex-1 >= 0)
+        {
+            mapIndex--;
+        }
+        else
+        {
+            mapIndex = mapList.Count-1;
+        }
+
+        RefreshMap();
+        ResetInfo();
+    }
+
+    public void ResetInfo()
+    {
+        
+        foreach (var enemi in EnemyAI.enemyAIList)
+        {
+            Destroy(enemi.gameObject);
+        }
+        EnemyAI.enemyAIList.Clear();
+
+        foreach(var tower in Tower.allTourel)
+        {
+            Destroy(tower.gameObject);
+        }
+        Tower.allTourel.Clear();
+
+        GetComponentInParent<SpawningEnemy>().Reset();
+
+        SetPath();
+
+    }
 }
 #endif

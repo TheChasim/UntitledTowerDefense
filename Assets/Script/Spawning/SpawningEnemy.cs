@@ -1,24 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class SpawningEnemy : MonoBehaviour
 {
     [SerializeField] float timeBetweenEnemy = 0.5f;
     [SerializeField] float timeBetweenWave = 5f;
     [SerializeField] List<GameObject> enemyAIPrefab = new List<GameObject>();
+    [SerializeField] TMP_Text waveCount;
     public int currentEnemyAmount = 0;
+
+    public int numOfWave =0;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine(SpawnEnemyCoroutine());
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
 
+        //}
         currentEnemyAmount = EnemyAI.enemyAIList.Count;
     }
+
+    public void SpawnWave()
+    {
+        StartCoroutine(SpawnEnemyCoroutine());
+        numOfWave++;
+        waveCount.text = $"Wave multiplier = {numOfWave}";
+    }
+
 
     IEnumerator SpawnEnemyCoroutine()
     {
@@ -38,5 +50,12 @@ public class SpawningEnemy : MonoBehaviour
 
         yield return new WaitForSeconds(timeBetweenEnemy);
         StartCoroutine(SpawnEnemyCoroutine());
+    }
+
+    internal void Reset()
+    {
+        StopAllCoroutines();
+        numOfWave = 0;
+        waveCount.text = $"Wave multiplier = {numOfWave}";
     }
 }
