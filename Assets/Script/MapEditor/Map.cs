@@ -1,8 +1,5 @@
 using System;
 using UnityEngine;
-using System.IO;
-using UnityEditor.U2D.Aseprite;
-using System.Collections.Generic;
 
 public class Map : MonoBehaviour
 {
@@ -68,8 +65,8 @@ public class Map : MonoBehaviour
 
                 if (child.GetComponent<GameTiles>())
                 {
-                    Debug.Log($"{child.GetComponent<GameTiles>().gridX} < {row} = {child.GetComponent<GameTiles>().gridX < row}");
-                    Debug.Log($"{child.GetComponent<GameTiles>().gridY} < {col} = {child.GetComponent<GameTiles>().gridY < col}");
+                    ////Debug.Log($"{child.GetComponent<GameTiles>().gridX} < {row} = {child.GetComponent<GameTiles>().gridX < row}");
+                    ////Debug.Log($"{child.GetComponent<GameTiles>().gridY} < {col} = {child.GetComponent<GameTiles>().gridY < col}");
 
                     if (child.GetComponent<GameTiles>().gridX < row &
                         child.GetComponent<GameTiles>().gridY < col)

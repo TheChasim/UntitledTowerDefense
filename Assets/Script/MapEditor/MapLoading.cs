@@ -3,8 +3,6 @@ using UnityEditor;
 
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.Rendering;
-using static UnityEngine.Rendering.DebugUI.Table;
 
 public class MapLoading : MonoBehaviour
 {
@@ -107,30 +105,37 @@ public class MapLoading : MonoBehaviour
         }
         else
         {
+            currentMap.LoadMap();
             currentGameTiles = currentMap.mapTiles;
             Debug.Log(currentGameTiles);
         }
 
-
+        GameManager.Instance.currentGameTiles = currentGameTiles;
         Debug.LogWarning($"Map Tiles : {currentGameTiles}");
-        if (currentMap)
+        //if (currentMap)
 
-            //// S'assurer que la liste des spawns est initialisée
-            //if (spawnTile == null) spawnTile = new List<GameTiles>();
+        //// S'assurer que la liste des spawns est initialisée
+        //if (spawnTile == null) spawnTile = new List<GameTiles>();
 
-            if (currentMap.mapTiles != null)
+        if (currentMap.mapTiles != null)
+        {
+            for (int x = 0; x < RowCount; x++)
             {
-                for (int x = 0; x < RowCount; x++)
+                for (int y = 0; y < ColCount; y++)
                 {
-                    for (int y = 0; y < ColCount; y++)
+                    if (currentGameTiles[x, y].IsSpawn)
                     {
-                        if (currentGameTiles[x, y].IsSpawn)
-                        {
-                            spawnTile.Add(currentGameTiles[x, y]);
-                        }
+                        spawnTile.Add(currentGameTiles[x, y]);
+                    }
+
+                    if (currentGameTiles[x, y].IsEnd)
+                    {
+                        endPoint = new Vector2(currentGameTiles[x, y].transform.position.x, 
+                                               currentGameTiles[x, y].transform.position.z);
                     }
                 }
             }
+        }
 
         // 5) Créer/peupler les tiles enfants sous mapInstance
         if (currentMap.mapTiles == null)
@@ -300,7 +305,7 @@ public class MapLoading : MonoBehaviour
 
     public void NextMap()
     {
-        if (mapIndex+1 <= mapList.Count-1)
+        if (mapIndex + 1 <= mapList.Count - 1)
         {
             mapIndex++;
         }
@@ -309,35 +314,34 @@ public class MapLoading : MonoBehaviour
             mapIndex = 0;
         }
 
-        RefreshMap();
         ResetInfo();
     }
 
     public void PrevMap()
     {
-        if (mapIndex-1 >= 0)
+        if (mapIndex - 1 >= 0)
         {
             mapIndex--;
         }
         else
         {
-            mapIndex = mapList.Count-1;
+            mapIndex = mapList.Count - 1;
         }
 
-        RefreshMap();
         ResetInfo();
     }
 
     public void ResetInfo()
     {
-        
+        RefreshMap();
+
         foreach (var enemi in EnemyAI.enemyAIList)
         {
             Destroy(enemi.gameObject);
         }
         EnemyAI.enemyAIList.Clear();
 
-        foreach(var tower in Tower.allTourel)
+        foreach (var tower in Tower.allTourel)
         {
             Destroy(tower.gameObject);
         }

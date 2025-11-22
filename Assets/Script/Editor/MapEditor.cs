@@ -1,12 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 using System;
-using System.Runtime.InteropServices;
-using System.Collections;
-using UnityEngine.U2D;
-
 using static MapLoading;
-using Unity.VisualScripting;
 //using System.Diagnostics;
 
 [CustomEditor(typeof(MapLoading))]
