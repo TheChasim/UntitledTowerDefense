@@ -10,7 +10,10 @@ public class Projectile : MonoBehaviour
     ParticleSystem particul;
     [SerializeField] float selfDestroyTime = 3f;
     [SerializeField] float speed;
-    [SerializeField] float damage;
+    [SerializeField] internal float damage;
+    [SerializeField] internal DamegeType DamegeType;
+    [SerializeField] internal float critChance;
+    [SerializeField] internal float critMultiplier;
 
     private void Awake()
     {
@@ -38,7 +41,8 @@ public class Projectile : MonoBehaviour
     {
         if (other.gameObject == target)
         {
-            other.GetComponent<Healt>().OnTakeDamage(damage);
+            //other.GetComponent<Healt>().OnTakeDamage(damage);
+            other.GetComponent<EnemyAI>().OnTakeDamage(damage, DamegeType,critChance,critMultiplier);
 
             StartCoroutine(SelfDestroy());
         }

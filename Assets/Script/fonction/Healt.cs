@@ -32,21 +32,33 @@ public class Healt : MonoBehaviour
         curentHealt = maxHealt;
     }
 
-    internal void OnTakeDamage(float damage)
+    internal void OnTakeDamage(float damage, bool crit)
     {
-        //affiche un effet de damege
-        txtDamage.GetComponent<TextMeshPro>().text = damage.ToString();
-        Instantiate(txtDamage, transform.position+new Vector3(0,0.5f,0), Quaternion.identity);
+        // Spawn du texte de dommage
+        GameObject txt = Instantiate(txtDamage, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
 
-        curentHealt = Mathf.Clamp(curentHealt - damage,0,maxHealt);
-        //healtBar.SetHealtBar(curentHealt, maxHealt);
+        // Récupération du TMP sur le clone
+        TMP_Text tmp = txt.GetComponent<TMP_Text>();
+
+        // Si critique = texte rouge
+        if (crit)
+        {
+            tmp.color = Color.red;
+        }
+
+        // Met le texte du damage
+        tmp.text = damage.ToString();
+
+
+        // Applique les dommages
+        curentHealt = Mathf.Clamp(curentHealt - damage, 0, maxHealt);
 
         if (curentHealt == 0)
         {
             enemy.IsDead();
         }
-        
     }
+
 
     internal void OnTakeHealing(float healt)
     {

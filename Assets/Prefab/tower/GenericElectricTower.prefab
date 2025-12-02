@@ -102,10 +102,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   effect: 2
+  damegeType: 0
   range: 1.5
   minRange: 0
   cooldown: 2
   power: 2
+  critChance: 0.5
+  critMultiplier: 2
   rotationSpeed: 5
   maxUnit: 7
   enemyInRange: []
@@ -145,6 +148,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1001 &4168647147855829855
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -10,6 +10,9 @@ public class Unit : MonoBehaviour
 
     [Header("Stats")]
     [SerializeField] internal float damage = 1f;
+    [SerializeField] internal DamegeType DamegeType;
+    [SerializeField] internal float critChance;
+    [SerializeField] internal float critMultiplier;
     [SerializeField] internal float range = 0.75f;
     [SerializeField] internal float cooldown = 1f;
     [SerializeField] internal float health = 5f;
@@ -95,7 +98,7 @@ public class Unit : MonoBehaviour
 
         canAtack = false;
 
-        target.GetComponent<EnemyAI>().OnTakeDamage(damage);
+        target.GetComponent<EnemyAI>().OnTakeDamage(damage, DamegeType, critChance, critMultiplier);
 
         health -= damage;
         if (health <= 0f)

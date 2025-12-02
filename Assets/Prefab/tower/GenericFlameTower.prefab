@@ -102,14 +102,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   effect: 5
+  damegeType: 0
   range: 2.25
   minRange: 0
   cooldown: 0.3
   power: 0.5
+  critChance: 0.05
+  critMultiplier: 1.75
   rotationSpeed: 150
+  maxUnit: 7
   enemyInRange: []
   projectille: {fileID: 0}
   damagingZone: {fileID: 5552800240716465481}
+  spwaningUnit: {fileID: 0}
 --- !u!135 &2755842009750012348
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -143,6 +148,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1001 &6865949377489451277
 PrefabInstance:
   m_ObjectHideFlags: 0

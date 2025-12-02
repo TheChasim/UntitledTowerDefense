@@ -12,6 +12,13 @@ enum TowerType
     Camp,
 }
 
+public enum DamegeType
+{
+    Fire,
+    Water,
+    Electric,
+}
+
 [System.Flags]
 public enum TypeOfEffect
 {
@@ -28,10 +35,13 @@ public class Tower : MonoBehaviour
     [Header("Tower Info")]
     [SerializeField] TowerType type;
     [SerializeField] TypeOfEffect effect;
+    [SerializeField] DamegeType damegeType;
     [SerializeField] float range;
     [SerializeField] float minRange;
     [SerializeField] float cooldown;
     [SerializeField] float power;
+    [SerializeField] float critChance;
+    [SerializeField] float critMultiplier;
     [SerializeField] float rotationSpeed = 5;
     [SerializeField] int maxUnit = 7;
     internal HashSet<GameObject> unitlist = new HashSet<GameObject>();
@@ -252,7 +262,11 @@ public class Tower : MonoBehaviour
         //Debug.Log(transform.parent.transform.position);
         if (type.HasFlag(TowerType.Projectil))
         {
-            Instantiate(projectille, transform.parent.transform).GetComponent<Projectile>().SetTarget(target);
+            GameObject projectil = Instantiate(projectille, transform.parent.transform);
+            projectil.GetComponent<Projectile>().SetTarget(target);
+            projectil.GetComponent<Projectile>().DamegeType = damegeType;
+            projectil.GetComponent<Projectile>().critChance = critChance;
+            projectil.GetComponent<Projectile>().critMultiplier = critMultiplier;
         }
 
         yield return new WaitForSeconds(cooldown);
@@ -295,6 +309,9 @@ public class Tower : MonoBehaviour
 
         GameObject unit = Instantiate(spwaningUnit, transform.parent.transform);
         unit.GetComponent<Unit>().campRef = this;
+        unit.GetComponent<Unit>().DamegeType = damegeType;
+        unit.GetComponent<Unit>().critChance = critChance;
+        unit.GetComponent<Unit>().critMultiplier = critMultiplier;
         unitlist.Add(unit);
 
         yield return new WaitForSeconds(cooldown);
@@ -315,7 +332,8 @@ public class Tower : MonoBehaviour
         {
             if (enemie != null)
             {
-                enemie.GetComponent<Healt>().OnTakeDamage(power);
+                //enemie.GetComponent<Healt>().OnTakeDamage(power);
+                enemie.OnTakeDamage(power, damegeType, critChance, critMultiplier);
 
             }
         }

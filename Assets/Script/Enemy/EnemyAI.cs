@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -10,6 +11,16 @@ public enum EnemyType
     Explosif
 }
 
+public enum EnemyStatus
+{
+    None,
+    Burn,
+    poisoned,
+    stun,
+    wet,
+    electrify,
+}
+
 public class EnemyAI : MonoBehaviour
 {
     //liste static pour l'ensseble des enemie
@@ -19,6 +30,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] internal EnemyType enemyType;
     [SerializeField] float speed = 5f;
     [SerializeField] int damege = 1;
+    [SerializeField] EnemyStatus enemyStatus = EnemyStatus.None;
 
     [Header("Healing info")]
     [SerializeField] bool isHealing = false;
@@ -96,6 +108,7 @@ public class EnemyAI : MonoBehaviour
         //SetCurrentTile();
         //aplique l'effet de la tuille actuel
         TileEffect();
+        GetStatus();
 
         if (Vector3.Distance(transform.position, targetPosition) < 0.5f)
         {
@@ -120,7 +133,7 @@ public class EnemyAI : MonoBehaviour
                 if (GetComponent<Horde>())
                 {
                     //si c'est une horde multiplier les dega par le nombre de pv restant
-                    PlayerScript.Singleton.OnTakeDamege(damege*(int)GetComponent<Healt>().curentHealt);
+                    PlayerScript.Singleton.OnTakeDamege(damege * (int)GetComponent<Healt>().curentHealt);
                 }
                 else
                 {
@@ -151,6 +164,26 @@ public class EnemyAI : MonoBehaviour
         transform.rotation = Camera.main.transform.rotation;
         //affiche une ligne pour monttrer la prochaine tuille de l'ennemie
         Debug.DrawLine(transform.position, targetPosition, Color.blue);
+    }
+
+    private void GetStatus()
+    {
+        if (currentTile.IsSlowing)
+        {
+            enemyStatus = EnemyStatus.wet;
+        }
+        else if (currentTile.IsDamaging)
+        {
+            enemyStatus = EnemyStatus.Burn;
+        }
+        else
+        { enemyStatus = EnemyStatus.None; }
+    }
+
+    internal void ChangeStatus(EnemyStatus status, float coldDown)
+    {
+        enemyStatus = status;
+
     }
 
     private void Heal()
@@ -264,15 +297,35 @@ public class EnemyAI : MonoBehaviour
     private IEnumerator OntileDamage(float damageAmout)
     {
         tileDamage = true;
-        OnTakeDamage(currentTile.DamageAmout);
+        OnTakeDamage(currentTile.DamageAmout, currentTile.damegeType, 0.05f, 1.5f);
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.75f);
         tileDamage = false;
     }
 
-    public void OnTakeDamage(float damageAmout)
+    public void OnTakeDamage(float damageAmout, DamegeType type, float critChance, float critmultiplier)
     {
-        healt.OnTakeDamage(damageAmout);
+        float damageBonus = 0f;
+        float critBonus = 1f;
+        
+        //here for all combo
+
+        if(type == DamegeType.Electric && enemyStatus == EnemyStatus.wet)
+        {
+            damageBonus = damageAmout * 1.5f;
+            critBonus = critChance * 0.15f;
+        }
+
+        //check for a crit or normal attack
+        if (UnityEngine.Random.Range(0f, 1f) < critChance+critBonus)
+        {
+            healt.OnTakeDamage(damageAmout*critmultiplier*critBonus, true);
+        }
+        else
+        {
+            healt.OnTakeDamage(damageAmout, false);
+        }
+
     }
 
     internal void IsDead()
