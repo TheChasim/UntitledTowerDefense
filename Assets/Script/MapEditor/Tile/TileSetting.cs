@@ -24,7 +24,7 @@ public class TileSetting : MonoBehaviour
     //    }
     //}
 
-    internal void OnReset()
+    public void OnReset()
     {
         foreach( var tile in tiles)
         {

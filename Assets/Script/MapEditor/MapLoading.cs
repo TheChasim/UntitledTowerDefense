@@ -1,5 +1,6 @@
 #if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,16 +15,16 @@ public class MapLoading : MonoBehaviour
     }
 
     [Header("Map Creator")]
-    [SerializeField] internal int RowCount = 20;
-    [SerializeField] internal int ColCount = 35;
+    [SerializeField] public int RowCount = 20;
+    [SerializeField] public int ColCount = 35;
 
-    [SerializeField] internal GameObject gameTilePrefab;
+    [SerializeField] public GameObject gameTilePrefab;
     static internal GameTiles[,] currentGameTiles;
-    internal Vector2 spawnPoint;
-    internal Vector2 endPoint;
-    static internal Vector2 target;
-    static internal List<GameTiles> spawnTile = new List<GameTiles>();
-    static internal GameTiles endTile;
+    public Vector2 spawnPoint;
+    public Vector2 endPoint;
+    static public Vector2 target;
+    static public List<GameTiles> spawnTile = new List<GameTiles>();
+    static public GameTiles endTile;
 
     [SerializeField] List<GameObject> mapList = new List<GameObject>();
     static public GameObject MapObject;
@@ -32,19 +33,19 @@ public class MapLoading : MonoBehaviour
 
     [Header("Map loading")]
     [SerializeField] internal int mapIndex = 0;
-    internal string mapName = "n/a";
+    public string mapName = "n/a";
     //string tagBackground = "Background";
     string tagMap = "Map";
 
     //variable pour le tilling des niveau
     [Header("Tile set")]
-    internal int natureLayerIndex = 0;
-    internal int terrainLayerIndex = 0;
-    internal int object3DLayerIndex = 0;
-    internal int decorationlayerIndex = 0;
-    internal int moduleLayerIndex = 0;
+    public int natureLayerIndex = 0;
+    public int terrainLayerIndex = 0;
+    public int object3DLayerIndex = 0;
+    public int decorationlayerIndex = 0;
+    public int moduleLayerIndex = 0;
 
-    internal TileSets tilesets;
+    public TileSets tilesets;
 
     private void Awake()
     {
@@ -215,7 +216,7 @@ public class MapLoading : MonoBehaviour
 #endif
     }
 
-    internal void RemoveMap()
+    public void RemoveMap()
     {
         mapName = "n/a";
         spawnPoint = Vector2.zero;
@@ -231,7 +232,8 @@ public class MapLoading : MonoBehaviour
         spawnTile.Clear();
     }
 
-    internal void SaveMap()
+#if UNITY_EDITOR
+    public void SaveMap()
     {
         currentMap.mapTiles = currentGameTiles;
         //mapList[mapIndex].GetComponent<Map>().SaveMap(currentGameTiles);
@@ -251,20 +253,21 @@ public class MapLoading : MonoBehaviour
 
         RefreshMap();
     }
+#endif
 
-    internal void RefreshMap()
+    public void RefreshMap()
     {
         RemoveMap();
         CreateMap();
     }
 
-    internal void ResizeMap()
+    public void ResizeMap()
     {
         currentMap.ResizeMap(RowCount, ColCount);
         RefreshMap();
     }
 
-    internal void SetPath()
+    public void SetPath()
     {
         //PathFinder pathFinder = FindAnyObjectByType<PathFinder>().GetComponent<PathFinder>();
         //pathFinder.SetValue(currentGameTiles, spawnTile, endTile, ColCount, RowCount);
@@ -283,22 +286,22 @@ public class MapLoading : MonoBehaviour
 
     }
 
-    internal int getRow()
+    public int getRow()
     {
         return RowCount;
     }
 
-    internal int getCol()
+    public int getCol()
     {
         return ColCount;
     }
 
-    internal IEnumerable<object> GetSpawnPoint()
+    public IEnumerable<object> GetSpawnPoint()
     {
         return spawnTile;
     }
 
-    internal GameTiles[,] GetCurrentMap()
+    public GameTiles[,] GetCurrentMap()
     {
         return currentGameTiles;
     }
@@ -353,4 +356,3 @@ public class MapLoading : MonoBehaviour
 
     }
 }
-#endif

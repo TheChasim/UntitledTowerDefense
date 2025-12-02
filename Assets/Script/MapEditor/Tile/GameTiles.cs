@@ -9,30 +9,30 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
     IPointerExitHandler, IPointerClickHandler
 {
     [Header("Tille Infos")]
-    [SerializeField] internal bool IsSelected = false;
-    [SerializeField] internal bool IsSpawn = false;
-    [SerializeField] internal bool IsEnd = false;
-    [SerializeField] internal bool IsBloced = false;
-    [SerializeField] internal bool IsSlowing = false;
-    [SerializeField] internal bool IsDamaging = false;
+    [SerializeField] public bool IsSelected = false;
+    [SerializeField] public bool IsSpawn = false;
+    [SerializeField] public bool IsEnd = false;
+    [SerializeField] public bool IsBloced = false;
+    [SerializeField] public bool IsSlowing = false;
+    [SerializeField] public bool IsDamaging = false;
 
     [Header("Cout de deplacement")]
-    [SerializeField] internal float normalCost = 1;
-    [SerializeField] internal float damageCost = 3;
-    [SerializeField] internal float slowingCost = 1.5f;
-    [SerializeField] internal float cost;
-    [SerializeField] internal float DamageAmout = 0.5f;
-    [SerializeField] internal float SlowingAmout = 2f;
+    [SerializeField] public float normalCost = 1;
+    [SerializeField] public float damageCost = 3;
+    [SerializeField] public float slowingCost = 1.5f;
+    [SerializeField] public float cost;
+    [SerializeField] public float DamageAmout = 0.5f;
+    [SerializeField] public float SlowingAmout = 2f;
 
     [Space]
     [Header("General Info")]
-    [SerializeField] internal Vector3 worldPosition;
-    [SerializeField] internal int gridX, gridY;
+    [SerializeField] public Vector3 worldPosition;
+    [SerializeField] public int gridX, gridY;
     [Space]
 
     [Header("Direction")]
     //[SerializeField] internal Vector3 flowDirection = Vector3.zero;
-    [SerializeField] internal GameTiles nextTile;
+    [SerializeField] public GameTiles nextTile;
     private LineRenderer lineRenderer; // Affichage du Flow Field
     [Space]
 
@@ -230,7 +230,7 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
         }
     }
 
-    internal void TurnBlank()
+    public void TurnBlank()
     {
         renderer.sprite = baseLayer.tiles[0];
         IsSpawn = false;
@@ -239,26 +239,26 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
         IsDamaging = false;
     }
 
-    internal void TurnSpawn()
+    public void TurnSpawn()
     {
         IsSpawn = !IsSpawn;
         spriteSpawn.enabled = IsSpawn;
     }
 
-    internal void TurnEnd()
+    public void TurnEnd()
     {
         IsEnd = !IsEnd;
         spriteEnd.enabled = IsEnd;
     }
 
-    internal void TurnGrey(float alphaValue)
+    public void TurnGrey(float alphaValue)
     {
         Color currentColor = originalColor;
         Color newColor = new Color(currentColor.grayscale, currentColor.grayscale, currentColor.grayscale, 0.5f);
         //spriteRenderer.color = newColor;
     }
 
-    internal void TurnBloced()
+    public void TurnBloced()
     {
         //IsBloced = !IsBloced;
         IsBloced = true; 
@@ -266,21 +266,21 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
         renderer.sprite = baseLayer.tiles[5];
     }
 
-    internal void TurnSlow()
+    public void TurnSlow()
     {
         IsSlowing = !IsSlowing;
         //SlowingRenderer.enabled = IsSlowing;
         renderer.sprite = baseLayer.tiles[3];
     }
 
-    internal void TurnDamaging()
+    public void TurnDamaging()
     {
         IsDamaging = !IsDamaging;
         //DamagingRenderer.enabled = IsDamaging;
         renderer.sprite = baseLayer.tiles[4];
     }
 
-    internal void SetPathColor(bool isPath)
+    public void SetPathColor(bool isPath)
     {
         Color transparentOrange = new Color(1, 0.375f, 0, 0.5f);
 
@@ -495,7 +495,8 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
 
                     Object3DSet = this.Object3DLayer.objectTileSet[Object3DLayerIndex].objects[Random.Range(0, this.Object3DLayer.objectTileSet[Object3DLayerIndex].objects.Length)];
 
-                    var inst = (GameObject)PrefabUtility.InstantiatePrefab(Object3DSet);
+                    //var inst = (GameObject)PrefabUtility.InstantiatePrefab(Object3DSet);
+                    var inst = Instantiate(Object3DSet);
                     inst.transform.position = new Vector3(transform.position.x, inst.transform.position.y, transform.position.z);
                     inst.transform.parent = transform;
 
@@ -522,7 +523,8 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
 
                 Object3DSet = this.Object3DLayer.objectTileSet[Object3DLayerIndex].objects[spriteIndex];
 
-                var inst = (GameObject)PrefabUtility.InstantiatePrefab(Object3DSet);
+                //var inst = (GameObject)PrefabUtility.InstantiatePrefab(Object3DSet);
+                var inst = Instantiate(Object3DSet);
                 inst.transform.position = new Vector3(transform.position.x, inst.transform.position.y, transform.position.z);
                 inst.transform.parent = transform;
 
@@ -558,7 +560,8 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
 
                     ModuleSet = this.ModuleLayer.objectTileSet[moduleLayerIndex].objects[Random.Range(0, this.ModuleLayer.objectTileSet[moduleLayerIndex].objects.Length)];
 
-                    var inst = (GameObject)PrefabUtility.InstantiatePrefab(ModuleSet);
+                    //var inst = (GameObject)PrefabUtility.InstantiatePrefab(ModuleSet);
+                    var inst = Instantiate(ModuleSet);
                     inst.transform.position = new Vector3(transform.position.x, inst.transform.position.y, transform.position.z);
                     inst.transform.parent = transform;
 
@@ -585,7 +588,8 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
 
                 ModuleSet = this.ModuleLayer.objectTileSet[moduleLayerIndex].objects[spriteIndex];
 
-                var inst = (GameObject)PrefabUtility.InstantiatePrefab(ModuleSet);
+                //var inst = (GameObject)PrefabUtility.InstantiatePrefab(ModuleSet);
+                var inst = Instantiate(ModuleSet);
                 inst.transform.position = new Vector3(transform.position.x, inst.transform.position.y, transform.position.z);
                 inst.transform.parent = transform;
 
