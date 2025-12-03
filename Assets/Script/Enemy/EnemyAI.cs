@@ -313,11 +313,11 @@ public class EnemyAI : MonoBehaviour
         if(type == DamegeType.Electric && enemyStatus == EnemyStatus.wet)
         {
             damageBonus = damageAmout * 1.5f;
-            critBonus = critChance * 0.15f;
+            critBonus = critChance * 1.15f;
         }
 
         //check for a crit or normal attack
-        if (UnityEngine.Random.Range(0f, 1f) < critChance+critBonus)
+        if (UnityEngine.Random.Range(0f, 1f) < critChance*critBonus)
         {
             healt.OnTakeDamage(damageAmout*critmultiplier*critBonus, true);
         }

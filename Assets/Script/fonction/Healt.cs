@@ -43,11 +43,17 @@ public class Healt : MonoBehaviour
         // Si critique = texte rouge
         if (crit)
         {
-            tmp.color = Color.red;
+            //tmp.color = Color.red;
+            //tmp.co
+            tmp.text = "<color=#ff0000>" + damage.ToString() + "</color>";
+        }
+        else
+        {
+            // Met le texte du damage
+            tmp.text = damage.ToString();
+
         }
 
-        // Met le texte du damage
-        tmp.text = damage.ToString();
 
 
         // Applique les dommages
