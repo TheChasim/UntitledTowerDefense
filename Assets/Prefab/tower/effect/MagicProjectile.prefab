@@ -4869,3 +4869,6 @@ MonoBehaviour:
   selfDestroyTime: 3
   speed: 7
   damage: 1
+  DamegeType: 7
+  critChance: 0
+  critMultiplier: 0

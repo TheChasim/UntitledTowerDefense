@@ -11,7 +11,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] float selfDestroyTime = 3f;
     [SerializeField] float speed;
     [SerializeField] internal float damage;
-    [SerializeField] internal DamegeType DamegeType;
+    [SerializeField] internal Element DamegeType;
     [SerializeField] internal float critChance;
     [SerializeField] internal float critMultiplier;
 

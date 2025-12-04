@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   effect: 8
-  damegeType: 0
+  damegeType: 7
   range: 5
   minRange: 0
   cooldown: 1

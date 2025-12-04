@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0.25
-  DamegeType: 0
-  critChance: 0.1
+  DamegeType: 7
+  critChance: 0.03
   critMultiplier: 1.25
   range: 0.5
   cooldown: 1.5

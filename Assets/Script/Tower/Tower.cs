@@ -12,13 +12,6 @@ enum TowerType
     Camp,
 }
 
-public enum DamegeType
-{
-    Fire,
-    Water,
-    Electric,
-}
-
 [System.Flags]
 public enum TypeOfEffect
 {
@@ -35,7 +28,7 @@ public class Tower : MonoBehaviour
     [Header("Tower Info")]
     [SerializeField] TowerType type;
     [SerializeField] TypeOfEffect effect;
-    [SerializeField] DamegeType damegeType;
+    [SerializeField] Element damegeType;
     [SerializeField] float range;
     [SerializeField] float minRange;
     [SerializeField] float cooldown;

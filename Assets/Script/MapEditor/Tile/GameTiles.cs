@@ -15,7 +15,7 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
     [SerializeField] public bool IsBloced = false;
     [SerializeField] public bool IsSlowing = false;
     [SerializeField] public bool IsDamaging = false;
-    [SerializeField] public DamegeType damegeType;
+    [SerializeField] public Element damegeType;
 
     [Header("Cout de deplacement")]
     [SerializeField] public float normalCost = 1;

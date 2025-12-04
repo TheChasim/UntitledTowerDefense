@@ -10,7 +10,7 @@ public class Unit : MonoBehaviour
 
     [Header("Stats")]
     [SerializeField] internal float damage = 1f;
-    [SerializeField] internal DamegeType DamegeType;
+    [SerializeField] internal Element DamegeType;
     [SerializeField] internal float critChance;
     [SerializeField] internal float critMultiplier;
     [SerializeField] internal float range = 0.75f;

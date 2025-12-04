@@ -101,12 +101,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   effect: 0
-  damegeType: 0
+  damegeType: 7
   range: 3
   minRange: 0
   cooldown: 1
   power: 0
-  critChance: 0.5
+  critChance: 0.05
   critMultiplier: 1.25
   rotationSpeed: 5
   maxUnit: 7

@@ -11,16 +11,6 @@ public enum EnemyType
     Explosif
 }
 
-public enum EnemyStatus
-{
-    None,
-    Burn,
-    poisoned,
-    stun,
-    wet,
-    electrify,
-}
-
 public class EnemyAI : MonoBehaviour
 {
     //liste static pour l'ensseble des enemie
@@ -30,7 +20,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] internal EnemyType enemyType;
     [SerializeField] float speed = 5f;
     [SerializeField] int damege = 1;
-    [SerializeField] EnemyStatus enemyStatus = EnemyStatus.None;
+    [SerializeField] Element enemyStatus = Element.normal;
 
     [Header("Healing info")]
     [SerializeField] bool isHealing = false;
@@ -170,17 +160,17 @@ public class EnemyAI : MonoBehaviour
     {
         if (currentTile.IsSlowing)
         {
-            enemyStatus = EnemyStatus.wet;
+            enemyStatus = Element.Water;
         }
         else if (currentTile.IsDamaging)
         {
-            enemyStatus = EnemyStatus.Burn;
+            enemyStatus = Element.Fire;
         }
         else
-        { enemyStatus = EnemyStatus.None; }
+        { enemyStatus = Element.normal; }
     }
 
-    internal void ChangeStatus(EnemyStatus status, float coldDown)
+    internal void ChangeStatus(Element status, float coldDown)
     {
         enemyStatus = status;
 
@@ -303,27 +293,17 @@ public class EnemyAI : MonoBehaviour
         tileDamage = false;
     }
 
-    public void OnTakeDamage(float damageAmout, DamegeType type, float critChance, float critmultiplier)
+    public void OnTakeDamage(float damageAmout, Element type, float critChance, float critmultiplier)
     {
-        float damageBonus = 0f;
-        float critBonus = 1f;
-        
-        //here for all combo
-
-        if(type == DamegeType.Electric && enemyStatus == EnemyStatus.wet)
-        {
-            damageBonus = damageAmout * 1.5f;
-            critBonus = critChance * 1.15f;
-        }
-
         //check for a crit or normal attack
-        if (UnityEngine.Random.Range(0f, 1f) < critChance*critBonus)
+        if (UnityEngine.Random.Range(0f, 1f) < critChance*ElementSensitivity.GetMultiplierCrit(type, enemyStatus))
         {
-            healt.OnTakeDamage(damageAmout*critmultiplier*critBonus, true);
+            //healt.OnTakeDamage(damageAmout*critmultiplier*critBonus, true);
+            healt.OnTakeDamage(damageAmout*ElementSensitivity.GetMultiplierAttack(type, enemyStatus)*critmultiplier, true);
         }
         else
         {
-            healt.OnTakeDamage(damageAmout, false);
+            healt.OnTakeDamage(damageAmout*ElementSensitivity.GetMultiplierAttack(type, enemyStatus), false);
         }
 
     }
