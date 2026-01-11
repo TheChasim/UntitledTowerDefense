@@ -21,7 +21,9 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] float speed = 5f;
     [SerializeField] int damege = 1;
     [SerializeField] Element enemyStatus = Element.normal;
-
+    [SerializeField] ElementEffect effect;
+    [SerializeField] ParticleSystem particleSystem;
+ 
     [Header("Healing info")]
     [SerializeField] bool isHealing = false;
     [SerializeField] float healRange = 3.5f;
@@ -306,6 +308,15 @@ public class EnemyAI : MonoBehaviour
             healt.OnTakeDamage(damageAmout*ElementSensitivity.GetMultiplierAttack(type, enemyStatus), false);
         }
 
+        particleSystem = effect.GetEffect(type);
+        particleSystem.Play();
+        StartCoroutine(DurationEffect());
+
+    }
+
+    private IEnumerator DurationEffect()
+    {
+        yield return effect.GetDuration();
     }
 
     internal void IsDead()

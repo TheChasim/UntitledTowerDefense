@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfdbcabfa5350a74799fabe9bec82558, type: 3}
+  m_Name: element Effect
+  m_EditorClassIdentifier: 
+  weatEffect: {fileID: 786019477649244018, guid: aee634a877cc3994ba9624833cbe9dc3,
+    type: 3}
+  burn: {fileID: 690251565617759823, guid: c8bed07255f896a4c902bee6032768ff, type: 3}
+  burnDamage: 0.5
+  poison: {fileID: 0}
+  poisonDamage: 0.5
+  electrocute: {fileID: 4618521392389535004, guid: 0263ad3dd6f66224d97369b07b2dc984,
+    type: 3}
+  slow: 0.5
+  minDuration: 1
+  maxDuration: 5
