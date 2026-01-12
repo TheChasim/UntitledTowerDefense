@@ -1396,6 +1396,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -1623,6 +1624,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -2537,6 +2539,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -3116,6 +3119,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -3528,6 +3532,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -3756,6 +3761,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -4502,6 +4508,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -4814,6 +4821,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -5126,6 +5134,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -5641,6 +5650,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &151026006445964092
 GameObject:
   m_ObjectHideFlags: 0
@@ -6755,6 +6767,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -7279,6 +7292,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -7675,6 +7689,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -8156,6 +8171,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -8552,6 +8568,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -8779,6 +8796,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -9630,6 +9648,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 1
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -10109,6 +10128,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -10540,6 +10560,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &286888294796541161
 GameObject:
   m_ObjectHideFlags: 0
@@ -11907,6 +11930,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -13120,6 +13144,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -13348,6 +13373,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -13659,6 +13685,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -15158,6 +15185,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &443440360262237478
 GameObject:
   m_ObjectHideFlags: 0
@@ -16341,6 +16371,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -16751,6 +16782,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -16978,6 +17010,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -17472,6 +17505,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -18087,6 +18121,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -18435,6 +18470,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &551882695681459516
 GameObject:
   m_ObjectHideFlags: 0
@@ -18580,6 +18618,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -18807,6 +18846,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -19217,6 +19257,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -19444,6 +19485,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -19938,6 +19980,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -20432,6 +20475,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -20842,6 +20886,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -21069,6 +21114,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -21647,6 +21693,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -22309,6 +22356,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -23604,6 +23652,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -23831,6 +23880,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -24508,6 +24558,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -24819,6 +24870,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -25665,6 +25717,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -27061,6 +27114,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -27844,6 +27898,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &821664418804200059
 GameObject:
   m_ObjectHideFlags: 0
@@ -28539,6 +28596,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -29515,6 +29573,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -30178,6 +30237,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -30406,6 +30466,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -34369,6 +34430,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &1001292241215954671
 GameObject:
   m_ObjectHideFlags: 0
@@ -35484,6 +35548,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -36094,6 +36159,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -36970,6 +37036,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -37548,6 +37615,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -39585,6 +39653,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -40599,6 +40668,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -41450,6 +41520,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -42562,6 +42633,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -42789,6 +42861,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -43115,6 +43188,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -44326,6 +44400,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -45286,6 +45361,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -45733,6 +45809,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &1362078964721565586
 GameObject:
   m_ObjectHideFlags: 0
@@ -45962,6 +46041,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -46723,6 +46803,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 1
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -47782,6 +47863,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -48679,6 +48761,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &1480069243149531148
 GameObject:
   m_ObjectHideFlags: 0
@@ -48923,6 +49008,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -49318,6 +49404,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -49728,6 +49815,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -50327,6 +50415,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &1511911550031601036
 GameObject:
   m_ObjectHideFlags: 0
@@ -50655,6 +50746,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -51269,6 +51361,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &1534555007854150002
 GameObject:
   m_ObjectHideFlags: 0
@@ -51330,6 +51425,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -51809,6 +51905,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -52891,6 +52988,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -53202,6 +53300,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -56387,6 +56486,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &1709609091109758714
 GameObject:
   m_ObjectHideFlags: 0
@@ -57234,6 +57336,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -57546,6 +57649,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -57858,6 +57962,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -58185,6 +58290,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -58548,6 +58654,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &1758334211145331195
 GameObject:
   m_ObjectHideFlags: 0
@@ -58876,6 +58985,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -59356,6 +59466,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -60505,6 +60616,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -60733,6 +60845,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -60962,6 +61075,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -61191,6 +61305,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -61420,6 +61535,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -61649,6 +61765,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -63059,6 +63176,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -63391,6 +63509,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -63618,6 +63737,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -63845,6 +63965,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -64972,6 +65093,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -65199,6 +65321,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -65609,6 +65732,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -65936,6 +66060,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -66248,6 +66373,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -66727,6 +66853,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -70773,6 +70900,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -71648,6 +71776,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -73201,6 +73330,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -73611,6 +73741,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -75501,6 +75632,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -76842,6 +76974,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -77504,6 +77637,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -77830,6 +77964,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -78393,6 +78528,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -79322,6 +79458,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -79634,6 +79771,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -80130,6 +80268,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -80358,6 +80497,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -81105,6 +81245,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -81438,6 +81579,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -81749,6 +81891,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -82076,6 +82219,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -82571,6 +82715,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -83629,6 +83774,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -84618,6 +84764,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -85280,6 +85427,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -85760,6 +85908,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -86819,6 +86968,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -87250,6 +87400,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &2585344346108188351
 GameObject:
   m_ObjectHideFlags: 0
@@ -87479,6 +87632,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -87806,6 +87960,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -89132,6 +89287,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -89726,6 +89882,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -90572,6 +90729,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -90967,6 +91125,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -91530,6 +91689,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -91842,6 +92002,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -92253,6 +92414,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -93203,6 +93365,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -93781,6 +93944,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -94695,6 +94859,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -95042,6 +95207,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &2833138336781115124
 GameObject:
   m_ObjectHideFlags: 0
@@ -95874,6 +96042,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -96872,6 +97041,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -97732,6 +97902,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -98598,6 +98769,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &2921874269879766258
 GameObject:
   m_ObjectHideFlags: 0
@@ -99124,6 +99298,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -99786,6 +99961,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -100097,6 +100273,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -100409,6 +100586,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -101003,6 +101181,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 1
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -101231,6 +101410,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -101831,6 +102011,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -102760,6 +102941,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -103071,6 +103253,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -103832,6 +104015,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -104311,6 +104495,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -104805,6 +104990,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -105567,6 +105753,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -105915,6 +106102,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &3135389905478279159
 GameObject:
   m_ObjectHideFlags: 0
@@ -107149,6 +107339,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -107727,6 +107918,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -108074,6 +108266,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &3224011798430856211
 GameObject:
   m_ObjectHideFlags: 0
@@ -108136,6 +108331,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -108715,6 +108911,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -108942,6 +109139,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -109169,6 +109367,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -109481,6 +109680,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -109991,6 +110191,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -115864,6 +116065,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -116478,6 +116680,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &3335900295452758601
 GameObject:
   m_ObjectHideFlags: 0
@@ -116791,6 +116996,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -117018,6 +117224,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -117611,6 +117818,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -118126,6 +118334,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &3373478863531185922
 GameObject:
   m_ObjectHideFlags: 0
@@ -120578,6 +120789,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &3478339930579377680
 GameObject:
   m_ObjectHideFlags: 0
@@ -120822,6 +121036,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -121415,6 +121630,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -121726,6 +121942,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -123240,6 +123457,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &3554587574923878027
 GameObject:
   m_ObjectHideFlags: 0
@@ -124825,6 +125045,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -125319,6 +125540,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -128124,6 +128346,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -128688,6 +128911,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -129167,6 +129391,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -129578,6 +129803,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -130172,6 +130398,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -130484,6 +130711,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -130811,6 +131039,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -131311,6 +131540,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -131988,6 +132218,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -132434,6 +132665,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &3778993553064121146
 GameObject:
   m_ObjectHideFlags: 0
@@ -137784,6 +138018,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -138462,6 +138697,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -138978,6 +139214,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &3832869612717241829
 GameObject:
   m_ObjectHideFlags: 0
@@ -139342,6 +139581,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &3857627067261729272
 GameObject:
   m_ObjectHideFlags: 0
@@ -139670,6 +139912,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -140080,6 +140323,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -140940,6 +141184,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -141869,6 +142114,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -142369,6 +142615,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -143047,6 +143294,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -146086,6 +146334,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -146314,6 +146563,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -146641,6 +146891,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -147204,6 +147455,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -147782,6 +148034,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -150289,6 +150542,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -150517,6 +150771,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -151027,6 +151282,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -151557,6 +151813,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &4206550322049082374
 GameObject:
   m_ObjectHideFlags: 0
@@ -151786,6 +152045,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -152454,6 +152714,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -152879,6 +153140,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -153106,6 +153368,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -153333,6 +153596,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -154010,6 +154274,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -154841,6 +155106,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -156293,6 +156559,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -156655,6 +156922,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &4320266959131985929
 GameObject:
   m_ObjectHideFlags: 0
@@ -157571,6 +157841,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -158017,6 +158288,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &4380121354265852370
 GameObject:
   m_ObjectHideFlags: 0
@@ -158414,6 +158688,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -158809,6 +159084,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -159655,6 +159931,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -159883,6 +160160,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -160194,6 +160472,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 1
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -160955,6 +161234,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -161548,6 +161828,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -161895,6 +162176,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &4462493319315291550
 GameObject:
   m_ObjectHideFlags: 0
@@ -162056,6 +162340,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -162552,6 +162837,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -162964,6 +163250,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -163816,6 +164103,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -164865,6 +165153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &4543827080590188326
 GameObject:
   m_ObjectHideFlags: 0
@@ -165460,6 +165751,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -166143,6 +166435,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -166772,6 +167065,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &4595319628507152468
 GameObject:
   m_ObjectHideFlags: 0
@@ -166833,6 +167129,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -167945,6 +168242,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -170141,6 +170439,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -170469,6 +170768,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -170781,6 +171081,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -174011,6 +174312,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &4863858622403191015
 GameObject:
   m_ObjectHideFlags: 0
@@ -174676,6 +174980,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -175720,6 +176025,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -178198,6 +178504,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -178798,6 +179105,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &5006477548341846617
 GameObject:
   m_ObjectHideFlags: 0
@@ -178958,6 +179268,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -180337,6 +180648,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -181501,6 +181813,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -182515,6 +182828,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -183162,6 +183476,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -183740,6 +184055,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -184630,6 +184946,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -185328,6 +185645,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &5213179906803021891
 GameObject:
   m_ObjectHideFlags: 0
@@ -185389,6 +185709,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -185736,6 +186057,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &5224101845716905496
 GameObject:
   m_ObjectHideFlags: 0
@@ -186682,6 +187006,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -187015,6 +187340,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -187546,6 +187872,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &5274070944751580289
 GameObject:
   m_ObjectHideFlags: 0
@@ -188126,6 +188455,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 1
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -188353,6 +188683,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -188580,6 +188911,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -190505,6 +190837,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &5343832055621429581
 GameObject:
   m_ObjectHideFlags: 0
@@ -190651,6 +190986,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -191230,6 +191566,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -191976,6 +192313,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -192203,6 +192541,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -194146,6 +194485,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -194541,6 +194881,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -195035,6 +195376,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -195649,6 +195991,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &5464687764217872132
 GameObject:
   m_ObjectHideFlags: 0
@@ -196682,6 +197027,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &5499818572886113155
 GameObject:
   m_ObjectHideFlags: 0
@@ -196743,6 +197091,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -197687,6 +198036,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -198166,6 +198516,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -201159,6 +201510,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -201554,6 +201906,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -202345,6 +202698,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -203695,6 +204049,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -204127,6 +204482,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &5744510049707606562
 GameObject:
   m_ObjectHideFlags: 0
@@ -209690,6 +210048,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -210184,6 +210543,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -211035,6 +211395,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -211362,6 +211723,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -212041,6 +212403,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -212404,6 +212767,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &5829086335862552074
 GameObject:
   m_ObjectHideFlags: 0
@@ -212465,6 +212831,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 1
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -212728,6 +213095,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &5836595787248894599
 GameObject:
   m_ObjectHideFlags: 0
@@ -213107,6 +213477,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &5846000543790707326
 GameObject:
   m_ObjectHideFlags: 0
@@ -213471,6 +213844,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &5857306705137653636
 GameObject:
   m_ObjectHideFlags: 0
@@ -214585,6 +214961,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -215214,6 +215591,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &5909530686789748625
 GameObject:
   m_ObjectHideFlags: 0
@@ -215864,6 +216244,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -216092,6 +216473,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -216839,6 +217221,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -217166,6 +217549,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -217561,6 +217945,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -220147,6 +220532,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -221128,6 +221514,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &6109964363725074844
 GameObject:
   m_ObjectHideFlags: 0
@@ -221555,6 +221944,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -221782,6 +222172,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -222894,6 +223285,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -224246,6 +224638,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &6203987620883775127
 GameObject:
   m_ObjectHideFlags: 0
@@ -224956,6 +225351,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -225565,6 +225961,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -226263,6 +226660,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &6258193189996563515
 GameObject:
   m_ObjectHideFlags: 0
@@ -226324,6 +226724,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -226552,6 +226953,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -227299,6 +227701,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -227943,6 +228346,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &6314132554824686595
 GameObject:
   m_ObjectHideFlags: 0
@@ -233179,6 +233585,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -233910,6 +234317,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -235121,6 +235529,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -235615,6 +236024,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -236529,6 +236939,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -237623,6 +238034,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &6459674165935098023
 GameObject:
   m_ObjectHideFlags: 0
@@ -239331,6 +239745,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -240311,6 +240726,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &6570135733779617941
 GameObject:
   m_ObjectHideFlags: 0
@@ -240456,6 +240874,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -240782,6 +241201,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -241178,6 +241598,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -242276,6 +242697,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -242755,6 +243177,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -244584,6 +245007,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 1
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -244946,6 +245370,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &6660719824357347149
 GameObject:
   m_ObjectHideFlags: 0
@@ -245007,6 +245434,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -246416,6 +246844,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -247063,6 +247492,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -247290,6 +247720,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -247517,6 +247948,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -248131,6 +248563,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &6717615330652368372
 GameObject:
   m_ObjectHideFlags: 0
@@ -248558,6 +248993,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -248920,6 +249356,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &6729820205406592027
 GameObject:
   m_ObjectHideFlags: 0
@@ -249081,6 +249520,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -249429,6 +249869,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &6746416733430039426
 GameObject:
   m_ObjectHideFlags: 0
@@ -255847,6 +256290,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -257110,6 +257554,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -257437,6 +257882,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -257664,6 +258110,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -258311,6 +258758,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -258538,6 +258986,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -259231,6 +259680,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -259978,6 +260428,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -260473,6 +260924,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -260983,6 +261435,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -261379,6 +261832,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -263515,6 +263969,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -263742,6 +264197,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -264776,6 +265232,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &7011309596930518170
 GameObject:
   m_ObjectHideFlags: 0
@@ -264873,6 +265332,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &7015587954021589327
 GameObject:
   m_ObjectHideFlags: 0
@@ -264935,6 +265397,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -265163,6 +265626,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -265391,6 +265855,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -266801,6 +267266,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -267211,6 +267677,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -268057,6 +268524,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -268468,6 +268936,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -268863,6 +269332,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -269570,6 +270040,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -269833,6 +270304,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &7178273031864571782
 GameObject:
   m_ObjectHideFlags: 0
@@ -270497,6 +270971,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -270907,6 +271382,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -271317,6 +271793,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -276650,6 +277127,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -277096,6 +277574,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &7249972683253456058
 GameObject:
   m_ObjectHideFlags: 0
@@ -277746,6 +278227,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -278178,6 +278660,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &7293477240119552562
 GameObject:
   m_ObjectHideFlags: 0
@@ -279940,6 +280425,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -280251,6 +280737,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -281013,6 +281500,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -282295,6 +282783,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -282943,6 +283432,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -283675,6 +284165,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -284650,6 +285141,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -284877,6 +285369,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -285140,6 +285633,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &7531003817333167439
 GameObject:
   m_ObjectHideFlags: 0
@@ -285385,6 +285881,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -286048,6 +286545,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -286710,6 +287208,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -287471,6 +287970,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -287833,6 +288333,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &7594316383157667929
 GameObject:
   m_ObjectHideFlags: 0
@@ -293267,6 +293770,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -294142,6 +294646,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -294369,6 +294874,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -294680,6 +295186,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 1
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -296125,6 +296632,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &7690540367146824856
 GameObject:
   m_ObjectHideFlags: 0
@@ -296889,6 +297399,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -297720,6 +298231,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -297983,6 +298495,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &7745491117857682285
 GameObject:
   m_ObjectHideFlags: 0
@@ -298144,6 +298659,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -298555,6 +299071,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -298881,6 +299398,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -299192,6 +299710,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -299638,6 +300157,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &7799580110354181672
 GameObject:
   m_ObjectHideFlags: 0
@@ -299699,6 +300221,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -300742,6 +301265,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -301138,6 +301662,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -301732,6 +302257,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -302044,6 +302570,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -302356,6 +302883,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -302835,6 +303363,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -303230,6 +303759,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -303914,6 +304444,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -304760,6 +305291,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -305506,6 +306038,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -306357,6 +306890,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &8004358381313964686
 GameObject:
   m_ObjectHideFlags: 0
@@ -306601,6 +307137,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -307812,6 +308349,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -308207,6 +308745,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -308899,6 +309438,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -309126,6 +309666,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -310635,6 +311176,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -310948,6 +311490,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -311626,6 +312169,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -311937,6 +312481,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -312164,6 +312709,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -312659,6 +313205,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -313070,6 +313617,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -313921,6 +314469,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &8217360728013712168
 GameObject:
   m_ObjectHideFlags: 0
@@ -314201,6 +314752,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &8222387022576256943
 GameObject:
   m_ObjectHideFlags: 0
@@ -314964,6 +315518,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -315191,6 +315746,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -315685,6 +316241,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -315996,6 +316553,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -316358,6 +316916,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &8277495151151962370
 GameObject:
   m_ObjectHideFlags: 0
@@ -316420,6 +316981,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -316921,6 +317483,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -322422,6 +322985,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -324266,6 +324830,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -324943,6 +325508,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -325536,6 +326102,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -326663,6 +327230,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -327173,6 +327741,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -327569,6 +328138,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -327880,6 +328450,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -328107,6 +328678,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -328532,6 +329104,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -328843,6 +329416,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -330094,6 +330668,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -330322,6 +330897,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -330816,6 +331392,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 1
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -331212,6 +331789,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -331623,6 +332201,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -332385,6 +332964,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -332697,6 +333277,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -334076,6 +334657,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -335737,6 +336319,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -336483,6 +337066,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -337889,6 +338473,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &8736053765542401899
 GameObject:
   m_ObjectHideFlags: 0
@@ -339018,6 +339605,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -340398,6 +340986,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -340711,6 +341300,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -341023,6 +341613,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -342021,6 +342612,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -343095,6 +343687,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -343407,6 +344000,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -344237,6 +344831,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -346448,6 +347043,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -346676,6 +347272,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -346903,6 +347500,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -347901,6 +348499,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -348549,6 +349148,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -349074,6 +349674,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -349484,6 +350085,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -350750,6 +351352,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -351680,6 +352283,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -351907,6 +352511,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -352719,6 +353324,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dac72beafe91040a3cd33ddd6912c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &9176065665085113968
 GameObject:
   m_ObjectHideFlags: 0
@@ -352964,6 +353572,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -353376,6 +353985,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5

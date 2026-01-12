@@ -75,6 +75,9 @@ public class EnemyAI : MonoBehaviour
         //    healEffect.GetComponent<ParticleSystem>().Stop();
         //}
 
+        //stop effect particul
+        particleSystem.Stop();
+
         if (enemyType == EnemyType.Heal)
         {
             healEffectParticle = healEffect.GetComponent<ParticleSystem>();
