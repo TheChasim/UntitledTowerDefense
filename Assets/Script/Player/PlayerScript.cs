@@ -20,6 +20,14 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] internal int currentExp;
     [SerializeField] internal int currentWave;
 
+    [SerializeField] TMP_Text numOfEnemi;
+    [SerializeField] TMP_Text fpsText;
+    public float refreshRate = 0.5f;
+    private int frameCount;
+    private float timePassed;
+    private float fps;
+
+
     public static PlayerScript Singleton;
 
     // Start is called before the first frame update
@@ -46,7 +54,21 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+
+        frameCount++;
+        timePassed += Time.unscaledDeltaTime;
+
+        if (timePassed >= refreshRate)
+        {
+            fps = frameCount / timePassed;
+            frameCount = 0;
+            timePassed = 0f;
+
+            fpsText.text =$"FPS : {Mathf.RoundToInt(fps)}";
+        }
+
+        numOfEnemi.text = $"num of enemie : {GetComponentInParent<SpawningEnemy>().currentEnemyAmount}" ;
     }
 
     public void OnTakeDamege(int damege)

@@ -23,7 +23,8 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] Element enemyStatus = Element.normal;
     [SerializeField] ElementEffect effect;
     [SerializeField] ParticleSystem particleSystem;
- 
+    bool effectIsPlaying = false;
+
     [Header("Healing info")]
     [SerializeField] bool isHealing = false;
     [SerializeField] float healRange = 3.5f;
@@ -76,7 +77,6 @@ public class EnemyAI : MonoBehaviour
         //}
 
         //stop effect particul
-        particleSystem.Stop();
 
         if (enemyType == EnemyType.Heal)
         {
@@ -278,6 +278,22 @@ public class EnemyAI : MonoBehaviour
             if (currentTile.IsDamaging && !tileDamage)
             {
                 StartCoroutine(OntileDamage(currentTile.DamageAmout));
+
+
+            }
+
+            if (currentTile.IsSlowing)
+            {
+                particleSystem = effect.GetEffect(Element.Water);
+
+                //section pour les effet 
+                if (particleSystem != null && !effectIsPlaying)
+                {
+                    float t = effect.GetDuration();
+                    var obj = Instantiate(particleSystem, transform);
+                    Destroy(obj, t);
+                    StartCoroutine(effectTime(t));
+                }
             }
         }
         catch
@@ -287,6 +303,12 @@ public class EnemyAI : MonoBehaviour
             Debug.Log($"currentTile.IsDamaging = {currentTile.IsDamaging}");
             Debug.Log($"tileDamage = {!tileDamage}");
         }
+    }
+    private IEnumerator effectTime(float t)
+    {
+        effectIsPlaying = true;
+        yield return new WaitForSeconds(t);
+        effectIsPlaying = false;
     }
 
     private IEnumerator OntileDamage(float damageAmout)
@@ -301,25 +323,53 @@ public class EnemyAI : MonoBehaviour
     public void OnTakeDamage(float damageAmout, Element type, float critChance, float critmultiplier)
     {
         //check for a crit or normal attack
-        if (UnityEngine.Random.Range(0f, 1f) < critChance*ElementSensitivity.GetMultiplierCrit(type, enemyStatus))
+        if (UnityEngine.Random.Range(0f, 1f) < critChance * ElementSensitivity.GetMultiplierCrit(type, enemyStatus))
         {
             //healt.OnTakeDamage(damageAmout*critmultiplier*critBonus, true);
-            healt.OnTakeDamage(damageAmout*ElementSensitivity.GetMultiplierAttack(type, enemyStatus)*critmultiplier, true);
+            healt.OnTakeDamage(damageAmout * ElementSensitivity.GetMultiplierAttack(type, enemyStatus) * critmultiplier, true);
         }
         else
         {
-            healt.OnTakeDamage(damageAmout*ElementSensitivity.GetMultiplierAttack(type, enemyStatus), false);
+            healt.OnTakeDamage(damageAmout * ElementSensitivity.GetMultiplierAttack(type, enemyStatus), false);
         }
 
         particleSystem = effect.GetEffect(type);
-        particleSystem.Play();
-        StartCoroutine(DurationEffect());
 
+        //section pour les effet 
+        if (particleSystem != null && !effectIsPlaying)
+        {
+            float t = effect.GetDuration();
+            var obj = Instantiate(particleSystem, transform);
+            Destroy(obj, t);
+
+            if (!effectIsPlaying)
+            {
+                StartCoroutine(DurationEffect(t, type));
+            }
+        }
     }
 
-    private IEnumerator DurationEffect()
+    private IEnumerator DurationEffect(float t, Element type)
     {
-        yield return effect.GetDuration();
+        //yield return effect.GetDuration();
+        effectIsPlaying = true;
+        while (t > 0)
+        {
+            switch (type)
+            {
+                case Element.Fire:
+                    healt.OnTakeDamage(effect.burnDamage * ElementSensitivity.GetMultiplierAttack(type, enemyStatus) * 1, false);
+                    break;
+                case Element.Electric:
+                    healt.OnTakeDamage(effect.slow * ElementSensitivity.GetMultiplierAttack(type, enemyStatus) * 1, false);
+                    break;
+            }
+
+            yield return new WaitForSeconds(0.5f);
+            t -= 0.5f;
+        }
+
+        effectIsPlaying = false;
     }
 
     internal void IsDead()
