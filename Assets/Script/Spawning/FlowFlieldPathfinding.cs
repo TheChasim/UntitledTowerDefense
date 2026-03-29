@@ -80,6 +80,8 @@ public class FlowFieldPathfinding : MonoBehaviour
                 { newCost = current.cost + 2; }
                 else if (current.IsBloced)
                 { newCost = float.MaxValue; }
+                else if (current.IsTowerPlaced)
+                { newCost = float.MaxValue; }
                 else
                 { newCost = current.cost + 1; }
           

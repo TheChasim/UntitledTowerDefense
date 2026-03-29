@@ -589,6 +589,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16b032fad8b24974ab5b4db6a45ee849, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsSelected: 0
+  IsSpawn: 0
+  IsEnd: 0
+  IsBloced: 0
+  IsTowerPlaced: 0
+  IsSlowing: 0
+  IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -619,6 +627,7 @@ MonoBehaviour:
   terrainRenderer: {fileID: 1462945076231964097}
   decorationRenderer: {fileID: 7182878677527370665}
   Object3DSet: {fileID: 0}
+  ModuleSet: {fileID: 0}
 --- !u!114 &7550279871649554624
 MonoBehaviour:
   m_ObjectHideFlags: 0

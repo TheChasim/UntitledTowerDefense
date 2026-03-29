@@ -763,6 +763,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -991,6 +992,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -3187,6 +3189,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -3666,6 +3669,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -4344,6 +4348,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -5556,6 +5561,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -5783,6 +5789,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -6094,6 +6101,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -6756,6 +6764,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -7685,6 +7694,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -9979,6 +9989,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -10305,6 +10316,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -10616,6 +10628,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -11110,6 +11123,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -11604,6 +11618,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -11930,6 +11945,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -12454,6 +12470,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -12948,6 +12965,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -14480,6 +14498,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -15409,6 +15428,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -15903,6 +15923,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -17687,6 +17708,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -18266,6 +18288,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -18845,6 +18868,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -19156,6 +19180,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -19566,6 +19591,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -20243,6 +20269,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -20470,6 +20497,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -22017,6 +22045,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -22328,6 +22357,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -23188,6 +23218,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -24666,6 +24697,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -24893,6 +24925,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -25205,6 +25238,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -25883,6 +25917,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -26377,6 +26412,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -26704,6 +26740,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -27268,6 +27305,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -27748,6 +27786,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -28076,6 +28115,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -28640,6 +28680,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -29218,6 +29259,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -30301,6 +30343,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -31132,6 +31175,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -31711,6 +31755,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -33443,6 +33488,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -34289,6 +34335,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -35654,6 +35701,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -36164,6 +36212,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -36742,6 +36791,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -37503,6 +37553,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -39279,6 +39330,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -40041,6 +40093,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -41054,6 +41107,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -41281,6 +41335,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -41508,6 +41563,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -41819,6 +41875,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -42565,6 +42622,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -43959,6 +44017,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -44636,6 +44695,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -45116,6 +45176,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -46511,6 +46572,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -46921,6 +46983,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -47247,6 +47310,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -47573,6 +47637,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -49768,6 +49833,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -50346,6 +50412,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -51572,6 +51639,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -52669,6 +52737,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -53514,6 +53583,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -53924,6 +53994,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -55625,6 +55696,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -56456,6 +56528,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -56683,6 +56756,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -58062,6 +58136,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -59006,6 +59081,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -59233,6 +59309,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -60079,6 +60156,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -61558,6 +61636,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -63778,6 +63857,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -64936,6 +65016,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -66093,6 +66174,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -66869,6 +66951,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -67447,6 +67530,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -67674,6 +67758,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -68168,6 +68253,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -69394,6 +69480,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -70491,6 +70578,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -70901,6 +70989,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -71593,6 +71682,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -72690,6 +72780,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -73001,6 +73092,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -73312,6 +73404,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -73539,6 +73632,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -73766,6 +73860,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -74176,6 +74271,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -75006,6 +75102,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -76835,6 +76932,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -78016,6 +78114,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -78426,6 +78525,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -79073,6 +79173,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -79880,6 +79981,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -81008,6 +81110,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -81739,6 +81842,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -81967,6 +82071,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -82813,6 +82918,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -84261,6 +84367,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -84572,6 +84679,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -84799,6 +84907,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -86346,6 +86455,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -86573,6 +86683,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -86800,6 +86911,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -87027,6 +87139,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -87254,6 +87367,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -88282,6 +88396,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -88509,6 +88624,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -88737,6 +88853,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -89148,6 +89265,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -89376,6 +89494,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -89604,6 +89723,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -91082,6 +91202,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -91408,6 +91529,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -92551,6 +92673,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -93313,6 +93436,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -93990,6 +94114,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -94667,6 +94792,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -94894,6 +95020,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -95304,6 +95431,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -95981,6 +96109,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -96559,6 +96688,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -98037,6 +98167,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -99278,6 +99409,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -102694,6 +102826,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -104662,6 +104795,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -105073,6 +105207,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -105384,6 +105519,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -106595,6 +106731,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -107974,6 +108111,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -108285,6 +108423,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -108863,6 +109002,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -109174,6 +109314,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -110004,6 +110145,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -110414,6 +110556,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -110641,6 +110784,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -111051,6 +111195,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -111728,6 +111873,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -112489,6 +112635,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -113319,6 +113466,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -114179,6 +114327,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -114406,6 +114555,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -116136,6 +116286,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -117264,6 +117415,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -118362,6 +118514,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -118872,6 +119025,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -119101,6 +119255,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -119329,6 +119484,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -119754,6 +119910,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -120065,6 +120222,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -120979,6 +121137,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -121572,6 +121731,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -122150,6 +122310,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -122461,6 +122622,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -122970,6 +123132,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -123731,6 +123894,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -124210,6 +124374,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -125788,6 +125953,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -127421,6 +127587,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -128579,6 +128746,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -130888,6 +131056,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -131383,6 +131552,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -131611,6 +131781,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -131923,6 +132094,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -133012,6 +133184,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -133423,6 +133596,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -133735,6 +133909,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -135480,6 +135655,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -135875,6 +136051,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -136369,6 +136546,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -136596,6 +136774,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -136922,6 +137101,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -138019,6 +138199,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -138429,6 +138610,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -138656,6 +138838,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -139234,6 +139417,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -139995,6 +140179,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -140306,6 +140491,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -143065,6 +143251,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -143475,6 +143662,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -143954,6 +144142,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -144983,6 +145172,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -145562,6 +145752,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -145888,6 +146079,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -146115,6 +146307,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -148546,6 +148739,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -149041,6 +149235,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -149269,6 +149464,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -149497,6 +149693,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -150495,6 +150692,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -151241,6 +151439,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -152452,6 +152651,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -153183,6 +153383,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -153494,6 +153695,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -154903,6 +155105,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -155833,6 +156036,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -156739,6 +156943,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -161253,6 +161458,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -161648,6 +161854,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -162127,6 +162334,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -162622,6 +162830,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -163819,6 +164028,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -165396,6 +165606,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -165707,6 +165918,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -166132,6 +166344,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -167343,6 +167556,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -167906,6 +168120,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -168553,6 +168768,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -169300,6 +169516,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -170458,6 +170675,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -170883,6 +171101,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -173231,6 +173450,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -173839,6 +174059,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -174264,6 +174485,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -174942,6 +175164,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -175537,6 +175760,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -176032,6 +176256,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -176359,6 +176584,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -176672,6 +176898,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -177671,6 +177898,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -177997,6 +178225,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -179322,6 +179551,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -179733,6 +179963,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -180411,6 +180642,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -180920,6 +181152,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -181246,6 +181479,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -182274,6 +182508,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -182501,6 +182736,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -182926,6 +183162,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -184221,6 +184458,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -185379,6 +185617,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -185859,6 +186098,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -186536,6 +186776,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -187633,6 +187874,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -188028,6 +188270,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -188522,6 +188765,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -189184,6 +189428,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -189594,6 +189839,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -189905,6 +190151,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -191422,6 +191669,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -192352,6 +192600,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -192581,6 +192830,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -192809,6 +193059,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -193036,6 +193287,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -193531,6 +193783,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -193927,6 +194180,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -195039,6 +195293,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -196364,6 +196619,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -197026,6 +197282,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -197520,6 +197777,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -197915,6 +198173,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -198142,6 +198401,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -199200,6 +199460,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -199595,6 +199856,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -200357,6 +200619,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -200768,6 +201031,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -201446,6 +201710,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -203276,6 +203541,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -204571,6 +204837,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -205951,6 +206218,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -206347,6 +206615,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -206574,6 +206843,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -207953,6 +208223,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -208798,6 +209069,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -209109,6 +209381,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -209603,6 +209876,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -210517,6 +210791,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -210829,6 +211104,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -211310,6 +211586,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -212774,6 +213051,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -213847,6 +214125,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -215760,6 +216039,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -215987,6 +216267,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -216734,6 +217015,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -219672,6 +219954,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -219900,6 +220183,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -220311,6 +220595,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -221088,6 +221373,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -221979,6 +222265,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -223908,6 +224195,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -224472,6 +224760,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -224700,6 +224989,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -225095,6 +225385,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -225673,6 +225964,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -226068,6 +226360,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -226463,6 +226756,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -226774,6 +227068,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -227718,6 +228013,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -227945,6 +228241,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -228355,6 +228652,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -228582,6 +228880,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -228909,6 +229208,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -232104,6 +232404,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -232781,6 +233082,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -233359,6 +233661,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -234219,6 +234522,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -234866,6 +235170,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -236146,6 +236451,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -236641,6 +236947,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -237419,6 +237726,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -238601,6 +238909,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -238996,6 +239305,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -239307,6 +239617,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -239703,6 +240014,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -240648,6 +240960,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -241043,6 +241356,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -241453,6 +241767,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -242031,6 +242346,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -243806,6 +244122,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -244849,6 +245166,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -245832,6 +246150,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -246509,6 +246828,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -247453,6 +247773,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -248229,6 +248550,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -248709,6 +249031,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -250722,6 +251045,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -251468,6 +251792,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -251962,6 +252287,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -252525,6 +252851,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -253118,6 +253445,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -253963,6 +254291,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -254274,6 +254603,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -254501,6 +254831,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -255431,6 +255762,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -255659,6 +255991,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -256336,6 +256669,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -257196,6 +257530,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -257690,6 +258025,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -259016,6 +259352,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -259862,6 +260199,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -261142,6 +261480,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -261468,6 +261807,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -262526,6 +262866,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -263050,6 +263391,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -263376,6 +263718,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -265107,6 +265450,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -265770,6 +266114,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -266081,6 +266426,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -268010,6 +268356,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -268238,6 +268585,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -269167,6 +269515,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -269562,6 +269911,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -270422,6 +270772,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -270733,6 +271084,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -270960,6 +271312,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -271271,6 +271624,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -271499,6 +271853,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -272429,6 +272784,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -273344,6 +273700,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -274121,6 +274478,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -275233,6 +275591,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -276078,6 +276437,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -279233,6 +279593,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -279460,6 +279821,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -280305,6 +280667,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -280532,6 +280895,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -280843,6 +281207,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -283191,6 +283556,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -284303,6 +284669,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -285658,6 +286025,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -286656,6 +287024,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -287501,6 +287870,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -287728,6 +288098,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -287955,6 +288326,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -288266,6 +288638,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -289028,6 +289401,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -289760,6 +290134,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -289987,6 +290362,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -290961,6 +291337,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -291189,6 +291566,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -291417,6 +291795,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -292391,6 +292770,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -293054,6 +293434,7 @@ MonoBehaviour:
   IsBloced: 1
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -294182,6 +294563,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -294760,6 +295142,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -294987,6 +295370,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -295313,6 +295697,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -295708,6 +296093,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -295936,6 +296322,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -296165,6 +296552,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -296843,6 +297231,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -297520,6 +297909,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -298266,6 +298656,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -298493,6 +298884,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -300223,6 +300615,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -301113,6 +301506,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -301340,6 +301734,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -301849,6 +302244,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -302160,6 +302556,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -302570,6 +302967,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 1
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -302896,6 +303294,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -303459,6 +303858,7 @@ MonoBehaviour:
   IsBloced: 0
   IsSlowing: 0
   IsDamaging: 0
+  damegeType: 0
   normalCost: 1
   damageCost: 3
   slowingCost: 1.5
@@ -305026,22 +305426,22 @@ PrefabInstance:
     - target: {fileID: 8905802747114419251, guid: f612a5ec7088a094ca66958af25c4c89,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.8194912
       objectReference: {fileID: 0}
     - target: {fileID: 8905802747114419251, guid: f612a5ec7088a094ca66958af25c4c89,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0.42660016
       objectReference: {fileID: 0}
     - target: {fileID: 8905802747114419251, guid: f612a5ec7088a094ca66958af25c4c89,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.17670354
       objectReference: {fileID: 0}
     - target: {fileID: 8905802747114419251, guid: f612a5ec7088a094ca66958af25c4c89,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.3394443
       objectReference: {fileID: 0}
     - target: {fileID: 8905802747114419251, guid: f612a5ec7088a094ca66958af25c4c89,
         type: 3}
@@ -305451,22 +305851,22 @@ PrefabInstance:
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.8194912
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0.42660016
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.17670354
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.3394443
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
@@ -305530,22 +305930,22 @@ PrefabInstance:
     - target: {fileID: 8905802747114419251, guid: f612a5ec7088a094ca66958af25c4c89,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.8194912
       objectReference: {fileID: 0}
     - target: {fileID: 8905802747114419251, guid: f612a5ec7088a094ca66958af25c4c89,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0.42660016
       objectReference: {fileID: 0}
     - target: {fileID: 8905802747114419251, guid: f612a5ec7088a094ca66958af25c4c89,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.17670354
       objectReference: {fileID: 0}
     - target: {fileID: 8905802747114419251, guid: f612a5ec7088a094ca66958af25c4c89,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.3394443
       objectReference: {fileID: 0}
     - target: {fileID: 8905802747114419251, guid: f612a5ec7088a094ca66958af25c4c89,
         type: 3}
@@ -305866,22 +306266,22 @@ PrefabInstance:
     - target: {fileID: 1832142495623338936, guid: d4684238f54d3004ea3e78825d4415f6,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.8194912
       objectReference: {fileID: 0}
     - target: {fileID: 1832142495623338936, guid: d4684238f54d3004ea3e78825d4415f6,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0.42660016
       objectReference: {fileID: 0}
     - target: {fileID: 1832142495623338936, guid: d4684238f54d3004ea3e78825d4415f6,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.17670354
       objectReference: {fileID: 0}
     - target: {fileID: 1832142495623338936, guid: d4684238f54d3004ea3e78825d4415f6,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.3394443
       objectReference: {fileID: 0}
     - target: {fileID: 1832142495623338936, guid: d4684238f54d3004ea3e78825d4415f6,
         type: 3}
@@ -306039,22 +306439,22 @@ PrefabInstance:
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.8194912
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0.42660016
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.17670354
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.3394443
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
@@ -306459,22 +306859,22 @@ PrefabInstance:
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.8194912
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0.42660016
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.17670354
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.3394443
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
@@ -306879,22 +307279,22 @@ PrefabInstance:
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.8194912
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0.42660016
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.17670354
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.3394443
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
@@ -306958,37 +307358,37 @@ PrefabInstance:
     - target: {fileID: 1832142495623338936, guid: d4684238f54d3004ea3e78825d4415f6,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.8194912
       objectReference: {fileID: 0}
     - target: {fileID: 1832142495623338936, guid: d4684238f54d3004ea3e78825d4415f6,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0.42660016
       objectReference: {fileID: 0}
     - target: {fileID: 1832142495623338936, guid: d4684238f54d3004ea3e78825d4415f6,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.17670354
       objectReference: {fileID: 0}
     - target: {fileID: 1832142495623338936, guid: d4684238f54d3004ea3e78825d4415f6,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.3394443
       objectReference: {fileID: 0}
     - target: {fileID: 1832142495623338936, guid: d4684238f54d3004ea3e78825d4415f6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -89.788
       objectReference: {fileID: 0}
     - target: {fileID: 1832142495623338936, guid: d4684238f54d3004ea3e78825d4415f6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 61.417
       objectReference: {fileID: 0}
     - target: {fileID: 1832142495623338936, guid: d4684238f54d3004ea3e78825d4415f6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -61.628
       objectReference: {fileID: 0}
     - target: {fileID: 5565444817850852481, guid: d4684238f54d3004ea3e78825d4415f6,
         type: 3}
@@ -307383,22 +307783,22 @@ PrefabInstance:
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.8194912
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0.42660016
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.17670354
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.3394443
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
@@ -307714,22 +308114,22 @@ PrefabInstance:
     - target: {fileID: 1832142495623338936, guid: d4684238f54d3004ea3e78825d4415f6,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.8194912
       objectReference: {fileID: 0}
     - target: {fileID: 1832142495623338936, guid: d4684238f54d3004ea3e78825d4415f6,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0.42660016
       objectReference: {fileID: 0}
     - target: {fileID: 1832142495623338936, guid: d4684238f54d3004ea3e78825d4415f6,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.17670354
       objectReference: {fileID: 0}
     - target: {fileID: 1832142495623338936, guid: d4684238f54d3004ea3e78825d4415f6,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.3394443
       objectReference: {fileID: 0}
     - target: {fileID: 1832142495623338936, guid: d4684238f54d3004ea3e78825d4415f6,
         type: 3}
@@ -307966,22 +308366,22 @@ PrefabInstance:
     - target: {fileID: 8905802747114419251, guid: f612a5ec7088a094ca66958af25c4c89,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.8194912
       objectReference: {fileID: 0}
     - target: {fileID: 8905802747114419251, guid: f612a5ec7088a094ca66958af25c4c89,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0.42660016
       objectReference: {fileID: 0}
     - target: {fileID: 8905802747114419251, guid: f612a5ec7088a094ca66958af25c4c89,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.17670354
       objectReference: {fileID: 0}
     - target: {fileID: 8905802747114419251, guid: f612a5ec7088a094ca66958af25c4c89,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.3394443
       objectReference: {fileID: 0}
     - target: {fileID: 8905802747114419251, guid: f612a5ec7088a094ca66958af25c4c89,
         type: 3}
@@ -308302,22 +308702,22 @@ PrefabInstance:
     - target: {fileID: 8905802747114419251, guid: f612a5ec7088a094ca66958af25c4c89,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.8194912
       objectReference: {fileID: 0}
     - target: {fileID: 8905802747114419251, guid: f612a5ec7088a094ca66958af25c4c89,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0.42660016
       objectReference: {fileID: 0}
     - target: {fileID: 8905802747114419251, guid: f612a5ec7088a094ca66958af25c4c89,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.17670354
       objectReference: {fileID: 0}
     - target: {fileID: 8905802747114419251, guid: f612a5ec7088a094ca66958af25c4c89,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.3394443
       objectReference: {fileID: 0}
     - target: {fileID: 8905802747114419251, guid: f612a5ec7088a094ca66958af25c4c89,
         type: 3}
@@ -308391,22 +308791,22 @@ PrefabInstance:
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.8194912
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0.42660016
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.17670354
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.3394443
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
@@ -308811,22 +309211,22 @@ PrefabInstance:
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.8194912
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0.42660016
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.17670354
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.3394443
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
@@ -308979,37 +309379,37 @@ PrefabInstance:
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.8194912
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0.42660016
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.17670354
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.3394443
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -89.788
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 61.417
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -61.628
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -309646,22 +310046,22 @@ PrefabInstance:
     - target: {fileID: 1832142495623338936, guid: d4684238f54d3004ea3e78825d4415f6,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.8194912
       objectReference: {fileID: 0}
     - target: {fileID: 1832142495623338936, guid: d4684238f54d3004ea3e78825d4415f6,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0.42660016
       objectReference: {fileID: 0}
     - target: {fileID: 1832142495623338936, guid: d4684238f54d3004ea3e78825d4415f6,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.17670354
       objectReference: {fileID: 0}
     - target: {fileID: 1832142495623338936, guid: d4684238f54d3004ea3e78825d4415f6,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.3394443
       objectReference: {fileID: 0}
     - target: {fileID: 1832142495623338936, guid: d4684238f54d3004ea3e78825d4415f6,
         type: 3}
@@ -309814,22 +310214,22 @@ PrefabInstance:
     - target: {fileID: 8905802747114419251, guid: f612a5ec7088a094ca66958af25c4c89,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.8194912
       objectReference: {fileID: 0}
     - target: {fileID: 8905802747114419251, guid: f612a5ec7088a094ca66958af25c4c89,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0.42660016
       objectReference: {fileID: 0}
     - target: {fileID: 8905802747114419251, guid: f612a5ec7088a094ca66958af25c4c89,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.17670354
       objectReference: {fileID: 0}
     - target: {fileID: 8905802747114419251, guid: f612a5ec7088a094ca66958af25c4c89,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.3394443
       objectReference: {fileID: 0}
     - target: {fileID: 8905802747114419251, guid: f612a5ec7088a094ca66958af25c4c89,
         type: 3}
@@ -309982,22 +310382,22 @@ PrefabInstance:
     - target: {fileID: 8905802747114419251, guid: f612a5ec7088a094ca66958af25c4c89,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.8194912
       objectReference: {fileID: 0}
     - target: {fileID: 8905802747114419251, guid: f612a5ec7088a094ca66958af25c4c89,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0.42660016
       objectReference: {fileID: 0}
     - target: {fileID: 8905802747114419251, guid: f612a5ec7088a094ca66958af25c4c89,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.17670354
       objectReference: {fileID: 0}
     - target: {fileID: 8905802747114419251, guid: f612a5ec7088a094ca66958af25c4c89,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.3394443
       objectReference: {fileID: 0}
     - target: {fileID: 8905802747114419251, guid: f612a5ec7088a094ca66958af25c4c89,
         type: 3}
@@ -310323,22 +310723,22 @@ PrefabInstance:
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.8194912
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0.42660016
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.17670354
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.3394443
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
@@ -310407,22 +310807,22 @@ PrefabInstance:
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.8194912
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0.42660016
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.17670354
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.3394443
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
@@ -310491,22 +310891,22 @@ PrefabInstance:
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.8194912
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0.42660016
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.17670354
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.3394443
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
@@ -310659,22 +311059,22 @@ PrefabInstance:
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.8194912
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0.42660016
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.17670354
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.3394443
       objectReference: {fileID: 0}
     - target: {fileID: 1739858812302968245, guid: b0987975e964f28428393c40bf329498,
         type: 3}
@@ -310906,22 +311306,22 @@ PrefabInstance:
     - target: {fileID: 1832142495623338936, guid: d4684238f54d3004ea3e78825d4415f6,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.8194912
       objectReference: {fileID: 0}
     - target: {fileID: 1832142495623338936, guid: d4684238f54d3004ea3e78825d4415f6,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0.42660016
       objectReference: {fileID: 0}
     - target: {fileID: 1832142495623338936, guid: d4684238f54d3004ea3e78825d4415f6,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.17670354
       objectReference: {fileID: 0}
     - target: {fileID: 1832142495623338936, guid: d4684238f54d3004ea3e78825d4415f6,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.3394443
       objectReference: {fileID: 0}
     - target: {fileID: 1832142495623338936, guid: d4684238f54d3004ea3e78825d4415f6,
         type: 3}

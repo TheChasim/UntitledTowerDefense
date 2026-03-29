@@ -13,6 +13,7 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
     [SerializeField] public bool IsSpawn = false;
     [SerializeField] public bool IsEnd = false;
     [SerializeField] public bool IsBloced = false;
+    [SerializeField] public bool IsTowerPlaced = false;
     [SerializeField] public bool IsSlowing = false;
     [SerializeField] public bool IsDamaging = false;
     [SerializeField] public Element damegeType;
@@ -115,7 +116,7 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
             //prend le nextTile et le met en temp au cas on doit lui remmetre
             tempTile = nextTile;
             //rend la tuille bloquer et en suprime le nextTile
-            IsBloced = true;
+            IsTowerPlaced = true;
             nextTile = null;
 
             //uptade le flowField avec la nouvelle tuille bloquer
@@ -132,13 +133,13 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
             else
             {
                 Debug.LogWarning("Chemin impossible");
-                IsBloced = false; // Annuler le blocage
+                IsTowerPlaced = false; // Annuler le blocage
                 nextTile = tempTile; // remettre le nextTile
                 GameManager.Instance.UpdateFlowFieldAround(position); //update le flowfield
             }
         }
         //si la tuille est bloquer et en mode supression
-        else if (IsBloced && GameManager.Instance.deleteTower)
+        else if (IsTowerPlaced && GameManager.Instance.deleteTower)
         {
             // Trouver la tour la plus proche sans depasser une tuile de distance et la supprimer
             var nearbyTower = Tower.allTourel.FirstOrDefault(tower =>
@@ -147,7 +148,7 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
             //si il y a une toure suprimer
             if (nearbyTower != null)
             {
-                IsBloced = false;
+                IsTowerPlaced = false;
 
                 // Supprimer la tour
                 nearbyTower.OnRevome();
@@ -161,7 +162,7 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
     {
         //si la tuille a une de ces variable true 
         //cette tuille est imposible a mettre une tour
-        if (IsBloced || IsEnd || IsSpawn)
+        if (IsBloced || IsEnd || IsSpawn || IsTowerPlaced)
         {
             return false;
         }
@@ -236,6 +237,7 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
         renderer.sprite = baseLayer.tiles[0];
         IsSpawn = false;
         IsBloced = false;
+        IsTowerPlaced = false;
         IsEnd = false;
         IsDamaging = false;
     }
@@ -290,7 +292,7 @@ public class GameTiles : MonoBehaviour, IPointerEnterHandler,
 
     internal void SetCost()
     {
-        if (IsBloced)
+        if (IsBloced || IsTowerPlaced)
         {
             cost = float.MaxValue;
         }
