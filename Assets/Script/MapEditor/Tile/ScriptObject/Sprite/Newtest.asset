@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f86562e503fa63e4395a9649a523b62d, type: 3}
+  m_Name: Newtest
+  m_EditorClassIdentifier: 
+  tiles:
+  - sprite: {fileID: 1160909937, guid: c81c36323e597b04db6e807d329b443f, type: 3}
+    upLeft: 0
+    upMid: -1
+    upRight: 0
+    midLeft: 0
+    midMid: 0
+    midRight: 0
+    downLeft: 0
+    downMid: 1
+    downRight: 0
+  - sprite: {fileID: -295388587, guid: c81c36323e597b04db6e807d329b443f, type: 3}
+    upLeft: 0
+    upMid: 1
+    upRight: 0
+    midLeft: 0
+    midMid: 0
+    midRight: 0
+    downLeft: 0
+    downMid: 1
+    downRight: 0
+  - sprite: {fileID: 1960422147, guid: c81c36323e597b04db6e807d329b443f, type: 3}
+    upLeft: 0
+    upMid: 0
+    upRight: 0
+    midLeft: 0
+    midMid: 0
+    midRight: 1
+    downLeft: 0
+    downMid: 1
+    downRight: 0
+  - sprite: {fileID: 973919844, guid: c81c36323e597b04db6e807d329b443f, type: 3}
+    upLeft: 0
+    upMid: 0
+    upRight: 0
+    midLeft: 1
+    midMid: 0
+    midRight: 0
+    downLeft: 0
+    downMid: 1
+    downRight: 0
+  - sprite: {fileID: 485509707, guid: c81c36323e597b04db6e807d329b443f, type: 3}
+    upLeft: 0
+    upMid: 1
+    upRight: 0
+    midLeft: 0
+    midMid: 0
+    midRight: 0
+    downLeft: 0
+    downMid: 0
+    downRight: 0
+  - sprite: {fileID: -664913844, guid: c81c36323e597b04db6e807d329b443f, type: 3}
+    upLeft: 0
+    upMid: 1
+    upRight: 0
+    midLeft: 1
+    midMid: 0
+    midRight: 0
+    downLeft: 0
+    downMid: 0
+    downRight: 0
+  - sprite: {fileID: -557497725, guid: c81c36323e597b04db6e807d329b443f, type: 3}
+    upLeft: 0
+    upMid: 1
+    upRight: 0
+    midLeft: 0
+    midMid: 0
+    midRight: 1
+    downLeft: 0
+    downMid: 0
+    downRight: 0
+  - sprite: {fileID: -1872300603, guid: c81c36323e597b04db6e807d329b443f, type: 3}
+    upLeft: 0
+    upMid: 0
+    upRight: 0
+    midLeft: -1
+    midMid: 0
+    midRight: 1
+    downLeft: 0
+    downMid: 0
+    downRight: 0
+  - sprite: {fileID: 1578946800, guid: c81c36323e597b04db6e807d329b443f, type: 3}
+    upLeft: 0
+    upMid: 0
+    upRight: 0
+    midLeft: 1
+    midMid: 0
+    midRight: 1
+    downLeft: 0
+    downMid: 0
+    downRight: 0
+  - sprite: {fileID: 274273232, guid: c81c36323e597b04db6e807d329b443f, type: 3}
+    upLeft: 0
+    upMid: 0
+    upRight: 0
+    midLeft: 1
+    midMid: 0
+    midRight: -1
+    downLeft: 0
+    downMid: 0
+    downRight: 0
