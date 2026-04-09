@@ -57,6 +57,12 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void SetGameTiles(GameTiles[,] gameTile)
+    {
+        currentGameTiles = gameTile;
+    }
+    
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Delete))

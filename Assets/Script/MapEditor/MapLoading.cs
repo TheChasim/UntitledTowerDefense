@@ -77,8 +77,6 @@ public class MapLoading : MonoBehaviour
         RowCount = currentMap.row;
         ColCount = currentMap.col;
 
-
-
         // 4) Charger la grille depuis JSON (remplit currentMap.map[,])
         //currentMap.LoadJson();
         mapName = currentMap.mapName;
@@ -111,7 +109,12 @@ public class MapLoading : MonoBehaviour
             Debug.Log(currentGameTiles);
         }
 
-        GameManager.Instance.currentGameTiles = currentGameTiles;
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.SetGameTiles(currentGameTiles);
+        }
+
+        //GameManager.Instance.currentGameTiles = currentGameTiles;
         Debug.LogWarning($"Map Tiles : {currentGameTiles}");
         //if (currentMap)
 
@@ -131,7 +134,7 @@ public class MapLoading : MonoBehaviour
 
                     if (currentGameTiles[x, y].IsEnd)
                     {
-                        endPoint = new Vector2(currentGameTiles[x, y].transform.position.x, 
+                        endPoint = new Vector2(currentGameTiles[x, y].transform.position.x,
                                                currentGameTiles[x, y].transform.position.z);
                     }
                 }

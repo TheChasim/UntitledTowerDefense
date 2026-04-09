@@ -100,6 +100,11 @@ public class MapEditor : Editor
             showMap = false;
         }
 
+        if (GUILayout.Button("Creat New Map"))
+        {
+
+        }
+
         EditorGUILayout.Space();
 
         if (GUILayout.Button("Set path"))
@@ -553,8 +558,13 @@ public class MapEditor : Editor
                             {
                                 //Texture2D texture = currentMap[x, y].natureRenderer.sprite.texture;
                                 //GUI.DrawTextureWithTexCoords(cellRect, texture, cellRect);
-                                Color c = SpriteColorUtils.GetDominantColorFast(currentMap[x, y].natureRenderer.sprite);
-                                EditorGUI.DrawRect(cellRect,/* GetTileColor(currentMap[x, y]*/ c);
+
+                                //Color c = SpriteColorUtils.GetDominantColorFast(currentMap[x, y].natureRenderer.sprite);
+                                //EditorGUI.DrawRect(cellRect,/* GetTileColor(currentMap[x, y]*/ c);
+
+                                DrawSpritePreview(cellRect, currentMap[x, y].natureRenderer.sprite);
+
+                                //Texture2D preview = AssetPreview.GetAssetPreview(currentMap[x, y].natureRenderer.sprite);
                             }
                             break;
                         case MapLayout.Terrain:
@@ -566,10 +576,12 @@ public class MapEditor : Editor
                             {
                                 //Texture2D texture = currentMap[x, y].terrainRenderer.sprite.texture;
                                 //GUI.DrawTextureWithTexCoords(cellRect, texture, cellRect);
-                                Color c1 = SpriteColorUtils.GetDominantColorFast(currentMap[x, y].terrainRenderer.sprite);
-                                EditorGUI.DrawRect(cellRect,/* GetTileColor(currentMap[x, y]*/ c1);
+                                //Color c1 = SpriteColorUtils.GetDominantColorFast(currentMap[x, y].terrainRenderer.sprite);
+                                //EditorGUI.DrawRect(cellRect,/* GetTileColor(currentMap[x, y]*/ c1);
+
+                                DrawSpritePreview(cellRect, currentMap[x, y].terrainRenderer.sprite);
                             }
-                           
+
                             break;
                         case MapLayout.Decoration:
                             {
@@ -581,11 +593,13 @@ public class MapEditor : Editor
                                 {
                                     //Texture2D texture = currentMap[x, y].decorationRenderer.sprite.texture;
                                     //GUI.DrawTextureWithTexCoords(cellRect, texture, cellRect);
-                                    Color c2 = SpriteColorUtils.GetDominantColorFast(currentMap[x, y].decorationRenderer.sprite);
-                                    EditorGUI.DrawRect(cellRect,/* GetTileColor(currentMap[x, y]*/ c2);
+                                    //Color c2 = SpriteColorUtils.GetDominantColorFast(currentMap[x, y].decorationRenderer.sprite);
+                                    //EditorGUI.DrawRect(cellRect,/* GetTileColor(currentMap[x, y]*/ c2);
+
+                                    DrawSpritePreview(cellRect, currentMap[x, y].decorationRenderer.sprite);
                                 }
                             }
-                           
+
                             break;
                         case MapLayout.Object:
                             {
@@ -597,8 +611,10 @@ public class MapEditor : Editor
                                 {
                                     //Texture2D texture = currentMap[x, y].Object3DSet.GetComponent<SpriteRenderer>().sprite.texture;
                                     //GUI.DrawTextureWithTexCoords(cellRect, texture, cellRect);
-                                    Color c3 = SpriteColorUtils.GetDominantColorFast(currentMap[x, y].Object3DSet.GetComponent<SpriteRenderer>().sprite);
-                                    EditorGUI.DrawRect(cellRect,/* GetTileColor(currentMap[x, y]*/ c3);
+                                    //Color c3 = SpriteColorUtils.GetDominantColorFast(currentMap[x, y].Object3DSet.GetComponent<SpriteRenderer>().sprite);
+                                    //EditorGUI.DrawRect(cellRect,/* GetTileColor(currentMap[x, y]*/ c3);
+
+                                    DrawSpritePreview(cellRect, currentMap[x, y].Object3DSet.GetComponent<SpriteRenderer>().sprite);
                                 }
                             }
                             break;
@@ -624,7 +640,28 @@ public class MapEditor : Editor
 
                     }
 
-//lorsque le clic est fait sur la tuile change l'etat de la tuile
+                    //if (mapLayer == MapLayout.Base) -1
+                    //{
+                    //    EditorGUI.DrawRect(cellRect, GetTileColor(currentMap[x, y]));
+                    //}
+                    //if (mapLayer == MapLayout.Nature) -2
+                    //{
+                    //    DrawSpritePreview(cellRect, currentMap[x, y].natureRenderer.sprite);
+                    //}
+                    //if (mapLayer == MapLayout.Terrain) -3
+                    //{
+                    //    DrawSpritePreview(cellRect, currentMap[x, y].terrainRenderer.sprite);
+                    //}
+                    //if (mapLayer == MapLayout.Object) -4
+                    //{
+                    //    DrawSpritePreview(cellRect, currentMap[x, y].Object3DSet.GetComponent<SpriteRenderer>().sprite);
+                    //}
+                    //if (mapLayer == MapLayout.Module) -5
+                    //{
+                    //    EditorGUI.DrawRect(cellRect, Color.gray);
+                    //}
+
+                    //lorsque le clic est fait sur la tuile change l'etat de la tuile
                     // Vérifier le clic sur la case
                     if ((Event.current.type == EventType.MouseDrag || Event.current.type == EventType.MouseDown) && cellRect.Contains(Event.current.mousePosition))
 
@@ -698,12 +735,28 @@ public class MapEditor : Editor
             //fin de la boite et du scroll
             EditorGUILayout.EndVertical();
             EditorGUILayout.EndScrollView();
-
-
         }
         #endregion
         serializedObject.ApplyModifiedProperties();
 
+    }
+
+    private void DrawSpritePreview(Rect rect, Sprite sprite)
+    {
+        if (sprite == null)
+            return;
+
+        Texture2D texture = sprite.texture;
+        Rect tr = sprite.textureRect;
+
+        Rect uv = new Rect(
+            tr.x / texture.width,
+            tr.y / texture.height,
+            tr.width / texture.width,
+            tr.height / texture.height
+        );
+
+        GUI.DrawTextureWithTexCoords(rect, texture, uv, true);
     }
 
     private void ShowTileMap(GroupTileSet tileSet, int index)
@@ -737,7 +790,7 @@ public class MapEditor : Editor
     {
         int currentLigne = 0;
         //bloucle a traver toute les tuile pour l'afichage
-        for (int i = 0; i < tileSet.objectTileSet[index].objects.Length ; i++)
+        for (int i = 0; i < tileSet.objectTileSet[index].objects.Length; i++)
         {
             GameObject objects = tileSet.objectTileSet[index].objects[i];
 
@@ -763,7 +816,7 @@ public class MapEditor : Editor
     // Définir la couleur en fonction du type de tile
     private Color GetTileColor(GameTiles cell)
     {
-        
+
         if (cell.IsBloced) return Color.black; // Noir
         if (cell.IsSlowing) return Color.blue; // Bleu
         if (cell.IsDamaging) return Color.red; // Rouge
